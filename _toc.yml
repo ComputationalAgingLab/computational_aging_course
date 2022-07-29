@@ -3,7 +3,25 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+options:  # The options key will be applied to all chapters, but not sub-sections
+  numbered: True
+parts:
+- caption: Biology of Aging
+  numbered: true
+  chapters:
+  - file: bio/intro_aging_biology
+- caption: Statistical view
+  numbered: true
+  chapters:
+  - file: stat/differential_analysis
+    sections:
+    - file: stat/diff_analysis_practice
+  - file: stat/hazard_models
+- caption: Machine learning view
+  numbered: true
+  chapters:
+  - file: ml/aging_clocks
+- caption: Dynamics system view
+  numbered: true
+  chapters:
+  - file: dyn/dynamical_models
