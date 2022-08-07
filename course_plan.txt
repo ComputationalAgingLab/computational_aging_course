@@ -1,0 +1,15 @@
++ learn jupyter book 
++ make a course development plan
+- assign tasks to developers
+
+- create local builtable version of the book (conda requirements)
+
+
+#some instructions 
+##how to build and publish repo
+https://jupyterbook.org/en/stable/start/publish.html
+
+in short:
+ - update main
+ - build with jb
+ - push with ghp-import
