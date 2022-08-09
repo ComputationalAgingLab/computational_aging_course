@@ -10,15 +10,17 @@ Any person who are interested in Aging Biology having a basic technical of bioin
 
 ## Prerequisites
 
-* Python programming
-* Fundamentals of statistics
-* Fundamentals of linear algebra
-* Fundamentals of calculus
-* Fundamentals of biology
+Please check this list of prerequisites if needed. Each subject is a clickable link to an appropriate introductory course. 
+
+* Python [programming](https://www.edx.org/course/cs50s-introduction-to-programming-with-python?index=product&queryID=dfb8fc1640084acfa13867e336ac5332&position=1)
+* Fundamentals of [biology](https://www.edx.org/course/introduction-to-biology-the-secret-of-life-3)
+* Fundamentals of [statistics](https://www.edx.org/course/probability-and-statistics-in-data-science-using-p?index=product&queryID=fd2ddd2e17ab1b0ce5d2187069b62cc0&position=1)
+* Fundamentals of [linear algebra](https://nla.skoltech.ru/)
+* Fundamentals of [calculus](https://www.edx.org/course/calculus-1a-differentiation?index=product&queryID=40288109e953ccd5f708fbf6bb298e9b&position=1)
 
 
 
-Check out the content pages bundled with this sample book to see more.
+## Contents
 
 ```{tableofcontents}
 ```
