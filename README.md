@@ -11,8 +11,11 @@ This course is devoted to the study of key methods of computational biology of a
 If you want to contribute to this project, please follow this guide:
 1. Choose a topic on computational aging biology where you have a particular expertise.
 2. Provide the following materials:
-    * write a lecture text in markdown (or MyST) format supplying it with images, videos and other embedded materials.
-    * (recommended) prepare a jupyter notebook on some computational topic with clarification of the approach. Provide some code and necessary text and graphics as well as toy or real data examples of the approach application.
+    * write a lecture text in markdown (or [MyST](https://jupyterbook.org/en/stable/content/myst.html)) format supplying it with images, videos and other embedded materials.
+    * (recommended) prepare a jupyter notebook on some computational topic with clarification of the approach. Provide some code and necessary text, formulas, graphics as well as toy or real data examples of the approach application.
     * (would be great but not necessary) prepare a video with a presentation of your teaching materials. Actualy, these materials should be a repetition of what you're saying in the markdown text or notebook. Please, attach also a link to your presentation - put it into your lecture text.
 3. Commit your materials to this repository and make a pull request.
 4. (optional) To make the process faster, write about your intetion to contribute to this e-mail: <dmitrii.kriukov@skoltech.ru>
+5. (optional) Modify `.toc.yml` file by adding names of your chapters to a place you prefer. See [this guide](https://jupyterbook.org/en/stable/structure/configure.html?highlight=.toc#configure-all-entries-in-the-toc) for details.
+
+If you found some mistakes or mistypes in materials, or if you want to provide some important comments, please, issue this by pushing **issue** button on the corresponding page within the [Book](https://computationalaginglab.github.io/computational_aging_course/intro.html).
