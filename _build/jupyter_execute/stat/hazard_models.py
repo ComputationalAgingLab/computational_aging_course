@@ -95,7 +95,7 @@ ax.plot(t, 1 - rv.cdf(t));
 # 
 # $$m(t) = \frac{f(t)}{S(t)} = -\frac{S'(t)}{S(t)}$$
 # 
-# ```{dropdown} Exercise
+# ```{admonition} Exercise
 # :class: dropdown
 # Show that $f(t) = -S'(t)$.
 # ```
@@ -114,7 +114,7 @@ ax.plot(t, 1 - rv.cdf(t));
 # f(t) = m_0\cdot \exp(-m_0t)
 # \end{gather*}
 # 
-# ```{dropdown} Exercise
+# ```{admonition} Exercise
 # :class: dropdown
 # Derive an expression for $S(t)$ at constant risk. **Hint:** use the result from the previous exercise.
 # ```
@@ -140,7 +140,7 @@ ax[1].set_ylabel('Probability of survival');
 
 # The corresponding survival curve resembles a radioactive decay or so called *"law of rare events"* where events independently occur with a rate $m_0$. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging. Then, $m_0$ actually describes average number of failures per unit of time and, correspondingly, $1/m_0$ - is a **mean survival time**.
 # 
-# ```{dropdown} Exercise
+# ```{admonition} Exercise
 # :class: dropdown
 # Prove that $1/m_0$ - is a mean survival time using a definition of expectation.
 # ```
