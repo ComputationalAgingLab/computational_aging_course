@@ -1,53 +1,76 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Content with notebooks
+# # Hazard models
 # 
-# You can also create content with Jupyter Notebooks. This means that you can include
-# code blocks and their outputs in your book.
+# **Aging** - increased chance of death with age.
 # 
-# ## Markdown + notebooks
+# You have seen this picture on the previous lesson {cite}`lifetables`.  
 # 
-# As it is markdown, you can embed images, HTML, etc into your posts!
+# ![Risk of mortality](https://upload.wikimedia.org/wikipedia/en/4/4d/USGompertzCurve.svg)
 # 
-# ![]()
+# At this lesson we learn how to understand such mortality risk curves and much more. We will learn Gompertz model - the central conception in aging research.
+
+# ## Survival curves
 # 
-# But make sure you \$Escape \$your \$dollar signs \$you want to keep!
-# 
-# ## MyST markdown
-# 
-# MyST markdown works in Jupyter Notebooks as well. For more information about MyST markdown, check
-# out [the MyST guide in Jupyter Book](https://jupyterbook.org/content/myst.html),
-# or see [the MyST markdown documentation](https://myst-parser.readthedocs.io/en/latest/).
-# 
-# ## Code blocks and outputs
-# 
-# Jupyter Book will also embed your code blocks and output in your book.
-# For example, here's some sample Matplotlib code:
+# Let $T$ is a non-negative random variable with a corresponding distribution function:
+# $$F_T(t) = P(T\leq t)$$ 
+# We call $T$ - *survival time* or time before death of some object (e.g. human). For example, $T$ can have normal distribution:
 
 # In[1]:
 
 
-from matplotlib import rcParams, cycler
+from scipy.stats import norm
 import matplotlib.pyplot as plt
 import numpy as np
-import lifetimes
-plt.ion()
 
+rv = norm(loc=4, scale=1.5)
+x = np.linspace(0, norm.ppf(0.99, loc=4, scale=1.5), 100)
+fig, ax = plt.subplots(1, 1)
+ax.set_xlabel('Time')
+ax.set_ylabel('Probability to die')
+ax.plot(x, rv.cdf(x));
+
+
+# If $F_T(t)$ is a probability to die before time moment $T$ we can introduce a probability to survive before this moment $S$ as just a complement to $F$:
+# $$S_T(t) = P(T > t) = 1 - F_T(t)$$ 
+# 
+# Let's draw it:
 
 # In[2]:
 
 
-from lifelines.datasets import load_waltons
+rv = norm(loc=4, scale=1.5)
+x = np.linspace(0, norm.ppf(0.99, loc=4, scale=1.5), 100)
+fig, ax = plt.subplots(1, 1)
+ax.set_xlabel('Time')
+ax.set_ylabel('Probability to survive')
+ax.plot(x, 1 - rv.cdf(x));
+
+
+# This plot is what we actually call *survival curve*. The intuition behind this is rather straightforward - it shows how many of experimental objects survived before a partucular moment of time. You can see a lot of empirical versions of such curves in articles. Rigorous analysis of this curves helps to avoid a misinterpretation of typical drug-testing experiment or other. And it's what we are going to do in further.
+
+# ## Hazard function
+
+# In[ ]:
+
+
+
 
 
 # In[3]:
 
 
-load_waltons()
+from lifelines.datasets import load_waltons
 
 
 # In[4]:
+
+
+load_waltons()
+
+
+# In[5]:
 
 
 # Fixing random state for reproducibility
