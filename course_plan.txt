@@ -12,4 +12,6 @@ https://jupyterbook.org/en/stable/start/publish.html
 in short:
  - update main
  - build with jb
+    jb build .
  - push with ghp-import
+    ghp-import -n -p -f _build/html
