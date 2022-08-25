@@ -391,13 +391,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#survival-curves">
-   3.1. Survival curves
+  <a class="reference internal nav-link" href="#survival-curve">
+   3.1. Survival curve
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hazard-function">
-   3.2. Hazard function
+  <a class="reference internal nav-link" href="#mortality-risk">
+   3.2. Mortality risk
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -425,13 +425,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#survival-curves">
-   3.1. Survival curves
+  <a class="reference internal nav-link" href="#survival-curve">
+   3.1. Survival curve
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hazard-function">
-   3.2. Hazard function
+  <a class="reference internal nav-link" href="#mortality-risk">
+   3.2. Mortality risk
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -455,11 +455,12 @@ title="Print to PDF"
 <p>You have seen this picture on the previous lesson <span id="id1">[<a class="reference internal" href="differential_analysis.html#id3" title="E Arias. United states life tables, 2003. 14. vol. 54. Hyattsville, MD: National Center for Health Statistics, 2006.">Ari06</a>]</span>.</p>
 <p><img alt="Risk of mortality" src="https://upload.wikimedia.org/wikipedia/en/4/4d/USGompertzCurve.svg" /></p>
 <p>At this lesson we learn how to understand such mortality risk curves and much more. We will learn Gompertz model - the central conception in aging research.</p>
-<section id="survival-curves">
-<h2><span class="section-number">3.1. </span>Survival curves<a class="headerlink" href="#survival-curves" title="Permalink to this headline">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(T\)</span> is a non-negative random variable with a corresponding distribution function:
-$<span class="math notranslate nohighlight">\(F_T(t) = P(T\leq t)\)</span><span class="math notranslate nohighlight">\( 
-We call \)</span>T<span class="math notranslate nohighlight">\( - *survival time* or time before death of some object (e.g. human). For example, \)</span>T$ can have normal distribution:</p>
+<section id="survival-curve">
+<h2><span class="section-number">3.1. </span>Survival curve<a class="headerlink" href="#survival-curve" title="Permalink to this headline">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(T\)</span> is a non-negative random variable with a corresponding distribution function:</p>
+<div class="math notranslate nohighlight">
+\[F(t) = P(T\leq t)\]</div>
+<p>We call <span class="math notranslate nohighlight">\(T\)</span> - <em>survival time</em> or time before death of some object (e.g. human). For example, <span class="math notranslate nohighlight">\(T\)</span> can have normal distribution:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -479,8 +480,8 @@ We call \)</span>T<span class="math notranslate nohighlight">\( - *survival time
 <img alt="../_images/hazard_models_2_0.png" src="../_images/hazard_models_2_0.png" />
 </div>
 </div>
-<p>If <span class="math notranslate nohighlight">\(F_T(t)\)</span> is a probability to die before time moment <span class="math notranslate nohighlight">\(T\)</span> we can introduce a probability to survive before this moment <span class="math notranslate nohighlight">\(S\)</span> as just a complement to <span class="math notranslate nohighlight">\(F\)</span>:
-$<span class="math notranslate nohighlight">\(S_T(t) = P(T &gt; t) = 1 - F_T(t)\)</span>$</p>
+<p>If <span class="math notranslate nohighlight">\(F(t)\)</span> is a probability to die before time moment <span class="math notranslate nohighlight">\(T\)</span> we can introduce a probability to survive before this moment <span class="math notranslate nohighlight">\(S\)</span> as just a complement to <span class="math notranslate nohighlight">\(F\)</span>:
+$<span class="math notranslate nohighlight">\(S(t) = P(T &gt; t) = 1 - F(t)\)</span>$</p>
 <p>Let’s draw it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -499,8 +500,40 @@ $<span class="math notranslate nohighlight">\(S_T(t) = P(T &gt; t) = 1 - F_T(t)\
 </div>
 <p>This plot is what we actually call <em>survival curve</em>. The intuition behind this is rather straightforward - it shows how many of experimental objects survived before a partucular moment of time. You can see a lot of empirical versions of such curves in articles. Rigorous analysis of this curves helps to avoid a misinterpretation of typical drug-testing experiment or other. And it’s what we are going to do in further.</p>
 </section>
-<section id="hazard-function">
-<h2><span class="section-number">3.2. </span>Hazard function<a class="headerlink" href="#hazard-function" title="Permalink to this headline">#</a></h2>
+<section id="mortality-risk">
+<h2><span class="section-number">3.2. </span>Mortality risk<a class="headerlink" href="#mortality-risk" title="Permalink to this headline">#</a></h2>
+<p>You could have heard that mortality risk increases exponentially with aging. But what does this actually mean?</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>Mortality risk is <strong>not</strong> a probability of death!</p>
+</div>
+<p>Let’s consider instantaneous probability of death that the object will die within a time interval <span class="math notranslate nohighlight">\(dt\)</span> by condition that it already survived to moment <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt}\]</div>
+<p>This conditional probability can be decomposed by definition as follows:</p>
+<div class="math notranslate nohighlight">
+\[P(A ∩ B) = P(A|B)P(B)\]</div>
+<p>T
+his yields:</p>
+<div class="math notranslate nohighlight">
+\[P(t &lt; T ≤ t + dt ∩ T &gt; t) = P(t &lt; T ≤ t + dt | T &gt; t)P(T &gt; t)\]</div>
+<div class="math notranslate nohighlight">
+\[P(t &lt; T ≤ t + dt | T &gt; t) = \frac{P(t &lt; T ≤ t + dt ∩ T &gt; t)}{P(T &gt; t)}\]</div>
+<p>Recall that <span class="math notranslate nohighlight">\(P(T &gt; t) = 1 - F(t) = S(t)\)</span> and <span class="math notranslate nohighlight">\(P(t &lt; T ≤ t + dt) = F(t+dt) - F(t)\)</span>.</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>To understand the last property it is enough to remember that probability function is just a square under probability density function!</p>
+</div>
+<p>Now let’s rewrite our result:</p>
+<div class="math notranslate nohighlight">
+\[P(t &lt; T ≤ t + dt | T &gt; t) = \frac{F(t+dt) - F(t)}{S(t)}\]</div>
+<p>It’s time to put our derivation to the first formula with a limit. So, we have:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt} = \lim_{dt \to 0}\frac{F(t+dt) - F(t)}{dt}\frac{1}{S(t)} = \frac{f(t)}{S(t)}\]</div>
+<p>Yes, we obtained a ratio of probability density function of death and probability of survival. And this is what we call <strong>mortality risk function</strong> or hazard function.</p>
+<div class="math notranslate nohighlight">
+\[m(t) = \frac{f(t)}{S(t)}\]</div>
+<p>This is actually the thing that increases exponentially as we age and have a name of Gompertz law (quite more complex than just a probability, isn’t it?). Now let’s consider different kinds of such functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.datasets</span> <span class="kn">import</span> <span class="n">load_waltons</span>
