@@ -549,10 +549,9 @@ title="Print to PDF"
 <p>At this lesson we learn how to understand such mortality risk curves and much more. We will learn Gompertz model - the central conception in aging research.</p>
 <section id="survival-curve">
 <h2><span class="section-number">3.1. </span>Survival curve<a class="headerlink" href="#survival-curve" title="Permalink to this headline">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(T\)</span> is a non-negative random variable with a corresponding distribution function:</p>
-<div class="math notranslate nohighlight">
-\[F(t) = P(T\leq t)\]</div>
-<p>We call <span class="math notranslate nohighlight">\(T\)</span> - <em>survival time</em> or time before death of some object (e.g. human). For example, <span class="math notranslate nohighlight">\(T\)</span> can have normal distribution:</p>
+<p>Let $T$ is a non-negative random variable with a corresponding distribution function:</p>
+<p>$$F(t) = P(T\leq t)$$</p>
+<p>We call $T$ - <em>survival time</em> or time before death of some object (e.g. human). For example, $T$ can have normal distribution:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -572,9 +571,8 @@ title="Print to PDF"
 <img alt="../_images/hazard_models_2_0.png" src="../_images/hazard_models_2_0.png" />
 </div>
 </div>
-<p>If <span class="math notranslate nohighlight">\(F(t)\)</span> is a probability to die before time moment <span class="math notranslate nohighlight">\(T\)</span> we can introduce a probability to survive before this moment <span class="math notranslate nohighlight">\(S\)</span> as just a complement to <span class="math notranslate nohighlight">\(F\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[S(t) = P(T &gt; t) = 1 - F(t)\]</div>
+<p>If $F(t)$ is a probability to die before time moment $T$ we can introduce a probability to survive before this moment $S$ as just a complement to $F$:</p>
+<p>$$S(t) = P(T &gt; t) = 1 - F(t)$$</p>
 <p>Let’s draw it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -600,32 +598,29 @@ title="Print to PDF"
 <p class="admonition-title">Note</p>
 <p>Mortality risk is <strong>not</strong> a probability of death!</p>
 </div>
-<p>Let’s consider instantaneous probability of death that the object will die within a time interval <span class="math notranslate nohighlight">\(dt\)</span> by condition that it already survived to moment <span class="math notranslate nohighlight">\(T\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt}\]</div>
+<p>Let’s consider instantaneous probability of death that the object will die within a time interval $dt$ by condition that it already survived to moment $T$:</p>
+<p>$$\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt}$$</p>
 <p>This conditional probability can be decomposed by definition as follows:</p>
-<div class="math notranslate nohighlight">
-\[P(A ∩ B) = P(A|B)P(B)\]</div>
-<p>T
+<p>$$P(A ∩ B) = P(A|B)P(B)$$
+T
 his yields:</p>
-<div class="math notranslate nohighlight">
-\[P(t &lt; T ≤ t + dt ∩ T &gt; t) = P(t &lt; T ≤ t + dt | T &gt; t)P(T &gt; t)\]</div>
-<div class="math notranslate nohighlight">
-\[P(t &lt; T ≤ t + dt | T &gt; t) = \frac{P(t &lt; T ≤ t + dt ∩ T &gt; t)}{P(T &gt; t)}\]</div>
-<p>Recall that <span class="math notranslate nohighlight">\(P(T &gt; t) = 1 - F(t) = S(t)\)</span> and <span class="math notranslate nohighlight">\(P(t &lt; T ≤ t + dt) = F(t+dt) - F(t)\)</span>.</p>
+<p>$$P(t &lt; T ≤ t + dt ∩ T &gt; t) = P(t &lt; T ≤ t + dt | T &gt; t)P(T &gt; t)$$</p>
+<p>$$P(t &lt; T ≤ t + dt | T &gt; t) = \frac{P(t &lt; T ≤ t + dt ∩ T &gt; t)}{P(T &gt; t)}$$</p>
+<p>Recall that $P(T &gt; t) = 1 - F(t) = S(t)$ and $P(t &lt; T ≤ t + dt) = F(t+dt) - F(t)$.</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
 <p>To understand the last property it is enough to remember that probability function is just a square under probability density function!</p>
 </div>
 <p>Now let’s rewrite our result:</p>
-<div class="math notranslate nohighlight">
-\[P(t &lt; T ≤ t + dt | T &gt; t) = \frac{F(t+dt) - F(t)}{S(t)}\]</div>
+<p>$$P(t &lt; T ≤ t + dt | T &gt; t) = \frac{F(t+dt) - F(t)}{S(t)}$$</p>
 <p>It’s time to put our derivation to the first formula with a limit. So, we have:</p>
-<div class="math notranslate nohighlight">
-\[\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt} = \lim_{dt \to 0}\frac{F(t+dt) - F(t)}{dt}\frac{1}{S(t)} = \frac{f(t)}{S(t)}\]</div>
+<p>$$\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt} = \lim_{dt \to 0}\frac{F(t+dt) - F(t)}{dt}\frac{1}{S(t)} = \frac{f(t)}{S(t)}$$</p>
 <p>Yes, we obtained a ratio of probability density function of death and probability of survival. And this is what we call <strong>mortality risk function</strong> or hazard function.</p>
-<div class="math notranslate nohighlight">
-\[m(t) = \frac{f(t)}{S(t)} = -\frac{S'(t)}{S(t)}\]</div>
+<p>$$m(t) = \frac{f(t)}{S(t)} = -\frac{S’(t)}{S(t)}$$</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Show that $f(t) = -S’(t)$.</p>
+</div>
 <p>This is actually the thing that increases exponentially as we age and have a name of Gompertz law (quite more complex than just a probability, isn’t it?). Now let’s consider different kinds of such functions.</p>
 </section>
 <section id="gompertz-law-and-kinds-of-mortality-functions">
@@ -633,12 +628,17 @@ his yields:</p>
 <section id="constant-risk-model">
 <h3><span class="section-number">3.3.1. </span>Constant risk model<a class="headerlink" href="#constant-risk-model" title="Permalink to this headline">#</a></h3>
 <p>We start with the simplest case of a constant mortality function.</p>
-<p>\begin{gather*}
-m(t) = m_0\
-S(t) = \exp(-m_0t)\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+m(t) = m_0\\
+S(t) = \exp(-m_0t)\\
 f(t) = m_0\cdot \exp(-m_0t)
-\end{gather*}</p>
-<p>Let’s draw plots for <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(S\)</span>:</p>
+\end{gather*}\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Derive an expression for $S(t)$ at constant risk. <strong>Hint:</strong> use the result from the previous exercise.</p>
+</div>
+<p>Let’s draw plots for $m$ and $S$:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
@@ -660,7 +660,11 @@ f(t) = m_0\cdot \exp(-m_0t)
 <img alt="../_images/hazard_models_10_0.png" src="../_images/hazard_models_10_0.png" />
 </div>
 </div>
-<p>The corresponding survival curve resembles a radioactive decay or so called <em>“law of rare events”</em> where events independently occur with a rate <span class="math notranslate nohighlight">\(m_0\)</span>. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging. Then, <span class="math notranslate nohighlight">\(m_0\)</span> actually describes average number of failures per unit of time and, correspondingly, <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a <strong>mean survival time</strong>.</p>
+<p>The corresponding survival curve resembles a radioactive decay or so called <em>“law of rare events”</em> where events independently occur with a rate $m_0$. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging. Then, $m_0$ actually describes average number of failures per unit of time and, correspondingly, $1/m_0$ - is a <strong>mean survival time</strong>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Prove that $1/m_0$ - is a mean survival time using a definition of expectation.</p>
+</div>
 </section>
 <section id="weibull-risk-model">
 <h3><span class="section-number">3.3.2. </span>Weibull risk model<a class="headerlink" href="#weibull-risk-model" title="Permalink to this headline">#</a></h3>
@@ -671,8 +675,8 @@ f(t) = m_0\cdot \exp(-m_0t)
 <section id="other-cases">
 <h3><span class="section-number">3.3.4. </span>Other cases<a class="headerlink" href="#other-cases" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Log-Norm: <span class="math notranslate nohighlight">\(log(T) \sim \mathcal{N}\)</span> - if</p></li>
-<li><p>Raeley: <span class="math notranslate nohighlight">\(m_0 + m_1(t)\)</span></p></li>
+<li><p>Log-Norm: $log(T) \sim \mathcal{N}$ - if</p></li>
+<li><p>Raeley: $m_0 + m_1(t)$</p></li>
 <li><p>Decreasing: after surgery</p></li>
 </ul>
 </section>
