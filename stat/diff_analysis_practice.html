@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. Hazard models" href="hazard_models.html" />
@@ -162,12 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ml/aging_clocks.html">
-   6. Aging Clocks
+   4. Aging Clocks
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ml/methylation_clocks.html">
-   7. Content with notebooks
+   5. Content with notebooks
   </a>
  </li>
 </ul>
@@ -179,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/dynamical_models.html">
-   8. Dynamical models
+   6. Dynamical models
   </a>
  </li>
 </ul>
@@ -455,17 +457,19 @@ code blocks and their outputs in your book.</p>
 <h2><span class="section-number">2.5.1. </span>Markdown + notebooks<a class="headerlink" href="#markdown-notebooks" title="Permalink to this headline">#</a></h2>
 <p>As it is markdown, you can embed images, HTML, etc into your posts!</p>
 <p><img alt="" src="https://myst-parser.readthedocs.io/en/latest/_static/logo-wide.svg" /></p>
-<p>You can also $add_{math}$ and</p>
-<p>$$
+<p>You can also <span class="math notranslate nohighlight">\(add_{math}\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
 math^{blocks}
-$$</p>
+\]</div>
 <p>or</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-\mbox{mean} la_{tex} \ \
+\mbox{mean} la_{tex} \\ \\
 math blocks
 \end{aligned}
-$$</p>
+\end{split}\]</div>
 <p>But make sure you $Escape $your $dollar signs $you want to keep!</p>
 </section>
 <section id="myst-markdown">
@@ -488,7 +492,7 @@ For example, here’s some sample Matplotlib code:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.pyplot._IonContext at 0x7f3a00591fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.pyplot._IonContext at 0x7eff5830bf10&gt;
 </pre></div>
 </div>
 </div>

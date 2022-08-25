@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Aging Clocks" href="../ml/aging_clocks.html" />
+    <link rel="next" title="4. Aging Clocks" href="../ml/aging_clocks.html" />
     <link rel="prev" title="2.5. Content with notebooks" href="diff_analysis_practice.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -164,12 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ml/aging_clocks.html">
-   6. Aging Clocks
+   4. Aging Clocks
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ml/methylation_clocks.html">
-   7. Content with notebooks
+   5. Content with notebooks
   </a>
  </li>
 </ul>
@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/dynamical_models.html">
-   8. Dynamical models
+   6. Dynamical models
   </a>
  </li>
 </ul>
@@ -390,66 +390,57 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   3. Hazard models
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#survival-curve">
+   3.1. Survival curve
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#survival-curve">
-     3.1. Survival curve
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mortality-risk">
+   3.2. Mortality risk
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gompertz-law-and-other-kinds-of-mortality-functions">
+   3.3. Gompertz law and other kinds of mortality functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constant-risk-model">
+     3.3.1. Constant risk model
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mortality-risk">
-     3.2. Mortality risk
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weibull-risk-model">
+     3.3.2. Weibull risk model
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gompertz-law-and-kinds-of-mortality-functions">
-     3.3. Gompertz law and kinds of mortality functions
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gompertz-risk-model">
+     3.3.3. Gompertz risk model
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#constant-risk-model">
-       3.3.1. Constant risk model
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#weibull-risk-model">
-       3.3.2. Weibull risk model
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#gompertz-risk-model">
-       3.3.3. Gompertz risk model
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#other-cases">
-       3.3.4. Other cases
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-cases">
+     3.3.4. Other cases
+    </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparison-of-survival-curves">
-   4. Comparison of survival curves
+   3.4. Comparison of survival curves
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cox-proportional-hazard-model">
-   5. Cox proportional hazard model
+   3.5. Cox proportional hazard model
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learn-more">
-     5.1. Learn more
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-more">
+   3.6. Learn more
+  </a>
  </li>
 </ul>
 
@@ -470,66 +461,57 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   3. Hazard models
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#survival-curve">
+   3.1. Survival curve
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#survival-curve">
-     3.1. Survival curve
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mortality-risk">
+   3.2. Mortality risk
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gompertz-law-and-other-kinds-of-mortality-functions">
+   3.3. Gompertz law and other kinds of mortality functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constant-risk-model">
+     3.3.1. Constant risk model
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mortality-risk">
-     3.2. Mortality risk
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weibull-risk-model">
+     3.3.2. Weibull risk model
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gompertz-law-and-kinds-of-mortality-functions">
-     3.3. Gompertz law and kinds of mortality functions
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gompertz-risk-model">
+     3.3.3. Gompertz risk model
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#constant-risk-model">
-       3.3.1. Constant risk model
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#weibull-risk-model">
-       3.3.2. Weibull risk model
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#gompertz-risk-model">
-       3.3.3. Gompertz risk model
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#other-cases">
-       3.3.4. Other cases
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-cases">
+     3.3.4. Other cases
+    </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparison-of-survival-curves">
-   4. Comparison of survival curves
+   3.4. Comparison of survival curves
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cox-proportional-hazard-model">
-   5. Cox proportional hazard model
+   3.5. Cox proportional hazard model
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learn-more">
-     5.1. Learn more
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-more">
+   3.6. Learn more
+  </a>
  </li>
 </ul>
 
@@ -549,9 +531,10 @@ title="Print to PDF"
 <p>At this lesson we learn how to understand such mortality risk curves and much more. We will learn Gompertz model - the central conception in aging research.</p>
 <section id="survival-curve">
 <h2><span class="section-number">3.1. </span>Survival curve<a class="headerlink" href="#survival-curve" title="Permalink to this headline">#</a></h2>
-<p>Let $T$ is a non-negative random variable with a corresponding distribution function:</p>
-<p>$$F(t) = P(T\leq t)$$</p>
-<p>We call $T$ - <em>survival time</em> or time before death of some object (e.g. human). For example, $T$ can have normal distribution:</p>
+<p>Let <span class="math notranslate nohighlight">\(T\)</span> is a non-negative random variable with a corresponding distribution function:</p>
+<div class="math notranslate nohighlight">
+\[F(t) = P(T\leq t)\]</div>
+<p>We call <span class="math notranslate nohighlight">\(T\)</span> - <em>survival time</em> or time before death of some object (e.g. human). For example, <span class="math notranslate nohighlight">\(T\)</span> can have normal distribution:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -571,8 +554,9 @@ title="Print to PDF"
 <img alt="../_images/hazard_models_2_0.png" src="../_images/hazard_models_2_0.png" />
 </div>
 </div>
-<p>If $F(t)$ is a probability to die before time moment $T$ we can introduce a probability to survive before this moment $S$ as just a complement to $F$:</p>
-<p>$$S(t) = P(T &gt; t) = 1 - F(t)$$</p>
+<p>If <span class="math notranslate nohighlight">\(F(t)\)</span> is a probability to die before time moment <span class="math notranslate nohighlight">\(T\)</span> we can introduce a probability to survive before this moment <span class="math notranslate nohighlight">\(S\)</span> as just a complement to <span class="math notranslate nohighlight">\(F\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[S(t) = P(T &gt; t) = 1 - F(t)\]</div>
 <p>Let’s draw it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -598,47 +582,60 @@ title="Print to PDF"
 <p class="admonition-title">Note</p>
 <p>Mortality risk is <strong>not</strong> a probability of death!</p>
 </div>
-<p>Let’s consider instantaneous probability of death that the object will die within a time interval $dt$ by condition that it already survived to moment $T$:</p>
-<p>$$\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt}$$</p>
+<p>Let’s consider instantaneous probability of death that the object will die within a time interval <span class="math notranslate nohighlight">\(dt\)</span> by condition that it already survived to moment <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt}\]</div>
 <p>This conditional probability can be decomposed by definition as follows:</p>
-<p>$$P(A ∩ B) = P(A|B)P(B)$$
-T
+<div class="math notranslate nohighlight">
+\[P(A ∩ B) = P(A|B)P(B)\]</div>
+<p>T
 his yields:</p>
-<p>$$P(t &lt; T ≤ t + dt ∩ T &gt; t) = P(t &lt; T ≤ t + dt | T &gt; t)P(T &gt; t)$$</p>
-<p>$$P(t &lt; T ≤ t + dt | T &gt; t) = \frac{P(t &lt; T ≤ t + dt ∩ T &gt; t)}{P(T &gt; t)}$$</p>
-<p>Recall that $P(T &gt; t) = 1 - F(t) = S(t)$ and $P(t &lt; T ≤ t + dt) = F(t+dt) - F(t)$.</p>
+<div class="math notranslate nohighlight">
+\[P(t &lt; T ≤ t + dt ∩ T &gt; t) = P(t &lt; T ≤ t + dt | T &gt; t)P(T &gt; t)\]</div>
+<div class="math notranslate nohighlight">
+\[P(t &lt; T ≤ t + dt | T &gt; t) = \frac{P(t &lt; T ≤ t + dt ∩ T &gt; t)}{P(T &gt; t)}\]</div>
+<p>Recall that <span class="math notranslate nohighlight">\(P(T &gt; t) = 1 - F(t) = S(t)\)</span> and <span class="math notranslate nohighlight">\(P(t &lt; T ≤ t + dt) = F(t+dt) - F(t)\)</span>.</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
 <p>To understand the last property it is enough to remember that probability function is just a square under probability density function!</p>
 </div>
 <p>Now let’s rewrite our result:</p>
-<p>$$P(t &lt; T ≤ t + dt | T &gt; t) = \frac{F(t+dt) - F(t)}{S(t)}$$</p>
+<div class="math notranslate nohighlight">
+\[P(t &lt; T ≤ t + dt | T &gt; t) = \frac{F(t+dt) - F(t)}{S(t)}\]</div>
 <p>It’s time to put our derivation to the first formula with a limit. So, we have:</p>
-<p>$$\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt} = \lim_{dt \to 0}\frac{F(t+dt) - F(t)}{dt}\frac{1}{S(t)} = \frac{f(t)}{S(t)}$$</p>
+<div class="math notranslate nohighlight">
+\[\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt} = \lim_{dt \to 0}\frac{F(t+dt) - F(t)}{dt}\frac{1}{S(t)} = \frac{f(t)}{S(t)}\]</div>
 <p>Yes, we obtained a ratio of probability density function of death and probability of survival. And this is what we call <strong>mortality risk function</strong> or hazard function.</p>
-<p>$$m(t) = \frac{f(t)}{S(t)} = -\frac{S’(t)}{S(t)}$$</p>
+<div class="math notranslate nohighlight">
+\[m(t) = \frac{f(t)}{S(t)} = -\frac{S'(t)}{S(t)}\]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
-<p>Show that $f(t) = -S’(t)$.</p>
+<p>Show that <span class="math notranslate nohighlight">\(f(t) = -S'(t)\)</span>.</p>
 </div>
 <p>This is actually the thing that increases exponentially as we age and have a name of Gompertz law (quite more complex than just a probability, isn’t it?). Now let’s consider different kinds of such functions.</p>
 </section>
-<section id="gompertz-law-and-kinds-of-mortality-functions">
-<h2><span class="section-number">3.3. </span>Gompertz law and kinds of mortality functions<a class="headerlink" href="#gompertz-law-and-kinds-of-mortality-functions" title="Permalink to this headline">#</a></h2>
+<section id="gompertz-law-and-other-kinds-of-mortality-functions">
+<h2><span class="section-number">3.3. </span>Gompertz law and other kinds of mortality functions<a class="headerlink" href="#gompertz-law-and-other-kinds-of-mortality-functions" title="Permalink to this headline">#</a></h2>
 <section id="constant-risk-model">
 <h3><span class="section-number">3.3.1. </span>Constant risk model<a class="headerlink" href="#constant-risk-model" title="Permalink to this headline">#</a></h3>
 <p>We start with the simplest case of a constant mortality function.</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{gather*}
-m(t) = m_0\\
-S(t) = \exp(-m_0t)\\
-f(t) = m_0\cdot \exp(-m_0t)
-\end{gather*}\]</div>
+<div class="math notranslate nohighlight">
+\[
+    m(t) = m_0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    S(t) = \exp(-m_0t)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    f(t) = m_0\cdot \exp(-m_0t)
+\]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
-<p>Derive an expression for $S(t)$ at constant risk. <strong>Hint:</strong> use the result from the previous exercise.</p>
+<p>Derive an expression for <span class="math notranslate nohighlight">\(S(t)\)</span> at constant risk. <strong>Hint:</strong> use the result from the previous exercise.</p>
 </div>
-<p>Let’s draw plots for $m$ and $S$:</p>
+<p>Let’s draw plots for <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(S\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
@@ -660,10 +657,10 @@ f(t) = m_0\cdot \exp(-m_0t)
 <img alt="../_images/hazard_models_10_0.png" src="../_images/hazard_models_10_0.png" />
 </div>
 </div>
-<p>The corresponding survival curve resembles a radioactive decay or so called <em>“law of rare events”</em> where events independently occur with a rate $m_0$. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging. Then, $m_0$ actually describes average number of failures per unit of time and, correspondingly, $1/m_0$ - is a <strong>mean survival time</strong>.</p>
+<p>The corresponding survival curve resembles a radioactive decay or so called <em>“law of rare events”</em> where events independently occur with a rate <span class="math notranslate nohighlight">\(m_0\)</span>. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging. Then, <span class="math notranslate nohighlight">\(m_0\)</span> actually describes average number of failures per unit of time and, correspondingly, <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a <strong>mean survival time</strong>.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
-<p>Prove that $1/m_0$ - is a mean survival time using a definition of expectation.</p>
+<p>Prove that <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a mean survival time using a definition of expectation.</p>
 </div>
 </section>
 <section id="weibull-risk-model">
@@ -675,15 +672,14 @@ f(t) = m_0\cdot \exp(-m_0t)
 <section id="other-cases">
 <h3><span class="section-number">3.3.4. </span>Other cases<a class="headerlink" href="#other-cases" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Log-Norm: $log(T) \sim \mathcal{N}$ - if</p></li>
-<li><p>Raeley: $m_0 + m_1(t)$</p></li>
+<li><p>Log-Norm: <span class="math notranslate nohighlight">\(log(T) \sim \mathcal{N}\)</span> - if</p></li>
+<li><p>Raeley: <span class="math notranslate nohighlight">\(m_0 + m_1(t)\)</span></p></li>
 <li><p>Decreasing: after surgery</p></li>
 </ul>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="comparison-of-survival-curves">
-<h1><span class="section-number">4. </span>Comparison of survival curves<a class="headerlink" href="#comparison-of-survival-curves" title="Permalink to this headline">#</a></h1>
+<section id="comparison-of-survival-curves">
+<h2><span class="section-number">3.4. </span>Comparison of survival curves<a class="headerlink" href="#comparison-of-survival-curves" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.datasets</span> <span class="kn">import</span> <span class="n">load_waltons</span>
@@ -794,8 +790,8 @@ f(t) = m_0\cdot \exp(-m_0t)
 </div></div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="cox-proportional-hazard-model">
-<h1><span class="section-number">5. </span>Cox proportional hazard model<a class="headerlink" href="#cox-proportional-hazard-model" title="Permalink to this headline">#</a></h1>
+<section id="cox-proportional-hazard-model">
+<h2><span class="section-number">3.5. </span>Cox proportional hazard model<a class="headerlink" href="#cox-proportional-hazard-model" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
@@ -836,8 +832,9 @@ f(t) = m_0\cdot \exp(-m_0t)
 </div>
 </div>
 </div>
+</section>
 <section id="learn-more">
-<h2><span class="section-number">5.1. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.6. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=rLNzoYmnkgQ&amp;ab_channel=ComputerScienceCenter">Russian video lecture</a>.</p></li>
 <li><p><a class="reference external" href="https://colab.research.google.com/drive/1Po-OMzIJ_4hVVj5O7btc8OmjJlu0N3cQ?usp=sharing#scrollTo=-_cpx007cIMn">Gompertz model colab notebook by Alexander Fedintsev</a></p></li>
@@ -885,7 +882,7 @@ with your book. For more information about this, see <a class="reference externa
     <a class='right-next' id="next-link" href="../ml/aging_clocks.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Aging Clocks</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Aging Clocks</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
