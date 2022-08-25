@@ -1,0 +1,53 @@
+Traceback (most recent call last):
+  File "/home/shappiron/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/shappiron/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/shappiron/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/shappiron/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/shappiron/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/home/shappiron/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/shappiron/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/shappiron/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Fixing random state for reproducibility
+np.random.seed(19680801)
+
+N = 10
+data = [np.logspace(0, 1, 100) + np.random.randn(100) + ii for ii in range(N)]
+data = np.array(data).T
+cmap = plt.cm.coolwarm
+rcParams['axes.prop_cycle'] = cycler(color=cmap(np.linspace(0, 1, N)))
+
+
+from matplotlib.lines import Line2D
+custom_lines = [Line2D([0], [0], color=cmap(0.), lw=4),
+                Line2D([0], [0], color=cmap(.5), lw=4),
+                Line2D([0], [0], color=cmap(1.), lw=4)]
+
+fig, ax = plt.subplots(figsize=(10, 5))
+lines = ax.plot(data)
+ax.legend(custom_lines, ['Cold', 'Medium', 'Hot']);
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [5][0m, in [0;36m<cell line: 8>[0;34m()[0m
+[1;32m      6[0m data [38;5;241m=[39m np[38;5;241m.[39marray(data)[38;5;241m.[39mT
+[1;32m      7[0m cmap [38;5;241m=[39m plt[38;5;241m.[39mcm[38;5;241m.[39mcoolwarm
+[0;32m----> 8[0m rcParams[[38;5;124m'[39m[38;5;124maxes.prop_cycle[39m[38;5;124m'[39m] [38;5;241m=[39m [43mcycler[49m(color[38;5;241m=[39mcmap(np[38;5;241m.[39mlinspace([38;5;241m0[39m, [38;5;241m1[39m, N)))
+[1;32m     11[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mlines[39;00m [38;5;28;01mimport[39;00m Line2D
+[1;32m     12[0m custom_lines [38;5;241m=[39m [Line2D([[38;5;241m0[39m], [[38;5;241m0[39m], color[38;5;241m=[39mcmap([38;5;241m0.[39m), lw[38;5;241m=[39m[38;5;241m4[39m),
+[1;32m     13[0m                 Line2D([[38;5;241m0[39m], [[38;5;241m0[39m], color[38;5;241m=[39mcmap([38;5;241m.5[39m), lw[38;5;241m=[39m[38;5;241m4[39m),
+[1;32m     14[0m                 Line2D([[38;5;241m0[39m], [[38;5;241m0[39m], color[38;5;241m=[39mcmap([38;5;241m1.[39m), lw[38;5;241m=[39m[38;5;241m4[39m)]
+
+[0;31mNameError[0m: name 'cycler' is not defined
+NameError: name 'cycler' is not defined
+
