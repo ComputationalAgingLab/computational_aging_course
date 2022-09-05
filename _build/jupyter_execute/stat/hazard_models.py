@@ -102,17 +102,21 @@ ax.plot(t, 1 - rv.cdf(t));
 # 
 # This is actually the thing that increases exponentially as we age and have a name of Gompertz law (quite more complex than just a probability, isn't it?). Now let's consider different kinds of such functions.
 
-# ## Gompertz law and kinds of mortality functions
+# ## Gompertz law and other kinds of mortality functions
 
 # ### Constant risk model
 # 
 # We start with the simplest case of a constant mortality function. 
 # 
-# \begin{gather*}
-# m(t) = m_0\\
-# S(t) = \exp(-m_0t)\\
-# f(t) = m_0\cdot \exp(-m_0t)
-# \end{gather*}
+# $$
+#     m(t) = m_0
+# $$
+# $$
+#     S(t) = \exp(-m_0t)
+# $$
+# $$
+#     f(t) = m_0\cdot \exp(-m_0t)
+# $$
 # 
 # ```{admonition} Exercise
 # :class: dropdown
@@ -157,7 +161,7 @@ ax[1].set_ylabel('Probability of survival');
 # * Raeley: $m_0 + m_1(t)$
 # * Decreasing: after surgery
 
-# # Comparison of survival curves
+# ## Comparison of survival curves
 
 # In[4]:
 
@@ -171,7 +175,7 @@ from lifelines.datasets import load_waltons
 load_waltons()
 
 
-# # Cox proportional hazard model
+# ## Cox proportional hazard model
 
 # In[6]:
 
