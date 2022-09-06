@@ -25,6 +25,7 @@
 from scipy.stats import norm
 import matplotlib.pyplot as plt
 import numpy as np
+plt.rcParams['font.size'] = '16' # increase font size
 
 rv = norm(loc=4, scale=1.5)
 t = np.linspace(0, norm.ppf(0.99, loc=4, scale=1.5), 100)
@@ -69,8 +70,8 @@ ax.plot(t, 1 - rv.cdf(t));
 # This conditional probability can be decomposed by definition as follows: 
 # 
 # $$P(A ∩ B) = P(A|B)P(B)$$
-# T
-# his yields:
+# 
+# This yields:
 # 
 # $$P(t < T ≤ t + dt ∩ T > t) = P(t < T ≤ t + dt | T > t)P(T > t)$$
 # 
@@ -142,16 +143,81 @@ ax[1].set_xlabel('Time')
 ax[1].set_ylabel('Probability of survival');
 
 
-# The corresponding survival curve resembles a radioactive decay or so called *"law of rare events"* where events independently occur with a rate $m_0$. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging. Then, $m_0$ actually describes average number of failures per unit of time and, correspondingly, $1/m_0$ - is a **mean survival time**.
+# The corresponding survival curve resembles a [distribution](https://en.wikipedia.org/wiki/Exponential_distribution) of time until radioactive particle decay or so called *"law of rare events"* where events independently occur with a rate $m_0$. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging! Then, $m_0$ actually describes average number of failures per unit of time and, correspondingly, $1/m_0$ - is a **mean survival time**.
 # 
 # ```{admonition} Exercise
 # :class: dropdown
 # Prove that $1/m_0$ - is a mean survival time using a definition of expectation.
 # ```
 
+# We obtained an object, or system, with survivability depending on one critical subsystem what is not reliable. Can we do better? Sure, we can add an additional critical sustystem reserving the original. As a naive example, just imagine an organism's life depends only of two kidney functioning. If one fails the other can work for two. This (of course) oversimplified system can be represented with the following diagram of parallel connection,
 # 
+# <img src="../stat/figs/parallel.png" alt="parallel" width="180"/>
+# 
+# where $m_1$ and $m_2$ are failure risks, which we assume constant and not equal in general. How to derive a survival curve for such a system? First, let's assume that both critical subsystems, let's call them $X$ and $Y$, are independent what means that the failure of one does not affect the failure rate of the other. Then, we may consider joint probability distribution that the whole system fails:
+# 
+# $$ F_{X,Y}(t) = F_X(t)\cdot F_Y(t) $$
+# 
+# Recall that $F(t) = 1-S(t)$,
+# 
+# $$ F_{X,Y}(t) = (1-S_X(t))\cdot (1-S_Y(t)) = (1 - e^{-m_1t})(1 - e^{-m_2t}) = 1 - e^{-m_1t} -  e^{-m_2t} +  e^{-(m_1+m_2)t}$$
+# 
+# And now we return to survival curve:
+# 
+# $$ S_{X,Y}(t) = e^{-m_1t} +  e^{-m_2t} -  e^{-(m_1+m_2)t}$$
+# 
+# $$ m_{X,Y}(t) = \frac{-S_{X,Y}'(t)}{S_{X,Y}(t)} = \frac{m_1e^{-m_1t} +  m_2e^{-m_2t} -  (m_1 + m_2)e^{-(m_1+m_2)t}}{e^{-m_1t} +  e^{-m_2t} -  e^{-(m_1+m_2)t}}$$
+# 
+# Let's draw it!
+
+# In[4]:
+
+
+t = np.linspace(0, 40, 200)
+m1 = 0.1
+m2 = 0.2
+
+dt = t[1] - t[0]
+SX = np.exp(-m1*t)
+SY = np.exp(-m2*t)
+SXY = np.exp(-m1*t) + np.exp(-m2*t) - np.exp(-(m1 + m2)*t) 
+mXY = (m1 * np.exp(-m1*t) + m2 * np.exp(-m2*t) - (m1 + m2) * np.exp(-(m1 + m2)*t)) /      (np.exp(-m1*t) + np.exp(-m2*t) - np.exp(-(m1 + m2)*t))
+
+fig, ax = plt.subplots(1, 2, figsize=(13, 5), constrained_layout=True)
+
+ax[0].plot(t, [m1] * len(t), label=f'X only, m1={m1}')
+ax[0].plot(t, [m2] * len(t), label=f'Y only, m2={m2}')
+ax[0].plot(t, mXY, label='X or Y')
+ax[0].legend()
+ax[0].set_xlabel('Time')
+ax[0].set_ylabel('Mortality risk');
+
+ax[1].plot(t, SX, label=f'X only, m1={m1}')
+ax[1].plot(t, SY, label=f'Y only, m2={m2}')
+ax[1].plot(t, SXY, label='X or Y')
+ax[1].legend()
+ax[1].set_xlabel('Time')
+ax[1].set_ylabel('Probability of survival');
+
+
+# We see the lower value of mortality risk the higher survival curve lies if we consider our kidneys (critical subsystems) separately. Combining them into one system leads to the highest survival curve (green curve on the plot). Thus we see a quite obvious corollary: the higher number of reserved subsystems object have the more survival it becomes... But wait a second! What's wrong with the mortality curve for two kindeys system? It is not constant now. We started with two kidneys each having its own constant failure risk and ended with a system where mortality risk is now a function of time - **aging system** actually! It is quite reasonable if we treat aging as a process of critical subsystem failures culminating with system "death". 
+# 
+# In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example {cite}`gavrilov2005reliability`). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.
+#  
+# <img src="https://nanohub.org/app/site/resources/2013/01/16583/slides/016.03.jpg" alt="connections" width="600"/>
+# 
+# ```{admonition} Exercise
+# :class: dropdown
+# Compute an expression for mortality risk of sequential subsystems connection.
+# ```
 
 # ### Weibull risk model
+
+# In[5]:
+
+
+# note that exponential distr is a particular case of Weibull at k=1
+
 
 # ### Gompertz risk model
 
@@ -163,13 +229,13 @@ ax[1].set_ylabel('Probability of survival');
 
 # ## Comparison of survival curves
 
-# In[4]:
+# In[6]:
 
 
 from lifelines.datasets import load_waltons
 
 
-# In[5]:
+# In[7]:
 
 
 load_waltons()
@@ -177,7 +243,7 @@ load_waltons()
 
 # ## Cox proportional hazard model
 
-# In[6]:
+# In[8]:
 
 
 # Fixing random state for reproducibility
@@ -201,10 +267,18 @@ ax.legend(custom_lines, ['Cold', 'Medium', 'Hot']);
 
 
 # ## Learn more
-# 
+# * [Reliability theory textbook](https://crr.umd.edu/sites/crr.umd.edu/files/Free%20Ebook%20Probability%20Distributions%20Used%20in%20Reliability%20Engineering.pdf)
 # * [Russian video lecture](https://www.youtube.com/watch?v=rLNzoYmnkgQ&ab_channel=ComputerScienceCenter).
 # * [Gompertz model colab notebook by Alexander Fedintsev](https://colab.research.google.com/drive/1Po-OMzIJ_4hVVj5O7btc8OmjJlu0N3cQ?usp=sharing#scrollTo=-_cpx007cIMn)
 # * [Python library for hazard modeling](https://lifelines.readthedocs.io/en/latest/index.html)
 
 # There is a lot more that you can do with outputs (such as including interactive outputs)
 # with your book. For more information about this, see [the Jupyter Book documentation](https://jupyterbook.org)
+
+# ## Credits
+# 
+# This notebook was prepared by [Dmitrii Kriukov](https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&hl=ru).
+# 
+# ## Acknowledgements
+# 
+# We thank [Alexander Fedintsev](https://scholar.google.com/citations?hl=ru&user=J2F6xmcAAAAJ&view_op=list_works&sortby=pubdate), who made a significant contribution to the theoretical part of this notebook.
