@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+#jupyter book
+_build/
+
 # Distribution / packaging
 .Python
 build/
