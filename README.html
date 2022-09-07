@@ -373,6 +373,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#how-to-contribute">
    How to contribute
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-add-dependencies">
+     How to add dependencies
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -409,6 +416,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#how-to-contribute">
    How to contribute
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-add-dependencies">
+     How to add dependencies
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -422,7 +436,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="computational-biology-of-aging-book">
 <h1>Computational Biology of Aging book<a class="headerlink" href="#computational-biology-of-aging-book" title="Permalink to this headline">#</a></h1>
-<p>This is absolutely free open access book is devoted to the best practices in computational system biology of aging. If you are interested in reading please proceed to the <a class="reference external" href="https://computationalaginglab.github.io/computational_aging_course/intro.html">Book page</a>. Now this book is under development. If you want to contribute to this project, please read our short contribution remark below. If you have some questions feel free writing to this e-mail: <a class="reference external" href="mailto:dmitrii&#46;kriukov&#37;&#52;&#48;skoltech&#46;ru">mailto:dmitrii<span>&#46;</span>kriukov<span>&#64;</span>skoltech<span>&#46;</span>ru</a>.</p>
+<p>This absolutely free open access book is devoted to the best practices in computational system biology of aging. If you are interested in reading please proceed to the <a class="reference external" href="https://computationalaginglab.github.io/computational_aging_course/intro.html">Book page</a>. Now this book is under development. If you want to contribute to this project, please read our short contribution remark below. If you have some questions feel free writing to this e-mail: <a class="reference external" href="mailto:dmitrii&#46;kriukov&#37;&#52;&#48;skoltech&#46;ru">mailto:dmitrii<span>&#46;</span>kriukov<span>&#64;</span>skoltech<span>&#46;</span>ru</a>.</p>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">#</a></h2>
 <p>This course is devoted to the study of key methods of computational biology of aging, which have had a significant impact on the field in recent years. We will take a detailed look at aging clock models, survival curves, Gompertz models, dynamical models as well as key aspects of the biology of aging (including its molecular part). Students will get experience in differential gene expression or methylation analysis in the context of aging, hazard ratio models fitting and interpretation, aging clocks construction and their exploration and develop an intuition in dynamical systems modeling. The course aims to form a systematic view of the biology of aging, and offer a holistic computational methodology for the study of this problem.</p>
@@ -431,7 +445,25 @@ title="Print to PDF"
 <section class="tex2jax_ignore mathjax_ignore" id="how-to-contribute">
 <h1>How to contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">#</a></h1>
 <p>If you want to contribute to this project, please follow this guide:</p>
-<ol class="simple">
+<ol>
+<li><p><a class="reference external" href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">Fork</a> Computational Biology of Aging book.</p></li>
+<li><p>Set up local repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone fork</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="p">{</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USERNAME</span><span class="p">}</span><span class="o">/</span><span class="n">computational_aging_course</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">computational_aging_course</span>
+
+<span class="c1"># Create Conda environment</span>
+<span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">comp_aging_course</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">comp_aging_course</span>
+
+<span class="c1"># Install dependencies</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="c1"># Compile book</span>
+<span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
+</pre></div>
+</div>
+</li>
 <li><p>Choose a topic on computational aging biology where you have a particular expertise.</p></li>
 <li><p>Provide the following materials:</p>
 <ul class="simple">
@@ -440,11 +472,25 @@ title="Print to PDF"
 <li><p>(would be great but not necessary) prepare a video with a presentation of your teaching materials. Actualy, these materials should be a repetition of what you’re saying in the markdown text or notebook. Please, attach also a link to your presentation - put it into your lecture text.</p></li>
 </ul>
 </li>
-<li><p>Commit your materials to this repository and make a pull request.</p></li>
+<li><p>Commit your materials to your fork and make a pull request.</p></li>
 <li><p>(optional) To make the process faster, write about your intetion to contribute to this e-mail: <a class="reference external" href="mailto:dmitrii&#46;kriukov&#37;&#52;&#48;skoltech&#46;ru">mailto:dmitrii<span>&#46;</span>kriukov<span>&#64;</span>skoltech<span>&#46;</span>ru</a></p></li>
 <li><p>(optional) Modify <code class="docutils literal notranslate"><span class="pre">.toc.yml</span></code> file by adding names of your chapters to a place you prefer. See <a class="reference external" href="https://jupyterbook.org/en/stable/structure/configure.html?highlight=.toc#configure-all-entries-in-the-toc">this guide</a> for details.</p></li>
 </ol>
 <p>If you found some mistakes or mistypes in materials, or if you want to provide some important comments, please, issue this by pushing <strong>issue</strong> button on the corresponding page within the <a class="reference external" href="https://computationalaginglab.github.io/computational_aging_course/intro.html">Book</a>.</p>
+<section id="how-to-add-dependencies">
+<h2>How to add dependencies<a class="headerlink" href="#how-to-add-dependencies" title="Permalink to this headline">#</a></h2>
+<p>We are trying to minimize dependencies, but if we need some, we use <a class="reference external" href="https://github.com/jazzband/pip-tools"><code class="docutils literal notranslate"><span class="pre">pip-tools</span></code></a> for management. To add new pip package:</p>
+<ol class="simple">
+<li><p>Add package to <code class="docutils literal notranslate"><span class="pre">requirements.in</span></code></p></li>
+<li><p>Compile <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span><span class="o">-</span><span class="nb">compile</span> <span class="n">requirement</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Commit new requirements files.</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
