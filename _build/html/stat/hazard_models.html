@@ -683,7 +683,9 @@ title="Print to PDF"
 <p>Prove that <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a mean survival time using a definition of expectation.</p>
 </div>
 <p>We obtained an object, or system, with survivability depending on one critical subsystem what is not reliable. Can we do better? Sure, we can add an additional critical sustystem reserving the original. As a naive example, just imagine an organism’s life depends only of two kidney functioning. If one fails the other can work for two. This (of course) oversimplified system can be represented with the following diagram of parallel connection,</p>
-<img src="../stat/figs/parallel.png" alt="parallel" width="180"/>
+<p><img src="https://drive.google.com/uc?id=1eY5Nz_I4eI-YUqU_5RkWuzVeeHfxoelH" 
+     alt="parallel" 
+     width="180"/></p>
 <p>where <span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(m_2\)</span> are failure risks, which we assume constant and not equal in general. How to derive a survival curve for such a system? First, let’s assume that both critical subsystems, let’s call them <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, are independent what means that the failure of one does not affect the failure rate of the other. Then, we may consider joint probability distribution that the whole system fails:</p>
 <div class="math notranslate nohighlight">
 \[ F_{X,Y}(t) = F_X(t)\cdot F_Y(t) \]</div>
@@ -741,6 +743,19 @@ title="Print to PDF"
 </section>
 <section id="weibull-risk-model">
 <h3><span class="section-number">3.3.2. </span>Weibull risk model<a class="headerlink" href="#weibull-risk-model" title="Permalink to this headline">#</a></h3>
+<p>Here we should pay attention to three significant points.</p>
+<p>First, a system constructed of non-aging elements is now behaving like an aging object: i.e., aging is a direct consequence of the redundancy of the system (redundancy in the number of elements).</p>
+<p>Second, at very high ages the phenomenon of aging apparently disappears (failure rate levels-off), as redundancy in the number of elements vanishes. The failure rate approaches an upper limit, which is totally independent of the initial number
+of elements, but coincides with the rate of their loss (parameter µ).</p>
+<p>Third, the systems with different initial levels of redundancy (parameter n) will have very different failure rates in early life, but these differences will eventually vanish as failure rates approach the upper limit determined by the rate of elements’ loss (parameter µ).</p>
+<p>Thus, the compensation law of mortality (in its weak form) is an expected
+outcome of this illustrative model.</p>
+<p>what about negligible senescence?
+what data say us?
+remember that it all just models!</p>
+</section>
+<section id="gompertz-risk-model">
+<h3><span class="section-number">3.3.3. </span>Gompertz risk model<a class="headerlink" href="#gompertz-risk-model" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># note that exponential distr is a particular case of Weibull at k=1</span>
@@ -748,9 +763,6 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="gompertz-risk-model">
-<h3><span class="section-number">3.3.3. </span>Gompertz risk model<a class="headerlink" href="#gompertz-risk-model" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="other-cases">
 <h3><span class="section-number">3.3.4. </span>Other cases<a class="headerlink" href="#other-cases" title="Permalink to this headline">#</a></h3>
