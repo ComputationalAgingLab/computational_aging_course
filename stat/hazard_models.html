@@ -433,8 +433,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#log-rank">
-     3.4.2. Log Rank
+    <a class="reference internal nav-link" href="#logrank-test">
+     3.4.2. Logrank test
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -531,8 +531,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#log-rank">
-     3.4.2. Log Rank
+    <a class="reference internal nav-link" href="#logrank-test">
+     3.4.2. Logrank test
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1271,7 +1271,164 @@ Name: E, dtype: int64
 <p>Owing two Kaplan-Meier curves it would be nice to compare them by calculating some important statistics. Mean survival time and median survival time are good candidates. Consider the expression for the first one:</p>
 <div class="math notranslate nohighlight">
 \[ \widehat{\mu}(t) = \int_0^t S(x)dx \]</div>
-<p>It would be nice to compare these curves</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Prove that <span class="math notranslate nohighlight">\(\int_0^t S(x)dx = \int_0^t xf(x)dx\)</span></p>
+</div>
+<p>Of course we have a function for this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.utils</span> <span class="kn">import</span> <span class="n">restricted_mean_survival_time</span>
+
+<span class="n">km</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">grouped_df</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;group&#39;</span><span class="p">):</span>
+    <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">grouped_df</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">restricted_mean_survival_time</span><span class="p">(</span><span class="n">km</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>control 56.08
+miR-137 25.71
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Explore <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> documentation, write code for median survival time computation. Compare and explain results.</p>
+</div>
+<p>Comparing means is a nice first shot to say that something is different. But in aging domain there are a lot of situations when means are very close to each other (especially when you test some new drug in mice). How to conduct more rigorous analysis? Wouldn’t it be better to compare the survival curves themselves?</p>
+</section>
+<section id="logrank-test">
+<h3><span class="section-number">3.4.2. </span>Logrank test<a class="headerlink" href="#logrank-test" title="Permalink to this headline">#</a></h3>
+<p>Okay, we need to compare two survival curves. <a class="reference external" href="https://web.stanford.edu/~lutian/coursepdf/survweek3.pdf">Logrank</a> is probably the most popular nonparametric test doing that. Let’s designate <span class="math notranslate nohighlight">\(S_0(t)\)</span> and <span class="math notranslate nohighlight">\(S_1(t)\)</span> as control and case survival curves (control and <em>mir-137</em> in our case). Formulate null hypothesis:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(S_0(t) = S_1(t)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H_A\)</span>: <span class="math notranslate nohighlight">\(S_0(t) \neq S_1(t)\)</span></p></li>
+</ul>
+<p>Essentially, to conduct logrank we need to construct contingency table for each time step at which an event happened and compute chi-squared statistics. Once statistics computed it’s easy to calculate p-value and address to null hypothesis. Do it in a few steps:</p>
+<ol class="simple">
+<li><p>Compute the contingency table for each time step with event in <strong>at least</strong> one group as follows:</p></li>
+</ol>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p></p></th>
+<th class="text-align:center head"><p>died at <span class="math notranslate nohighlight">\(t_i\)</span></p></th>
+<th class="text-align:center head"><p>at risk at <span class="math notranslate nohighlight">\(t_i\)</span></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:right"><p>control (0)</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(d_{0i}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(n_{0i} - d_{0i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n_{0i}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>case (1)</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(d_{1i}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(n_{1i} - d_{1i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n_{1i}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(d_{i}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(n_{i} - d_{i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n_{i} \)</span></p></td>
+</tr>
+</tbody>
+</table>
+<ol class="simple">
+<li><p>Prepare all important terms for summation:</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(O_i = d_{1i}\)</span> - observed number of deaths;</p>
+<p><span class="math notranslate nohighlight">\(E_i = d_{i}\frac{n_{1i}}{n_i}\)</span> - expected number of deaths;</p>
+<p><span class="math notranslate nohighlight">\(V_i = \frac{n_{1i}n_{0i}d_i(n_{i}-d_i)}{n_{i}^2(n_{i}-1)}\)</span> - variance of the observed number of deaths;</p>
+<ol class="simple">
+<li><p>Compute logrank test statistics:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\chi^2_{logrank} = \frac{\sum_{i}(O_i - E_i)^2}{\sum_{i}V_i} \sim \chi^2(1)\ \text{under}\ H_0\]</div>
+<p>This can be quite cumbersome for calculating from scratch, happily, everything already done for us in lifelines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.statistics</span> <span class="kn">import</span> <span class="n">logrank_test</span>
+
+<span class="c1">#split our groups</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
+<span class="n">T1</span><span class="p">,</span> <span class="n">G1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
+<span class="n">T2</span><span class="p">,</span> <span class="n">G2</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
+<span class="c1"># and apply test directly to durations</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">logrank_test</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <tbody>
+    <tr>
+      <th>t_0</th>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>null_distribution</th>
+      <td>chi squared</td>
+    </tr>
+    <tr>
+      <th>degrees_of_freedom</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>test_name</th>
+      <td>logrank_test</td>
+    </tr>
+  </tbody>
+</table>
+</div><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test_statistic</th>
+      <th>p</th>
+      <th>-log2(p)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>114.43</td>
+      <td>&lt;0.005</td>
+      <td>86.30</td>
+    </tr>
+  </tbody>
+</table></div></div>
+</div>
+<p>The result is here and we can surely <em>reject null hypothesis about equality of survival curves at the 0.005 level of significance</em>. It worth to repeat that using statistical tests is really important in survival analysis, especially in aging domain where you can see as tiny results can be presented as a big advance in science, frequently without rigorous statistical comparison of case-control curves.</p>
+<p>There are some important facts you should know about logrank test:</p>
+<ul class="simple">
+<li><p>logrank test has maximum power when survival functions are proportional, with coefficient <span class="math notranslate nohighlight">\(k&gt;1\)</span>: <span class="math notranslate nohighlight">\(S_1(t) = kS_2(t)\)</span>;</p></li>
+<li><p>logrank test is sensitive to differences in tails of distributions;</p></li>
+<li><p>logrank test has low power if two curves intersect.</p></li>
+</ul>
+</section>
+<section id="gompertz-estimator">
+<h3><span class="section-number">3.4.3. </span>Gompertz estimator<a class="headerlink" href="#gompertz-estimator" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.fitters</span> <span class="kn">import</span> <span class="n">ParametricUnivariateFitter</span>
@@ -1298,7 +1455,7 @@ Name: E, dtype: int64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 14&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 14&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="k">return</span> <span class="n">A_</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="n">b_</span> <span class="o">/</span> <span class="n">Tmax</span><span class="p">))</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">ggf</span> <span class="o">=</span> <span class="n">GompertzFitter</span><span class="p">()</span>
 <span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">ggf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
@@ -1310,12 +1467,6 @@ Name: E, dtype: int64
 </div>
 </div>
 </div>
-</section>
-<section id="log-rank">
-<h3><span class="section-number">3.4.2. </span>Log Rank<a class="headerlink" href="#log-rank" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="gompertz-estimator">
-<h3><span class="section-number">3.4.3. </span>Gompertz estimator<a class="headerlink" href="#gompertz-estimator" title="Permalink to this headline">#</a></h3>
 <p>what about negligible senescence?
 what data say us?
 remember that it all just models!</p>
