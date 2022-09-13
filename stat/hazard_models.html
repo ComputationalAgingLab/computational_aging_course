@@ -420,17 +420,29 @@ title="Print to PDF"
      3.3.3. Gompertz risk model
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-cases">
-     3.3.4. Other cases
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#comparison-of-survival-curves">
-   3.4. Comparison of survival curves
+  <a class="reference internal nav-link" href="#estimation-and-comparison-of-survival-curves">
+   3.4. Estimation and comparison of survival curves
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kaplan-meier-estimator">
+     3.4.1. Kaplan-Meier estimator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-rank">
+     3.4.2. Log Rank
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gompertz-estimator">
+     3.4.3. Gompertz estimator
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cox-proportional-hazard-model">
@@ -438,18 +450,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   3.6. Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learn-more">
-   3.6. Learn more
+   3.7. Learn more
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#credits">
-   3.7. Credits
+   3.8. Credits
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acknowledgements">
-   3.8. Acknowledgements
+   3.9. Acknowledgements
   </a>
  </li>
 </ul>
@@ -501,17 +518,29 @@ title="Print to PDF"
      3.3.3. Gompertz risk model
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-cases">
-     3.3.4. Other cases
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#comparison-of-survival-curves">
-   3.4. Comparison of survival curves
+  <a class="reference internal nav-link" href="#estimation-and-comparison-of-survival-curves">
+   3.4. Estimation and comparison of survival curves
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kaplan-meier-estimator">
+     3.4.1. Kaplan-Meier estimator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-rank">
+     3.4.2. Log Rank
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gompertz-estimator">
+     3.4.3. Gompertz estimator
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cox-proportional-hazard-model">
@@ -519,18 +548,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   3.6. Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learn-more">
-   3.6. Learn more
+   3.7. Learn more
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#credits">
-   3.7. Credits
+   3.8. Credits
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acknowledgements">
-   3.8. Acknowledgements
+   3.9. Acknowledgements
   </a>
  </li>
 </ul>
@@ -548,7 +582,7 @@ title="Print to PDF"
 <p><strong>Aging</strong> - increased chance of death with age.</p>
 <p>You have seen this picture on the previous lesson <span id="id1">[<a class="reference internal" href="differential_analysis.html#id3" title="E Arias. United states life tables, 2003. 14. vol. 54. Hyattsville, MD: National Center for Health Statistics, 2006.">Ari06</a>]</span>.</p>
 <p><img alt="Risk of mortality" src="https://upload.wikimedia.org/wikipedia/en/4/4d/USGompertzCurve.svg" /></p>
-<p>At this lesson we learn how to understand such mortality risk curves and much more. We will learn Gompertz model - the central conception in aging research.</p>
+<p>At this lesson we learn how to understand such mortality risk and survival curves. We will learn Gompertz model - the seminal conception in aging research. We learn how to analyze real survival data, fit survival models, compare survival curves, and make conclusions about your survival experiment.</p>
 <section id="survival-curve">
 <h2><span class="section-number">3.1. </span>Survival curve<a class="headerlink" href="#survival-curve" title="Permalink to this headline">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(T\)</span> is a non-negative random variable with a corresponding distribution function:</p>
@@ -797,45 +831,97 @@ title="Print to PDF"
 </section>
 <section id="gompertz-risk-model">
 <h3><span class="section-number">3.3.3. </span>Gompertz risk model<a class="headerlink" href="#gompertz-risk-model" title="Permalink to this headline">#</a></h3>
-<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality rates <strong>double about every 8 years</strong> of adult age <span id="id3">[<a class="reference internal" href="differential_analysis.html#id5" title="Leonid A Gavrilov and Natalia S Gavrilova. New developments in the biodemography of aging and longevity. Gerontology, 61(4):364–371, 2015.">GG15</a>]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">GG05</a>]</span>. Mathematically, it can be formulated as follows:</p>
+<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[<a class="reference internal" href="differential_analysis.html#id5" title="Leonid A Gavrilov and Natalia S Gavrilova. New developments in the biodemography of aging and longevity. Gerontology, 61(4):364–371, 2015.">GG15</a>]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">GG05</a>]</span>. Mathematically, it can be formulated as follows:</p>
 <div class="math notranslate nohighlight">
-\[ m(t) = Ae^{-bt} \]</div>
+\[ m(t) = Ae^{bt} \]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> - Initial Mortality Rate (IMR), this parameter characterizes the initial mortality, that is, the mortality that would be in the population without aging, and does not depend on age; <span class="math notranslate nohighlight">\(b\)</span> - characterizes the rate of aging. To clarify the previous observation about Mortality Rate Doubling Time (MRDT) is 8 years, we can use the following simple quotient:</p>
+<div class="math notranslate nohighlight">
+\[2 = \frac{Ae^{bt_2}}{Ae^{bt_1}} = \frac{e^{bt_2}}{e^{bt_1}}=e^{b(t_2-t_1)}=e^{b*MRDT} \rightarrow\]</div>
+<div class="math notranslate nohighlight">
+\[ \ln{2} = b*MRDT \rightarrow MRDT = \frac{\ln{2}}{b} \]</div>
+<p>from where we get the value of <span class="math notranslate nohighlight">\(b = \ln{2} / MRDT = 0.087\)</span> for humans. Those who did the previous exercises could note that the survival function can be elegantly written as:</p>
+<div class="math notranslate nohighlight">
+\[ S(t) = \exp{\left(-\int_0^{t}m(x)dx\right)} \]</div>
+<p>Putting Gompertz risk to the intergral yields the following expression for the survival curve:</p>
+<div class="math notranslate nohighlight">
+\[S(t) = e^{-\frac{A}{b}(e^{bt} - 1)}\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Derive the formula for the Gompertz survival curve from scratch.</p>
+</div>
+<p>It’s time to draw!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>what about negligible senescence?
-what data say us?
-remember that it all just models!</p>
-</section>
-<section id="other-cases">
-<h3><span class="section-number">3.3.4. </span>Other cases<a class="headerlink" href="#other-cases" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Log-Norm: <span class="math notranslate nohighlight">\(log(T) \sim \mathcal{N}\)</span> - if</p></li>
-<li><p>Raeley: <span class="math notranslate nohighlight">\(m_0 + m_1(t)\)</span></p></li>
-<li><p>Decreasing: after surgery</p></li>
-</ul>
-</section>
-</section>
-<section id="comparison-of-survival-curves">
-<h2><span class="section-number">3.4. </span>Comparison of survival curves<a class="headerlink" href="#comparison-of-survival-curves" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.datasets</span> <span class="kn">import</span> <span class="n">load_waltons</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load_waltons</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">A1</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.087</span><span class="p">)</span>
+<span class="n">A2</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.087</span><span class="p">)</span>
+<span class="n">A3</span><span class="p">,</span> <span class="n">b3</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0087</span><span class="p">)</span>
+<span class="n">A4</span><span class="p">,</span> <span class="n">b4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.174</span><span class="p">)</span>
+
+<span class="n">SZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">A</span> <span class="o">/</span> <span class="n">b</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">mZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">b1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A1</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A2</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A3</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A4</span><span class="p">,</span> <span class="n">b4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A4</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b4</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time, years&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk, log&#39;</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">b1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A1</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A2</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A3</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A4</span><span class="p">,</span> <span class="n">b4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A4</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b4</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time, years&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of survival&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../_images/hazard_models_19_0.png" src="../_images/hazard_models_19_0.png" />
+</div>
+</div>
+<p>We used basic parameters <span class="math notranslate nohighlight">\(A=0.005\)</span> and <span class="math notranslate nohighlight">\(b=0.087\)</span> for human mortality risk according to <span id="id5">[<a class="reference internal" href="differential_analysis.html#id6" title="Trifon I Missov, Adam Lenart, Laszlo Nemeth, Vladimir Canudas-Romo, and James W Vaupel. The gompertz force of mortality in terms of the modal age at death. Demographic Research, 32:1031–1048, 2015.">MLN+15</a>]</span> (see Fig.3). Such parameters yield blue curves of survival and mortality. Since we have more or less realistic parameters inferred from real data, now time have units of years. Now we introduce three modifications of Gompertz parameters. First, we decrease IMR (<span class="math notranslate nohighlight">\(A\)</span>) by 10 times holding <span class="math notranslate nohighlight">\(b\)</span> the same. The result is the orange curve demonstrating moving to right from the initial curve. This increases the maximum human lifespan of the population. Second, we decrease rate of aging (<span class="math notranslate nohighlight">\(b\)</span>) by 10 times preserving IMR the same and the result is a much greater (green curves) increase in maximum lifespan by comparing with modification of IMR. This hints us that it is more promising strategy to <strong>improve the rate of aging than IMR</strong>. Moreover, if we improve IMR by 10 times but deteriorate rate of aging by only 2 times (red curve) we obtain the population that ages very quickly after some time - exactly what we see in countries with advanced medicine.</p>
+</section>
+</section>
+<section id="estimation-and-comparison-of-survival-curves">
+<h2><span class="section-number">3.4. </span>Estimation and comparison of survival curves<a class="headerlink" href="#estimation-and-comparison-of-survival-curves" title="Permalink to this headline">#</a></h2>
+<p>The time has come to consider real data and understand how to estimate survival curves from them, and, what is more important, how to compare them. For these purposes we use a <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> that is a nice library survival analysis. First, let’s look at the toy dataset of <em>miR-137</em> gene knock-out in fruit flies.</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>We didn’t find any references to “waltons” dataset but there is some study showing that <em>miR-137</em> gene knock-out (apparently) affects lifespan <span id="id6">[<a class="reference internal" href="differential_analysis.html#id7" title="Kalon P Grimes. miR-137, schizophrenia and sleep regulation in Drosophila melanogaster. PhD thesis, Bournemouth University, 2020.">Gri20</a>]</span>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.datasets</span> <span class="kn">import</span> <span class="n">load_waltons</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="c1">#for a clean output</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_waltons</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data shape&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1">#group counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span> <span class="c1">#event counts</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data shape (163, 3) 
+
+control    129
+miR-137     34
+Name: group, dtype: int64 
+
+1    156
+0      7
+Name: E, dtype: int64
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -890,47 +976,350 @@ remember that it all just models!</p>
       <td>1</td>
       <td>miR-137</td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We see a standard survival analysis data where columns <strong>T</strong> contains life durations or particular individuals (flies); <strong>group</strong> contains information about whether an individual was case (34 entries with knock-outed gene) or control (129 entries). The column <strong>E</strong> is something new and inavoidable in real data analysis. This is a <strong>censoring</strong> variable showing either event (death in our case) happened or we have lost the ability to observe the event (e.g. some issues with accidentally killing flies or if some escape). (More information about censoring you can find here <a class="reference external" href="https://tinyheero.github.io/2016/05/12/survival-analysis.html#censoring">censoring</a>) Censoring is especially prevalent in survival analysis of human data (survivability after treatment, surgery, etc.) but in experiments with animals we can overcome some troubles with censoring by just excluding bad data entries. In our case it is not a big problem to exclude 7 of 163 samples - let’s do it and consider purified dataframe in a more human-readable format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">E</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hazard_models_24_0.png" src="../_images/hazard_models_24_0.png" />
+</div>
+</div>
+<p>Things are getting clear! We apparently see quite strong an effect of decreasing of average lifespan in knock-outed flies. However, we do not see a dynamics: what about maximum lifespan and concaveness of survival curve? The whole picture is available only after estimation of survival curve from data.</p>
+<section id="kaplan-meier-estimator">
+<h3><span class="section-number">3.4.1. </span>Kaplan-Meier estimator<a class="headerlink" href="#kaplan-meier-estimator" title="Permalink to this headline">#</a></h3>
+<p>There are a plenty approaches to estimate survival curve or mortality risk from data. Most of them could be splitted into two big classes: parametric and non-parametric. The first class includes Gompertz or Weibull estimators mentioned above. They have a lot of nice properties which we discuss in the next session but also one disadvantage - they assume some model behind. In most cases we do not know the true model generating our observations. So, we may use non-parametric estimators which are free from model assumptions. The most frequently used is a <a class="reference external" href="https://en.wikipedia.org/wiki/Kaplan%E2%80%93Meier_estimator">Kaplan-Meier estimator</a> having a nice property to be <strong>unbiased estimate</strong> of <span class="math notranslate nohighlight">\(S(t)\)</span> when censoring excluded:</p>
+<div class="math notranslate nohighlight">
+\[ {\widehat {S}}(t)=\prod \limits _{i:\ t_{i}\leq t}\left(1-{\frac {d_{i}}{n_{i}}}\right) \]</div>
+<p>where <span class="math notranslate nohighlight">\(t_{i}\)</span> a time when <strong>at least</strong> one event happened, <span class="math notranslate nohighlight">\(d_i\)</span> the number of deaths (events) that happened at time <span class="math notranslate nohighlight">\(t_{i}\)</span>, and <span class="math notranslate nohighlight">\(n_{i}\)</span> the individuals known to have survived (have not yet had an event or been censored) up to time <span class="math notranslate nohighlight">\(t_{i}\)</span>.   Let’s learn how to use this formula step by step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines</span> <span class="kn">import</span> <span class="n">KaplanMeierFitter</span>
+<span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+<span class="n">km</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span> <span class="c1">#alpha - level of significance for confidence interval estimation, see below.</span>
+<span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="n">km</span><span class="o">.</span><span class="n">event_table</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="c1">#please, look at this nice table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>removed</th>
+      <th>observed</th>
+      <th>censored</th>
+      <th>entrance</th>
+      <th>at_risk</th>
     </tr>
     <tr>
-      <th>158</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
+      <th>event_at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>156</td>
+      <td>156</td>
     </tr>
     <tr>
-      <th>159</th>
-      <td>60.0</td>
+      <th>6.0</th>
       <td>1</td>
-      <td>control</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>156</td>
     </tr>
     <tr>
-      <th>160</th>
-      <td>60.0</td>
+      <th>7.0</th>
       <td>1</td>
-      <td>control</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>155</td>
     </tr>
     <tr>
-      <th>161</th>
-      <td>60.0</td>
-      <td>1</td>
-      <td>control</td>
+      <th>9.0</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>154</td>
     </tr>
     <tr>
-      <th>162</th>
-      <td>66.0</td>
+      <th>13.0</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>151</td>
+    </tr>
+    <tr>
+      <th>15.0</th>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>148</td>
+    </tr>
+    <tr>
+      <th>17.0</th>
       <td>1</td>
-      <td>control</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>146</td>
     </tr>
   </tbody>
 </table>
-<p>163 rows × 3 columns</p>
 </div></div></div>
 </div>
+<p>Yes, we call model class and fit it, but don’t worry it is just for convenience and brevity of an explanation. The event table above contains 5 columns and time steps as indexes. You see that indexes are grouped by the same time steps in such way that several events could happen within one time step. Note, there are no time steps without events (with exception of zero time step)! Now columns, you see that column <strong>censored</strong> contains zeros because we excluded censored observations. This means that the column <strong>observed</strong>, containing death events, and the column <strong>removed</strong> will be the same (however, different models can treat with these columns differently) and corresponding the term <span class="math notranslate nohighlight">\(d_i\)</span> in the formula above. Column <strong>entrance</strong> is redundant and needed just for convenience of probability computation (see below). The last column <strong>at_risk</strong> corresponds to the term <span class="math notranslate nohighlight">\(n_i\)</span> - the number of individuals known to have survived up to time <span class="math notranslate nohighlight">\(t_{i}\)</span> (we assume that all the individuals dies in the end of a time step). Some code now:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">event_table</span>
+<span class="n">test</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;removed&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;at_risk&#39;</span><span class="p">]</span> <span class="c1">#use formula above</span>
+<span class="n">test</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="c1">#cumulative product</span>
+<span class="n">test</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>removed</th>
+      <th>observed</th>
+      <th>censored</th>
+      <th>entrance</th>
+      <th>at_risk</th>
+      <th>p</th>
+      <th>S</th>
+    </tr>
+    <tr>
+      <th>event_at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>156</td>
+      <td>156</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>6.0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>156</td>
+      <td>0.993590</td>
+      <td>0.993590</td>
+    </tr>
+    <tr>
+      <th>7.0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>155</td>
+      <td>0.993548</td>
+      <td>0.987179</td>
+    </tr>
+    <tr>
+      <th>9.0</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>154</td>
+      <td>0.980519</td>
+      <td>0.967949</td>
+    </tr>
+    <tr>
+      <th>13.0</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>151</td>
+      <td>0.980132</td>
+      <td>0.948718</td>
+    </tr>
+    <tr>
+      <th>15.0</th>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>148</td>
+      <td>0.986486</td>
+      <td>0.935897</td>
+    </tr>
+    <tr>
+      <th>17.0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>146</td>
+      <td>0.993151</td>
+      <td>0.929487</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Applying the recurrent formula is easy with <code class="docutils literal notranslate"><span class="pre">cumprod()</span></code> method. Now we compare the <strong>S</strong> column with what package provides as a result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">plot_survival_function</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">ci_show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#built-in method</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">],</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ours&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span> <span class="c1">#from scratch</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="c1">#add </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hazard_models_31_0.png" src="../_images/hazard_models_31_0.png" />
+</div>
+</div>
+<p>Exactly what we wanted!</p>
+<p>One problem left. We need to split our observations by groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">km</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">grouped_df</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;group&#39;</span><span class="p">):</span>
+    <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">grouped_df</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">km</span><span class="o">.</span><span class="n">plot_survival_function</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hazard_models_33_0.png" src="../_images/hazard_models_33_0.png" />
+</div>
+</div>
+<p>We have much to say now. Apparently, <em>miR-137</em> knock-out is not just a shifting survival curve to the left (see Gompertz section) but this intervention makes the organism fragile - orange curve is similar to an exponential survival curve (constant mortality risk). In turn, blue curve demonstrates clear Gompertz pattern of normal aging, doesn’t it? At the same time, maximal lifespan seems to be not affected much, isn’t it? Both curves are shown with their 95% confidence interval (CI). It’s wider for <em>miR-137</em> curve due to the higher variance. By the way, the variance of our estimate can be computed by Greenwood formula as follows:</p>
+<div class="math notranslate nohighlight">
+\[{\widehat {\operatorname {Var} }}\left({\widehat {S}}(t)\right)={\widehat {S}}(t)^{2}\sum _{i:\ t_{i}\leq t}{\frac {d_{i}}{n_{i}(n_{i}-d_{i})}}\]</div>
+<p>One of the nice property of Kaplan-Meier estimate <span class="math notranslate nohighlight">\(\widehat {S}\)</span> is that it is <strong>asymptotically normal</strong>. We may use this property for construction a <a class="reference external" href="http://www.medicine.mcgill.ca/epidemiology/hanley/c609/material/KaplanMeierEstimator.pdf">confidence interval</a>:</p>
+<div class="math notranslate nohighlight">
+\[ CI:\ [\widehat {S}(t) - z_{1-\alpha/2}\sqrt{{\widehat {\operatorname {Var} }}\left({\widehat {S}}(t)\right)},\ \widehat {S}(t) + z_{1-\alpha/2}\sqrt{{\widehat {\operatorname {Var} }}\left({\widehat {S}}(t)\right)}] \]</div>
+<p>where <span class="math notranslate nohighlight">\(z_{1-\alpha/2}\)</span> is a <span class="math notranslate nohighlight">\(1-\alpha/2\)</span> quantile of normal distribution.</p>
+<p>Owing two Kaplan-Meier curves it would be nice to compare them by calculating some important statistics. Mean survival time and median survival time are good candidates. Consider the expression for the first one:</p>
+<div class="math notranslate nohighlight">
+\[ \widehat{\mu}(t) = \int_0^t S(x)dx \]</div>
+<p>It would be nice to compare these curves</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.fitters</span> <span class="kn">import</span> <span class="n">ParametricUnivariateFitter</span>
+
+<span class="n">Tmax</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">GompertzFitter</span><span class="p">(</span><span class="n">ParametricUnivariateFitter</span><span class="p">):</span>
+    <span class="c1"># parametrization as above</span>
+    <span class="n">_fitted_parameter_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A_&#39;</span><span class="p">,</span> <span class="s1">&#39;b_&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_cumulative_hazard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+        <span class="n">A_</span><span class="p">,</span> <span class="n">b_</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="k">return</span> <span class="n">A_</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="n">b_</span> <span class="o">/</span> <span class="n">Tmax</span><span class="p">))</span>
+
+<span class="n">ggf</span> <span class="o">=</span> <span class="n">GompertzFitter</span><span class="p">()</span>
+<span class="n">ggf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
+
+<span class="n">ggf</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">ggf</span><span class="o">.</span><span class="n">plot_survival_function</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ci_show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 14&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="k">return</span> <span class="n">A_</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="n">b_</span> <span class="o">/</span> <span class="n">Tmax</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">ggf</span> <span class="o">=</span> <span class="n">GompertzFitter</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">ggf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">ggf</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ggf</span><span class="o">.</span><span class="n">plot_survival_function</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;E&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="log-rank">
+<h3><span class="section-number">3.4.2. </span>Log Rank<a class="headerlink" href="#log-rank" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="gompertz-estimator">
+<h3><span class="section-number">3.4.3. </span>Gompertz estimator<a class="headerlink" href="#gompertz-estimator" title="Permalink to this headline">#</a></h3>
+<p>what about negligible senescence?
+what data say us?
+remember that it all just models!</p>
+</section>
 </section>
 <section id="cox-proportional-hazard-model">
 <h2><span class="section-number">3.5. </span>Cox proportional hazard model<a class="headerlink" href="#cox-proportional-hazard-model" title="Permalink to this headline">#</a></h2>
@@ -943,8 +1332,11 @@ remember that it all just models!</p>
 </div>
 </div>
 </section>
+<section id="conclusion">
+<h2><span class="section-number">3.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+</section>
 <section id="learn-more">
-<h2><span class="section-number">3.6. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.7. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://crr.umd.edu/sites/crr.umd.edu/files/Free%20Ebook%20Probability%20Distributions%20Used%20in%20Reliability%20Engineering.pdf">Reliability theory textbook</a></p></li>
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=rLNzoYmnkgQ&amp;ab_channel=ComputerScienceCenter">Russian video lecture</a>.</p></li>
@@ -955,11 +1347,11 @@ remember that it all just models!</p>
 with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
 </section>
 <section id="credits">
-<h2><span class="section-number">3.7. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.8. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
 <p>This notebook was prepared by <a class="reference external" href="https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&amp;hl=ru">Dmitrii Kriukov</a>.</p>
 </section>
 <section id="acknowledgements">
-<h2><span class="section-number">3.8. </span>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.9. </span>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
 <p>We thank <a class="reference external" href="https://scholar.google.com/citations?hl=ru&amp;user=J2F6xmcAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Alexander Fedintsev</a>, who made a significant contribution to the theoretical part of this notebook.</p>
 </section>
 </section>

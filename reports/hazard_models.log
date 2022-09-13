@@ -17,37 +17,35 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Fixing random state for reproducibility
-np.random.seed(19680801)
+from lifelines.fitters import ParametricUnivariateFitter
 
-N = 10
-data = [np.logspace(0, 1, 100) + np.random.randn(100) + ii for ii in range(N)]
-data = np.array(data).T
-cmap = plt.cm.coolwarm
-rcParams['axes.prop_cycle'] = cycler(color=cmap(np.linspace(0, 1, N)))
+Tmax = T.max()
 
+class GompertzFitter(ParametricUnivariateFitter):
+    # parametrization as above
+    _fitted_parameter_names = ['A_', 'b_']
 
-from matplotlib.lines import Line2D
-custom_lines = [Line2D([0], [0], color=cmap(0.), lw=4),
-                Line2D([0], [0], color=cmap(.5), lw=4),
-                Line2D([0], [0], color=cmap(1.), lw=4)]
+    def _cumulative_hazard(self, params, times):
+        A_, b_ = params
+        return A_ * (np.expm1(times * b_ / Tmax))
 
-fig, ax = plt.subplots(figsize=(10, 5))
-lines = ax.plot(data)
-ax.legend(custom_lines, ['Cold', 'Medium', 'Hot']);
+ggf = GompertzFitter()
+ggf.fit(T, E)
+
+ggf.print_summary()
+ax = ggf.plot_survival_function(figsize=(8,5))
+ax = KaplanMeierFitter().fit(T, E).plot(ax=ax, ci_show=False)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Input [0;32mIn [8][0m, in [0;36m<cell line: 8>[0;34m()[0m
-[1;32m      6[0m data [38;5;241m=[39m np[38;5;241m.[39marray(data)[38;5;241m.[39mT
-[1;32m      7[0m cmap [38;5;241m=[39m plt[38;5;241m.[39mcm[38;5;241m.[39mcoolwarm
-[0;32m----> 8[0m rcParams[[38;5;124m'[39m[38;5;124maxes.prop_cycle[39m[38;5;124m'[39m] [38;5;241m=[39m [43mcycler[49m(color[38;5;241m=[39mcmap(np[38;5;241m.[39mlinspace([38;5;241m0[39m, [38;5;241m1[39m, N)))
-[1;32m     11[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mlines[39;00m [38;5;28;01mimport[39;00m Line2D
-[1;32m     12[0m custom_lines [38;5;241m=[39m [Line2D([[38;5;241m0[39m], [[38;5;241m0[39m], color[38;5;241m=[39mcmap([38;5;241m0.[39m), lw[38;5;241m=[39m[38;5;241m4[39m),
-[1;32m     13[0m                 Line2D([[38;5;241m0[39m], [[38;5;241m0[39m], color[38;5;241m=[39mcmap([38;5;241m.5[39m), lw[38;5;241m=[39m[38;5;241m4[39m),
-[1;32m     14[0m                 Line2D([[38;5;241m0[39m], [[38;5;241m0[39m], color[38;5;241m=[39mcmap([38;5;241m1.[39m), lw[38;5;241m=[39m[38;5;241m4[39m)]
+Input [0;32mIn [13][0m, in [0;36m<cell line: 14>[0;34m()[0m
+[1;32m     11[0m         [38;5;28;01mreturn[39;00m A_ [38;5;241m*[39m (np[38;5;241m.[39mexpm1(times [38;5;241m*[39m b_ [38;5;241m/[39m Tmax))
+[1;32m     13[0m ggf [38;5;241m=[39m GompertzFitter()
+[0;32m---> 14[0m ggf[38;5;241m.[39mfit(T, [43mE[49m)
+[1;32m     16[0m ggf[38;5;241m.[39mprint_summary()
+[1;32m     17[0m ax [38;5;241m=[39m ggf[38;5;241m.[39mplot_survival_function(figsize[38;5;241m=[39m([38;5;241m8[39m,[38;5;241m5[39m))
 
-[0;31mNameError[0m: name 'cycler' is not defined
-NameError: name 'cycler' is not defined
+[0;31mNameError[0m: name 'E' is not defined
+NameError: name 'E' is not defined
 
