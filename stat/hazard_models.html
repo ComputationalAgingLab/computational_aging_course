@@ -439,7 +439,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gompertz-estimator">
-     3.4.3. Gompertz estimator
+     3.4.3. Gompertz estimator*
     </a>
    </li>
   </ul>
@@ -537,7 +537,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gompertz-estimator">
-     3.4.3. Gompertz estimator
+     3.4.3. Gompertz estimator*
     </a>
    </li>
   </ul>
@@ -1356,11 +1356,11 @@ miR-137 25.71
 
 <span class="c1">#split our groups</span>
 <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
+<span class="n">df0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
 <span class="n">T1</span><span class="p">,</span> <span class="n">G1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
-<span class="n">T2</span><span class="p">,</span> <span class="n">G2</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
+<span class="n">T0</span><span class="p">,</span> <span class="n">G0</span> <span class="o">=</span> <span class="n">df0</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">df0</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
 <span class="c1"># and apply test directly to durations</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">logrank_test</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">logrank_test</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">T0</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1428,48 +1428,140 @@ miR-137 25.71
 </ul>
 </section>
 <section id="gompertz-estimator">
-<h3><span class="section-number">3.4.3. </span>Gompertz estimator<a class="headerlink" href="#gompertz-estimator" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.4.3. </span>Gompertz estimator*<a class="headerlink" href="#gompertz-estimator" title="Permalink to this headline">#</a></h3>
+<p>This is an additional subsection developing an intuition about fitting custom parametric estimators by power of <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/jupyter_notebooks/Piecewise%20Exponential%20Models%20and%20Creating%20Custom%20Models.html?highlight=Gompertz#Univarite-models-in-lifelines">lifelines</a>. We spend a lot of time discussing Gompertz risk model, so it would be inexcusably not to fit Gompertz model on our pretty flies data. Do it!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.fitters</span> <span class="kn">import</span> <span class="n">ParametricUnivariateFitter</span>
 
-<span class="n">Tmax</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">df0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+<span class="n">Tmax</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1">#normalization constant needed for optimizer convergence</span>
 
-<span class="k">class</span> <span class="nc">GompertzFitter</span><span class="p">(</span><span class="n">ParametricUnivariateFitter</span><span class="p">):</span>
+<span class="c1">#Below we create custom class with Gompertz model parametrized as it was discussed above.</span>
+<span class="c1">#This model inherits all important methods and atributes of parent class ParametricUnivariateFitter which is also using</span>
+<span class="c1">#for fitting other simple models like exponential one (constant risk).</span>
+<span class="k">class</span> <span class="nc">GompertzFitter</span><span class="p">(</span><span class="n">ParametricUnivariateFitter</span><span class="p">):</span> 
     <span class="c1"># parametrization as above</span>
     <span class="n">_fitted_parameter_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A_&#39;</span><span class="p">,</span> <span class="s1">&#39;b_&#39;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_cumulative_hazard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_cumulative_hazard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span> <span class="c1">#cumulative hazard is just an integral of risk function</span>
         <span class="n">A_</span><span class="p">,</span> <span class="n">b_</span> <span class="o">=</span> <span class="n">params</span>
-        <span class="k">return</span> <span class="n">A_</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="n">b_</span> <span class="o">/</span> <span class="n">Tmax</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">A_</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="n">b_</span> <span class="o">/</span> <span class="n">Tmax</span><span class="p">))</span> <span class="c1">#expm1 = exp(...) - 1</span>
 
-<span class="n">ggf</span> <span class="o">=</span> <span class="n">GompertzFitter</span><span class="p">()</span>
-<span class="n">ggf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
-
+<span class="n">ggf</span> <span class="o">=</span> <span class="n">GompertzFitter</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span> <span class="c1">#fit Gompertz model</span>
+<span class="n">ggf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T0</span><span class="p">)</span>
 <span class="n">ggf</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
+
 <span class="n">ax</span> <span class="o">=</span> <span class="n">ggf</span><span class="o">.</span><span class="n">plot_survival_function</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ci_show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">KaplanMeierFitter</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ci_show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#and compare with KM</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;True $b$ coefficient: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">ggf</span><span class="o">.</span><span class="n">b_</span><span class="o">/</span><span class="n">Tmax</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span> <span class="c1">#rescale coefficient</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 14&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="k">return</span> <span class="n">A_</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="n">b_</span> <span class="o">/</span> <span class="n">Tmax</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">ggf</span> <span class="o">=</span> <span class="n">GompertzFitter</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">ggf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">ggf</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ggf</span><span class="o">.</span><span class="n">plot_survival_function</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;E&#39; is not defined
-</pre></div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <tbody>
+    <tr>
+      <th>model</th>
+      <td>lifelines.GompertzFitter</td>
+    </tr>
+    <tr>
+      <th>number of observations</th>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>number of events observed</th>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>log-likelihood</th>
+      <td>-641.37</td>
+    </tr>
+    <tr>
+      <th>hypothesis</th>
+      <td>A_ != 1, b_ != 1</td>
+    </tr>
+  </tbody>
+</table>
+</div><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th style="min-width: 12px;"></th>
+      <th style="min-width: 12px;">coef</th>
+      <th style="min-width: 12px;">se(coef)</th>
+      <th style="min-width: 12px;">coef lower 95%</th>
+      <th style="min-width: 12px;">coef upper 95%</th>
+      <th style="min-width: 12px;">cmp to</th>
+      <th style="min-width: 12px;">z</th>
+      <th style="min-width: 12px;">p</th>
+      <th style="min-width: 12px;">-log2(p)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A_</th>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>1.00</td>
+      <td>-231.87</td>
+      <td>&lt;0.005</td>
+      <td>inf</td>
+    </tr>
+    <tr>
+      <th>b_</th>
+      <td>5.90</td>
+      <td>0.44</td>
+      <td>5.05</td>
+      <td>6.76</td>
+      <td>1.00</td>
+      <td>11.26</td>
+      <td>&lt;0.005</td>
+      <td>95.28</td>
+    </tr>
+  </tbody>
+</table><br><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <tbody>
+    <tr>
+      <th>AIC</th>
+      <td>1286.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../_images/hazard_models_41_1.png" src="../_images/hazard_models_41_1.png" />
 </div>
 </div>
-</div>
-<p>what about negligible senescence?
-what data say us?
-remember that it all just models!</p>
+<p>Yeah, it is really a good fit. We used only data from naturally aging flies and obtained nice estimation of Gompertz rate of aging <span class="math notranslate nohighlight">\(b=0.08\)</span> (please, ignore the coefficient in the table - it should be rescaled due to the presense of normalization constant <code class="docutils literal notranslate"><span class="pre">Tmax</span></code>) and <span class="math notranslate nohighlight">\(A=0.01\)</span> which are quite close to what we have seen for humans. The summary table has many interesting things like Akaike information criterion (AIC) useful for comparison of different models, log-likelihood and important statistics about coefficients. For now, we can definitely say, Gompertz model is a good model of aging flies!</p>
 </section>
 </section>
 <section id="cox-proportional-hazard-model">
@@ -1485,6 +1577,17 @@ remember that it all just models!</p>
 </section>
 <section id="conclusion">
 <h2><span class="section-number">3.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mortality curves (increasing, decreasing, u-shape, const) say us a lot about aging of organism</span>
+<span class="c1"># Weibull model is great</span>
+<span class="c1"># Gompertz model is nice</span>
+<span class="c1"># logrank and other tests are important to check if the experiment really significant for aging science</span>
+<span class="c1"># remember everything here are models, wrong but useful)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="learn-more">
 <h2><span class="section-number">3.7. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
