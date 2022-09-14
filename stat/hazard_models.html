@@ -445,14 +445,21 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cox-proportional-hazard-model">
-   3.5. Cox proportional hazard model
+  <a class="reference internal nav-link" href="#conclusion">
+   3.5. Conclusion
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   3.6. Conclusion
+  <a class="reference internal nav-link" href="#cox-proportional-hazards-model-project">
+   3.6. Cox proportional hazards model [Project]
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task">
+     3.6.1. Task
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learn-more">
@@ -543,14 +550,21 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cox-proportional-hazard-model">
-   3.5. Cox proportional hazard model
+  <a class="reference internal nav-link" href="#conclusion">
+   3.5. Conclusion
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   3.6. Conclusion
+  <a class="reference internal nav-link" href="#cox-proportional-hazards-model-project">
+   3.6. Cox proportional hazards model [Project]
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task">
+     3.6.1. Task
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learn-more">
@@ -1564,30 +1578,39 @@ miR-137 25.71
 <p>Yeah, it is really a good fit. We used only data from naturally aging flies and obtained nice estimation of Gompertz rate of aging <span class="math notranslate nohighlight">\(b=0.08\)</span> (please, ignore the coefficient in the table - it should be rescaled due to the presense of normalization constant <code class="docutils literal notranslate"><span class="pre">Tmax</span></code>) and <span class="math notranslate nohighlight">\(A=0.01\)</span> which are quite close to what we have seen for humans. The summary table has many interesting things like Akaike information criterion (AIC) useful for comparison of different models, log-likelihood and important statistics about coefficients. For now, we can definitely say, Gompertz model is a good model of aging flies!</p>
 </section>
 </section>
-<section id="cox-proportional-hazard-model">
-<h2><span class="section-number">3.5. </span>Cox proportional hazard model<a class="headerlink" href="#cox-proportional-hazard-model" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="conclusion">
-<h2><span class="section-number">3.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mortality curves (increasing, decreasing, u-shape, const) say us a lot about aging of organism</span>
-<span class="c1"># Weibull model is great</span>
-<span class="c1"># Gompertz model is nice</span>
-<span class="c1"># logrank and other tests are important to check if the experiment really significant for aging science</span>
-<span class="c1"># remember everything here are models, wrong but useful)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<h2><span class="section-number">3.5. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Mortality curves  can have different shapes (increasing, decreasing, u-shape, const) which say us a lot about aging of a particular organism.</p></li>
+<li><p>Constant mortality function models “non-aging” organism which has only one critical subsystem and therefore is fragile.</p></li>
+<li><p>Combination of a big number of fragile subsystems leads us to a Weibull mortality risk. It is already a good approximation of what really happens in reality but we can do better with…</p></li>
+<li><p>Gompertz risk model which has a nice approximation power or real data. Its parameters are well interpretable as initial mortality risk and rate of aging. Not all species obey Gompertz model but, as always, more complexity means less interpretability.</p></li>
+<li><p>Real data requires proper estimators of survival curves. One great non-parametric way is to use Kaplan-Meier approach.</p></li>
+<li><p>Logrank and other statistical tests are important to check difference between two survival curves, and, therefore, if the experiment really significant for aging science.</p></li>
+<li><p>Remember, everything here are models, wrong but useful!</p></li>
+<li><p>Nice cheatsheet for transformation rules here:</p></li>
+</ul>
+<img src="https://lifelines.readthedocs.io/en/latest/_images/map.png" alt="connections" width="500"/></section>
+<section id="cox-proportional-hazards-model-project">
+<h2><span class="section-number">3.6. </span>Cox proportional hazards model [Project]<a class="headerlink" href="#cox-proportional-hazards-model-project" title="Permalink to this headline">#</a></h2>
+<p><strong>Disclaimer</strong>: within this project section we will use “mortality risk” and “hazard” as synonyms (i.e. <span class="math notranslate nohighlight">\(m(t)=h(t)\)</span>) in the sense we discussed them in the previous sections.</p>
+<p><strong>Learn <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/Survival%20Regression.html#cox-s-proportional-hazard-model">the documentation</a> about Cox proportional hazards models.</strong></p>
+<p>Now is the time of advanced topics! The idea behind <a class="reference external" href="https://en.wikipedia.org/wiki/Proportional_hazards_model#The_Cox_model">Cox’s proportional hazard model</a> is that the log-hazard of an individual is a linear function of their covariates (independent of time) and a population-level baseline hazard that changes over time. Mathematically:</p>
+<div class="math notranslate nohighlight">
+\[\underbrace{h(t | x)}_{\text{hazard}} = \overbrace{b_0(t)}^{\text{baseline hazard}} \underbrace{\exp \overbrace{\left(\sum_{i=1}^n b_i (x_i - \overline{x_i})\right)}^{\text{log-partial hazard}}}_ {\text{partial hazard}}\]</div>
+<p>Note a few behaviors about this model: the only time component is in the baseline hazard, <span class="math notranslate nohighlight">\(b_0(t)\)</span>. In the above equation, the partial hazard is a time-invariant scalar factor that only increases or decreases the baseline hazard. Thus changes in covariates will only inflate or deflate the baseline hazard</p>
+<section id="task">
+<h3><span class="section-number">3.6.1. </span>Task<a class="headerlink" href="#task" title="Permalink to this headline">#</a></h3>
+<p>Reproduce the Cox proportional hazards analysis from <a class="reference external" href="https://www.nature.com/articles/s41467-021-23014-1?ref=upstract.com&amp;curator=upstract.com">this paper</a> on NHANES dataset. Critically consider the paper and answer the following questions:</p>
+<ul class="simple">
+<li><p>What the main idea of using Cox analysis in the paper?</p></li>
+<li><p>What is the Gompertz mortality doubling rate from NHANES cohort?</p></li>
+<li><p>What are the main achievements of the paper?</p></li>
+<li><p>What pitfalls the paper has?</p></li>
+<li><p>What can you propose to improve the paper?</p></li>
+</ul>
+<p>Write report and prepare a presentation.</p>
+</section>
 </section>
 <section id="learn-more">
 <h2><span class="section-number">3.7. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
