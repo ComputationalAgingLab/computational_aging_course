@@ -168,8 +168,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../ml/aging_clocks_rus.html">
+   5. Часы Старения
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../ml/methylation_clocks.html">
-   5. Content with notebooks
+   6. Content with notebooks
   </a>
  </li>
 </ul>
@@ -181,7 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/dynamical_models.html">
-   6. Dynamical models
+   7. Dynamical models
   </a>
  </li>
 </ul>
@@ -594,7 +599,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="hazard-models">
 <h1><span class="section-number">3. </span>Hazard models<a class="headerlink" href="#hazard-models" title="Permalink to this headline">#</a></h1>
 <p><strong>Aging</strong> - increased chance of death with age.</p>
-<p>You have seen this picture on the previous lesson <span id="id1">[<a class="reference internal" href="differential_analysis.html#id3" title="E Arias. United states life tables, 2003. 14. vol. 54. Hyattsville, MD: National Center for Health Statistics, 2006.">Ari06</a>]</span>.</p>
+<p>You have seen this picture on the previous lesson <span id="id1">[<a class="reference internal" href="differential_analysis.html#id3" title="E Arias. United states life tables, 2003. 14. vol. 54. Hyattsville, MD: National Center for Health Statistics, 2006.">Arias, 2006</a>]</span>.</p>
 <p><img alt="Risk of mortality" src="https://upload.wikimedia.org/wikipedia/en/4/4d/USGompertzCurve.svg" /></p>
 <p>At this lesson we learn how to understand such mortality risk and survival curves. We will learn Gompertz model - the seminal conception in aging research. We learn how to analyze real survival data, fit survival models, compare survival curves, and make conclusions about your survival experiment.</p>
 <section id="survival-curve">
@@ -782,7 +787,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>We see the lower value of mortality risk the higher survival curve lies if we consider our kidneys (critical subsystems) separately. Combining them into one system leads to the highest survival curve (green curve on the plot). Thus we see a quite obvious corollary: the higher number of reserved subsystems object have the more survival it becomes… But wait a second! What’s wrong with the mortality curve for two kindeys system? It is not constant now. We started with two kidneys each having its own constant failure risk and ended with a system where mortality risk is now a function of time - <strong>aging system</strong> actually! It is quite reasonable if we treat aging as a process of critical subsystem failures culminating with system “death”.</p>
-<p>In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example <span id="id2">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">GG05</a>]</span>). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.</p>
+<p>In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example <span id="id2">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">Gavrilov and Gavrilova, 2005</a>]</span>). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.</p>
 <img src="https://nanohub.org/app/site/resources/2013/01/16583/slides/016.03.jpg" alt="connections" width="600"/>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
@@ -845,7 +850,7 @@ title="Print to PDF"
 </section>
 <section id="gompertz-risk-model">
 <h3><span class="section-number">3.3.3. </span>Gompertz risk model<a class="headerlink" href="#gompertz-risk-model" title="Permalink to this headline">#</a></h3>
-<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[<a class="reference internal" href="differential_analysis.html#id5" title="Leonid A Gavrilov and Natalia S Gavrilova. New developments in the biodemography of aging and longevity. Gerontology, 61(4):364–371, 2015.">GG15</a>]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">GG05</a>]</span>. Mathematically, it can be formulated as follows:</p>
+<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[<a class="reference internal" href="differential_analysis.html#id5" title="Leonid A Gavrilov and Natalia S Gavrilova. New developments in the biodemography of aging and longevity. Gerontology, 61(4):364–371, 2015.">Gavrilov and Gavrilova, 2015</a>]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">Gavrilov and Gavrilova, 2005</a>]</span>. Mathematically, it can be formulated as follows:</p>
 <div class="math notranslate nohighlight">
 \[ m(t) = Ae^{bt} \]</div>
 <p>where <span class="math notranslate nohighlight">\(A\)</span> - Initial Mortality Rate (IMR), this parameter characterizes the initial mortality, that is, the mortality that would be in the population without aging, and does not depend on age; <span class="math notranslate nohighlight">\(b\)</span> - characterizes the rate of aging. To clarify the previous observation about Mortality Rate Doubling Time (MRDT) is 8 years, we can use the following simple quotient:</p>
@@ -899,7 +904,7 @@ title="Print to PDF"
 <img alt="../_images/hazard_models_19_0.png" src="../_images/hazard_models_19_0.png" />
 </div>
 </div>
-<p>We used basic parameters <span class="math notranslate nohighlight">\(A=0.005\)</span> and <span class="math notranslate nohighlight">\(b=0.087\)</span> for human mortality risk according to <span id="id5">[<a class="reference internal" href="differential_analysis.html#id6" title="Trifon I Missov, Adam Lenart, Laszlo Nemeth, Vladimir Canudas-Romo, and James W Vaupel. The gompertz force of mortality in terms of the modal age at death. Demographic Research, 32:1031–1048, 2015.">MLN+15</a>]</span> (see Fig.3). Such parameters yield blue curves of survival and mortality. Since we have more or less realistic parameters inferred from real data, now time have units of years. Now we introduce three modifications of Gompertz parameters. First, we decrease IMR (<span class="math notranslate nohighlight">\(A\)</span>) by 10 times holding <span class="math notranslate nohighlight">\(b\)</span> the same. The result is the orange curve demonstrating moving to right from the initial curve. This increases the maximum human lifespan of the population. Second, we decrease rate of aging (<span class="math notranslate nohighlight">\(b\)</span>) by 10 times preserving IMR the same and the result is a much greater (green curves) increase in maximum lifespan by comparing with modification of IMR. This hints us that it is more promising strategy to <strong>improve the rate of aging than IMR</strong>. Moreover, if we improve IMR by 10 times but deteriorate rate of aging by only 2 times (red curve) we obtain the population that ages very quickly after some time - exactly what we see in countries with advanced medicine.</p>
+<p>We used basic parameters <span class="math notranslate nohighlight">\(A=0.005\)</span> and <span class="math notranslate nohighlight">\(b=0.087\)</span> for human mortality risk according to <span id="id5">[<a class="reference internal" href="differential_analysis.html#id6" title="Trifon I Missov, Adam Lenart, Laszlo Nemeth, Vladimir Canudas-Romo, and James W Vaupel. The gompertz force of mortality in terms of the modal age at death. Demographic Research, 32:1031–1048, 2015.">Missov <em>et al.</em>, 2015</a>]</span> (see Fig.3). Such parameters yield blue curves of survival and mortality. Since we have more or less realistic parameters inferred from real data, now time have units of years. Now we introduce three modifications of Gompertz parameters. First, we decrease IMR (<span class="math notranslate nohighlight">\(A\)</span>) by 10 times holding <span class="math notranslate nohighlight">\(b\)</span> the same. The result is the orange curve demonstrating moving to right from the initial curve. This increases the maximum human lifespan of the population. Second, we decrease rate of aging (<span class="math notranslate nohighlight">\(b\)</span>) by 10 times preserving IMR the same and the result is a much greater (green curves) increase in maximum lifespan by comparing with modification of IMR. This hints us that it is more promising strategy to <strong>improve the rate of aging than IMR</strong>. Moreover, if we improve IMR by 10 times but deteriorate rate of aging by only 2 times (red curve) we obtain the population that ages very quickly after some time - exactly what we see in countries with advanced medicine.</p>
 </section>
 </section>
 <section id="estimation-and-comparison-of-survival-curves">
@@ -907,7 +912,7 @@ title="Print to PDF"
 <p>The time has come to consider real data and understand how to estimate survival curves from them, and, what is more important, how to compare them. For these purposes we use a <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> that is a nice library survival analysis. First, let’s look at the toy dataset of <em>miR-137</em> gene knock-out in fruit flies.</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
-<p>We didn’t find any references to “waltons” dataset but there is some study showing that <em>miR-137</em> gene knock-out (apparently) affects lifespan <span id="id6">[<a class="reference internal" href="differential_analysis.html#id7" title="Kalon P Grimes. miR-137, schizophrenia and sleep regulation in Drosophila melanogaster. PhD thesis, Bournemouth University, 2020.">Gri20</a>]</span>.</p>
+<p>We didn’t find any references to “waltons” dataset but there is some study showing that <em>miR-137</em> gene knock-out (apparently) affects lifespan <span id="id6">[<a class="reference internal" href="differential_analysis.html#id7" title="Kalon P Grimes. miR-137, schizophrenia and sleep regulation in Drosophila melanogaster. PhD thesis, Bournemouth University, 2020.">Grimes, 2020</a>]</span>.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
