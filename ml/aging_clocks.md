@@ -1,55 +1,27 @@
 # Aging Clocks
 
-Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
-in regular markdown files (`.md`), you'll write in the same flavor of markdown
-called **MyST Markdown**.
-This is a simple file to help you get started and show off some syntax.
+In this chapter you will know:
+- How make anti-aging trials 10x cheaper and faster
+- What is the result of the past ten years of aging clocks research
+- How to use aging clocks to find new geroprotectors insilico
+- Which of the clocks are the most precise? Which of them are the cheapest?
+- What needs to be done?
 
-## What is MyST?
+In practice notebook you will make your own aging clocks using machine learning.
 
-MyST stands for "Markedly Structured Text". It
-is a slight variation on a flavor of markdown called "CommonMark" markdown,
-with small syntax extensions to allow you to write **roles** and **directives**
-in the Sphinx ecosystem.
-
-For more about MyST, see [the MyST Markdown Overview](https://jupyterbook.org/content/myst.html).
-
-## Sample Roles and Directives
-
-Roles and directives are two of the most powerful tools in Jupyter Book. They
-are kind of like functions, but written in a markup language. They both
-serve a similar purpose, but **roles are written in one line**, whereas
-**directives span many lines**. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.
-
-Here is a "note" directive:
-
-```{note}
-Here is a note
+```{contents}
 ```
 
-It will be rendered in a special box when you build your book.
+## What and why
 
-Here is an inline directive to refer to a document: {doc}`markdown-notebooks`.
+Imaging some genie gives you a magical device that shows your health as a number from 0 to 100. It shows 100 in your 25 when you are healthy and mature. When it drops down to 0, game over and you are dead. How could you use such a device?
 
+First, it can make your clinical trials quicker and cheaper. If you conduct a clinical trial to find an anti-age drug, then the primary outcome of the trial is the participants' lifespan. Since people live 72 years on average, there are chances that you die before the trial's end. It is costly also. For example, TAME clinical trial {cite}`barzilai2016metformin` is underway. TAME -- Targeting Aging with Metformin -- has collected 11 million dollars out of the needed 40 for the last seven years, and the trial will last for 6 years once launched.  
 
-## Citations
-
-You can also cite references that are stored in a `bibtex` file. For example,
-the following syntax: `` {cite}`holdgraf_evidence_2014` `` will render like
-this: {cite}`holdgraf_evidence_2014`.
-
-Moreover, you can insert a bibliography into your page with this syntax:
-The `{bibliography}` directive must be used for all the `{cite}` roles to
-render properly.
-For example, if the references for your book are stored in `references.bib`,
-then the bibliography is inserted with:
+:::{note}
+Here is a note!
+:::
 
 ```{bibliography}
+:filter: docname in docnames
 ```
-
-## Learn more
-
-This is just a simple starter to get you started.
-You can learn a lot more at [jupyterbook.org](https://jupyterbook.org).
