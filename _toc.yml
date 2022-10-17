@@ -26,4 +26,5 @@ parts:
 - caption: Dynamics system view
   numbered: true
   chapters:
-  - file: dyn/dynamical_models
+  - file: dyn/complex_systems
+  - file: dyn/system_resilience
