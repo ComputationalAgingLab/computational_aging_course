@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>4. Aging Clocks &#8212; Computational aging book</title>
+    <title>8. System resilience &#8212; Computational aging book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Часы Старения" href="aging_clocks_rus.html" />
-    <link rel="prev" title="3. Hazard models" href="../stat/hazard_models.html" />
+    <link rel="prev" title="7. Complex systems approach" href="complex_systems.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -159,19 +158,19 @@ const thebe_selector_output = ".output, .cell_output"
   Machine learning view
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/aging_clocks.html">
    4. Aging Clocks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="aging_clocks_rus.html">
+  <a class="reference internal" href="../ml/aging_clocks_rus.html">
    5. Часы Старения
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="methylation_clocks.html">
+  <a class="reference internal" href="../ml/methylation_clocks.html">
    6. Content with notebooks
   </a>
  </li>
@@ -181,14 +180,14 @@ const thebe_selector_output = ".output, .cell_output"
   Dynamics system view
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../dyn/complex_systems.html">
+  <a class="reference internal" href="complex_systems.html">
    7. Complex systems approach
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../dyn/system_resilience.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    8. System resilience
   </a>
  </li>
@@ -243,6 +242,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ComputationalAgingLab/computational_aging_course/master?urlpath=tree/dyn/system_resilience.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -282,7 +310,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fml/aging_clocks.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fdyn/system_resilience.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -310,7 +338,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/ml/aging_clocks.md"
+        <a href="../_sources/dyn/system_resilience.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -321,7 +349,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -370,8 +398,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-and-why">
-   4.1. What and why
+  <a class="reference internal nav-link" href="#recap-differential-equations">
+   8.1. Recap differential equations
   </a>
  </li>
 </ul>
@@ -383,7 +411,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Aging Clocks</h1>
+                <h1>System resilience</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -394,8 +422,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-and-why">
-   4.1. What and why
+  <a class="reference internal nav-link" href="#recap-differential-equations">
+   8.1. Recap differential equations
   </a>
  </li>
 </ul>
@@ -408,42 +436,22 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="aging-clocks">
-<h1><a class="toc-backref" href="#id44"><span class="section-number">4. </span>Aging Clocks</a><a class="headerlink" href="#aging-clocks" title="Permalink to this headline">#</a></h1>
-<p>In this chapter you will know:</p>
-<ul class="simple">
-<li><p>How make anti-aging trials 10x cheaper and faster</p></li>
-<li><p>What is the result of the past ten years of aging clocks research</p></li>
-<li><p>How to use aging clocks to find new geroprotectors insilico</p></li>
-<li><p>Which of the clocks are the most precise? Which of them are the cheapest?</p></li>
-<li><p>What needs to be done?</p></li>
-</ul>
-<p>In practice notebook you will make your own aging clocks using machine learning.</p>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#aging-clocks" id="id44">Aging Clocks</a></p>
-<ul>
-<li><p><a class="reference internal" href="#what-and-why" id="id45">What and why</a></p></li>
-</ul>
-</li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="system-resilience">
+<h1><span class="section-number">8. </span>System resilience<a class="headerlink" href="#system-resilience" title="Permalink to this headline">#</a></h1>
+<p>Example of system resilience problem</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
 </div>
-<section id="what-and-why">
-<h2><a class="toc-backref" href="#id45"><span class="section-number">4.1. </span>What and why</a><a class="headerlink" href="#what-and-why" title="Permalink to this headline">#</a></h2>
-<p>Imaging some genie gives you a magical device that shows your health as a number from 0 to 100. It shows 100 in your 25 when you are healthy and mature. When it drops down to 0, game over and you are dead. How could you use such a device?</p>
-<p>First, it can make your clinical trials quicker and cheaper. If you conduct a clinical trial to find an anti-age drug, then the primary outcome of the trial is the participants’ lifespan. Since people live 72 years on average, there are chances that you die before the trial’s end. It is costly also. For example, TAME clinical trial <span id="id1">[<a class="reference internal" href="../stat/differential_analysis.html#id8" title="Nir Barzilai, Jill P Crandall, Stephen B Kritchevsky, and Mark A Espeland. Metformin as a tool to target aging. Cell metabolism, 23(6):1060–1065, 2016.">Barzilai <em>et al.</em>, 2016</a>]</span> is underway. TAME – Targeting Aging with Metformin – has collected 11 million dollars out of the needed 40 for the last seven years, and the trial will last for 6 years once launched.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Here is a note!</p>
 </div>
-<div class="docutils container" id="id2">
-<dl class="citation">
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id1">BCKE16</a></span></dt>
-<dd><p>Nir Barzilai, Jill P Crandall, Stephen B Kritchevsky, and Mark A Espeland. Metformin as a tool to target aging. <em>Cell metabolism</em>, 23(6):1060–1065, 2016.</p>
-</dd>
-</dl>
 </div>
+<section id="recap-differential-equations">
+<h2><span class="section-number">8.1. </span>Recap differential equations<a class="headerlink" href="#recap-differential-equations" title="Permalink to this headline">#</a></h2>
+<p>There is a lot more that you can do with outputs (such as including interactive outputs)
+with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
 </section>
 </section>
 
@@ -460,7 +468,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./ml"
+            path: "./dyn"
         },
         predefinedOutput: true
     }
@@ -474,19 +482,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../stat/hazard_models.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="complex_systems.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3. </span>Hazard models</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Complex systems approach</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="aging_clocks_rus.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Часы Старения</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

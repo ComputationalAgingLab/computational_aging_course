@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>7. Complex systems approach &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. System resilience" href="system_resilience.html" />
+    <link rel="prev" title="6. Content with notebooks" href="../ml/methylation_clocks.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Computational Biology of Aging book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../stat/differential_analysis.html">
+   2. Differential Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/diff_analysis_practice.html">
+     2.5. Content with notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat/hazard_models.html">
+   3. Hazard models
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine learning view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/aging_clocks.html">
+   4. Aging Clocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/aging_clocks_rus.html">
+   5. Часы Старения
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/methylation_clocks.html">
+   6. Content with notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamics system view
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="system_resilience.html">
+   8. System resilience
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fdyn/complex_systems.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/dyn/complex_systems.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complex-systems-perspective-on-aging">
+   7.1. Complex systems perspective on aging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aging-as-loss-of-complexity">
+   7.2. Aging as loss of Complexity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#networks-and-biological-degeneracy">
+   7.3. Networks and Biological degeneracy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#emergence-and-canalization">
+   7.4. Emergence and Canalization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resilience-and-critical-transitions">
+   7.5. Resilience and Critical transitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-my-thoughts">
+   7.6. Extra (my thoughts)
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Complex systems approach</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complex-systems-perspective-on-aging">
+   7.1. Complex systems perspective on aging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aging-as-loss-of-complexity">
+   7.2. Aging as loss of Complexity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#networks-and-biological-degeneracy">
+   7.3. Networks and Biological degeneracy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#emergence-and-canalization">
+   7.4. Emergence and Canalization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resilience-and-critical-transitions">
+   7.5. Resilience and Critical transitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-my-thoughts">
+   7.6. Extra (my thoughts)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="complex-systems-approach">
+<h1><a class="toc-backref" href="#id6"><span class="section-number">7. </span>Complex systems approach</a><a class="headerlink" href="#complex-systems-approach" title="Permalink to this headline">#</a></h1>
+<p><em>Nothing in aging biology makes sense except in the light of dynamic equilibrium.</em></p>
+<p>Aging biology today is not an engineering but science at its early step. This expresses in that we frequently cannot observe a direct causal and numerically tractable relationships (as in physics) but we are doomed to see mostly <em>associations</em> and <em>patterns</em>. However, it may also be a good starting point for dynamical modeling. Large volumes of data and absense of organizing paradigm are major challenges of the modern aging biology. Complex systems approaches provide some computational instruments and necessary vocabulary for simplification, understanding and identification the essential features from data. This chapter partly relies on recent work of <span id="id1">[<a class="reference internal" href="../stat/differential_analysis.html#id41" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> where corresponding philosophical framework as well as important computational examples were proposed.</p>
+<p>Throughout this chapter, you may come across many new words: <strong>system</strong>, <strong>complexity</strong>, <strong>networks</strong>, <strong>emergence</strong>, <strong>resilience</strong> and <strong>critical transitions</strong>. They form an important minimal vocabulary neccessary for developing complex systems intuition which (we believe) can be greatly useful for any researcher. We organize them in subsections and uncover one by one.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#complex-systems-approach" id="id6">Complex systems approach</a></p>
+<ul>
+<li><p><a class="reference internal" href="#complex-systems-perspective-on-aging" id="id7">Complex systems perspective on aging</a></p></li>
+<li><p><a class="reference internal" href="#aging-as-loss-of-complexity" id="id8">Aging as loss of Complexity</a></p></li>
+<li><p><a class="reference internal" href="#networks-and-biological-degeneracy" id="id9">Networks and Biological degeneracy</a></p></li>
+<li><p><a class="reference internal" href="#emergence-and-canalization" id="id10">Emergence and Canalization</a></p></li>
+<li><p><a class="reference internal" href="#resilience-and-critical-transitions" id="id11">Resilience and Critical transitions</a></p></li>
+<li><p><a class="reference internal" href="#extra-my-thoughts" id="id12">Extra (my thoughts)</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="complex-systems-perspective-on-aging">
+<h2><a class="toc-backref" href="#id7"><span class="section-number">7.1. </span>Complex systems perspective on aging</a><a class="headerlink" href="#complex-systems-perspective-on-aging" title="Permalink to this headline">#</a></h2>
+<p>Before the consideration of complex systems we should understand what we had before. Typical two common approaches in sciences are <strong>Top-Down</strong> and <strong>Bottom-Up</strong>. Let’s the object of study is a human organism, then Top-Down approach asks a question which large scale observations is associated with small scale. For example, a patient’s state change is associated with changing of a level of some protein. And vice versa, Bottom-Up approach asks whether large scale patient’s state changes after perturbation of some protein level? Moving Bottom-Up generates something we call metabolic pathways, gene ontologies, etc. - i.e. combining small scale entities into new higher scale entities. In turn, moving Top-Down we can differentiate new entities such as organs, tissues, cells, organelles, nuclei at smaller scale (Fig. 1). You might have noticed that the science greatly advanced applying only these two approaches. However, encounter with living systems forces us to develop a new methodology. The problem of that two approaches is that they do not take into account interactions between feedback/feedforward loops at too different scales trying to provide mechanistic explanation of processes in level-by-level manner. They provide theories like <strong>A causes B</strong> and <strong>B causes C</strong> whilst in real complex systems we observe behaviors like <strong>A causes B</strong>, <strong>B causes A</strong>,  <strong>B causes C</strong> and <strong>C causes A and B</strong>. Do you agree that this no more presumes a one-dimensional schematic explanation of the mechanism of action? Such an abundance of causal relationships forces us to use the concept of <strong>networks</strong> for building a more correct body of knowledge.</p>
+<p><img src="<picture Box 1 from Cohen paper>" 
+     alt="topdown" 
+     width="200"/></p>
+<p align = "center">
+Fig.1 - Example of Top-Down and Bottom-Up organization of knowledge.
+</p>
+<p>Cohen and colleagues <span id="id2">[<a class="reference internal" href="../stat/differential_analysis.html#id41" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> provide a great example of such a <em>switch to complexity</em> happened in ecological sciences recently (Fig. 2). You can see that a previously popular <em>food chains</em> theory was changed by a system approach where interactions between species form a complex network where it is not obvious how the system will respond to removing a particular species. Currently we observe a similar transformation in aging domain. Two great examples (and already classical) of such a transformation are Hallmarks of aging <span id="id3">[<a class="reference internal" href="../stat/differential_analysis.html#id42" title="Carlos López-Otín, Maria A Blasco, Linda Partridge, Manuel Serrano, and Guido Kroemer. The hallmarks of aging. Cell, 153(6):1194–1217, 2013.">López-Otín <em>et al.</em>, 2013</a>]</span> and Pillars of aging <span id="id4">[<a class="reference internal" href="../stat/differential_analysis.html#id43" title="Brian K Kennedy, Shelley L Berger, Anne Brunet, Judith Campisi, Ana Maria Cuervo, Elissa S Epel, Claudio Franceschi, Gordon J Lithgow, Richard I Morimoto, Jeffrey E Pessin, and others. Geroscience: linking aging to chronic disease. Cell, 159(4):709–713, 2014.">Kennedy <em>et al.</em>, 2014</a>]</span> papers trying to highlight a set of key entities related to aging and connecting them into network of interacting elements.</p>
+<p><img src="<picture 1 from Cohen paper>" 
+     alt="complex" 
+     width="300"/></p>
+<p align = "center">
+Fig.2 - Shift to complex systems approaches in ecology and aging biology.
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><strong>Top-Down approach</strong> – methodology of connecting large scale observations with smaller scale ones by differentiation of large object to smaller entities.</p></li>
+<li><p><strong>Bottom-Up approach</strong> – methodology of connecting smaller scale observations with larger scale ones by combination of small objects into larger entities.</p></li>
+</ul>
+</div>
+<p>Examples of complex systems include ecosystems, economies, traffic systems, power systems, etc. It is kind of magic that all of them, nevertheless, have common properties or hallmarks. Core hallmarks of complex systems include:</p>
+<ol class="simple">
+<li><p>networks of interacting elements (for example, interactions among molecules in key aging pathways such as AMP-activated protein kinase (AMPK), mechanistic target of rapamycin (mTOR), sirtuins, insulin-like growth factor);</p></li>
+<li><p>feedback/feedforward loops (for example, adaptive loops such as blood pressure regulation);</p></li>
+<li><p>multiscale or modular hierarchical structure (for example, organelles, nested in cells nested within tissues nested within organs);</p></li>
+<li><p>emergent properties, which are properties of a system that cannot be directly or additively inferred by examining its component parts (for example, cognitive decline cannot be understood simply as the sum of multiple aging cells;).</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cohen et al. <span id="id5">[<a class="reference internal" href="../stat/differential_analysis.html#id41" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> also mention <em>nonlinear dynamics</em> as a hallmark of complex systems. But we do not see enough arguments to include this point as a hallmark. In our view, complex systems can also have linear dynamics describing with set of linear ordinary differential equations for instance.</p>
+</div>
+<p>Before we proceed, let’s introduce one important rule which helps you to differentiate “bad” complex systems propositions from “good” ones. Any abstract philosophical concepts you will discover about complex systems (such as complexity or resilience) in future <strong>must</strong> be reinforced with concrete embodiment expressing in mathematical or biological terms.</p>
+</section>
+<section id="aging-as-loss-of-complexity">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">7.2. </span>Aging as loss of Complexity</a><a class="headerlink" href="#aging-as-loss-of-complexity" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Lipsitz paper examples</p></li>
+<li><p>measurement and mechanisms (one mechanism from Lipsitz paper): top-down &amp; bottom-up approaches examples.</p></li>
+<li><p>example with ECG signal - increase in recovery rate, autocorrelation and variance</p></li>
+<li><p>Counter example, increasing complexity in DNA, epigenetics with aging (Sinclair’s view) (see also picture in the phone about information loss propagation)</p></li>
+</ul>
+</section>
+<section id="networks-and-biological-degeneracy">
+<h2><a class="toc-backref" href="#id9"><span class="section-number">7.3. </span>Networks and Biological degeneracy</a><a class="headerlink" href="#networks-and-biological-degeneracy" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Auto-encoder metaphor</p></li>
+</ul>
+<ul class="simple">
+<li><p>networks have evolved specific structures that allow the system to synthesize large numbers of inputs, make an informed decision and then subsequently regulate large numbers of outputs, while still maintaining evolvability42,45. One such information structure is a ‘bowtie’95,96, with fewer comp</p></li>
+<li><p>Having few intermediate pathways is known as ‘degeneracy,’ in the sense that each pathway serves multiple functions.</p></li>
+<li><p>The same pathways that are implicated in inflammation are also implicated in regulating oxidative stress, cancer, reproduction and metabolism. This is a natural consequence of the network’s degeneracy and its integration of information to optimize dynamic equilibrium.</p></li>
+<li><p>In this context, traditional notions of causality break down103: when causality is sufficiently circular or contingent, it no longer makes sense to claim that A causes B. For example, depending on their cellular context, calpains may either activate caspase 3, leading to apoptosis, or degrade caspase 3, preventing apoptosis104.</p></li>
+<li><p>a traditional perspective suggests that single-molecule interventions will be found that substantially slow aging, and indeed many researchers are pursuing such approaches.</p></li>
+<li><p>On the cellular scale, the mathematized MARS (mitochondria, aberrant proteins, radicals and scavengers) model describes the breakdown of cellular homeostasis in a networked approach 12</p></li>
+</ul>
+<ol class="simple">
+<li><p>Kowald, A. &amp; Kirkwood, T. B. L. A network theory of ageing: the interactions of defective mitochondria, aberrant proteins, free radicals and scavengers in the ageing process</p></li>
+</ol>
+<p>Nijhout, H. F., Sadre-Marandi, F., Best, J. &amp; Reed, M. C. Systems biology of phenotypic robustness and plasticity. Integr. Comp. Biol. 57, 171–184 (2017).</p>
+<ul class="simple">
+<li><p>Top-down computational models with discrete health states interacting with simple explicit networks116–118 have demonstrated how population-level measures such as survival curves can be generated from conceptually simple models of damage propagation within a complex system.</p></li>
+</ul>
+<p>Recent advances in machine learning have allowed general dynamics of continuous longitudinal data to be modeled by deep neural networks for more than 29 covariants121.
+121. Farrell, S., Mitnitski, A., Rockwood, K. &amp; Rutenberg, A. D. Interpretable machine learning for high-dimensional trajectories of aging health. PLoS Comput Biol. 18, e1009746 (2022).</p>
+</section>
+<section id="emergence-and-canalization">
+<h2><a class="toc-backref" href="#id10"><span class="section-number">7.4. </span>Emergence and Canalization</a><a class="headerlink" href="#emergence-and-canalization" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Biological age as an emerging feature</p></li>
+<li><p>frailty, falls and delirium - emergent states
+(gene expression example) <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.94.128701">https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.94.128701</a></p></li>
+<li><p>One common way that emergence arises is through canalization (Box 1), the tendency of the system to converge toward one of a limited number of discrete states</p></li>
+<li><p>Canalization and emergence often arise because biological networks can achieve robustness through redundancy, and so become buffered against perturbations—they are able to maintain a dynamic functional stability even when environmental or internal conditions change. This buffering often means that the same functional result can be achieved by multiple alternative pathways, strategies or system states. for example, during skeletal muscle aging, impaired chaperonemediated autophagy appears to be compensated by upregulation of macro-autophagy.</p></li>
+<li><p>For example, cellular senescence is a relatively discrete state, an alternative to being a healthy cell or to apoptosis. Senescence is thus an attractor state, with many intermediate states within its ‘attractor basin.’</p></li>
+<li><p>Furthermore, mechanisms can emerge at higher scales (for example, tooth wear64) or can have effects from higher scales to lower scales (for example, impacts of psychological stress on telomere length65)</p></li>
+</ul>
+</section>
+<section id="resilience-and-critical-transitions">
+<h2><a class="toc-backref" href="#id11"><span class="section-number">7.5. </span>Resilience and Critical transitions</a><a class="headerlink" href="#resilience-and-critical-transitions" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.nature.com/articles/nature08227">https://www.nature.com/articles/nature08227</a> - temporal autocorrelations, variance and other signs of loss of resilience</p></li>
+<li><p>Ives, A. R. Measuring resilience in stochastic systems. Ecol. Monogr. 65, 217–233 (1995).</p></li>
+<li><p>Klein, B. et al. A computational exploration of resilience and evolvability of protein–protein interaction networks. Commun. Biol. 4, 1–11 (2021).</p></li>
+</ul>
+<p>*The variance and temporal autocorrelation of time series are expected to increase as resilience decreases.</p>
+<ul class="simple">
+<li><p>If physiological systems are networks of interacting elements, then we can apply stochastic resilience theory to interpret dynamics of a whole suite of biological markers with aging. A key feature providing resilience to interacting networks is self-regulation within modules, while interactions among them might decrease resilience (but see ref. 79).</p></li>
+<li><p>One could therefore ask how these two fundamental quantities change during aging. In particular, the variance of individual markers and the temporal covariances among them are expected to increase with age.</p></li>
+</ul>
+<p><strong>resilience in aging</strong>
+80. Ukraintseva, S. et al. Decline in biological resilience as key manifestation of aging: potential mechanisms and role in health and longevity. Mech. Ageing Dev. 194, 111418 (2021).
+81. Schosserer, M. et al. Modelling physical resilience in ageing mice. Mech. Ageing Dev. 177, 91–102 (2019).
+82. Hadley, E. C., Kuchel, G. A. &amp; Newman, A. B. Workshop Speakers and Participants. Report: NIA workshop on measures of physiologic resiliencies in human aging. J. Gerontol. A Biol. Sci. Med. Sci. 72, 980–990 (2017).
+83. Gijzel, S. M. W. et al. Dynamical resilience indicators in time series of self-rated health correspond to frailty levels in older adults. J. Gerontol. A Biol. Sci. Med. Sci. 72, 991–996 (2017).
+84. Liu, M. et al. Prediction of mortality in hemodialysis patients using moving multivariate distance. Front. Physiol. 12, 612494 (2021).
+85. Varadhan, R., Seplaki, C. L., Xue, Q. L., Bandeen-Roche, K. &amp; Fried, L. P. Stimulus-response paradigm for characterizing the loss of resilience in homeostatic regulation associated with frailty. Mech. Ageing Dev. 129,
+86. Kalyani, R. R., Varadhan, R., Weiss, C. O., Fried, L. P. &amp; Cappola, A. R. Frailty status and altered glucose-insulin dynamics. J. Gerontol. A Biol. Sci. Med. Sci. 67, 1300–1306 (2012).</p>
+</section>
+<section id="extra-my-thoughts">
+<h2><a class="toc-backref" href="#id12"><span class="section-number">7.6. </span>Extra (my thoughts)</a><a class="headerlink" href="#extra-my-thoughts" title="Permalink to this headline">#</a></h2>
+<p>Should we define those components of the system which are sources (all links are outgoing) - it might be that such nodes contribute more to aging</p>
+<p>Aging is a loss of information transition ability</p>
+<p><em>Text written by Dmitrii Kriukov</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./dyn"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../ml/methylation_clocks.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Content with notebooks</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="system_resilience.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>System resilience</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
