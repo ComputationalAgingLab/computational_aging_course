@@ -4,33 +4,47 @@
 
 Aging biology today is not an engineering but science at its early step. This expresses in that we frequently cannot observe a direct causal and numerically tractable relationships (as in physics) but we are doomed to see mostly *associations* and *patterns*. However, it may also be a good starting point for dynamical modeling. Large volumes of data and absense of organizing paradigm are major challenges of the modern aging biology. Complex systems approaches provide some computational instruments and necessary vocabulary for simplification, understanding and identification the essential features from data. This chapter partly relies on recent work of {cite}`cohen2022complex` where corresponding philosophical framework as well as important computational examples were proposed.
 
-Throughout this chapter, you may come across many new words: system, complexity, networks, emergence, resilience and critical transitions. They form an important minimal vocabulary neccessary for developing complex systems intuition which (we believe) can be greatly useful for any researcher. We organize them in subsections and uncover one by one.
+Throughout this chapter, you may come across many new words: **system**, **complexity**, **networks**, **emergence**, **resilience** and **critical transitions**. They form an important minimal vocabulary neccessary for developing complex systems intuition which (we believe) can be greatly useful for any researcher. We organize them in subsections and uncover one by one.
+
+```{contents}
+```
 
 ## Complex systems perspective on aging
 
-Before the consideration of complex systems we should understand what we had before. 
-
-- Top-Down and Bottom-Up approaches: example with observation that patient state change is associated with changing in some protein and experiment where you change this protein amount and observe the change in patient state
+Before the consideration of complex systems we should understand what we had before. Typical two common approaches in sciences are **Top-Down** and **Bottom-Up**. Let's the object of study is a human organism, then Top-Down approach asks a question which large scale observations is associated with small scale. For example, a patient's state change is associated with changing of a level of some protein. And vice versa, Bottom-Up approach asks whether large scale patient's state changes after perturbation of some protein level? Moving Bottom-Up generates something we call metabolic pathways, gene ontologies, etc. - i.e. combining small scale entities into new higher scale entities. In turn, moving Top-Down we can differentiate new entities such as organs, tissues, cells, organelles, nuclei at smaller scale (Fig. 1). You might have noticed that the science greatly advanced applying only these two approaches. However, encounter with living systems forces us to develop a new methodology. The problem of that two approaches is that they do not take into account interactions between feedback/feedforward loops at too different scales trying to provide mechanistic explanation of processes in level-by-level manner. They provide theories like **A causes B** and **B causes C** whilst in real complex systems we observe behaviors like **A causes B**, **B causes A**,  **B causes C** and **C causes A and B**. Do you agree that this no more presumes a one-dimensional schematic explanation of the mechanism of action? Such an abundance of causal relationships forces us to use the concept of **networks** for building a more correct body of knowledge.
 
 <img src="<picture Box 1 from Cohen paper>" 
-     alt="parallel" 
-     width="180"/>
+     alt="topdown" 
+     width="200"/>
+<p align = "center">
+Fig.1 - Example of Top-Down and Bottom-Up organization of knowledge.
+</p>
 
-- switch to complexity
+Cohen and colleagues {cite}`cohen2022complex` provide a great example of such a *switch to complexity* happened in ecological sciences recently (Fig. 2). You can see that a previously popular *food chains* theory was changed by a system approach where interactions between species form a complex network where it is not obvious how the system will respond to removing a particular species. Currently we observe a similar transformation in aging domain. Two great examples (and already classical) of such a transformation are Hallmarks of aging {cite}`lopez2013hallmarks` and Pillars of aging {cite}`kennedy2014geroscience` papers trying to highlight a set of key entities related to aging and connecting them into network of interacting elements. 
 
 <img src="<picture 1 from Cohen paper>" 
-     alt="parallel" 
-     width="180"/>
+     alt="complex" 
+     width="300"/>
+<p align = "center">
+Fig.2 - Shift to complex systems approaches in ecology and aging biology.
+</p>
 
--One, already became Classical, alternative to Top-Down/Bottom-Up paradigm are hallmarks or pillars of aging
+:::{note}
+- **Top-Down approach** -- methodology of connecting large scale observations with smaller scale ones by differentiation of large object to smaller entities.
+- **Bottom-Up approach** -- methodology of connecting smaller scale observations with larger scale ones by combination of small objects into larger entities.
+:::
 
-* Complex systems can be as diverse as ecosystems, economies, traffic systems and even the internet32–34, but are often surprisingly similar in their characteristics and behavior. Core hallmarks of complex systems include: 
-1. networks of interacting elements (for example, interactions among molecules in key aging pathways such as hypoxia-inducible factor (HIF)-1, AMP-activated protein kinase (AMPK), mechanistic target of rapamycin (mTOR), sirtuins, insulin-like growth factor (IGF)-1R and forkhead box O (FOXO)35 (Fig. 2c,e,h); 
-2. feedback/feedforward loops (for example, adaptive loops such as blood pressure regulation36 and maladaptive or runaway loops such as cellular senescence increasing the senescence associated secretory phenotype (SASP), which increases cellular senescence through paracrine signaling37,38; Fig. 2d); 
-3. a multiscale or modular hierarchical structure (for example, organelles, nested in cells nested within tissues nested within organs, together with how damage propagates up, down or across such structures during aging39,40);  
-4. emergent properties, which are properties of a system that cannot be directly or additively inferred by examining its component parts (for example, cognitive decline or loss of mobility cannot be understood simply as the sum of multiple aging cells; Fig. 2a,b,d,f).
+Examples of complex systems include ecosystems, economies, traffic systems, power systems, etc. It is kind of magic that all of them, nevertheless, have common properties or hallmarks. Core hallmarks of complex systems include: 
+1. networks of interacting elements (for example, interactions among molecules in key aging pathways such as AMP-activated protein kinase (AMPK), mechanistic target of rapamycin (mTOR), sirtuins, insulin-like growth factor); 
+2. feedback/feedforward loops (for example, adaptive loops such as blood pressure regulation); 
+3. multiscale or modular hierarchical structure (for example, organelles, nested in cells nested within tissues nested within organs); 
+4. emergent properties, which are properties of a system that cannot be directly or additively inferred by examining its component parts (for example, cognitive decline cannot be understood simply as the sum of multiple aging cells;).
 
-- говоря об абстрактных свойствах систем, мы должны обязательно иметь ввиду конкретные воплощения этих свойств, иначе плохо
+:::{note}
+Cohen et al. {cite}`cohen2022complex` also mention *nonlinear dynamics* as a hallmark of complex systems. But we do not see enough arguments to include this point as a hallmark. In our view, complex systems can also have linear dynamics describing with set of linear ordinary differential equations for instance.
+:::
+
+Before we proceed, let's introduce one important rule which helps you to differentiate "bad" complex systems propositions from "good" ones. Any abstract philosophical concepts you will discover about complex systems (such as complexity or resilience) in future **must** be reinforced with concrete embodiment expressing in mathematical or biological terms.
 
 
 ## Aging as loss of Complexity
@@ -39,9 +53,9 @@ Before the consideration of complex systems we should understand what we had bef
 
 - measurement and mechanisms (one mechanism from Lipsitz paper): top-down & bottom-up approaches examples. 
 
-- Counter example, increasing complexity in DNA, epigenetics with aging (Sinclair’s view) (see also picture in the phone about information loss propagation)
-
 - example with ECG signal - increase in recovery rate, autocorrelation and variance
+
+- Counter example, increasing complexity in DNA, epigenetics with aging (Sinclair’s view) (see also picture in the phone about information loss propagation)
 
 ## Networks and Biological degeneracy
 
