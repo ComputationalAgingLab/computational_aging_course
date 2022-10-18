@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8. System resilience" href="system_resilience.html" />
@@ -459,27 +461,27 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="complex-systems-approach">
-<h1><a class="toc-backref" href="#id6"><span class="section-number">7. </span>Complex systems approach</a><a class="headerlink" href="#complex-systems-approach" title="Permalink to this headline">#</a></h1>
+<h1><a class="toc-backref" href="#id11"><span class="section-number">7. </span>Complex systems approach</a><a class="headerlink" href="#complex-systems-approach" title="Permalink to this headline">#</a></h1>
 <p><em>Nothing in aging biology makes sense except in the light of dynamic equilibrium.</em></p>
 <p>Aging biology today is not an engineering but science at its early step. This expresses in that we frequently cannot observe a direct causal and numerically tractable relationships (as in physics) but we are doomed to see mostly <em>associations</em> and <em>patterns</em>. However, it may also be a good starting point for dynamical modeling. Large volumes of data and absense of organizing paradigm are major challenges of the modern aging biology. Complex systems approaches provide some computational instruments and necessary vocabulary for simplification, understanding and identification the essential features from data. This chapter partly relies on recent work of <span id="id1">[<a class="reference internal" href="../stat/differential_analysis.html#id41" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> where corresponding philosophical framework as well as important computational examples were proposed.</p>
 <p>Throughout this chapter, you may come across many new words: <strong>system</strong>, <strong>complexity</strong>, <strong>networks</strong>, <strong>emergence</strong>, <strong>resilience</strong> and <strong>critical transitions</strong>. They form an important minimal vocabulary neccessary for developing complex systems intuition which (we believe) can be greatly useful for any researcher. We organize them in subsections and uncover one by one.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#complex-systems-approach" id="id6">Complex systems approach</a></p>
+<li><p><a class="reference internal" href="#complex-systems-approach" id="id11">Complex systems approach</a></p>
 <ul>
-<li><p><a class="reference internal" href="#complex-systems-perspective-on-aging" id="id7">Complex systems perspective on aging</a></p></li>
-<li><p><a class="reference internal" href="#aging-as-loss-of-complexity" id="id8">Aging as loss of Complexity</a></p></li>
-<li><p><a class="reference internal" href="#networks-and-biological-degeneracy" id="id9">Networks and Biological degeneracy</a></p></li>
-<li><p><a class="reference internal" href="#emergence-and-canalization" id="id10">Emergence and Canalization</a></p></li>
-<li><p><a class="reference internal" href="#resilience-and-critical-transitions" id="id11">Resilience and Critical transitions</a></p></li>
-<li><p><a class="reference internal" href="#extra-my-thoughts" id="id12">Extra (my thoughts)</a></p></li>
+<li><p><a class="reference internal" href="#complex-systems-perspective-on-aging" id="id12">Complex systems perspective on aging</a></p></li>
+<li><p><a class="reference internal" href="#aging-as-loss-of-complexity" id="id13">Aging as loss of Complexity</a></p></li>
+<li><p><a class="reference internal" href="#networks-and-biological-degeneracy" id="id14">Networks and Biological degeneracy</a></p></li>
+<li><p><a class="reference internal" href="#emergence-and-canalization" id="id15">Emergence and Canalization</a></p></li>
+<li><p><a class="reference internal" href="#resilience-and-critical-transitions" id="id16">Resilience and Critical transitions</a></p></li>
+<li><p><a class="reference internal" href="#extra-my-thoughts" id="id17">Extra (my thoughts)</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <section id="complex-systems-perspective-on-aging">
-<h2><a class="toc-backref" href="#id7"><span class="section-number">7.1. </span>Complex systems perspective on aging</a><a class="headerlink" href="#complex-systems-perspective-on-aging" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id12"><span class="section-number">7.1. </span>Complex systems perspective on aging</a><a class="headerlink" href="#complex-systems-perspective-on-aging" title="Permalink to this headline">#</a></h2>
 <p>Before the consideration of complex systems we should understand what we had before. Typical two common approaches in sciences are <strong>Top-Down</strong> and <strong>Bottom-Up</strong>. Let’s the object of study is a human organism, then Top-Down approach asks a question which large scale observations is associated with small scale. For example, a patient’s state change is associated with changing of a level of some protein. And vice versa, Bottom-Up approach asks whether large scale patient’s state changes after perturbation of some protein level? Moving Bottom-Up generates something we call metabolic pathways, gene ontologies, etc. - i.e. combining small scale entities into new higher scale entities. In turn, moving Top-Down we can differentiate new entities such as organs, tissues, cells, organelles, nuclei at smaller scale (Fig. 1). You might have noticed that the science greatly advanced applying only these two approaches. However, encounter with living systems forces us to develop a new methodology. The problem of that two approaches is that they do not take into account interactions between feedback/feedforward loops at too different scales trying to provide mechanistic explanation of processes in level-by-level manner. They provide theories like <strong>A causes B</strong> and <strong>B causes C</strong> whilst in real complex systems we observe behaviors like <strong>A causes B</strong>, <strong>B causes A</strong>,  <strong>B causes C</strong> and <strong>C causes A and B</strong>. Do you agree that this no more presumes a one-dimensional schematic explanation of the mechanism of action? Such an abundance of causal relationships forces us to use the concept of <strong>networks</strong> for building a more correct body of knowledge.</p>
 <p><img src="<picture Box 1 from Cohen paper>" 
      alt="topdown" 
@@ -515,16 +517,39 @@ Fig.2 - Shift to complex systems approaches in ecology and aging biology.
 <p>Before we proceed, let’s introduce one important rule which helps you to differentiate “bad” complex systems propositions from “good” ones. Any abstract philosophical concepts you will discover about complex systems (such as complexity or resilience) in future <strong>must</strong> be reinforced with concrete embodiment expressing in mathematical or biological terms.</p>
 </section>
 <section id="aging-as-loss-of-complexity">
-<h2><a class="toc-backref" href="#id8"><span class="section-number">7.2. </span>Aging as loss of Complexity</a><a class="headerlink" href="#aging-as-loss-of-complexity" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id13"><span class="section-number">7.2. </span>Aging as loss of Complexity</a><a class="headerlink" href="#aging-as-loss-of-complexity" title="Permalink to this headline">#</a></h2>
+<p>What can be one of the most common characteristics of aging? Can we express the plephora of our observations of aging organism by one cumulative term? It turns out, we can consider topological characteristics of complex living systems comparing them at different time moments (at young and old ages). The <strong>complexity</strong> was proposed as such characteristic in <span id="id6">[<a class="reference internal" href="../stat/differential_analysis.html#id44" title="Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. Jama, 267(13):1806–1809, 1992.">Lipsitz and Goldberger, 1992</a>]</span> where authors suggested that aging is associated with “loss of complexity”. It is tough to define “complexity” explicitly and the authors do not give such a definition. Instead they measure complexity with some mathematical instruments relying on an intuitve understanding of this concept. One example is depicted at figure 3, where you can see a comparison between young (left) and old (right) neurons. If we would measure a <a class="reference external" href="https://en.wikipedia.org/wiki/Fractal_dimension">fractal dimensions</a> of left and right structures we would detect deacreasing in this measure. Intuitively it’s correct: the left structure looks more complex than the right counterpart, at least, because of the left arbor has more branches.</p>
+<p><img src="<picture 3 from Lipsitz paper>" 
+     alt="dendridic" 
+     width="200"/></p>
+<p align = "center">
+Fig.3 - Age-related loss of fractal structure in the dendritic arbor of the giant pyramidal Betz cell of the motor cortex.
+</p>
+<p>But may be another example from the same paper will be more intelligible. Look at the figure 4, where you can see heart rate dynamics of young (top) and old (bottom) individuals. We see that top and bottom signal are statistically different. From spectral theory point of view we could say that top signal has more higher frequencies in its spectrum. This means that heart rate signal tends to lose high frequency components as we age. Another way to express this behavior of signal is to measure its entropy. Since the entropy by definition is a <em>measure of the amount of information needed to predict the future state of the system</em>, the higher entropy signal has, the higher its complexity. The fact is that top signal has higher entropy than lower one, so, within the aforementioned terms, we again observe a loss of complexity with aging. The observation of complexity decreasing can inspire us to make a next step for studying the phenomenon. For example, in <span id="id7">[<a class="reference internal" href="../stat/differential_analysis.html#id44" title="Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. Jama, 267(13):1806–1809, 1992.">Lipsitz and Goldberger, 1992</a>]</span> mentioned that the age-related decline in heart rate variability is likely due to dropout of sinus node cells, altered <span class="math notranslate nohighlight">\(\beta\)</span>-adrenoceptor responsiveness, and reduction in parasympathetic tone.</p>
+<p><img src="<picture 1 from Lipsitz paper>" 
+     alt="dendridic" 
+     width="200"/></p>
+<p align = "center">
+Fig.4 - Heart rate time series for a 22-year-old female subject (top panel) and a 73-year-old male subject (bottom panel).
+</p>
+<p>It turns out, that the idea to use entropy as a measure of complexity creates a contradiction.  One of the hallmark of aging, genomic instability, was shown to increase entropy with aging. Somatic mutations and spontaneous double strand breaks (DSB) contributes to general “loss of genomic information” (and, therefore, entropy increase) what is associated with aging. Moreover, in the experiment with mice genectically modified for induction DSB show patterns of accelerated aging <span id="id8">[<a class="reference internal" href="../stat/differential_analysis.html#id45" title="Motoshi Hayano, Jae-Hyun Yang, Michael S Bonkowski, Joao A Amorim, Jaime M Ross, Giuseppe Coppotelli, Patrick T Griffin, Yap Ching Chew, Wei Guo, Xiaojing Yang, and others. Dna break-induced epigenetic drift as a cause of mammalian aging. BioRxiv, pages 808659, 2019.">Hayano <em>et al.</em>, 2019</a>]</span>, <span id="id9">[<a class="reference internal" href="../stat/differential_analysis.html#id46" title="Jae-Hyun Yang, Patrick T Griffin, Daniel L Vera, John K Apostolides, Motoshi Hayano, Margarita V Meer, Elias L Salfati, Qiao Su, Elizabeth M Munding, Marco Blanchette, and others. Erosion of the epigenetic landscape and loss of cellular identity as a cause of aging in mammals. BioRxiv, pages 808642, 2019.">Yang <em>et al.</em>, 2019</a>]</span>. Does it mean that aging is not coupled with a loss of complexity? Yes and No, it is rather coupled with poor mathematical counterpart of complexity concept, namely entropy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>But we can also imagine an another explanation. The loss of information - increase in complexity - on the level of genome leads to degradation in information transition to higher levels of system organization which manifests as loss of complexity. We could even speculate that aging is a loss of the ability to information transition - but we are not ready to provide enough arguments for this view.</p>
+</div>
+<p>In total, complexity looks like a useful term to make things simpler. Its intuitive accessibility hints us mathematical frameworks for its measurement and highlights biological phenomena for its interpretation. Thinking about system complexity helps us to extract the most general properties of the object of study.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some additional definitions of <a class="reference external" href="https://en.wikipedia.org/wiki/Complexity">complexity</a>:</p>
 <ul class="simple">
-<li><p>Lipsitz paper examples</p></li>
-<li><p>measurement and mechanisms (one mechanism from Lipsitz paper): top-down &amp; bottom-up approaches examples.</p></li>
-<li><p>example with ECG signal - increase in recovery rate, autocorrelation and variance</p></li>
-<li><p>Counter example, increasing complexity in DNA, epigenetics with aging (Sinclair’s view) (see also picture in the phone about information loss propagation)</p></li>
+<li><p>In general, number of systems and links between them describing a model.</p></li>
+<li><p>In dynamical systems, statistical complexity measures the size of the minimum program able to statistically reproduce the patterns (configurations) contained in the data set (sequence) <span id="id10">[<a class="reference internal" href="../stat/differential_analysis.html#id47" title="James P Crutchfield and Karl Young. Inferring statistical complexity. Physical review letters, 63(2):105, 1989.">Crutchfield and Young, 1989</a>]</span>.</p></li>
+<li><p>In information processing, complexity is a measure of the total number of properties transmitted by an object and detected by an observer.</p></li>
 </ul>
+</div>
 </section>
 <section id="networks-and-biological-degeneracy">
-<h2><a class="toc-backref" href="#id9"><span class="section-number">7.3. </span>Networks and Biological degeneracy</a><a class="headerlink" href="#networks-and-biological-degeneracy" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id14"><span class="section-number">7.3. </span>Networks and Biological degeneracy</a><a class="headerlink" href="#networks-and-biological-degeneracy" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Auto-encoder metaphor</p></li>
 </ul>
@@ -547,7 +572,10 @@ Fig.2 - Shift to complex systems approaches in ecology and aging biology.
 121. Farrell, S., Mitnitski, A., Rockwood, K. &amp; Rutenberg, A. D. Interpretable machine learning for high-dimensional trajectories of aging health. PLoS Comput Biol. 18, e1009746 (2022).</p>
 </section>
 <section id="emergence-and-canalization">
-<h2><a class="toc-backref" href="#id10"><span class="section-number">7.4. </span>Emergence and Canalization</a><a class="headerlink" href="#emergence-and-canalization" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id15"><span class="section-number">7.4. </span>Emergence and Canalization</a><a class="headerlink" href="#emergence-and-canalization" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>complexity связано с emergence</p></li>
+</ul>
 <ul class="simple">
 <li><p>Biological age as an emerging feature</p></li>
 <li><p>frailty, falls and delirium - emergent states
@@ -559,7 +587,7 @@ Fig.2 - Shift to complex systems approaches in ecology and aging biology.
 </ul>
 </section>
 <section id="resilience-and-critical-transitions">
-<h2><a class="toc-backref" href="#id11"><span class="section-number">7.5. </span>Resilience and Critical transitions</a><a class="headerlink" href="#resilience-and-critical-transitions" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id16"><span class="section-number">7.5. </span>Resilience and Critical transitions</a><a class="headerlink" href="#resilience-and-critical-transitions" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nature.com/articles/nature08227">https://www.nature.com/articles/nature08227</a> - temporal autocorrelations, variance and other signs of loss of resilience</p></li>
 <li><p>Ives, A. R. Measuring resilience in stochastic systems. Ecol. Monogr. 65, 217–233 (1995).</p></li>
@@ -580,7 +608,7 @@ Fig.2 - Shift to complex systems approaches in ecology and aging biology.
 86. Kalyani, R. R., Varadhan, R., Weiss, C. O., Fried, L. P. &amp; Cappola, A. R. Frailty status and altered glucose-insulin dynamics. J. Gerontol. A Biol. Sci. Med. Sci. 67, 1300–1306 (2012).</p>
 </section>
 <section id="extra-my-thoughts">
-<h2><a class="toc-backref" href="#id12"><span class="section-number">7.6. </span>Extra (my thoughts)</a><a class="headerlink" href="#extra-my-thoughts" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id17"><span class="section-number">7.6. </span>Extra (my thoughts)</a><a class="headerlink" href="#extra-my-thoughts" title="Permalink to this headline">#</a></h2>
 <p>Should we define those components of the system which are sources (all links are outgoing) - it might be that such nodes contribute more to aging</p>
 <p>Aging is a loss of information transition ability</p>
 <p><em>Text written by Dmitrii Kriukov</em></p>
