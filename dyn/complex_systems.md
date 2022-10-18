@@ -49,13 +49,38 @@ Before we proceed, let's introduce one important rule which helps you to differe
 
 ## Aging as loss of Complexity
 
-- Lipsitz paper examples
+What can be one of the most common characteristics of aging? Can we express the plephora of our observations of aging organism by one cumulative term? It turns out, we can consider topological characteristics of complex living systems comparing them at different time moments (at young and old ages). The **complexity** was proposed as such characteristic in {cite}`lipsitz1992loss` where authors suggested that aging is associated with "loss of complexity". It is tough to define "complexity" explicitly and the authors do not give such a definition. Instead they measure complexity with some mathematical instruments relying on an intuitve understanding of this concept. One example is depicted at figure 3, where you can see a comparison between young (left) and old (right) neurons. If we would measure a [fractal dimensions](https://en.wikipedia.org/wiki/Fractal_dimension) of left and right structures we would detect deacreasing in this measure. Intuitively it's correct: the left structure looks more complex than the right counterpart, at least, because of the left arbor has more branches.
 
-- measurement and mechanisms (one mechanism from Lipsitz paper): top-down & bottom-up approaches examples. 
+<img src="<picture 3 from Lipsitz paper>" 
+     alt="dendridic" 
+     width="200"/>
+<p align = "center">
+Fig.3 - Age-related loss of fractal structure in the dendritic arbor of the giant pyramidal Betz cell of the motor cortex.
+</p>
 
-- example with ECG signal - increase in recovery rate, autocorrelation and variance
+But may be another example from the same paper will be more intelligible. Look at the figure 4, where you can see heart rate dynamics of young (top) and old (bottom) individuals. We see that top and bottom signal are statistically different. From spectral theory point of view we could say that top signal has more higher frequencies in its spectrum. This means that heart rate signal tends to lose high frequency components as we age. Another way to express this behavior of signal is to measure its entropy. Since the entropy by definition is a *measure of the amount of information needed to predict the future state of the system*, the higher entropy signal has, the higher its complexity. The fact is that top signal has higher entropy than lower one, so, within the aforementioned terms, we again observe a loss of complexity with aging. The observation of complexity decreasing can inspire us to make a next step for studying the phenomenon. For example, in {cite}`lipsitz1992loss` mentioned that the age-related decline in heart rate variability is likely due to dropout of sinus node cells, altered $\beta$-adrenoceptor responsiveness, and reduction in parasympathetic tone.
 
-- Counter example, increasing complexity in DNA, epigenetics with aging (Sinclair’s view) (see also picture in the phone about information loss propagation)
+<img src="<picture 1 from Lipsitz paper>" 
+     alt="dendridic" 
+     width="200"/>
+<p align = "center">
+Fig.4 - Heart rate time series for a 22-year-old female subject (top panel) and a 73-year-old male subject (bottom panel).
+</p>
+
+It turns out, that the idea to use entropy as a measure of complexity creates a contradiction.  One of the hallmark of aging, genomic instability, was shown to increase entropy with aging. Somatic mutations and spontaneous double strand breaks (DSB) contributes to general "loss of genomic information" (and, therefore, entropy increase) what is associated with aging. Moreover, in the experiment with mice genectically modified for induction DSB show patterns of accelerated aging {cite}`hayano2019dna`, {cite}`yang2019erosion`. Does it mean that aging is not coupled with a loss of complexity? Yes and No, it is rather coupled with poor mathematical counterpart of complexity concept, namely entropy. 
+
+:::{note}
+But we can also imagine an another explanation. The loss of information - increase in complexity - on the level of genome leads to degradation in information transition to higher levels of system organization which manifests as loss of complexity. We could even speculate that aging is a loss of the ability to information transition - but we are not ready to provide enough arguments for this view. 
+:::
+
+In total, complexity looks like a useful term to make things simpler. Its intuitive accessibility hints us mathematical frameworks for its measurement and highlights biological phenomena for its interpretation. Thinking about system complexity helps us to extract the most general properties of the object of study.
+
+:::{note}
+Some additional definitions of [complexity](https://en.wikipedia.org/wiki/Complexity):
+- In general, number of systems and links between them describing a model.
+- In dynamical systems, statistical complexity measures the size of the minimum program able to statistically reproduce the patterns (configurations) contained in the data set (sequence) {cite}`crutchfield1989inferring`.
+- In information processing, complexity is a measure of the total number of properties transmitted by an object and detected by an observer.
+:::
 
 ## Networks and Biological degeneracy
 
@@ -82,6 +107,8 @@ Recent advances in machine learning have allowed general dynamics of continuous 
 121. Farrell, S., Mitnitski, A., Rockwood, K. & Rutenberg, A. D. Interpretable machine learning for high-dimensional trajectories of aging health. PLoS Comput Biol. 18, e1009746 (2022).
 
 ## Emergence and Canalization
+
+- complexity связано с emergence
 
 * Biological age as an emerging feature
 * frailty, falls and delirium - emergent states
