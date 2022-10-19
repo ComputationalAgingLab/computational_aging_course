@@ -13,6 +13,10 @@ Throughout this chapter, you may come across many new words: **system**, **compl
 
 Before the consideration of complex systems we should understand what we had before. Typical two common approaches in sciences are **Top-Down** and **Bottom-Up**. Let's the object of study is a human organism, then Top-Down approach asks a question which large scale observations is associated with small scale. For example, a patient's state change is associated with changing of a level of some protein. And vice versa, Bottom-Up approach asks whether large scale patient's state changes after perturbation of some protein level? Moving Bottom-Up generates something we call metabolic pathways, gene ontologies, etc. - i.e. combining small scale entities into new higher scale entities. In turn, moving Top-Down we can differentiate new entities such as organs, tissues, cells, organelles, nuclei at smaller scale (Fig. 1). You might have noticed that the science greatly advanced applying only these two approaches. However, encounter with living systems forces us to develop a new methodology. The problem of that two approaches is that they do not take into account interactions between feedback/feedforward loops at too different scales trying to provide mechanistic explanation of processes in level-by-level manner. They provide theories like **A causes B** and **B causes C** whilst in real complex systems we observe behaviors like **A causes B**, **B causes A**,  **B causes C** and **C causes A and B**. Do you agree that this no more presumes a one-dimensional schematic explanation of the mechanism of action? Such an abundance of causal relationships forces us to use the concept of **networks** for building a more correct body of knowledge.
 
+:::{note}
+For example, depending on their cellular context, [calpains](https://en.wikipedia.org/wiki/Calpain) may either activate [caspase](https://en.wikipedia.org/wiki/Caspase) 3, leading to apoptosis, or degrade caspase 3, preventing apoptosis {cite}`lopatniuk2011conventional`.
+:::
+
 <img src="<picture Box 1 from Cohen paper>" 
      alt="topdown" 
      width="200"/>
@@ -20,7 +24,7 @@ Before the consideration of complex systems we should understand what we had bef
 Fig.1 - Example of Top-Down and Bottom-Up organization of knowledge.
 </p>
 
-Cohen and colleagues {cite}`cohen2022complex` provide a great example of such a *switch to complexity* happened in ecological sciences recently (Fig. 2). You can see that a previously popular *food chains* theory was changed by a system approach where interactions between species form a complex network where it is not obvious how the system will respond to removing a particular species. Currently we observe a similar transformation in aging domain. Two great examples (and already classical) of such a transformation are Hallmarks of aging {cite}`lopez2013hallmarks` and Pillars of aging {cite}`kennedy2014geroscience` papers trying to highlight a set of key entities related to aging and connecting them into network of interacting elements. 
+Cohen and colleagues {cite}`cohen2022complex` provide a great example of such a *switch to complexity* happened in ecological sciences recently (Fig. 2). You can see that a previously popular *food chains* theory was changed by a system approach where interactions between species form a complex network where it is not obvious how the system will respond to removing a particular species. Currently we observe a similar transformation in aging domain. Two great examples (and already classical) of such a transformation are Hallmarks of aging {cite}`lopez2013hallmarks` and Pillars of aging {cite}`kennedy2014geroscience` papers trying to highlight a set of key entities related to aging and connecting them into network of interacting elements. Thinking in a complex systems paradigm challenges a traditional perspective that single-molecule interventions will be found that substantially slow aging (indeed many researchers are pursuing such approaches). Instead, we should focus on combinatorial approach requiring, however, a robust model of the system under treatment.
 
 <img src="<picture 1 from Cohen paper>" 
      alt="complex" 
@@ -84,31 +88,26 @@ Some additional definitions of [complexity](https://en.wikipedia.org/wiki/Comple
 
 ## Networks and Biological degeneracy
 
-- Auto-encoder metaphor
+Biological systems can be viewed as complex networks of interacting components. This simple idea may seem quite naive until we start to consider structural properties of these networks. **Bow-tie** or hourglass structure is a common structural feature found in many biological systems. A bow-tie means that a large number of inputs are converted to a small number of intermediates, which then fan out to generate a large number of outputs (Fig. 5) {cite}`cohen2022complex` (looks like autoencoder isn't it?). The important principle lying behind bow-tie formation is called **degeneracy** {cite}`edelman2001degeneracy`. In biological sense this means an ability of structurally different biological elements (e.g. proteins or metabolites) to perform the same function. Two examples of bow-tie include metabolic networks, where the large range of nutrients consumed by the organism is decomposed into 12 universal precursors (including pyruvate, G6P, AKG, ACCOA) from which the organism builds all of its biomass including carbohydrates, nucleic acids and proteins; the human visual system having $\sim 10^8$ input photoreceptors in the retina which fans in to only about $\sim 10^6$ ganglion cells whose axons form the optic nerve going to visual cortex that detect pattern, color, depth and movement {cite}`friedlander2015evolution`. In the context of aging biology bow-tie structure expresses in ability of the same pathways to be simultaneously implicated in inflammation, regulating oxidative stress, cancer, reproduction and metabolism (Fig. 5). This is a natural consequence of the network’s degeneracy by integrating information from multiple inputs and inflating it to multiple outputs. There is a lot of evidences that degeneracy is an important property of evolving systems and may be even a *prerequisite* for evolution {cite}`edelman2001degeneracy`.
 
-* networks have evolved specific structures that allow the system to synthesize large numbers of inputs, make an informed decision and then subsequently regulate large numbers of outputs, while still maintaining evolvability42,45. One such information structure is a ‘bowtie’95,96, with fewer comp
+:::{note}
+**Bow-tie** - network structure assuming that a large number of inputs are converted to a small number of intermediates, which then fan out to generate a large number of outputs.
+**Degeneracy** - the ability of structurally different elements to perform the same function. Degeneracy should not be confused with redundancy, which occurs when the same function is performed by identical elements, degeneracy, which involves structurally different elements, may yield the same or different functions depending on the context in which it is expressed {cite}`edelman2001degeneracy`.
+:::
 
-* Having few intermediate pathways is known as ‘degeneracy,’ in the sense that each pathway serves multiple functions.
+<img src="<picture 4 from Cohen paper>" 
+     alt="dendridic" 
+     width="200"/>
+<p align = "center">
+Fig.5 - Bowtie structure of aging pathways.
+</p>
 
-* The same pathways that are implicated in inflammation are also implicated in regulating oxidative stress, cancer, reproduction and metabolism. This is a natural consequence of the network’s degeneracy and its integration of information to optimize dynamic equilibrium.
-
-* In this context, traditional notions of causality break down103: when causality is sufficiently circular or contingent, it no longer makes sense to claim that A causes B. For example, depending on their cellular context, calpains may either activate caspase 3, leading to apoptosis, or degrade caspase 3, preventing apoptosis104.
-
-* a traditional perspective suggests that single-molecule interventions will be found that substantially slow aging, and indeed many researchers are pursuing such approaches.
-
-* On the cellular scale, the mathematized MARS (mitochondria, aberrant proteins, radicals and scavengers) model describes the breakdown of cellular homeostasis in a networked approach 12
-12. Kowald, A. & Kirkwood, T. B. L. A network theory of ageing: the interactions of defective mitochondria, aberrant proteins, free radicals and scavengers in the ageing process
-
-Nijhout, H. F., Sadre-Marandi, F., Best, J. & Reed, M. C. Systems biology of phenotypic robustness and plasticity. Integr. Comp. Biol. 57, 171–184 (2017).
-
-* Top-down computational models with discrete health states interacting with simple explicit networks116–118 have demonstrated how population-level measures such as survival curves can be generated from conceptually simple models of damage propagation within a complex system.
-
-Recent advances in machine learning have allowed general dynamics of continuous longitudinal data to be modeled by deep neural networks for more than 29 covariants121.
-121. Farrell, S., Mitnitski, A., Rockwood, K. & Rutenberg, A. D. Interpretable machine learning for high-dimensional trajectories of aging health. PLoS Comput Biol. 18, e1009746 (2022).
+What technical outcomes we can obtain from bow-tie networks? So, the presense of low-dimensional intermediate layer hints us that application of dimensionality reduction techniques to biological data is a good decision. It is the fact that many biological entries (e.g. expression level of different genes) are highly correlated with each other {cite}`podolskiy2015critical` and a huge dimensionality of inputs can be satisfactorily described by a small number of latent parameters. Latent parameter is a mathematical term describing low-dimensional linear (or nonlinear) combination of inputs. This is a not a big deal to compute latent parameter according to some model. The more important thing is to give a correct biological interpretation for this parameter. Sometimes latent parameters do not have a clear interpretation but in other cases a particular latent parameter may catch a clear biological process such as expression of one of the metabolic precursors mentioned above.
 
 ## Emergence and Canalization
 
 - complexity связано с emergence
+- differentiation from pluripotent state
 
 * Biological age as an emerging feature
 * frailty, falls and delirium - emergent states
@@ -155,4 +154,17 @@ Aging is a loss of information transition ability
 
 
 
+The examples of networks modelling include: ...
+* On the cellular scale, the mathematized MARS (mitochondria, aberrant proteins, radicals and scavengers) model describes the breakdown of cellular homeostasis in a networked approach 12
+12. Kowald, A. & Kirkwood, T. B. L. A network theory of ageing: the interactions of defective mitochondria, aberrant proteins, free radicals and scavengers in the ageing process
+
+Nijhout, H. F., Sadre-Marandi, F., Best, J. & Reed, M. C. Systems biology of phenotypic robustness and plasticity. Integr. Comp. Biol. 57, 171–184 (2017).
+
+* Top-down computational models with discrete health states interacting with simple explicit networks116–118 have demonstrated how population-level measures such as survival curves can be generated from conceptually simple models of damage propagation within a complex system.
+
+Recent advances in machine learning have allowed general dynamics of continuous longitudinal data to be modeled by deep neural networks for more than 29 covariants121.
+121. Farrell, S., Mitnitski, A., Rockwood, K. & Rutenberg, A. D. Interpretable machine learning for high-dimensional trajectories of aging health. PLoS Comput Biol. 18, e1009746 (2022).
+
+
 *Text written by Dmitrii Kriukov*
+
