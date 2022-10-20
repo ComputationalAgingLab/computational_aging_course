@@ -106,24 +106,26 @@ What technical outcomes we can obtain from bow-tie networks? So, the presense of
 
 ## Emergence and Canalization
 
-- complexity связано с emergence
-- differentiation from pluripotent state
+The natural property of human counciousness (and, need to say, its bias) is a tendency to simplify things by extracting their common pattern. We call a propery of a system is **emergent** if we do not see this property of any system component. By discovering emergent properties of the system we cope with its **complexity**. Classical examples of emergent properties in physical systems are temperature of a gas and fluidity of a fluid - in both cases we do not see such properties in system components (molecules). Revealed emergent properties are especially useful when we can to measure them. Biological systems are abundant by emergences. Moreover, the concept of Life is a typical example of emergence. One common way that emergence arises in biological systems is through **canalization**, the tendency of the system to converge toward one of a limited number of discrete states {cite}`cohen2022complex`. Once again, if the system can take distinguishable states and these states seem not to be emanating from properties of its components then these states are emergent. Immediate example is acquiring somatic cell state (or cell fate) through differentiantion (Fig. 6) from pluripotent one {cite}`takahashi2016decade`. It is quite remarkable, in spite of the huge complexity of a human cell as a system it has a rather small number of discrete (distinguishable) somatic states that was shown experimentally {cite}`huang2005cell`.
 
-* Biological age as an emerging feature
-* frailty, falls and delirium - emergent states
-(gene expression example) https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.94.128701
+:::{note}
+**Emergence** - a property of a system, which is not a property of any component of that system.
+**Canalization** - the tendency of the system to converge toward one of a limited number of discrete states.
+:::
 
-* One common way that emergence arises is through canalization (Box 1), the tendency of the system to converge toward one of a limited number of discrete states
+<img src="<picture 1 from Yamanaka paper>" 
+     alt="dendridic" 
+     width="200"/>
+<p align = "center">
+Fig.6 - Waddington landscape - a metaphor of cell fate transition during differentiantion as a ball rolling down from the top of Waddington’s "mountain" (pluripotency) to the bottom of a "valley" (somatic state, e.g. skin, muscle). The opposite process is called reprogramming.
+</p>
 
-* Canalization and emergence often arise because biological networks can achieve robustness through redundancy, and so become buffered against perturbations—they are able to maintain a dynamic functional stability even when environmental or internal conditions change. This buffering often means that the same functional result can be achieved by multiple alternative pathways, strategies or system states. for example, during skeletal muscle aging, impaired chaperonemediated autophagy appears to be compensated by upregulation of macro-autophagy.
-
-* For example, cellular senescence is a relatively discrete state, an alternative to being a healthy cell or to apoptosis. Senescence is thus an attractor state, with many intermediate states within its ‘attractor basin.’
-
-* Furthermore, mechanisms can emerge at higher scales (for example, tooth wear64) or can have effects from higher scales to lower scales (for example, impacts of psychological stress on telomere length65)
-
+Canalization and emergence often arise because biological networks can achieve robustness through **degeneracy**, and so become stable against perturbations - they are able to maintain a dynamic functional stability even when environmental or internal conditions change. This degeneracy, as we said above, means that the same functional result can be achieved by multiple alternative pathways, strategies or system states. For example, during skeletal muscle aging, impaired chaperonemediated autophagy appears to be compensated by upregulation of macro-autophagy {cite}`cohen2022complex`. Other aging related example of canalization include cellular senescence which is a relatively discrete state, an alternative to being a healthy cell or to apoptosis. Senescence is thus an attractor state, with many intermediate states within its "attractor basin". On the level of organism we can discover another emergences like frailty - clinically recognizable state of increased vulnerability resulting from aging-associated decline in reserve and function across multiple physiologic systems such that the ability to cope with everyday or acute stressors is comprised {cite}`xue2011frailty`. Finally, aging is an another example of emergent organism property and as it was mentioned above, we highly favor attempts to measure this property.
 
 
 ## Resilience and Critical transitions
+
+- example with an organism after drug perturbation 
 
 - https://www.nature.com/articles/nature08227 - temporal autocorrelations, variance and other signs of loss of resilience
 - Ives, A. R. Measuring resilience in stochastic systems. Ecol. Monogr. 65, 217–233 (1995).
