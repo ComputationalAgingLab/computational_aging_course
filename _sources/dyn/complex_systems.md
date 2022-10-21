@@ -17,18 +17,18 @@ Before the consideration of complex systems we should understand what we had bef
 For example, depending on their cellular context, [calpains](https://en.wikipedia.org/wiki/Calpain) may either activate [caspase](https://en.wikipedia.org/wiki/Caspase) 3, leading to apoptosis, or degrade caspase 3, preventing apoptosis {cite}`lopatniuk2011conventional`.
 :::
 
-<img src="<picture Box 1 from Cohen paper>" 
+<img src="https://drive.google.com/uc?id=1wcBhbpv3O4LCmY0CaDlhbZi900nR35Bd"
      alt="topdown" 
-     width="200"/>
+     width="800"/>
 <p align = "center">
 Fig.1 - Example of Top-Down and Bottom-Up organization of knowledge.
 </p>
 
 Cohen and colleagues {cite}`cohen2022complex` provide a great example of such a *switch to complexity* happened in ecological sciences recently (Fig. 2). You can see that a previously popular *food chains* theory was changed by a system approach where interactions between species form a complex network where it is not obvious how the system will respond to removing a particular species. Currently we observe a similar transformation in aging domain. Two great examples (and already classical) of such a transformation are Hallmarks of aging {cite}`lopez2013hallmarks` and Pillars of aging {cite}`kennedy2014geroscience` papers trying to highlight a set of key entities related to aging and connecting them into network of interacting elements. Thinking in a complex systems paradigm challenges a traditional perspective that single-molecule interventions will be found that substantially slow aging (indeed many researchers are pursuing such approaches). Instead, we should focus on combinatorial approach requiring, however, a robust model of the system under treatment.
 
-<img src="<picture 1 from Cohen paper>" 
+<img src="https://drive.google.com/uc?id=1Qafk2FfUGgeMmMtlxXUW5fhZISKhsWWq" 
      alt="complex" 
-     width="300"/>
+     width="800"/>
 <p align = "center">
 Fig.2 - Shift to complex systems approaches in ecology and aging biology.
 </p>
@@ -55,18 +55,18 @@ Before we proceed, let's introduce one important rule which helps you to differe
 
 What can be one of the most common characteristics of aging? Can we express the plephora of our observations of aging organism by one cumulative term? It turns out, we can consider topological characteristics of complex living systems comparing them at different time moments (at young and old ages). The **complexity** was proposed as such characteristic in {cite}`lipsitz1992loss` where authors suggested that aging is associated with "loss of complexity". It is tough to define "complexity" explicitly and the authors do not give such a definition. Instead they measure complexity with some mathematical instruments relying on an intuitve understanding of this concept. One example is depicted at figure 3, where you can see a comparison between young (left) and old (right) neurons. If we would measure a [fractal dimensions](https://en.wikipedia.org/wiki/Fractal_dimension) of left and right structures we would detect deacreasing in this measure. Intuitively it's correct: the left structure looks more complex than the right counterpart, at least, because of the left arbor has more branches.
 
-<img src="<picture 3 from Lipsitz paper>" 
+<img src="https://drive.google.com/uc?id=1aHlyXyjOUeO6EHStLiDjKA-4hRqLv96N" 
      alt="dendridic" 
-     width="200"/>
+     width="600"/>
 <p align = "center">
 Fig.3 - Age-related loss of fractal structure in the dendritic arbor of the giant pyramidal Betz cell of the motor cortex.
 </p>
 
 But may be another example from the same paper will be more intelligible. Look at the figure 4, where you can see heart rate dynamics of young (top) and old (bottom) individuals. We see that top and bottom signal are statistically different. From spectral theory point of view we could say that top signal has more higher frequencies in its spectrum. This means that heart rate signal tends to lose high frequency components as we age. Another way to express this behavior of signal is to measure its entropy. Since the entropy by definition is a *measure of the amount of information needed to predict the future state of the system*, the higher entropy signal has, the higher its complexity. The fact is that top signal has higher entropy than lower one, so, within the aforementioned terms, we again observe a loss of complexity with aging. The observation of complexity decreasing can inspire us to make a next step for studying the phenomenon. For example, in {cite}`lipsitz1992loss` mentioned that the age-related decline in heart rate variability is likely due to dropout of sinus node cells, altered $\beta$-adrenoceptor responsiveness, and reduction in parasympathetic tone.
 
-<img src="<picture 1 from Lipsitz paper>" 
-     alt="dendridic" 
-     width="200"/>
+<img src="https://drive.google.com/uc?id=1_EFhXI5bvkiNDEyU_oyQ_YADQnwvr7Xl" 
+     alt="ecg" 
+     width="600"/>
 <p align = "center">
 Fig.4 - Heart rate time series for a 22-year-old female subject (top panel) and a 73-year-old male subject (bottom panel).
 </p>
@@ -95,9 +95,9 @@ Biological systems can be viewed as complex networks of interacting components. 
 **Degeneracy** - the ability of structurally different elements to perform the same function. Degeneracy should not be confused with redundancy, which occurs when the same function is performed by identical elements, degeneracy, which involves structurally different elements, may yield the same or different functions depending on the context in which it is expressed {cite}`edelman2001degeneracy`.
 :::
 
-<img src="<picture 4 from Cohen paper>" 
-     alt="dendridic" 
-     width="200"/>
+<img src="https://drive.google.com/uc?id=1gCip0_GgFA0vTS9kVinZiQkFtLQF6l6F" 
+     alt="bowtie" 
+     width="800"/>
 <p align = "center">
 Fig.5 - Bowtie structure of aging pathways.
 </p>
@@ -113,9 +113,9 @@ The natural property of human counciousness (and, need to say, its bias) is a te
 **Canalization** - the tendency of the system to converge toward one of a limited number of discrete states.
 :::
 
-<img src="<picture 1 from Yamanaka paper>" 
-     alt="dendridic" 
-     width="200"/>
+<img src="https://drive.google.com/uc?id=1NEMO0hQZzKNm51LaYCgjUV4vRJM0D-4M" 
+     alt="landscape" 
+     width="600"/>
 <p align = "center">
 Fig.6 - Waddington landscape - a metaphor of cell fate transition during differentiantion as a ball rolling down from the top of Waddington’s "mountain" (pluripotency) to the bottom of a "valley" (somatic state, e.g. skin, muscle). The opposite process is called reprogramming.
 </p>
@@ -125,17 +125,23 @@ Canalization and emergence often arise because biological networks can achieve r
 
 ## Resilience and Critical transitions
 
+- It is time to discuss the mentioned in the beginning of this chapter - dynamic equilibrium
+
+
+* In system dynamics, resilience is measured by the capability and the rate at which a system converges to or departs from its equilibrium after a disturbance.
+
 - example with an organism after drug perturbation 
 
 - https://www.nature.com/articles/nature08227 - temporal autocorrelations, variance and other signs of loss of resilience
 - Ives, A. R. Measuring resilience in stochastic systems. Ecol. Monogr. 65, 217–233 (1995).
-- Klein, B. et al. A computational exploration of resilience and evolvability of protein–protein interaction networks. Commun. Biol. 4, 1–11 (2021).
 
-*The variance and temporal autocorrelation of time series are expected to increase as resilience decreases.
+- Klein, B. et al. A computational exploration of resilience and evolvability of protein–protein interaction networks. Commun. Biol. 4, 1–11 (2021). - *A key feature providing resilience to interacting networks is self-regulation within modules, while interactions among them might decrease resilience (but see ref. 79).*
 
 * If physiological systems are networks of interacting elements, then we can apply stochastic resilience theory to interpret dynamics of a whole suite of biological markers with aging. A key feature providing resilience to interacting networks is self-regulation within modules, while interactions among them might decrease resilience (but see ref. 79).
 
 * One could therefore ask how these two fundamental quantities change during aging. In particular, the variance of individual markers and the temporal covariances among them are expected to increase with age.
+
+* Consequently, frail and non-frail individuals may differ more in how they respond dynamically to stressors than in their baseline status
 
 
 **resilience in aging** 
@@ -150,11 +156,11 @@ Canalization and emergence often arise because biological networks can achieve r
 
 ## Extra (my thoughts)
 
+https://www.math.snu.ac.kr/~syha/Lecture-4.pdf
+
 Should we define those components of the system which are sources (all links are outgoing) - it might be that such nodes contribute more to aging
 
 Aging is a loss of information transition ability
-
-
 
 The examples of networks modelling include: ...
 * On the cellular scale, the mathematized MARS (mitochondria, aberrant proteins, radicals and scavengers) model describes the breakdown of cellular homeostasis in a networked approach 12
@@ -167,6 +173,12 @@ Nijhout, H. F., Sadre-Marandi, F., Best, J. & Reed, M. C. Systems biology of phe
 Recent advances in machine learning have allowed general dynamics of continuous longitudinal data to be modeled by deep neural networks for more than 29 covariants121.
 121. Farrell, S., Mitnitski, A., Rockwood, K. & Rutenberg, A. D. Interpretable machine learning for high-dimensional trajectories of aging health. PLoS Comput Biol. 18, e1009746 (2022).
 
+*Text written by [Dmitrii Kriukov](https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&hl=en)*
 
-*Text written by Dmitrii Kriukov*
+```{bibliography}
+:style: plain
+:filter: docname in docnames
+```
+
+
 
