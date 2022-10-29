@@ -2,9 +2,7 @@
 
 *Nothing in aging biology makes sense except in the light of dynamic equilibrium.*
 
-Aging biology today is not an engineering but science at its early step. This expresses in that we frequently cannot observe a direct causal and numerically tractable relationships (as in physics) but we are doomed to see mostly *associations* and *patterns*. However, it may also be a good starting point for dynamical modeling. Large volumes of data and absense of organizing paradigm are major challenges of the modern aging biology. Complex systems approaches provide some computational instruments and necessary vocabulary for simplification, understanding and identification the essential features from data. This chapter partly relies on recent work of {cite}`cohen2022complex` where corresponding philosophical framework as well as important computational examples were proposed.
-
-Throughout this chapter, you may come across many new words: **system**, **complexity**, **networks**, **emergence**, **resilience** and **critical transitions**. They form an important minimal vocabulary neccessary for developing complex systems intuition which (we believe) can be greatly useful for any researcher. We organize them in subsections and uncover one by one.
+Aging biology today is not an engineering but science at its early step. This expresses in that we frequently cannot observe a direct causal and numerically tractable relationships (as in physics) but we are doomed to see mostly *associations* and *patterns*. However, it may also be a good starting point for dynamical modeling. Large volumes of data and absense of organizing paradigm are major challenges of the modern aging biology. Complex systems approaches provide some computational instruments and necessary vocabulary for simplification, understanding and identification the essential features from data. Throughout this chapter, you will come across many new words: **system**, **complexity**, **networks**, **emergence**, **resilience** and **critical transitions**. They form an important minimal vocabulary neccessary for developing complex systems intuition which (we believe) can be greatly useful for any researcher. We organize them in subsections and uncover one by one. This chapter partly relies on recent work of {cite}`cohen2022complex` where corresponding philosophical framework as well as important computational examples were proposed.
 
 ```{contents}
 ```
@@ -62,7 +60,7 @@ What can be one of the most common characteristics of aging? Can we express the 
 Fig.3 - Age-related loss of fractal structure in the dendritic arbor of the giant pyramidal Betz cell of the motor cortex.
 </p>
 
-But may be another example from the same paper will be more intelligible. Look at the figure 4, where you can see heart rate dynamics of young (top) and old (bottom) individuals. We see that top and bottom signal are statistically different. From spectral theory point of view we could say that top signal has more higher frequencies in its spectrum. This means that heart rate signal tends to lose high frequency components as we age. Another way to express this behavior of signal is to measure its entropy. Since the entropy by definition is a *measure of the amount of information needed to predict the future state of the system*, the higher entropy signal has, the higher its complexity. The fact is that top signal has higher entropy than lower one, so, within the aforementioned terms, we again observe a loss of complexity with aging. The observation of complexity decreasing can inspire us to make a next step for studying the phenomenon. For example, in {cite}`lipsitz1992loss` mentioned that the age-related decline in heart rate variability is likely due to dropout of sinus node cells, altered $\beta$-adrenoceptor responsiveness, and reduction in parasympathetic tone.
+But may be another example from the same paper will be more intelligible. Look at the figure 4, where you can see heart rate dynamics of young (top) and old (bottom) individuals. We see that top and bottom signal are statistically different. From spectral theory point of view we could say that top signal has more higher frequencies in its spectrum. This means that heart rate signal tends to lose high frequency components as we age. Another way to express this behavior of signal is to measure its Shannon's entropy {cite}`shannon1948mathematical`. Since the entropy by definition is a *measure of the amount of information needed to predict the future state of the system*, the higher entropy signal has, the higher its complexity. The fact is that top signal has higher entropy than lower one, so, within the aforementioned terms, we again observe a loss of complexity with aging. The observation of complexity decreasing can inspire us to make a next step for studying the phenomenon. For example, in {cite}`lipsitz1992loss` mentioned that the age-related decline in heart rate variability is likely due to dropout of sinus node cells, altered $\beta$-adrenoceptor responsiveness, and reduction in parasympathetic tone.
 
 <img src="https://drive.google.com/uc?id=1_EFhXI5bvkiNDEyU_oyQ_YADQnwvr7Xl" 
      alt="ecg" 
@@ -109,7 +107,7 @@ What technical outcomes we can obtain from bow-tie networks? So, the presense of
 The natural property of human counciousness (and, need to say, its bias) is a tendency to simplify things by extracting their common pattern. We call a propery of a system is **emergent** if we do not see this property of any system component. By discovering emergent properties of the system we cope with its **complexity**. Classical examples of emergent properties in physical systems are temperature of a gas and fluidity of a fluid - in both cases we do not see such properties in system components (molecules). Revealed emergent properties are especially useful when we can to measure them. Biological systems are abundant by emergences. Moreover, the concept of Life is a typical example of emergence. One common way that emergence arises in biological systems is through **canalization**, the tendency of the system to converge toward one of a limited number of discrete states {cite}`cohen2022complex`. Once again, if the system can take distinguishable states and these states seem not to be emanating from properties of its components then these states are emergent. Immediate example is acquiring somatic cell state (or cell fate) through differentiantion (Fig. 6) from pluripotent one {cite}`takahashi2016decade`. It is quite remarkable, in spite of the huge complexity of a human cell as a system it has a rather small number of discrete (distinguishable) somatic states that was shown experimentally {cite}`huang2005cell`.
 
 :::{note}
-**Emergence** - a property of a system, which is not a property of any component of that system.
+**Emergence** - a high-level property of a system, which is not a property of any component of that system. This intractability can be variously interpreted. In weak emergence interpretations, the inexplicability is merely a practical one due to the sheer complexity of the computation required to reach an explanation. In strong emergence interpretations, the emergent property possesses causal autonomy independently of its constituents {cite}`o2022critical`.
 **Canalization** - the tendency of the system to converge toward one of a limited number of discrete states.
 :::
 
@@ -125,55 +123,43 @@ Canalization and emergence often arise because biological networks can achieve r
 
 ## Resilience and Critical transitions
 
-- It is time to discuss the mentioned in the beginning of this chapter - dynamic equilibrium
+It is time to discuss **dynamic equilibrium** mentioned in the epigraph of this chapter. Dynamic equilibrium has two synonyms: **resilience** and **stability** - the first is more biological and the latter is more physical. But in majority of contexts they means the ability of a system to return in the equilibrium state preceding a perturbation. The common metaphor for understanding resilience is a ball in the hole model (Fig. 7a,d). You can see that small perturbation barely can knock out ball from a basin with sharp and high walls (so called potential barrier) what is associated with high resilience of the system. On the other hand, low walls do not save ball from even a small perturbation. The event when a ball leave its current local minimum state and cross the boundary of its basin is called **critical transition** which we discuss below. Resilience can be measured and different measures of a resilience (including mathematically tractable) were proposed {cite}`varadhan2008stimulus`, {cite}`gavrilov2005reliability`, {cite}`gijzel2017dynamical`, {cite}`pyrkov2021longitudinal`, {cite}`schosserer2019modelling`. It is especially important to measure resilience in older adults to aware of the risks which they bear. Moreover, it was proposed that aging itself is a progressing loss of resilience {cite}`promislow2022resilience`. 
 
+The resilience concept is tightly bounded with **critical transition** concept which has synonyms of (more physical) **phase transition** and (more mathematical) **bifurcation**. It is usually defined as a qualitative change in macroscopic properties of the system {cite}`o2022critical`. One important class of critical transitions is a **fold catastrophic transition** (which is also tempted to associate with the death of the organism) {cite}`scheffer2009early`. This transition is characterized by "sharp" falling the system parameter into a new state (we will cover mathematical details of this bifurcation in the next chapter). We are specially interest in this type of bifurcation because of the presense of early warning signals preceding the system critical transition which we can directly observe in data. Suppose that our aging-related dataset contains a system variable characterizing its macroscopic state (examples include mentioned heart rate (Fig. 4) or self-rated health evaluations {cite}`gijzel2017dynamical`) and this variable is presented in a form of one dimensional time series for patients of different ages. Then, we can calculate variances and autocorrelations for all participants in the dataset. The bifurcation theory predicts that approaching to a critical transition boundary (aka tipping point) is accompained with the system **critical slowing down** and an increase in variance and temporal autocorrelations of system state variable (Fig. 7b,c,e,f) {cite}`scheffer2009early` and this is something that we expect to observe in real aging data. 
 
-* In system dynamics, resilience is measured by the capability and the rate at which a system converges to or departs from its equilibrium after a disturbance.
+<img src="Fig 1 from early warning paper" 
+     alt="early" 
+     width="800"/>
+<p align = "center">
+Fig.7 - a-c, Far from the bifurcation point (a), resilience is large in two respects: the basin of attraction is large and the rate of recovery from perturbations is relatively high. If such a system is stochastically forced, the resulting dynamics are characterized by low correlation between the states at subsequent time intervals (b, c). d–f, When the system is closer to the transition point (d), resilience decreases in two senses: the basin of attraction shrinks and the rate of recovery from small perturbations is lower. As a consequence of this slowing down, the system has a longer memory for perturbations, and its dynamics in a stochastic environment are characterized by a larger variance and a stronger correlation between subsequent states (e, f).
+</p>
 
-- example with an organism after drug perturbation 
+One interesting example of the critical slowing down can be found in frail patients (Fig. 8) {cite}`kalyani2012frailty`. The figure represents a resulting dynamics of glucose in oral glucose tolerance test (OGTT) demonstrating slower recovery in glucose level after perturbation in frail patients by comparing with non-frail and pre-frail. Indeed, slowdown in metabolism, proliferation and information processing is a major feature of aging {cite}`ukraintseva2021decline`. Consequently, frail and non-frail individuals may differ in how they respond dynamically to stressors or drug perturbations. 
 
-- https://www.nature.com/articles/nature08227 - temporal autocorrelations, variance and other signs of loss of resilience
-- Ives, A. R. Measuring resilience in stochastic systems. Ecol. Monogr. 65, 217–233 (1995).
+<img src="Fig 1 from Varadhan paper with glucose" 
+     alt="early" 
+     width="800"/>
+<p align = "center">
+Fig.8 - Glucose dynamics during oral glucose tolerance test by frailty status. Mean ± SE (error bars) for glucose values respectively after a 75 g glucose load.
+</p>
 
-- Klein, B. et al. A computational exploration of resilience and evolvability of protein–protein interaction networks. Commun. Biol. 4, 1–11 (2021). - *A key feature providing resilience to interacting networks is self-regulation within modules, while interactions among them might decrease resilience (but see ref. 79).*
+:::{note}
+**Resilience** - the ability of a system to return in the equilibrium state preceding a perturbation.
+**Critical transition** - a qualitative change in macroscopic properties of the system.
+:::
 
-* If physiological systems are networks of interacting elements, then we can apply stochastic resilience theory to interpret dynamics of a whole suite of biological markers with aging. A key feature providing resilience to interacting networks is self-regulation within modules, while interactions among them might decrease resilience (but see ref. 79).
+## Summary: combining the learned concepts
 
-* One could therefore ask how these two fundamental quantities change during aging. In particular, the variance of individual markers and the temporal covariances among them are expected to increase with age.
+Is the living organism the **complex** dynamical **network** of interacting elements acquiring discrete **emergent** states through the **canalization**, forming modules experiencing loss of **resilience** through the loss of **complexity** during aging and approaching its **critical transition** point ultimately falling in the death state? - the question is open for You!
 
-* Consequently, frail and non-frail individuals may differ more in how they respond dynamically to stressors than in their baseline status
+Aging biology is, in particular, so challenging because of the absense of longitudinal high dense data: chemical signals are not so easy for measurement like electrical signals in neurons, moreover, data quality is rather poor frequently. 
 
+Complex systems framework do not answer directly what molecule or intervention will repair the system by getting it back to the equilibrium state, but rather provide a useful methodology to evaluate this state and more precisely measure, control and study effects of any new molecules used for treatment. It also may point to what essential components of the system undergoes changes that manifest itself as aging. Might it be a extracellular matrix degradation, genomic instablility or mitochondrial disfunction? What system state parameter may unequivocally indicate loss of resilience and explain the reason of the loss. How can we define those elements of the system which contribute more to aging? - these are open questions. What we can now is to make your dynamical systems intuition deeper in the next section.
 
-**resilience in aging** 
-80. Ukraintseva, S. et al. Decline in biological resilience as key manifestation of aging: potential mechanisms and role in health and longevity. Mech. Ageing Dev. 194, 111418 (2021). 
-81. Schosserer, M. et al. Modelling physical resilience in ageing mice. Mech. Ageing Dev. 177, 91–102 (2019). 
-82. Hadley, E. C., Kuchel, G. A. & Newman, A. B. Workshop Speakers and Participants. Report: NIA workshop on measures of physiologic resiliencies in human aging. J. Gerontol. A Biol. Sci. Med. Sci. 72, 980–990 (2017). 
-83. Gijzel, S. M. W. et al. Dynamical resilience indicators in time series of self-rated health correspond to frailty levels in older adults. J. Gerontol. A Biol. Sci. Med. Sci. 72, 991–996 (2017). 
-84. Liu, M. et al. Prediction of mortality in hemodialysis patients using moving multivariate distance. Front. Physiol. 12, 612494 (2021).
-85. Varadhan, R., Seplaki, C. L., Xue, Q. L., Bandeen-Roche, K. & Fried, L. P. Stimulus-response paradigm for characterizing the loss of resilience in homeostatic regulation associated with frailty. Mech. Ageing Dev. 129,
-86. Kalyani, R. R., Varadhan, R., Weiss, C. O., Fried, L. P. & Cappola, A. R. Frailty status and altered glucose-insulin dynamics. J. Gerontol. A Biol. Sci. Med. Sci. 67, 1300–1306 (2012).
+## Credits
+This text prepared by [Dmitrii Kriukov](https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&hl=en).
 
-
-## Extra (my thoughts)
-
-https://www.math.snu.ac.kr/~syha/Lecture-4.pdf
-
-Should we define those components of the system which are sources (all links are outgoing) - it might be that such nodes contribute more to aging
-
-Aging is a loss of information transition ability
-
-The examples of networks modelling include: ...
-* On the cellular scale, the mathematized MARS (mitochondria, aberrant proteins, radicals and scavengers) model describes the breakdown of cellular homeostasis in a networked approach 12
-12. Kowald, A. & Kirkwood, T. B. L. A network theory of ageing: the interactions of defective mitochondria, aberrant proteins, free radicals and scavengers in the ageing process
-
-Nijhout, H. F., Sadre-Marandi, F., Best, J. & Reed, M. C. Systems biology of phenotypic robustness and plasticity. Integr. Comp. Biol. 57, 171–184 (2017).
-
-* Top-down computational models with discrete health states interacting with simple explicit networks116–118 have demonstrated how population-level measures such as survival curves can be generated from conceptually simple models of damage propagation within a complex system.
-
-Recent advances in machine learning have allowed general dynamics of continuous longitudinal data to be modeled by deep neural networks for more than 29 covariants121.
-121. Farrell, S., Mitnitski, A., Rockwood, K. & Rutenberg, A. D. Interpretable machine learning for high-dimensional trajectories of aging health. PLoS Comput Biol. 18, e1009746 (2022).
-
-*Text written by [Dmitrii Kriukov](https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&hl=en)*
+## References
 
 ```{bibliography}
 :style: plain
