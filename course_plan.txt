@@ -18,3 +18,27 @@ in short:
 
 how to pull request correctly:
  - 
+
+
+Complex systems chapter, additionals (add to issue):
+
+https://www.math.snu.ac.kr/~syha/Lecture-4.pdf
+
+The examples of networks modelling include: ...
+* On the cellular scale, the mathematized MARS (mitochondria, aberrant proteins, radicals and scavengers) model describes the breakdown of cellular homeostasis in a networked approach 12
+12. Kowald, A. & Kirkwood, T. B. L. A network theory of ageing: the interactions of defective mitochondria, aberrant proteins, free radicals and scavengers in the ageing process
+
+Nijhout, H. F., Sadre-Marandi, F., Best, J. & Reed, M. C. Systems biology of phenotypic robustness and plasticity. Integr. Comp. Biol. 57, 171–184 (2017).
+
+* Top-down computational models with discrete health states interacting with simple explicit networks116–118 have demonstrated how population-level measures such as survival curves can be generated from conceptually simple models of damage propagation within a complex system.
+
+Recent advances in machine learning have allowed general dynamics of continuous longitudinal data to be modeled by deep neural networks for more than 29 covariants121.
+121. Farrell, S., Mitnitski, A., Rockwood, K. & Rutenberg, A. D. Interpretable machine learning for high-dimensional trajectories of aging health. PLoS Comput Biol. 18, e1009746 (2022).
+
+- resilience in deterministic and stochastic systems
+
+* If physiological systems are networks of interacting elements, then we can apply stochastic resilience theory to interpret dynamics of a whole suite of biological markers with aging. A key feature providing resilience to interacting networks is self-regulation within modules, while interactions among them might decrease resilience.
+
+{cite}`ives1995measuring`
+{cite}`klein2021computational`
+{cite}`o2022critical` 
