@@ -127,7 +127,7 @@ It is time to discuss **dynamic equilibrium** mentioned in the epigraph of this 
 
 The resilience concept is tightly bounded with **critical transition** concept which has synonyms of (more physical) **phase transition** and (more mathematical) **bifurcation**. It is usually defined as a qualitative change in macroscopic properties of the system {cite}`o2022critical`. One important class of critical transitions is a **fold catastrophic transition** (which is also tempted to associate with the death of the organism) {cite}`scheffer2009early`. This transition is characterized by "sharp" falling the system parameter into a new state (we will cover mathematical details of this bifurcation in the next chapter). We are specially interest in this type of bifurcation because of the presense of early warning signals preceding the system critical transition which we can directly observe in data. Suppose that our aging-related dataset contains a system variable characterizing its macroscopic state (examples include mentioned heart rate (Fig. 4) or self-rated health evaluations {cite}`gijzel2017dynamical`) and this variable is presented in a form of one dimensional time series for patients of different ages. Then, we can calculate variances and autocorrelations for all participants in the dataset. The bifurcation theory predicts that approaching to a critical transition boundary (aka tipping point) is accompained with the system **critical slowing down** and an increase in variance and temporal autocorrelations of system state variable (Fig. 7b,c,e,f) {cite}`scheffer2009early` and this is something that we expect to observe in real aging data. 
 
-<img src="Fig 1 from early warning paper" 
+<img src="https://drive.google.com/uc?id=15DYv-rV8V8tCWI_EgnooUC2k8KwGDFOb" 
      alt="early" 
      width="800"/>
 <p align = "center">
@@ -136,9 +136,9 @@ Fig.7 - a-c, Far from the bifurcation point (a), resilience is large in two resp
 
 One interesting example of the critical slowing down can be found in frail patients (Fig. 8) {cite}`kalyani2012frailty`. The figure represents a resulting dynamics of glucose in oral glucose tolerance test (OGTT) demonstrating slower recovery in glucose level after perturbation in frail patients by comparing with non-frail and pre-frail. Indeed, slowdown in metabolism, proliferation and information processing is a major feature of aging {cite}`ukraintseva2021decline`. Consequently, frail and non-frail individuals may differ in how they respond dynamically to stressors or drug perturbations. 
 
-<img src="Fig 1 from Varadhan paper with glucose" 
-     alt="early" 
-     width="800"/>
+<img src="https://drive.google.com/uc?id=1AlQZgvq_O96gOkFK3piBNqFiGwtSpBnt" 
+     alt="glucose" 
+     width="600"/>
 <p align = "center">
 Fig.8 - Glucose dynamics during oral glucose tolerance test by frailty status. Mean ± SE (error bars) for glucose values respectively after a 75 g glucose load.
 </p>
