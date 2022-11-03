@@ -68,7 +68,7 @@ But may be another example from the same paper will be more intelligible. Look a
 <p align = "center">
 Fig.4 - Heart rate time series for a 22-year-old female subject (top panel) and a 73-year-old male subject (bottom panel).
 </p>
-
+<!-- entropy as a measure of aging??? --> 
 It turns out, that the idea to use entropy as a measure of complexity creates a contradiction.  One of the hallmark of aging, genomic instability, was shown to increase entropy with aging. Somatic mutations and spontaneous double strand breaks (DSB) contributes to general "loss of genomic information" (and, therefore, entropy increase) what is associated with aging. Moreover, in the experiment with mice genectically modified for induction DSB show patterns of accelerated aging {cite}`hayano2019dna`, {cite}`yang2019erosion`. Does it mean that aging is not coupled with a loss of complexity? Yes and No, it is rather coupled with poor mathematical counterpart of complexity concept, namely entropy. 
 
 :::{note}
@@ -138,7 +138,7 @@ One interesting example of the critical slowing down can be found in frail patie
 
 <img src="https://drive.google.com/uc?id=1AlQZgvq_O96gOkFK3piBNqFiGwtSpBnt" 
      alt="glucose" 
-     width="600"/>
+     width="400"/>
 <p align = "center">
 Fig.8 - Glucose dynamics during oral glucose tolerance test by frailty status. Mean ± SE (error bars) for glucose values respectively after a 75 g glucose load.
 </p>
@@ -152,9 +152,9 @@ Fig.8 - Glucose dynamics during oral glucose tolerance test by frailty status. M
 
 Is the living organism the **complex** dynamical **network** of interacting elements acquiring discrete **emergent** states through the **canalization**, forming modules experiencing loss of **resilience** through the loss of **complexity** during aging and approaching its **critical transition** point ultimately falling in the death state? - the question is open for You!
 
-Aging biology is, in particular, so challenging because of the absense of longitudinal high dense data: chemical signals are not so easy for measurement like electrical signals in neurons, moreover, data quality is rather poor frequently. 
+Aging biology is, in particular, so challenging because of the absense of longitudinal high dense data: chemical signals are not so easy for measurements like electrical signals in neurons, moreover, data quality is rather poor frequently. 
 
-Complex systems framework do not answer directly what molecule or intervention will repair the system by getting it back to the equilibrium state, but rather provide a useful methodology to evaluate this state and more precisely measure, control and study effects of any new molecules used for treatment. It also may point to what essential components of the system undergoes changes that manifest itself as aging. Might it be a extracellular matrix degradation, genomic instablility or mitochondrial disfunction? What system state parameter may unequivocally indicate loss of resilience and explain the reason of the loss. How can we define those elements of the system which contribute more to aging? - these are open questions. What we can now is to make your dynamical systems intuition deeper in the next section.
+Complex systems framework do not answer directly what molecule or intervention will repair the system by getting it back to the equilibrium state, but rather provide a useful methodology to evaluate this state and more precisely measure, control and study effects of any new molecules used for treatment. It also may point to what essential components of the system undergoes changes that manifest itself as aging. Might it be a extracellular matrix degradation, genomic instablility or mitochondrial disfunction? What system state parameter may unequivocally indicate loss of resilience and explain the reason of the loss. How can we define those elements of the system which contribute more to aging? - these are open questions. What we can do now is to make your dynamical systems intuition deeper in the next section.
 
 ## Credits
 This text prepared by [Dmitrii Kriukov](https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&hl=en).
