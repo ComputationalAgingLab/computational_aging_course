@@ -185,8 +185,13 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../dyn/dynamical_models.html">
-   7. Dynamical models
+  <a class="reference internal" href="../dyn/complex_systems.html">
+   7. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dyn/system_resilience.html">
+   8. System resilience
   </a>
  </li>
 </ul>
@@ -678,7 +683,7 @@ title="Print to PDF"
 <p>It’s time to put our derivation to the first formula with a limit. So, we have:</p>
 <div class="math notranslate nohighlight">
 \[\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt} = \lim_{dt \to 0}\frac{F(t+dt) - F(t)}{dt}\frac{1}{S(t)} = \frac{f(t)}{S(t)}\]</div>
-<p>Yes, we obtained a ratio of probability density function of death and probability of survival. And this is what we call <strong>mortality risk function</strong> or hazard function.</p>
+<p>Yes, we obtained a ratio of probability density function of death and probability of survival. And this is what we call <strong>mortality risk function</strong> or <strong>hazard function</strong>.</p>
 <div class="math notranslate nohighlight">
 \[m(t) = \frac{f(t)}{S(t)} = -\frac{S'(t)}{S(t)}\]</div>
 <div class="dropdown admonition">
@@ -787,7 +792,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>We see the lower value of mortality risk the higher survival curve lies if we consider our kidneys (critical subsystems) separately. Combining them into one system leads to the highest survival curve (green curve on the plot). Thus we see a quite obvious corollary: the higher number of reserved subsystems object have the more survival it becomes… But wait a second! What’s wrong with the mortality curve for two kindeys system? It is not constant now. We started with two kidneys each having its own constant failure risk and ended with a system where mortality risk is now a function of time - <strong>aging system</strong> actually! It is quite reasonable if we treat aging as a process of critical subsystem failures culminating with system “death”.</p>
-<p>In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example <span id="id2">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">Gavrilov and Gavrilova, 2005</a>]</span>). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.</p>
+<p>In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example <span id="id2">[<a class="reference internal" href="../dyn/complex_systems.html#id37" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">Gavrilov and Gavrilova, 2005</a>]</span>). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.</p>
 <img src="https://nanohub.org/app/site/resources/2013/01/16583/slides/016.03.jpg" alt="connections" width="600"/>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
@@ -850,7 +855,7 @@ title="Print to PDF"
 </section>
 <section id="gompertz-risk-model">
 <h3><span class="section-number">3.3.3. </span>Gompertz risk model<a class="headerlink" href="#gompertz-risk-model" title="Permalink to this headline">#</a></h3>
-<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[<a class="reference internal" href="differential_analysis.html#id5" title="Leonid A Gavrilov and Natalia S Gavrilova. New developments in the biodemography of aging and longevity. Gerontology, 61(4):364–371, 2015.">Gavrilov and Gavrilova, 2015</a>]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">Gavrilov and Gavrilova, 2005</a>]</span>. Mathematically, it can be formulated as follows:</p>
+<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[<a class="reference internal" href="differential_analysis.html#id5" title="Leonid A Gavrilov and Natalia S Gavrilova. New developments in the biodemography of aging and longevity. Gerontology, 61(4):364–371, 2015.">Gavrilov and Gavrilova, 2015</a>]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="../dyn/complex_systems.html#id37" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">Gavrilov and Gavrilova, 2005</a>]</span>. Mathematically, it can be formulated as follows:</p>
 <div class="math notranslate nohighlight">
 \[ m(t) = Ae^{bt} \]</div>
 <p>where <span class="math notranslate nohighlight">\(A\)</span> - Initial Mortality Rate (IMR), this parameter characterizes the initial mortality, that is, the mortality that would be in the population without aging, and does not depend on age; <span class="math notranslate nohighlight">\(b\)</span> - characterizes the rate of aging. To clarify the previous observation about Mortality Rate Doubling Time (MRDT) is 8 years, we can use the following simple quotient:</p>
@@ -1125,7 +1130,7 @@ Name: E, dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>Yes, we call model class and fit it, but don’t worry it is just for convenience and brevity of an explanation. The event table above contains 5 columns and time steps as indexes. You see that indexes are grouped by the same time steps in such way that several events could happen within one time step. Note, there are no time steps without events (with exception of zero time step)! Now columns, you see that column <strong>censored</strong> contains zeros because we excluded censored observations. This means that the column <strong>observed</strong>, containing death events, and the column <strong>removed</strong> will be the same (however, different models can treat with these columns differently) and corresponding the term <span class="math notranslate nohighlight">\(d_i\)</span> in the formula above. Column <strong>entrance</strong> is redundant and needed just for convenience of probability computation (see below). The last column <strong>at_risk</strong> corresponds to the term <span class="math notranslate nohighlight">\(n_i\)</span> - the number of individuals known to have survived up to time <span class="math notranslate nohighlight">\(t_{i}\)</span> (we assume that all the individuals dies in the end of a time step). Some code now:</p>
+<p>Yes, we call model class and fit it, but don’t worry it is just for convenience and brevity of an explanation. The event table above contains 5 columns and time steps as indexes. You see that indexes are grouped by the same time steps in such way that several events could happen within one time step. Note, there are no time steps without events (with exception of zero time step)! Now columns, you see that column <strong>censored</strong> contains zeros because we excluded censored observations. This means that the column <strong>observed</strong>, containing death events, and the column <strong>removed</strong> will be the same (however, different models can treat these columns differently) and corresponding the term <span class="math notranslate nohighlight">\(d_i\)</span> in the formula above. Column <strong>entrance</strong> is redundant and needed just for convenience of probability computation (see below). The last column <strong>at_risk</strong> corresponds to the term <span class="math notranslate nohighlight">\(n_i\)</span> - the number of individuals known to have survived up to time <span class="math notranslate nohighlight">\(t_{i}\)</span> (we assume that all the individuals dies in the end of a time step). Some code now:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">event_table</span>
@@ -1287,12 +1292,12 @@ Name: E, dtype: int64
 <div class="math notranslate nohighlight">
 \[ CI:\ [\widehat {S}(t) - z_{1-\alpha/2}\sqrt{{\widehat {\operatorname {Var} }}\left({\widehat {S}}(t)\right)},\ \widehat {S}(t) + z_{1-\alpha/2}\sqrt{{\widehat {\operatorname {Var} }}\left({\widehat {S}}(t)\right)}] \]</div>
 <p>where <span class="math notranslate nohighlight">\(z_{1-\alpha/2}\)</span> is a <span class="math notranslate nohighlight">\(1-\alpha/2\)</span> quantile of normal distribution.</p>
-<p>Owing two Kaplan-Meier curves it would be nice to compare them by calculating some important statistics. Mean survival time and median survival time are good candidates. Consider the expression for the first one:</p>
+<p>Having two Kaplan-Meier curves it would be nice to compare them by calculating some important statistics. Mean survival time and median survival time are good candidates. Consider the expression for the first one:</p>
 <div class="math notranslate nohighlight">
 \[ \widehat{\mu}(t) = \int_0^t S(x)dx \]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
-<p>Prove that <span class="math notranslate nohighlight">\(\int_0^t S(x)dx = \int_0^t xf(x)dx\)</span></p>
+<p>Prove that <span class="math notranslate nohighlight">\(\int_0^t S(x)dx = \int_0^t xf(x)dx\)</span> if <span class="math notranslate nohighlight">\(t \to \infty\)</span></p>
 </div>
 <p>Of course we have a function for this:</p>
 <div class="cell docutils container">
