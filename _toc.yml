@@ -21,7 +21,6 @@ parts:
   numbered: true
   chapters:
   - file: ml/aging_clocks
-  - file: ml/aging_clocks_rus
   - file: ml/methylation_clocks
 - caption: Dynamics system view
   numbered: true
