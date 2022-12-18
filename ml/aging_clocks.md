@@ -85,6 +85,11 @@ In {cite}`hannum2013genome`, the clock was built on blood cells. The authors ana
 - **Epigenetic drift** -- An increase in methylation diversity with age: elderly people differ more from each other than young people. This is due to the accumulation of random errors.
 :::
 
+```{figure} 2013paper.jpeg
+
+{cite}`hannum2013genome`. Predictions for different tissues.
+```
+
 #### 2013 DNA methylation age of human tissues and cell types
 In {cite}`horvath2013dna`, the author:
 
@@ -96,12 +101,6 @@ In {cite}`horvath2013dna`, the author:
 
 :::{note}
 - **Progeria** -- a general term for rare genetic diseases characterized by accelerated aging.
-:::
-
-:::{warning}
-The original study showed that cancer tissues have a higher biological age. In 2015, a correction was released that corrected an error in the code, so that tumors no longer differed from healthy tissues in age.
-
-Future biological clocks have shown acceleration of biological age in tumors. For example {cite}`liu2020underlying`.
 :::
 
 #### 2018 An epigenetic biomarker of aging for lifespan and healthspan (PhenoAge)
@@ -143,6 +142,12 @@ In 2006, the CMAP dataset was published {cite}`lamb2006connectivity`, in which t
 During the search for drugs that lower the predicted model age, we find geroprotectors that extend life. Does this mean a causal relationship? Can we call a molecule that reduces biological age a geroprotector, but for which a costly, long-term clinical trial has not yet been conducted that proves a reduction in mortality? There are several problems {cite}`bell2019dna,schork2022does`.
 
 **Predictions of different clocks are weakly correlated with each other. Epigenetic clocks are trained on different CpG sites.**
+
+```{figure} different_cpgs.jpeg
+
+{cite}`galkin2020biohorology`
+```
+
 Does this mean that clocks measure different aspects of aging? Or that clock predictions are very noisy? The authors of {cite}`liu2020underlying` show that clocks capture different aspects of aging. If this is the case, it would be important to find these separate aspects and make separate clocks for them.
 
 **Predictions of aging clocks poorly correlate with other classic biomarkers, such as blood pressure or glucose levels.**
@@ -211,7 +216,7 @@ $$
 min_{a_1,\dots a_n} | (a_1 x_1 + a_2 x_2 + \dots + a_n x_n) - y | + \lambda \sum_{i} |a_i|
 $$
 
-"where $\lambda$ is a coefficient representing the strength of regularization. This method of regularization is called L1 regularization and can improve the model's performance on the test dataset in practice.
+where $\lambda$ is a coefficient representing the strength of regularization. This method of regularization is called L1 regularization and can improve the model's performance on the test dataset in practice.
 
 ### L1 and L2 regularization
 
@@ -225,6 +230,11 @@ Both regularization methods help to find small coefficients, but the difference 
 
 Both methods help to combat overfitting, but L1 is also useful in that the coefficients of unimportant features can quickly become zero, which gives us a useful signal that this blood parameter does not help the model predict chronological age. In practice, the regularization that helps improve the model's performance on the test dataset is used.
 
+```{figure} ridge.png
+
+Effect of L1-regularization on the coefficients. The more penalty coefficient (alpha in picture), the less the coefficients. From [sklearn tutorial](https://scikit-learn.org/stable/auto_examples/linear_model/plot_ridge_path.html).
+```
+
 ### Elasticnet
 
 You can choose not to choose between the two regularization methods and simply apply both. Sometimes this works better than one regularization alone:
@@ -234,6 +244,14 @@ min_{a_1,\dots a_n} | (a_1 x_1 + a_2 x_2 + \dots + a_n x_n) - y | + \lambda_1 \s
 $$
 
 Such a model is called ElasticNet and is used in the construction of several clocks.
+
+## Conclusion
+
+Aging clocks are an important area of research that has the potential to greatly improve our understanding of the aging process and lead to the development of interventions to promote healthy aging. These clocks are biological markers that can be used to measure and predict the biological age of an individual. They can be based on a variety of factors, such as epigenetic modifications, blood tests, and gene expression patterns. While there has been significant progress in understanding and utilizing aging clocks, there are still many open questions and areas for further research.
+
+One important aspect of aging clock research is the use of statistical analysis to make these clocks. Linear regression is a commonly used statistical method in this context, as it allows researchers to identify correlations and trends in the data. However, it is important to recognize that basic linear regression has limitations and additional regularizations may be necessary in certain circumstances.
+
+Overall, the study of aging clocks has the potential to provide insights into the underlying mechanisms of aging and may lead to the development of interventions that can promote healthy aging and extend the human lifespan. While there is still much to learn about aging clocks and the aging process, the potential benefits of this research make it an important area of study for the scientific community.
 
 ```{bibliography}
 :style: plain
