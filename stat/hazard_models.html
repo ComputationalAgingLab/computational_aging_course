@@ -168,13 +168,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../ml/aging_clocks_rus.html">
-   5. Часы Старения
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../ml/methylation_clocks.html">
-   6. Content with notebooks
+   5. Content with notebooks
   </a>
  </li>
 </ul>
@@ -186,12 +181,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/complex_systems.html">
-   7. Complex systems approach
+   6. Complex systems approach
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/system_resilience.html">
-   8. System resilience
+   7. System resilience
   </a>
  </li>
 </ul>
@@ -792,7 +787,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>We see the lower value of mortality risk the higher survival curve lies if we consider our kidneys (critical subsystems) separately. Combining them into one system leads to the highest survival curve (green curve on the plot). Thus we see a quite obvious corollary: the higher number of reserved subsystems object have the more survival it becomes… But wait a second! What’s wrong with the mortality curve for two kindeys system? It is not constant now. We started with two kidneys each having its own constant failure risk and ended with a system where mortality risk is now a function of time - <strong>aging system</strong> actually! It is quite reasonable if we treat aging as a process of critical subsystem failures culminating with system “death”.</p>
-<p>In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example <span id="id2">[<a class="reference internal" href="../dyn/complex_systems.html#id37" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">Gavrilov and Gavrilova, 2005</a>]</span>). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.</p>
+<p>In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example <span id="id2">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.</p>
 <img src="https://nanohub.org/app/site/resources/2013/01/16583/slides/016.03.jpg" alt="connections" width="600"/>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
@@ -855,7 +850,7 @@ title="Print to PDF"
 </section>
 <section id="gompertz-risk-model">
 <h3><span class="section-number">3.3.3. </span>Gompertz risk model<a class="headerlink" href="#gompertz-risk-model" title="Permalink to this headline">#</a></h3>
-<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[<a class="reference internal" href="differential_analysis.html#id5" title="Leonid A Gavrilov and Natalia S Gavrilova. New developments in the biodemography of aging and longevity. Gerontology, 61(4):364–371, 2015.">Gavrilov and Gavrilova, 2015</a>]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="../dyn/complex_systems.html#id37" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005.">Gavrilov and Gavrilova, 2005</a>]</span>. Mathematically, it can be formulated as follows:</p>
+<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[<a class="reference internal" href="differential_analysis.html#id5" title="Leonid A Gavrilov and Natalia S Gavrilova. New developments in the biodemography of aging and longevity. Gerontology, 61(4):364–371, 2015.">Gavrilov and Gavrilova, 2015</a>]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="differential_analysis.html#id4" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>. Mathematically, it can be formulated as follows:</p>
 <div class="math notranslate nohighlight">
 \[ m(t) = Ae^{bt} \]</div>
 <p>where <span class="math notranslate nohighlight">\(A\)</span> - Initial Mortality Rate (IMR), this parameter characterizes the initial mortality, that is, the mortality that would be in the population without aging, and does not depend on age; <span class="math notranslate nohighlight">\(b\)</span> - characterizes the rate of aging. To clarify the previous observation about Mortality Rate Doubling Time (MRDT) is 8 years, we can use the following simple quotient:</p>
