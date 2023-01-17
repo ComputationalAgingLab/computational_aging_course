@@ -18,4 +18,7 @@ in short:
 
 how to pull request correctly:
 
+first push to main from local
+then you can accept pull request
+then pull changes
 
