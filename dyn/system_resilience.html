@@ -432,7 +432,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
+    <a class="reference internal nav-link" href="#id3">
      7.4. Recap differential equations
     </a>
    </li>
@@ -500,7 +500,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
+    <a class="reference internal nav-link" href="#id3">
      7.4. Recap differential equations
     </a>
    </li>
@@ -619,8 +619,13 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;16&#39;</span> <span class="c1"># increase font size</span>
-
-<span class="n">x1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">a</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">a</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">C</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -640,7 +645,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/system_resilience_3_0.png" src="../_images/system_resilience_3_0.png" />
+<img alt="../_images/system_resilience_4_0.png" src="../_images/system_resilience_4_0.png" />
 </div>
 </div>
 <p>Two important observations: (1) the solution of equation <a class="reference internal" href="#equation-ex-sol-1">(7.2)</a> is always diverges, i.e there is no non-zero constant <span class="math notranslate nohighlight">\(Const\)</span> such that <span class="math notranslate nohighlight">\(x(\infty) \to Const\)</span>; (2) the solution of equation <a class="reference internal" href="#equation-ex-sol-2">(7.3)</a> has three regimes: one at positive constant <span class="math notranslate nohighlight">\(a\)</span> - divergence (exponential growth), one at negative <span class="math notranslate nohighlight">\(a\)</span> - convergence to zero (exponential decay), and one at <span class="math notranslate nohighlight">\(a=0\)</span> - trivial case with no dynamics. Adjusting constant <span class="math notranslate nohighlight">\(a\)</span> continiously leads to switching between regimes which is something that we call <strong>bifurcation</strong> and will study in further. In other words. they say a system undergoes a bifurcation as <span class="math notranslate nohighlight">\(a\)</span> approaches to zero (from left or right side). Of course, in this case that the system changes its behavior <strong>qualitatively</strong>.</p>
@@ -657,7 +662,7 @@ title="Print to PDF"
 \[ 
     \dot{x} = rx - \frac{rx^2}{K} =  rx - \delta x^2
 \]</div>
-<p>The first term is a growth term responsible for the increase of number of bacteria with rate <span class="math notranslate nohighlight">\(r\)</span>. The second term is more tricky and suddenly quadratic with a new parameter <span class="math notranslate nohighlight">\(\delta = r/K\)</span> which is interpreted as death rate. The idea of second term is that after <span class="math notranslate nohighlight">\(x\)</span> becomes quite large number the growth must rapidly slow down modelling, thus, a deficit of resources. The good idea to use for that a quadratic term which increases faster than linear and not so hard for computation. But the right question here is: “why not cubic or exponent or something else?”. It turns out that the quadratic term is a good approximation of the behavior of real-world cases of growth. One additional intuition behind quadratic term is that it reflects pairwise interactions of <span class="math notranslate nohighlight">\(x\)</span> species, which can we may interpret as a competition for resources.</p>
+<p>The first term is a growth term responsible for the increase of number of bacteria with rate <span class="math notranslate nohighlight">\(r\)</span>. The second term is more tricky and suddenly quadratic with a new parameter <span class="math notranslate nohighlight">\(\delta = r/K\)</span> which is interpreted as death rate. The idea of second term is that after <span class="math notranslate nohighlight">\(x\)</span> becomes quite large number the growth must rapidly slow down modelling, thus, a deficit of resources. The good idea to use for that a quadratic term which increases faster than linear and not so hard for computation. But the right question here is: “why not cubic or exponent or something else?”. It turns out that the quadratic term is a good approximation of the behavior of real-world cases of growth. One additional intuition behind quadratic term is that it reflects pairwise interactions of <span class="math notranslate nohighlight">\(x\)</span> species, which can we may interpret as a competition for resources (aka crowding pressure).</p>
 <p>Let’s solve it:</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -672,42 +677,52 @@ title="Print to PDF"
 \[ 
     \frac{Adx}{x} + \frac{Bdx}{(1 - \frac{x}{K}) } = rdt
 \]</div>
-<p>consider the following equation for the nominator:
-$<span class="math notranslate nohighlight">\( 
+<p>consider the following equation for the nominator:</p>
+<div class="math notranslate nohighlight">
+\[ 
     A(1 - \frac{x}{K})dx + Bxdx = dx
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
     A(1 - \frac{x}{K}) + Bx = 1
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
     A - A\frac{x}{K} + Bx = 1
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
     A - x(\frac{A}{K} + B) = 1
-\)</span><span class="math notranslate nohighlight">\(
-from the obtained equation we can compose the following system:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>from the obtained equation we can compose the following system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{cases}
     -\frac{A}{K} + B = 0 \rightarrow B = \frac{A}{K}\\
     A = 1\\
 \end{cases}
-\)</span><span class="math notranslate nohighlight">\(
-Thus, we have
-\)</span><span class="math notranslate nohighlight">\( 
+\end{split}\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[ 
     \frac{dx}{x} + \frac{\frac{1}{K}dx}{(1 - \frac{x}{K}) } = rdt
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
     \int\frac{dx}{x} + \frac{1}{K}\int\frac{dx}{(1 - \frac{x}{K}) } = \int rdt
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
     \ln(x) - \ln(1 - \frac{x}{K}) = rt + C
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
     \ln(\frac{x}{1 - \frac{x}{K}}) = rt + C
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
     \frac{x}{1 - \frac{x}{K}} = C_1e^{rt}
-\)</span>$</p>
+\]</div>
 <p>It is easy to see that <span class="math notranslate nohighlight">\(C_1\)</span> can be computed from initial value problem (at <span class="math notranslate nohighlight">\(t=0\)</span>) as following:</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -721,21 +736,17 @@ Thus, we have
 <p>What regimes are possible for this solution? Let’s suppose that carrying capacity <span class="math notranslate nohighlight">\(K=1\)</span>, initial population <span class="math notranslate nohighlight">\(x_0=0.5\)</span> and explore graphically the dynamics at different <span class="math notranslate nohighlight">\(r\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;16&#39;</span> <span class="c1"># increase font size</span>
-
-<span class="n">x3</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">x0</span><span class="p">:</span> <span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">K</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span> <span class="o">/</span> <span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x3</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">x0</span><span class="p">:</span> <span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">K</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span> <span class="o">/</span> <span class="n">x0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population size&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]:</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x3</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">);</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x3</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$x_0 = 1.3; r = 2$&#39;</span><span class="p">);</span> <span class="c1"># another initial condition</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x3</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$x_0 = 1.3; r = 1.5$&#39;</span><span class="p">);</span> <span class="c1"># another initial condition</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
@@ -745,7 +756,7 @@ Thus, we have
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/system_resilience_6_0.png" src="../_images/system_resilience_6_0.png" />
+<img alt="../_images/system_resilience_7_0.png" src="../_images/system_resilience_7_0.png" />
 </div>
 </div>
 <p>Excellent! We solved a new kind of dynamical system describing bacterial growth with limited resources. As before we observe three different regimes for <span class="math notranslate nohighlight">\(r&gt;0\)</span> - logistic growth; <span class="math notranslate nohighlight">\(r=0\)</span> - no dynamics; <span class="math notranslate nohighlight">\(r&lt;0\)</span> - logistic decay (not exponential!). But we also see something new, our solutions for growth are bounded with carrying capacity <span class="math notranslate nohighlight">\(K=1\)</span> and, for all initial conditions (even for larger than <span class="math notranslate nohighlight">\(K\)</span>), trajectories <em>attracts</em> to a fixed value <span class="math notranslate nohighlight">\(K\)</span> which is called <strong>attractor</strong>. In the next chapter we will address more to attractors, but before that, we need to learn what to do with non-integrable non-linear differential equations.</p>
@@ -756,19 +767,78 @@ Thus, we have
 </section>
 <section id="numerical-integration">
 <h3><span class="section-number">7.1.3. </span>Numerical integration<a class="headerlink" href="#numerical-integration" title="Permalink to this headline">#</a></h3>
-<p><span id="id1">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span></p>
-<p>Cite Kapitza model of human population</p>
+<p>The class of integrable differential equation is very small, even so they are extremely useful for describing complex systems dynamics. In some cases, however, you may develop more sophisticated model of a process under study and the corresponding differential equation does not have a closed form solution. What can we do in this case? Consider the following complication of the logistic model:</p>
+<div class="math notranslate nohighlight" id="equation-eq-complex-logistic">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-eq-complex-logistic" title="Permalink to this equation">#</a></span>\[
+    \dot{x} = r(t) (x  - \frac{x^2}{K(t)})  =  r_0 sin^2(t) (x  - \frac{x^2}{1 + \sqrt{t}})
+\]</div>
+<p>now our logistic model contains two additional assumptions: (i) the growth rate changes as a sinusoidal function of time <span class="math notranslate nohighlight">\(r = r(t) = r_0 sin^2(t)\)</span> - this models a photo-sensitivity of bacteria allowing them to reproduce effectively in day time with maximum growth rate or <span class="math notranslate nohighlight">\(r_0\)</span>; (ii) the carrying capacity slowly increases with time by square root law starting from 1, namely <span class="math notranslate nohighlight">\(K = K(t) = 1 + \sqrt{t}\)</span>. You can check that this new differential equation is non-integrable in elementary functions, so we need to obtain solution <strong>numerically</strong>.</p>
+<p>We introduce <strong>Forward-Euler</strong> scheme of integration. without going into the details of the proof, forward Euler prescribes just to iteratively compute each next step as a sum of result from the previous step and computed value of the function on the previous step. Let’s rewrite our new logistic equation <a class="reference internal" href="#equation-eq-complex-logistic">(7.5)</a> in the general form:</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{dx}{dt} = f(x, t)
+\]</div>
+<p>rewrite the differetial equation in finite-difference form:</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{\Delta x}{\Delta t} = \frac{x_i - x_{i-1}}{\Delta t} = f(x_{i-1}, t_{i-1})
+\]</div>
+<p>expressing <span class="math notranslate nohighlight">\(x_i\)</span> from the latter have:</p>
+<div class="math notranslate nohighlight">
+\[
+  x_i = x_{i-1} + f(x_{i-1}, t_{i-1})\Delta t 
+\]</div>
+<p>We did it! We have a clear iterative scheme for integrating our system. Let’s code it, assuming that <span class="math notranslate nohighlight">\(x_0 = 0.5\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r0</span><span class="p">:</span> <span class="n">r0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># number of integration steps</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#time difference</span>
+<span class="n">r0</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1">#resulting integral</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span> <span class="c1"># assign initial condition</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="c1">#integrate from 1-st index</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">r0</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population size&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Numerical solution&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Day light intensity (growth rate)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Carrying capacity&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/system_resilience_11_0.png" src="../_images/system_resilience_11_0.png" />
+</div>
+</div>
+<p>First, it is beautiful, isn’t it? We see that day time affects an ability to growth and expanding carrying capacity determines limits of this growth. This simple example helps us to understand the <strong>top-down</strong> approach to modelling. This means that we do not know exactly the underlying microscopic biological mechanism inducing growth in number of bacteria, rather we try to guess the function which can <em>describe</em> the observable behaviour. This is something that also known as <strong>phenomenological</strong> model which tries to describe phenomenon without explicit pointing to the mechanism of it.</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>Surely, forward Euler’s method is not the best in terms of accuracy of approximation and speed of convergence (the famous Runge Kutta method can be much better). To dig into the plephora of algorithms for numerical integrations we recommend the following book <span id="id1">[<a class="reference internal" href="../stat/differential_analysis.html#id71" title="Mark H Holmes. Introduction to scientific computing and data analysis. Volume 13. Springer, 2016.">Holmes, 2016</a>]</span></p>
+</div>
 </section>
 </section>
 <section id="stability-theory-and-bifurcations">
 <h2><span class="section-number">7.2. </span>Stability theory and bifurcations<a class="headerlink" href="#stability-theory-and-bifurcations" title="Permalink to this headline">#</a></h2>
+<p><span id="id2">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span></p>
+<p>Cite Kapitza model of human population</p>
 </section>
 <section id="system-of-differential-equations">
 <h2><span class="section-number">7.3. </span>System of differential equations<a class="headerlink" href="#system-of-differential-equations" title="Permalink to this headline">#</a></h2>
 <p>consider <span class="math notranslate nohighlight">\(\ddot{x} = f(x)\)</span></p>
 </section>
-<section id="id2">
-<h2><span class="section-number">7.4. </span>Recap differential equations<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<section id="id3">
+<h2><span class="section-number">7.4. </span>Recap differential equations<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="learn-more">
