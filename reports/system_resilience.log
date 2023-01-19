@@ -17,23 +17,42 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import matplotlib.pyplot as plt
-import numpy as np
-plt.rcParams['font.size'] = '16' # increase font size
+f = lambda x, t, r, d: r * x - (1. - d) * x**2
 
-x1 lambda a: a*t + C
-x2 = 
 
-fig, ax = plt.subplots(1, 1)
-ax.set_xlabel('Time')
-ax.set_ylabel('Probability to die')
-ax.plot();
+n = 1000 # number of integration steps
+t = np.linspace(0, 19.3, n)
+dt = t[1] - t[0] #time difference
+r, d = 1., 0.001
+x0 = 0.001
+x = np.empty(n) #resulting integral
+x[0] = x0 # assign initial condition
+
+for i in range(1, n): #integrate from 1-st index
+    if t[i] > 19:
+        d = 1.001
+    x[i] = x[i-1] + f(x[i-1], t[i-1], r, d) * dt
+
+fig, ax = plt.subplots(1, 1, figsize=(8,6))
+ax.set_xlabel('Chronological Age')
+ax.set_ylabel('Biological Age')
+ax.plot(t, x, label=f'Numerical solution (intervention)', lw=2);
+ax.plot(t, x1(x0, t, r, 0.001), label=f'Analytical solution (no intervention)', lw=2);
+ax.axhline(0, color='grey', ls='--')
+ax.axvline(0, color='grey', ls='--')
+ax.grid(alpha=0.5)
+ax.legend(loc='lower right', fontsize=13);
 ------------------
 
-[0;36m  Input [0;32mIn [1][0;36m[0m
-[0;31m    x1 lambda a: a*t + C[0m
-[0m       ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [7][0m, in [0;36m<cell line: 21>[0;34m()[0m
+[1;32m     19[0m ax[38;5;241m.[39mset_ylabel([38;5;124m'[39m[38;5;124mBiological Age[39m[38;5;124m'[39m)
+[1;32m     20[0m ax[38;5;241m.[39mplot(t, x, label[38;5;241m=[39m[38;5;124mf[39m[38;5;124m'[39m[38;5;124mNumerical solution (intervention)[39m[38;5;124m'[39m, lw[38;5;241m=[39m[38;5;241m2[39m);
+[0;32m---> 21[0m ax[38;5;241m.[39mplot(t, [43mx1[49m[43m([49m[43mx0[49m[43m,[49m[43m [49m[43mt[49m[43m,[49m[43m [49m[43mr[49m[43m,[49m[43m [49m[38;5;241;43m0.001[39;49m[43m)[49m, label[38;5;241m=[39m[38;5;124mf[39m[38;5;124m'[39m[38;5;124mAnalytical solution (no intervention)[39m[38;5;124m'[39m, lw[38;5;241m=[39m[38;5;241m2[39m);
+[1;32m     22[0m ax[38;5;241m.[39maxhline([38;5;241m0[39m, color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mgrey[39m[38;5;124m'[39m, ls[38;5;241m=[39m[38;5;124m'[39m[38;5;124m--[39m[38;5;124m'[39m)
+[1;32m     23[0m ax[38;5;241m.[39maxvline([38;5;241m0[39m, color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mgrey[39m[38;5;124m'[39m, ls[38;5;241m=[39m[38;5;124m'[39m[38;5;124m--[39m[38;5;124m'[39m)
 
-SyntaxError: invalid syntax (3198328043.py, line 5)
+[0;31mTypeError[0m: <lambda>() takes 3 positional arguments but 4 were given
+TypeError: <lambda>() takes 3 positional arguments but 4 were given
 

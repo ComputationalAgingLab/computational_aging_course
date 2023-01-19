@@ -570,9 +570,6 @@ Example of system resilience problem</p>
 <li><p>numerical integration</p></li>
 </ul>
 </li>
-</ul>
-<p><strong>Plan</strong></p>
-<ul class="simple">
 <li><p>Stability theory and bifurcations</p>
 <ul>
 <li><p>Stability intuition (as in Sole Lecture)</p></li>
@@ -580,6 +577,9 @@ Example of system resilience problem</p>
 <li><p>Example of system</p></li>
 </ul>
 </li>
+</ul>
+<p><strong>Plan</strong></p>
+<ul class="simple">
 <li><p>System ODE</p>
 <ul>
 <li><p>Stability in linear multidimensional case</p></li>
@@ -799,7 +799,7 @@ Example of system resilience problem</p>
 <p>Excellent! We solved a new kind of dynamical system describing bacterial growth with limited resources. As before we observe three different regimes for <span class="math notranslate nohighlight">\(r&gt;0\)</span> - logistic growth; <span class="math notranslate nohighlight">\(r=0\)</span> - no dynamics; <span class="math notranslate nohighlight">\(r&lt;0\)</span> - logistic decay (not exponential!). But we also see something new, our solutions for growth are bounded with carrying capacity <span class="math notranslate nohighlight">\(K=1\)</span> and, for all initial conditions (even for larger than <span class="math notranslate nohighlight">\(K\)</span>), trajectories <em>attracts</em> to a fixed value <span class="math notranslate nohighlight">\(K\)</span> which is called <strong>attractor</strong>. In the next chapter we will address more to attractors, but before that, we need to learn what to do with non-integrable non-linear differential equations.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
-<p>What kind of growth exhibits equation <span class="math notranslate nohighlight">\(\dot{x} = a*x^2\)</span>? Solve the equation for positive <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(x_0 &gt; 0\)</span>. What strange about this model? What is the name of this model (try to google or chatGPT it)?</p>
+<p>What kind of growth exhibits equation <span class="math notranslate nohighlight">\(\dot{x} = a*x^2\)</span>? Solve the equation for positive <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(x_0 &gt; 0\)</span>. What wrong with this equation if we would try it for modeling real systems growth? What is the name of this model (try to google or chatGPT it)?</p>
 </div>
 </section>
 <section id="numerical-integration">
@@ -979,9 +979,184 @@ Fig. 1. Example of potential landscape.
 </div>
 <p>As we computed in the previous paragraph, for a positive <span class="math notranslate nohighlight">\(r\)</span> we have convex potential landscape around the point <span class="math notranslate nohighlight">\(x=K\)</span> (attractor) such that any imaginary ball placed at this point returns to it after small perturbation. Moreover, the point <span class="math notranslate nohighlight">\(x=0\)</span> reads as unstable, equivalently, potential function around <span class="math notranslate nohighlight">\(x=0\)</span> is concave. Hovewer, once a parameter <span class="math notranslate nohighlight">\(r\)</span> crosses <span class="math notranslate nohighlight">\(0\)</span> towards negative values we observe a completely opposite picture. The point <span class="math notranslate nohighlight">\(x=K\)</span> becomes unstable and divides two different regimes: complete decay (left) and unlimited growth (right). Unlimited growth is a new property of this system which initially assumed to model limiting a reproduction capacity. So, possibly negative values of <span class="math notranslate nohighlight">\(r\)</span> makes this concrete model non-physical.</p>
 <p>Interestingly that a sequence of parameters <span class="math notranslate nohighlight">\(r\)</span> changes the shape of potential function ultimately converting it to the qualitatively different state. In the next paragraph we consider how briefly to describe the stability properties of system with one diagram tracking its journey towards bifurcation.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Compute a potential function for the equation <span class="math notranslate nohighlight">\(\dot{x} = ax^2\)</span>? Which type of stability its fixed point has?</p>
+</div>
 </section>
 <section id="catastrophic-bifurcation">
 <h3><span class="section-number">7.2.3. </span>Catastrophic bifurcation<a class="headerlink" href="#catastrophic-bifurcation" title="Permalink to this headline">#</a></h3>
+<p>Describe model and find critical points
+Introduce bifurcation diagram, show catastrophic bifurcation
+Say about different types of bifurcations</p>
+<p>In this paragraph we develop our first dynamical model of organismal aging. This will be, certainly, a toy model but it helps us to formulate aging problem in the learned dynamical system framework, study its potential functions and get acquainted with a <strong>bifurcation</strong> concept. We develop our model from scratch and step by step, based on techniques we learned above.</p>
+<p>First we need to model a growth of an organism. We already know how to do that because the organism is a bag of cells with limited bag sizes. The important difference of a colony of unicellular organisms from a one multicellular is now intercellular communication is of great importance. Following a spirit of previous chapters of this book we will model <strong>biological age</strong> with an evolving system variable <span class="math notranslate nohighlight">\(x\)</span>. The growth term can be defined as before in the logistic model <span class="math notranslate nohighlight">\((r-x)x\)</span>, where <span class="math notranslate nohighlight">\(r\)</span> is a growth rate. Note, that the first term models does not contain carrying capacity term explicitly, but you may easily guess that it is equal to <span class="math notranslate nohighlight">\(1\)</span>, check it out! The second term is something new for us. We want to model costs for intercellular communication which: (i) grow with number of cell as a square of cell number (due to pairwise interactions), (ii) becomes larger with age (change in <span class="math notranslate nohighlight">\(\delta\)</span> parameter) due to the increase in number of breakdowns, protein misfoldings and epigenetic alterations within cells, an extracellular matrix degradation, other deregulations which are consequences of the previous two. We propose to model all this stuff with a term <span class="math notranslate nohighlight">\(\delta x^2\)</span>, where <span class="math notranslate nohighlight">\(\delta\)</span> reflects costs related with an organism maintenance. Writing them together we have:</p>
+<div class="math notranslate nohighlight" id="equation-eq-aging-dummy">
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-eq-aging-dummy" title="Permalink to this equation">#</a></span>\[
+    \dot{x} = (r - x)x + \delta x^2
+\]</div>
+<p>You may notice some ambiguity of this model. On the one hand, we model biological age <span class="math notranslate nohighlight">\(x\)</span>, but terms models number of cells and costs on their pairwise communications. The reason is that biological age is actually a *<em>latent variable</em> describing organism state. This variable may be constructed, in principle, as a combination of other explicit variables that has direct physical meaning. Therefore, latent variable may be correlated with actual number of cells at one time interval and with costs for an organism interval at another time interval. Unfortunately it is very difficult to formulate <em>aging</em> as unimodal explicit physical process (otherwise it would have already been done), so it is convenient to use latent representation.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Compute critical points, potential function and analytical solution for the equation <a class="reference internal" href="#equation-eq-aging-dummy">(7.7)</a>.</p>
+</div>
+<p>The fixed points for the equation <a class="reference internal" href="#equation-eq-aging-dummy">(7.7)</a> are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{cases}
+    x^*_1 = 0 \\
+    x^*_2 = \frac{r}{1-\delta}
+    \end{cases}
+\end{split}\]</div>
+<p>Apparently, something should happens once <span class="math notranslate nohighlight">\(\delta\)</span> constant crosses zero. We will study it later, but before let’s write an expression for potential function:</p>
+<div class="math notranslate nohighlight">
+\[
+    V_\theta(x) = \frac{(1 - \delta) x^3}{3} - \frac{rx^2}{2}  
+\]</div>
+<p>And the solution for the differential equation is:</p>
+<div class="math notranslate nohighlight">
+\[
+    x(t) = \frac{r}{1 - \delta - (1 - \delta - \frac{r}{x_0})e^{-rt}}
+\]</div>
+<p>As always, firstly draw them in assumption of <em>non-aging</em> organism:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_sol</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">d</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">d</span> <span class="o">-</span> <span class="n">r</span><span class="o">/</span><span class="n">x0</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+<span class="n">V</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">r</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">2.5</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Chronological age&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Biological age&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_sol</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Analytical solution&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Biological age&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Potential value&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$x^*_1=0$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">d</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$x^*_2=r/(1-\delta)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Potential&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/system_resilience_19_0.png" src="../_images/system_resilience_19_0.png" />
+</div>
+</div>
+<p>For non-aging organism everything looks like in the growth model with scaled biological age instead of population size. We have an attractor in a point <span class="math notranslate nohighlight">\(x^*=r/(1 - \delta)\)</span> (which is a minimum of potential function), where <span class="math notranslate nohighlight">\(delta\)</span> is a small number reflecting small costs needed for organism maintenance. Let’s assume the first intervention. Suppose the costs suddenly increase on a value of <span class="math notranslate nohighlight">\(1\)</span> when organism achieved chronological age <span class="math notranslate nohighlight">\(19\)</span>. To model such intervention it’s better to use numerical modelling we learned earlier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># number of integration steps</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">19.3</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#time difference</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.001</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1">#resulting integral</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span> <span class="c1"># assign initial condition</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="c1">#integrate from 1-st index</span>
+    <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">19</span><span class="p">:</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="mf">1.001</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Chronological Age&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Biological Age&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Numerical solution (intervention)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x1</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Analytical solution (no intervention)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 21&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Biological Age&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Numerical solution (intervention)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="ne">---&gt; </span><span class="mi">21</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x1</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Analytical solution (no intervention)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: &lt;lambda&gt;() takes 3 positional arguments but 4 were given
+</pre></div>
+</div>
+<img alt="../_images/system_resilience_21_1.png" src="../_images/system_resilience_21_1.png" />
+</div>
+</div>
+<p>Wow, it’s super fast! This intervention totally changes the behaviour of the system making it growing. But is it a stable growth? Might it be that the organism just take a new biological age state? The answer not, and to demonstrate it comprehensively we introduce a concept of <strong>bifurcation diagram</strong>.</p>
+<p>Bifurcation diagram is a just a plot with all possible <span class="math notranslate nohighlight">\(x^*\)</span> depending on some system parameter (from \theta). In our current case, we are interested in parameter <span class="math notranslate nohighlight">\(\delta\)</span> whose values determine the qualitative behavior of the system. Often such parameter is also called the <strong>order parameter</strong>. Bifurcation diagram is better to plot by hands if possible.</p>
+<p><img src="https://drive.google.com/uc?id=1u7FV9KT6r0Zvp3eb9H1KyX2TTihbavVs"
+     alt="potential" 
+     width="500"/></p>
+<p align = "left">
+Fig. 2. Bifurcation diagram for the toy aging model.
+</p><p>The solid blue line on the diagram is a set of stable solutions for the system <a class="reference internal" href="#equation-eq-aging-dummy">(7.7)</a>. The dashed blue line at point <span class="math notranslate nohighlight">\(x=0\)</span>, otherwise, a set of unstable solutions. The set of initial conditions taken above the stable line result in convergence to the stable solution. The set of initial conditions taken between the stable and the unstable lines result in convergence to the stable solution. Black arrows point the direction of system evolution. When we increase an order parameter <span class="math notranslate nohighlight">\(\delta\)</span> starting from <span class="math notranslate nohighlight">\(0\)</span> the stable solution increases in magnitude untill we achieve point <span class="math notranslate nohighlight">\(\delta_c\)</span> which is a critical threshold after which a bifurcation occurs. After crossing the critical threshold no physical stable solutions remain (here we assume that biological age cannot accept negative values, so red line cannot be a solution) and system is doomed to diverge.</p>
+<p>Okay, let’s gather two insights from the bifurcation diagram about our model:</p>
+<ol class="simple">
+<li><p>It is not necessary to cross the critical threshold to obtain arbitrarily large biological age. It is enough that <span class="math notranslate nohighlight">\(\delta\)</span> would be close to <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p>Crossing the threshold guaranties system instability (<strong>catastrophe</strong>) what we can treat as an organism death.</p></li>
+</ol>
+<p>The organism can, in principle, live infinitely long with non-increasing <span class="math notranslate nohighlight">\(\delta\)</span>, but it seems like in real situations delta depends on time <span class="math notranslate nohighlight">\(t\)</span> and some interventions than <span class="math notranslate nohighlight">\(x\)</span> itself. Let’s add this assumption in our model. Let <span class="math notranslate nohighlight">\(\delta\)</span> is now a rate of maintenance costs, i.e.:</p>
+<div class="math notranslate nohighlight" id="equation-eq-aging-dummy-time">
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-eq-aging-dummy-time" title="Permalink to this equation">#</a></span>\[
+    \dot{x} = (r - x)x + \delta \cdot t \cdot x^2
+\]</div>
+<p>We solve this equation numerically, but an analytical solution exists too (try exercise below).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">d</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># number of integration steps</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#time difference</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1">#resulting integral</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span> <span class="c1"># assign initial condition</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="c1">#integrate from 1-st index</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Chronological Age&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Biological Age&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Numerical solution&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/system_resilience_24_0.png" src="../_images/system_resilience_24_0.png" />
+</div>
+</div>
+<p>That looks more realistically (than the intervention case), we start aging after ending the growth proportially to time.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Solve the equation <a class="reference internal" href="#equation-eq-aging-dummy-time">(7.8)</a> analytically and draw a bifurcation diagram (on a sheet of paper). What difference with the initial model?</p>
+</div>
+<p>This a good first steps to the world of really complex aging models. But we already can say much even with this <em>one-dimensional</em> models. More insights are waiting us in the multidimensional world which we will discuss below.</p>
 </section>
 </section>
 <section id="system-of-differential-equations">
