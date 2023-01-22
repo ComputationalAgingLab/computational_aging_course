@@ -447,10 +447,32 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#system-of-differential-equations">
      7.3. System of differential equations
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stability-in-linear-multidimensional-case">
+       7.3.1. Stability in linear multidimensional case
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stability-in-non-linear-multidimensional-case">
+       7.3.2. Stability in non-linear multidimensional case
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#universality-principle">
+       7.3.3. Universality principle
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-of-complex-system-aging">
+       7.3.4. Example of complex system aging
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     7.4. Recap differential equations
+    <a class="reference internal nav-link" href="#critical-slowing-down">
+     7.4. Critical slowing down
     </a>
    </li>
   </ul>
@@ -532,10 +554,32 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#system-of-differential-equations">
      7.3. System of differential equations
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stability-in-linear-multidimensional-case">
+       7.3.1. Stability in linear multidimensional case
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stability-in-non-linear-multidimensional-case">
+       7.3.2. Stability in non-linear multidimensional case
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#universality-principle">
+       7.3.3. Universality principle
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-of-complex-system-aging">
+       7.3.4. Example of complex system aging
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     7.4. Recap differential equations
+    <a class="reference internal nav-link" href="#critical-slowing-down">
+     7.4. Critical slowing down
     </a>
    </li>
   </ul>
@@ -582,11 +626,10 @@ Example of system resilience problem</p>
 <ul class="simple">
 <li><p>System ODE</p>
 <ul>
-<li><p>Stability in linear multidimensional case</p></li>
-<li><p>Nonlinear systems</p></li>
-<li><p>Linear approximations around tipping point ?????</p></li>
-<li><p>Univesality principle</p></li>
-<li><p>Example complex system aging and</p></li>
+<li><p>Stability in linear multidimensional case (MODELING GENE EXPRESSION WITH DIFFERENTIAL EQUATIONS)</p></li>
+<li><p>Nonlinear systems (Gene regulatory networks, Michaelis-Menten equation)</p></li>
+<li><p>Univesality principle (just reproduce the paper with simplifications)</p></li>
+<li><p>Example complex system aging (gene regulatory network) (just adjust some parameters in the network reflecting aging)</p></li>
 </ul>
 </li>
 <li><p>Critical slowing down</p>
@@ -665,15 +708,15 @@ Example of system resilience problem</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">a</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">C</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">C</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x1</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\dot</span><span class="si">{x}</span><span class="s1"> = 1$&#39;</span><span class="p">);</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x2</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\dot</span><span class="si">{x}</span><span class="s1"> = x$&#39;</span><span class="p">);</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x2</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\dot</span><span class="si">{x}</span><span class="s1"> = -x$&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x1</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\dot</span><span class="si">{x}</span><span class="s1"> = 1$&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x2</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\dot</span><span class="si">{x}</span><span class="s1"> = x$&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x2</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\dot</span><span class="si">{x}</span><span class="s1"> = -x$&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -781,7 +824,7 @@ Example of system resilience problem</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population size&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x3</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">);</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x3</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x3</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$x_0 = 1.3; r = 1.5$&#39;</span><span class="p">);</span> <span class="c1"># another initial condition</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
@@ -845,8 +888,8 @@ Example of system resilience problem</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population size&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Numerical solution&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Day light intensity (growth rate)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Carrying capacity&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Day light intensity (growth rate)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Carrying capacity&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -1060,7 +1103,6 @@ Say about different types of bifurcations</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 
-
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># number of integration steps</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">19.3</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#time difference</span>
@@ -1078,7 +1120,7 @@ Say about different types of bifurcations</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Chronological Age&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Biological Age&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Numerical solution (intervention)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x1</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Analytical solution (no intervention)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_sol</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Analytical solution (no intervention)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -1087,19 +1129,7 @@ Say about different types of bifurcations</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 21&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Biological Age&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Numerical solution (intervention)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
-<span class="ne">---&gt; </span><span class="mi">21</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x1</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Analytical solution (no intervention)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: &lt;lambda&gt;() takes 3 positional arguments but 4 were given
-</pre></div>
-</div>
-<img alt="../_images/system_resilience_21_1.png" src="../_images/system_resilience_21_1.png" />
+<img alt="../_images/system_resilience_21_0.png" src="../_images/system_resilience_21_0.png" />
 </div>
 </div>
 <p>Wow, it’s super fast! This intervention totally changes the behaviour of the system making it growing. But is it a stable growth? Might it be that the organism just take a new biological age state? The answer not, and to demonstrate it comprehensively we introduce a concept of <strong>bifurcation diagram</strong>.</p>
@@ -1113,7 +1143,7 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 <p>Okay, let’s gather two insights from the bifurcation diagram about our model:</p>
 <ol class="simple">
 <li><p>It is not necessary to cross the critical threshold to obtain arbitrarily large biological age. It is enough that <span class="math notranslate nohighlight">\(\delta\)</span> would be close to <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
-<li><p>Crossing the threshold guaranties system instability (<strong>catastrophe</strong>) what we can treat as an organism death.</p></li>
+<li><p>Crossing the threshold guaranties system instability (<strong>catastrophe</strong>) what we can treat as an organism <em>death</em>.</p></li>
 </ol>
 <p>The organism can, in principle, live infinitely long with non-increasing <span class="math notranslate nohighlight">\(\delta\)</span>, but it seems like in real situations delta depends on time <span class="math notranslate nohighlight">\(t\)</span> and some interventions than <span class="math notranslate nohighlight">\(x\)</span> itself. Let’s add this assumption in our model. Let <span class="math notranslate nohighlight">\(\delta\)</span> is now a rate of maintenance costs, i.e.:</p>
 <div class="math notranslate nohighlight" id="equation-eq-aging-dummy-time">
@@ -1128,30 +1158,37 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># number of integration steps</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#time difference</span>
-<span class="n">r</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.001</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1">#resulting integral</span>
-<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span> <span class="c1"># assign initial condition</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="c1">#integrate from 1-st index</span>
-    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.013</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">]:</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span> <span class="c1"># assign initial condition</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="c1">#integrate from 1-st index</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Numerical solution, d=</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Chronological Age&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Biological Age&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Numerical solution&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/system_resilience_24_0.png" src="../_images/system_resilience_24_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_414571/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
+  f = lambda x, t, r, d: r * x - (1. - d * t) * x**2
+</pre></div>
+</div>
+<img alt="../_images/system_resilience_24_1.png" src="../_images/system_resilience_24_1.png" />
 </div>
 </div>
-<p>That looks more realistically (than the intervention case), we start aging after ending the growth proportially to time.</p>
+<p>At value <span class="math notranslate nohighlight">\(d=0.013\)</span> this looks more realistically than the intervention case, we start aging after ending the growth proportially to time. Indeed we grow rapidly at earlier stage of life and, after that, start to age exponentialy by a quadratic increase in costs of system maintenance. It should be emphasized that the resulting model is a toy model and rather serves the purpose of demonstrating how a slight modification of the logistic model can describe biological age. One should maintain a healthy skepticism about all such models and always question their usefulness and plausibility.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
 <p>Solve the equation <a class="reference internal" href="#equation-eq-aging-dummy-time">(7.8)</a> analytically and draw a bifurcation diagram (on a sheet of paper). What difference with the initial model?</p>
@@ -1161,12 +1198,232 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 </section>
 <section id="system-of-differential-equations">
 <h2><span class="section-number">7.3. </span>System of differential equations<a class="headerlink" href="#system-of-differential-equations" title="Permalink to this headline">#</a></h2>
-<p>consider <span class="math notranslate nohighlight">\(\ddot{x} = f(x)\)</span></p>
-<p><span id="id2">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span></p>
-<p>Cite Kapitza model of human population</p>
+<p>It’s time to expand our understanding of dynamical systems to a multidimensional case. We first introduce a new concept of <strong>state vector</strong> <span class="math notranslate nohighlight">\(x\)</span> which is a replacement for state variable <span class="math notranslate nohighlight">\(x\)</span> used above for unidimensional dynamic systems. State vector is composed from <span class="math notranslate nohighlight">\(n\)</span> vector <strong>components</strong> <span class="math notranslate nohighlight">\(\{x_i\}_n\)</span> which represents different dynamical variables of a system (organism). State vector, in principle, can be composed from any physiological state variables (blood pressure, body temperature, heart rate, etc.), but it is important to choose such of them which describes the system most “completely”. For example, when you try to build a dynamical model of a running human, it is desirable to include heart rate as variable into a state vector. On the other hand, such variable as hair length is apparently redundant to include. The same logic works for a model of aging. When we try to model it on a physiological level, tissue level or molecular level, different variables should be used. However, some models can comprise state variables from different levels of system organization. In this case, we need to bind them properly with functional relations.</p>
+<p>In this section we will consider molecular model of human aging building it based on the concept of <strong>gene regulatory network</strong>, which we discuss below.</p>
+<section id="stability-in-linear-multidimensional-case">
+<h3><span class="section-number">7.3.1. </span>Stability in linear multidimensional case<a class="headerlink" href="#stability-in-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
+<p>Linear systems of differential equations allows to model a countless number of complex phenomena. We start with a simple model of gene regulation, which includes feedback control loop (Fig. 3). This is a scalable model proposed in <span id="id2">[]</span> for modeling a number of genes. We restrict ourselves to a consideration only a one gene-rna-protein cascade where the protein acts as a regulator of the gene transcription.</p>
+<p><img src="https://drive.google.com/uc?id=1cB0GcpKAT1W20GOUMG2na7RMPuaYfM5Q"
+     alt="gene regulatory network" 
+     width="500"/></p>
+<p align = "left">
+Fig. 3. Dynamic system of gene regulation.
+</p>
+<p>We first write the system of differential equations and explain variables:</p>
+<div class="math notranslate nohighlight" id="equation-eq-linear-system">
+<span class="eqno">(7.9)<a class="headerlink" href="#equation-eq-linear-system" title="Permalink to this equation">#</a></span>\[\begin{split}
+     \begin{cases}
+          \frac{dr}{dt} = - Vr + Cp  \\
+          \frac{dp}{dt} = Lr - Up 
+     \end{cases}
+\end{split}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(p\)</span> are mRNA and protein relative concentrations correspondingly;</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span> - degradation rate of mRNAs;</p></li>
+<li><p><span class="math notranslate nohighlight">\(U\)</span> - degradation rate of proteins;</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> - translation rate;</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span> - transcription regulation rate. This constant determines a character of feedback loop. The protein is a transcriptional activator if <span class="math notranslate nohighlight">\(C&gt;0\)</span> and a repressor if <span class="math notranslate nohighlight">\(C&lt;0\)</span>.</p></li>
+</ul>
+<p>Let’s combine both state variables into a state vector <span class="math notranslate nohighlight">\(x = [r, p]^T\)</span> (we will use column notation for vectors). Then the right part of the equation <a class="reference internal" href="#equation-eq-linear-system">(7.9)</a> can be written as a matrix <span class="math notranslate nohighlight">\(M\)</span> of coefficients multiplied by the state vector <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+     \begin{bmatrix}
+          \dot{r}\\
+          \dot{p}
+     \end{bmatrix}
+     =
+     \begin{bmatrix}
+          -V &amp; C \\
+          L &amp; -U
+     \end{bmatrix}
+     \begin{bmatrix}
+          r\\
+          p
+     \end{bmatrix}
+\end{split}\]</div>
+<p>or, in brief:</p>
+<div class="math notranslate nohighlight">
+\[
+     \dot{x} = Mx
+\]</div>
+<p>This system can be solved analytically, but now we use numerical solution with some constants.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">M</span> <span class="o">@</span> <span class="n">x</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span> <span class="c1">#Forward Euler integration</span>
+        <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">M</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1">### SYSTEM MATRIX</span>
+<span class="n">V</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> 
+              <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">U</span><span class="p">]])</span>
+<span class="c1">###</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># number of time steps</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span> <span class="c1">#initial condition</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mf">5.5</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative abundance&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Time trajectory&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;mRNA&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;protein&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Phase portrait&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;mRNA&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;protein&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/system_resilience_28_0.png" src="../_images/system_resilience_28_0.png" />
+</div>
+</div>
+<p>The constants of matrix <span class="math notranslate nohighlight">\(M\)</span> were chosen so that system is stable, but how can we explore the stability in more general way? Previously we have seen that negative system constant <span class="math notranslate nohighlight">\(a\)</span> (in the equation <span class="math notranslate nohighlight">\(\dot{x} = ax\)</span>) guarantees the system converges. Is there the similar property for the matrix <span class="math notranslate nohighlight">\(M\)</span> making it “negative”? It turns out it is enough to require real part of all eigenvalues of matrix <span class="math notranslate nohighlight">\(M\)</span> to be negative for a system stability. Matrix with all eigenvalues are negative called <em>negatively-definite matrix</em>. Let’s find eigenvalues of matrix <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p>The characteristic equation for matrix M reads as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \det{(M - \lambda I)} = 
+    \begin{vmatrix}
+        -V - \lambda &amp; C \\
+        L &amp; -U - \lambda
+    \end{vmatrix} = 0
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+    (-V - \lambda)(-U - \lambda) - LC = 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \lambda^2 + \lambda (U + V) + UV - LC = 0
+\]</div>
+<p>Solving this equation for <span class="math notranslate nohighlight">\(\lambda\)</span> yields the following expression for eigenvalues:</p>
+<div class="math notranslate nohighlight">
+\[
+    \lambda_{1,2} = - \frac{U + V}{2} \pm \frac{\sqrt{(U - V)^2 + 4LC}}{2}
+\]</div>
+<p>Using the expression for the previous case (<span class="math notranslate nohighlight">\(V=0.7\)</span>, <span class="math notranslate nohighlight">\(U=0.7\)</span>, <span class="math notranslate nohighlight">\(C=1.0\)</span>, <span class="math notranslate nohighlight">\(L=0.1\)</span>) obtain the eigenvalues <span class="math notranslate nohighlight">\(\lambda_1=-0.384\)</span>, <span class="math notranslate nohighlight">\(\lambda_2=-1.016\)</span> which are both negative and, therefore, system is stable.</p>
+<p>Let’s play with the parameters and explore which regimes are possible for the system:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_eigvals</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+    <span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">,</span> <span class="p">[</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">])</span> <span class="c1">#allows complex eigvals</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">U</span> <span class="o">+</span> <span class="n">V</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">U</span> <span class="o">-</span> <span class="n">V</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">C</span><span class="p">)),</span>
+            <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">U</span> <span class="o">+</span> <span class="n">V</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">U</span> <span class="o">-</span> <span class="n">V</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">C</span><span class="p">)))</span>
+
+<span class="c1">#Case 1: unstable system, mRNA boost (large C)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">eigvals</span> <span class="o">=</span> <span class="n">compute_eigvals</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">U</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">V</span><span class="p">]])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lmb1=(0.3+0j); lmb2=(-1.7-0j)
+</pre></div>
+</div>
+<img alt="../_images/system_resilience_30_1.png" src="../_images/system_resilience_30_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Case 2: unstable system, no decay (U=0, V=0)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">eigvals</span> <span class="o">=</span> <span class="n">compute_eigvals</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">U</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">V</span><span class="p">]])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lmb1=(0.316+0j); lmb2=(-0.316-0j)
+</pre></div>
+</div>
+<img alt="../_images/system_resilience_31_1.png" src="../_images/system_resilience_31_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Case 3: oscillation with decay, suppresion of transcription (C = -L)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span>
+<span class="n">eigvals</span> <span class="o">=</span> <span class="n">compute_eigvals</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">U</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">V</span><span class="p">]])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lmb1=(-0.7+3j); lmb2=(-0.7-3j)
+</pre></div>
+</div>
+<img alt="../_images/system_resilience_32_1.png" src="../_images/system_resilience_32_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Case 4: no feedback and translation, radioactive decay (C=L=0)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span>
+<span class="n">eigvals</span> <span class="o">=</span> <span class="n">compute_eigvals</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">U</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">V</span><span class="p">]])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lmb1=(-0.7+0j); lmb2=(-0.7-0j)
+</pre></div>
+</div>
+<img alt="../_images/system_resilience_33_1.png" src="../_images/system_resilience_33_1.png" />
+</div>
+</div>
+<p>Even only one positive eigenvalue makes the system unstable as you could see this from cases 1 and 2 - this is general for system of any dimensionality. The more interesting case appeared before us once eigenvalues have non-zero imaginary part. The system becomes oscillating. Most of biological systems exhibit oscillating behavior (circadian rythm, glycolisis). It is important to note that oscillating systems also can be stable, unstable and meta-stable.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Create a gene regulatory system with 2 genes (4 equations). Solve it numerically and plot trajectories. Compute eigenvalues numerically with function <code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvals</span></code>. Try to adjust parameters to make system stable.</p>
+</div>
 </section>
-<section id="id3">
-<h2><span class="section-number">7.4. </span>Recap differential equations<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<section id="stability-in-non-linear-multidimensional-case">
+<h3><span class="section-number">7.3.2. </span>Stability in non-linear multidimensional case<a class="headerlink" href="#stability-in-non-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="universality-principle">
+<h3><span class="section-number">7.3.3. </span>Universality principle<a class="headerlink" href="#universality-principle" title="Permalink to this headline">#</a></h3>
+<p><span id="id3">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span></p>
+</section>
+<section id="example-of-complex-system-aging">
+<h3><span class="section-number">7.3.4. </span>Example of complex system aging<a class="headerlink" href="#example-of-complex-system-aging" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="critical-slowing-down">
+<h2><span class="section-number">7.4. </span>Critical slowing down<a class="headerlink" href="#critical-slowing-down" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="learn-more">
