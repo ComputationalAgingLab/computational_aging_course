@@ -481,6 +481,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#learn-more">
    8. Learn More
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#credits">
+     8.1. Credits
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -588,6 +595,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#learn-more">
    8. Learn More
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#credits">
+     8.1. Credits
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -911,7 +925,7 @@ Example of system resilience problem</p>
 <section id="stability-theory-and-bifurcations">
 <h2><span class="section-number">7.2. </span>Stability theory and bifurcations<a class="headerlink" href="#stability-theory-and-bifurcations" title="Permalink to this headline">#</a></h2>
 <section id="stability-intuition">
-<h3><span class="section-number">7.2.1. </span>Stability intuition<a class="headerlink" href="#stability-intuition" title="Permalink to this headline">#</a></h3>
+<span id="id2"></span><h3><span class="section-number">7.2.1. </span>Stability intuition<a class="headerlink" href="#stability-intuition" title="Permalink to this headline">#</a></h3>
 <p>Now we start to develop the core dynamical system property - its stability. It is a case when mathematical framework has a strict everyday physical analogy. Let’s discuss the picture below:</p>
 <p><img src="https://drive.google.com/uc?id=1faLz8aoxlaxa3az5PR5iPW8t45W9BnBH"
      alt="potential" 
@@ -1181,7 +1195,7 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_414571/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_490337/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
   f = lambda x, t, r, d: r * x - (1. - d * t) * x**2
 </pre></div>
 </div>
@@ -1202,7 +1216,7 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 <p>In this section we will consider molecular model of human aging building it based on the concept of <strong>gene regulatory network</strong>, which we discuss below.</p>
 <section id="stability-in-linear-multidimensional-case">
 <h3><span class="section-number">7.3.1. </span>Stability in linear multidimensional case<a class="headerlink" href="#stability-in-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
-<p>Linear systems of differential equations allows to model a countless number of complex phenomena. We start with a simple model of gene regulation, which includes feedback control loop (Fig. 3). This is a scalable model proposed in <span id="id2">[]</span> for modeling a number of genes. We restrict ourselves to a consideration only a one gene-rna-protein cascade where the protein acts as a regulator of the gene transcription.</p>
+<p>Linear systems of differential equations allows to model a countless number of complex phenomena. We start with a simple model of gene regulation, which includes feedback control loop (Fig. 3). This is a scalable model proposed in <span id="id3">[<a class="reference internal" href="../stat/differential_analysis.html#id72" title="Ting Chen, Hongyu L He, and George M Church. Modeling gene expression with differential equations. In Biocomputing'99, pages 29–40. World Scientific, 1999.">Chen <em>et al.</em>, 1999</a>]</span> for modeling a number of genes. We restrict ourselves to a consideration only a one gene-rna-protein cascade where the protein acts as a regulator of the gene transcription.</p>
 <p><img src="https://drive.google.com/uc?id=1cB0GcpKAT1W20GOUMG2na7RMPuaYfM5Q"
      alt="gene regulatory network" 
      width="500"/></p>
@@ -1405,18 +1419,140 @@ Fig. 3. Dynamic system of gene regulation.
 <img alt="../_images/system_resilience_33_1.png" src="../_images/system_resilience_33_1.png" />
 </div>
 </div>
-<p>Even only one positive eigenvalue makes the system unstable as you could see this from cases 1 and 2 - this is general for system of any dimensionality. The more interesting case appeared before us once eigenvalues have non-zero imaginary part. The system becomes oscillating. Most of biological systems exhibit oscillating behavior (circadian rythm, glycolisis). It is important to note that oscillating systems also can be stable, unstable and meta-stable.</p>
+<p>Even only one positive eigenvalue makes the system unstable as you could see this from cases 1 and 2 - this is general for system of any dimensionality. The more interesting case appeared before us once eigenvalues have non-zero imaginary part. The system becomes oscillating. Most of biological systems exhibit oscillating behavior (circadian rythm, glycolisis). Note that, oscillating systems also can be stable, unstable, and meta-stable and corresponding bifurcations can switch between these states.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Plot bifurcation diagram from parameter <span class="math notranslate nohighlight">\(C\)</span> for the system above.</p>
+</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise</p>
 <p>Create a gene regulatory system with 2 genes (4 equations). Solve it numerically and plot trajectories. Compute eigenvalues numerically with function <code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvals</span></code>. Try to adjust parameters to make system stable.</p>
 </div>
+<p>One important observation is that we can say if the system will be stable or not by looking at one parameter - largest eigenvalue. Indeed, if largest eigenvalue is negative, then all others are also negative. It is a brilliant property of linear systems. But what about non-linear?</p>
 </section>
 <section id="stability-in-non-linear-multidimensional-case">
 <h3><span class="section-number">7.3.2. </span>Stability in non-linear multidimensional case<a class="headerlink" href="#stability-in-non-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
+<p>We start with rather simple but still tractable Michaelis-Menten gene regulatory model <span id="id4">[<a class="reference internal" href="../stat/differential_analysis.html#id73" title="Uri Alon. An introduction to systems biology: design principles of biological circuits. Chapman and Hall/CRC, 2006.">Alon, 2006</a>]</span>. We first formulate this model for <span class="math notranslate nohighlight">\(n\)</span> genes where each gene <span class="math notranslate nohighlight">\(x_i\)</span> is regulated by others including itself:</p>
+<div class="math notranslate nohighlight" id="equation-eq-mm-model">
+<span class="eqno">(7.10)<a class="headerlink" href="#equation-eq-mm-model" title="Permalink to this equation">#</a></span>\[
+    \frac{dx_i}{dt} = -Bx_i + \sum^n_{j=1}A_{ij}\frac{x_j}{x_j + 1}
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(B\)</span> - degradation rate in a linear term we have seen earlier, we assume it is the same for all genes; <span class="math notranslate nohighlight">\(A_{ij}\)</span> the regulatory constant which can take values <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span> indicating the presence or absence of an activatory regulation. But wait, why the second non-linear term has so strange functional form? It is a saturating function converging to <span class="math notranslate nohighlight">\(1\)</span> as <span class="math notranslate nohighlight">\(x_j\)</span> increases. It turns out that it reflects quite simple idea of promoter regulation, namely, if some product of gene <span class="math notranslate nohighlight">\(j\)</span> binds to a promoter of gene <span class="math notranslate nohighlight">\(i\)</span> then this promoter is no more free for binding. Thus, the activatory effect is restricted with number of different promoter binding sites for a particular gene what is reflected in the saturating functional form of the term.</p>
+<p>You probably already guessed that <span class="math notranslate nohighlight">\(A\)</span> is a kind of system matrix by analogy with the previous case. In fact now we are ready to formulate a concept of <strong>network</strong> more precisely. Gene regulatory network under our scope is determined with relations written in the adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> which just way to represent a graph. This matrix has a shape of <span class="math notranslate nohighlight">\(n\times n\)</span> nodes, where node is a particular gene. Each pair of nodes are coupled with an edge. If such coupling exists, i.e. gene <span class="math notranslate nohighlight">\(i\)</span> affects gene <span class="math notranslate nohighlight">\(j\)</span>, then <span class="math notranslate nohighlight">\(A_{ij}=1\)</span>. In case of the absense of a coupling - <span class="math notranslate nohighlight">\(A_{ij}=0\)</span>. One can say that matrix <span class="math notranslate nohighlight">\(A\)</span> defines <strong>topology</strong> of the network.</p>
+<p>Let’s consider the simple case of <span class="math notranslate nohighlight">\(n=2\)</span> genes by plotting the dynamics:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_nonlinear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="o">-</span><span class="n">B</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">A</span> <span class="o">@</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">))</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span> <span class="c1">#Forward Euler integration</span>
+        <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1">### SYSTEM MATRIX</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span> <span class="c1">#genes regulate themselves and each other</span>
+<span class="c1">###</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#degradation constant</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># number of time steps</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span> <span class="c1">#initial condition</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">compute_nonlinear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_nonlinear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">5.5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative abundance&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Time trajectory&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;gene 1&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;gene 2&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_nonlinear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/system_resilience_36_0.png" src="../_images/system_resilience_36_0.png" />
+</div>
+</div>
+<p>There is something special in this model in a comparison with the previous. We can obtain a non-zero stationary (<span class="math notranslate nohighlight">\(t\to \infty\)</span>) solution for both genes if they cooperate enough. This means that gene regulatory network remains active for a long time until, for example, some perturbation occurs.</p>
+<p>Let’s explore the stability properties of this system. As it was done for one-dimensional systems, we can start with computing fixed points for function <span class="math notranslate nohighlight">\(f\)</span>. The only difference is that now the <span class="math notranslate nohighlight">\(f\)</span> is a vector function of <span class="math notranslate nohighlight">\(x = [x_1, x_2]^T\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{dx}{dt} = f(x)
+\]</div>
+<p>The fixed points then can be found from the equation:</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = 0
+\]</div>
+<p>or more explicitly:</p>
+<div class="math notranslate nohighlight" id="equation-eq-mm-right">
+<span class="eqno">(7.11)<a class="headerlink" href="#equation-eq-mm-right" title="Permalink to this equation">#</a></span>\[\begin{split}
+    \begin{cases}
+        f_1 = -Bx_1 + A_{11}\frac{x_1}{x_1 + 1} + A_{12}\frac{x_2}{x_2 + 1} = 0 \\
+        f_2 = -Bx_2 + A_{21}\frac{x_1}{x_1 + 1} + A_{22}\frac{x_2}{x_2 + 1} = 0
+    \end{cases}
+\end{split}\]</div>
+<p>It is not easy to get the solution in a closed form (try it), but we can try to <em>guess</em> at least one solution: <span class="math notranslate nohighlight">\(x=[0, 0]^T\)</span> which is true for any set of parameters. The plot above hints us that <span class="math notranslate nohighlight">\(x=[1, 1]^T\)</span> is also a stationary solution (check it), but only for a specific set of parameters, namely, <span class="math notranslate nohighlight">\(B=1\)</span> and matrix <span class="math notranslate nohighlight">\(A\)</span> consisting of ones. We will check their stability. It turns out we already know how to do that (remember <a class="reference internal" href="#stability-intuition"><span class="std std-ref">Stability intuition</span></a>) with a linearization of function <span class="math notranslate nohighlight">\(f\)</span>. We need only to generalize the techinique to multidimensional case. It is time to get acquainted with <strong>Hartman-Grobman theorem</strong> (we use its interpretation from <span id="id5">[<a class="reference internal" href="../stat/differential_analysis.html#id74" title="Alan Garfinkel, Jane Shevtsov, and Yina Guo. Modeling life. Cham: Springer, 2017.">Garfinkel <em>et al.</em>, 2017</a>]</span>):</p>
+<p>To determine the stability of an equilibrium point of a vector ﬁeld <span class="math notranslate nohighlight">\(f : R^n \to R^n\)</span>:</p>
+<ol class="simple">
+<li><p>Find the linearization of <span class="math notranslate nohighlight">\(f\)</span> at the equilibrium point, which is the Jacobian.</p></li>
+<li><p>Determine the stability of this linear function, using the method of eigenvalues.</p></li>
+<li><p>Provided no eigenvalue is zero or has zero real part, conclude that the equilibrium point of
+the nonlinear system is qualitatively similar to that of its linearization.</p></li>
+</ol>
+<p>Following this guidance, we need to find Jacobian first which is a full analog of <span class="math notranslate nohighlight">\(\lambda\)</span> coefficient for multidimensional case:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    J = 
+    \begin{bmatrix}
+        \frac{\partial f_1}{\partial x_1} &amp; \frac{\partial f_1}{\partial x_2} \\
+        \frac{\partial f_2}{\partial x_1} &amp; \frac{\partial f_2}{\partial x_2} 
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \frac{A_{11}}{(x_1 + 1)^2} - B &amp; \frac{A_{12}}{(x_2 + 1)^2} \\
+        \frac{A_{21}}{(x_1 + 1)^2} &amp; \frac{A_{22}}{(x_2 + 1)^2} - B
+    \end{bmatrix}
+\end{split}\]</div>
+<p>Estimate Jacobian in fixed points (remember that we need to substitute parameters <span class="math notranslate nohighlight">\(\theta = \{A_{ij}=1, B=1\}\)</span> for point <span class="math notranslate nohighlight">\(x=[1, 1]^T\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    J(0,0) = 
+    \begin{bmatrix}
+        A_{11} - B &amp; A_{12} \\
+        A_{21} &amp; A_{22} - B
+    \end{bmatrix}; \ 
+    J(1,1|\theta) = 
+    \begin{bmatrix}
+        -\frac{3}{4} &amp; \frac{1}{4} \\
+        \frac{1}{4} &amp; -\frac{3}{4}
+    \end{bmatrix}
+\end{split}\]</div>
+<p>Consider the second case. By applying the method of eigenvalues learned in the previous paragraph have <span class="math notranslate nohighlight">\(\lambda_1=-0.5\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=-1\)</span>. At the last step of Hartman-Grobman procedure, we use the fact that both eigenvalues are non-zero and negative. Hence, we can conclude that system has a stable behaviour around fixed point <span class="math notranslate nohighlight">\(x=[1, 1]^T\)</span>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Explore the stability of the system in a vicinity of point <span class="math notranslate nohighlight">\(x=[0, 0]^T\)</span>. Obtain general expression for eigenvalues.</p>
+</div>
+<p>The limitations of Hartman-Grobman theorem follows from its requirement. The theorem fails to predict class of stability for a fixed point in case of some of eigenvalues are zero or have zero real part. The problem is that zero eigenvalues means the sytem is in critical state and any tiny change in the system parameters may switch it to the unstable regime. The problem becomes even harder when we work with really high-dimensional systems. We would like to develop the general framework for evaluating system resilience, i.e. how far its parameters from point of bifurcation, where the system dynamics dies.</p>
 </section>
 <section id="universality-principle">
 <h3><span class="section-number">7.3.3. </span>Universality principle<a class="headerlink" href="#universality-principle" title="Permalink to this headline">#</a></h3>
-<p><span id="id3">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span></p>
+<p>We approach to the concept of networks introduced in the previous chapter.</p>
+<p>How can we simplify all this stuff
+<span id="id6">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span> - nice paper with nice framework
+introduce framework, assumptions and limitations
+Note this all deterministic</p>
 </section>
 <section id="example-of-complex-system-aging">
 <h3><span class="section-number">7.3.4. </span>Example of complex system aging<a class="headerlink" href="#example-of-complex-system-aging" title="Permalink to this headline">#</a></h3>
@@ -1430,6 +1566,10 @@ Fig. 3. Dynamic system of gene regulation.
 <h1><span class="section-number">8. </span>Learn More<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://www.youtube.com/playlist?list=PLcv1wv7ZF5IXWunUDAiQym866-MntorVp">Principles of Biological Design (Lectures)</a> <br />
 <a class="reference external" href="https://link.springer.com/book/10.1007/978-3-319-78145-7">Dynamical Systems with Applications using Python</a></p>
+<section id="credits">
+<h2><span class="section-number">8.1. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<p>This notebook was prepared by <a class="reference external" href="https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&amp;hl=ru">Dmitrii Kriukov</a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
