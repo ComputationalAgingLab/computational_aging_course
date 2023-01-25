@@ -459,13 +459,13 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#universality-principle">
-       7.3.3. Universality principle
+      <a class="reference internal nav-link" href="#universality-and-resilience">
+       7.3.3. Universality and resilience
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-of-complex-system-aging">
-       7.3.4. Example of complex system aging
+      <a class="reference internal nav-link" href="#the-remark-on-complex-system-aging">
+       7.3.4. The remark on complex system aging
       </a>
      </li>
     </ul>
@@ -573,13 +573,13 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#universality-principle">
-       7.3.3. Universality principle
+      <a class="reference internal nav-link" href="#universality-and-resilience">
+       7.3.3. Universality and resilience
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#example-of-complex-system-aging">
-       7.3.4. Example of complex system aging
+      <a class="reference internal nav-link" href="#the-remark-on-complex-system-aging">
+       7.3.4. The remark on complex system aging
       </a>
      </li>
     </ul>
@@ -1195,7 +1195,7 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_490337/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_85002/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
   f = lambda x, t, r, d: r * x - (1. - d * t) * x**2
 </pre></div>
 </div>
@@ -1437,7 +1437,7 @@ Fig. 3. Dynamic system of gene regulation.
 <span class="eqno">(7.10)<a class="headerlink" href="#equation-eq-mm-model" title="Permalink to this equation">#</a></span>\[
     \frac{dx_i}{dt} = -Bx_i + \sum^n_{j=1}A_{ij}\frac{x_j}{x_j + 1}
 \]</div>
-<p>Here, <span class="math notranslate nohighlight">\(B\)</span> - degradation rate in a linear term we have seen earlier, we assume it is the same for all genes; <span class="math notranslate nohighlight">\(A_{ij}\)</span> the regulatory constant which can take values <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span> indicating the presence or absence of an activatory regulation. But wait, why the second non-linear term has so strange functional form? It is a saturating function converging to <span class="math notranslate nohighlight">\(1\)</span> as <span class="math notranslate nohighlight">\(x_j\)</span> increases. It turns out that it reflects quite simple idea of promoter regulation, namely, if some product of gene <span class="math notranslate nohighlight">\(j\)</span> binds to a promoter of gene <span class="math notranslate nohighlight">\(i\)</span> then this promoter is no more free for binding. Thus, the activatory effect is restricted with number of different promoter binding sites for a particular gene what is reflected in the saturating functional form of the term.</p>
+<p>Here, <span class="math notranslate nohighlight">\(B\)</span> - degradation rate in a linear term we have seen earlier, we assume it is the same for all genes; <span class="math notranslate nohighlight">\(A_{ij}\)</span> the regulatory constant which can take values <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span> indicating the presence or absence of an activatory regulation. An element of matrix <span class="math notranslate nohighlight">\(A_{ij}\)</span> is read as <span class="math notranslate nohighlight">\(A_{i\leftarrow j}\)</span> meaning that <span class="math notranslate nohighlight">\(j\)</span>-th gene (column index) acts to <span class="math notranslate nohighlight">\(i\)</span>-th gene (row index). But wait, why the second non-linear term has so strange functional form? It is a saturating function converging to <span class="math notranslate nohighlight">\(1\)</span> as <span class="math notranslate nohighlight">\(x_j\)</span> increases. It turns out that it reflects quite simple idea of promoter regulation, namely, if some product of gene <span class="math notranslate nohighlight">\(j\)</span> binds to a promoter of gene <span class="math notranslate nohighlight">\(i\)</span> then this promoter is no more free for binding. Thus, the activatory effect is restricted with a number of different promoter binding sites for a particular gene what is reflected in the saturating functional form of the term.</p>
 <p>You probably already guessed that <span class="math notranslate nohighlight">\(A\)</span> is a kind of system matrix by analogy with the previous case. In fact now we are ready to formulate a concept of <strong>network</strong> more precisely. Gene regulatory network under our scope is determined with relations written in the adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> which just way to represent a graph. This matrix has a shape of <span class="math notranslate nohighlight">\(n\times n\)</span> nodes, where node is a particular gene. Each pair of nodes are coupled with an edge. If such coupling exists, i.e. gene <span class="math notranslate nohighlight">\(i\)</span> affects gene <span class="math notranslate nohighlight">\(j\)</span>, then <span class="math notranslate nohighlight">\(A_{ij}=1\)</span>. In case of the absense of a coupling - <span class="math notranslate nohighlight">\(A_{ij}=0\)</span>. One can say that matrix <span class="math notranslate nohighlight">\(A\)</span> defines <strong>topology</strong> of the network.</p>
 <p>Let’s consider the simple case of <span class="math notranslate nohighlight">\(n=2\)</span> genes by plotting the dynamics:</p>
 <div class="cell docutils container">
@@ -1463,21 +1463,20 @@ Fig. 3. Dynamic system of gene regulation.
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">compute_nonlinear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">plot_nonlinear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">5.5</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative abundance&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Time trajectory&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;gene 1&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;gene 2&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">plot_nonlinear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">5.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative abundance&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Time trajectory&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;gene 1&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;gene 2&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1546,16 +1545,304 @@ the nonlinear system is qualitatively similar to that of its linearization.</p><
 </div>
 <p>The limitations of Hartman-Grobman theorem follows from its requirement. The theorem fails to predict class of stability for a fixed point in case of some of eigenvalues are zero or have zero real part. The problem is that zero eigenvalues means the sytem is in critical state and any tiny change in the system parameters may switch it to the unstable regime. The problem becomes even harder when we work with really high-dimensional systems. We would like to develop the general framework for evaluating system resilience, i.e. how far its parameters from point of bifurcation, where the system dynamics dies.</p>
 </section>
-<section id="universality-principle">
-<h3><span class="section-number">7.3.3. </span>Universality principle<a class="headerlink" href="#universality-principle" title="Permalink to this headline">#</a></h3>
-<p>We approach to the concept of networks introduced in the previous chapter.</p>
-<p>How can we simplify all this stuff
-<span id="id6">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span> - nice paper with nice framework
-introduce framework, assumptions and limitations
-Note this all deterministic</p>
+<section id="universality-and-resilience">
+<h3><span class="section-number">7.3.3. </span>Universality and resilience<a class="headerlink" href="#universality-and-resilience" title="Permalink to this headline">#</a></h3>
+<p>In this section, we will demonstrate exactly how complex systems can be reduced to simple universal laws. We will see that the system that we considered above obeys a universal law that allows us to investigate its stability and resilience (yes, in this section we will consider the difference between these two concepts). We will follow a framework developed in the paper <span id="id6">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span> which in short can be formulated as following. Consider a system consisting of <span class="math notranslate nohighlight">\(n\)</span> components (nodes of a network) <span class="math notranslate nohighlight">\(x = (x_1, ..., x_n)^T\)</span>. The components of systems evolves according to the following general system of non-linear (in general) differential equations:</p>
+<div class="math notranslate nohighlight" id="equation-eq-gao-general">
+<span class="eqno">(7.12)<a class="headerlink" href="#equation-eq-gao-general" title="Permalink to this equation">#</a></span>\[
+    \frac{dx_i}{dt} = F(x_i) + \sum_{j=1}^n A_{ij}G(x_i, x_j)
+\]</div>
+<p>The first term on the right-hand side of the equation describes the self-dynamics of each component, while the second term describes the interactions between component <span class="math notranslate nohighlight">\(i\)</span> and its interacting partners. The nonlinear functions <span class="math notranslate nohighlight">\(F(x_i)\)</span> and <span class="math notranslate nohighlight">\(G(x_i, x_j)\)</span> represent the dynamical laws that govern the system’s components, while the weighted connectivity matrix <span class="math notranslate nohighlight">\(A_{ij} &gt; 0\)</span> captures the positive interactions between the nodes. This is quite general form of non-linear equation and a lot of multidimensional dynamical systems can be described with it.</p>
+<p>As we learned earlier, the stability of a system can be compromised if many system parameters are changed. This distinguishes multidimensional systems (networks) from one-dimensional ones they have a definite topology of interaction network. The brilliant discovery of the paper under consideration is that we can compute universal number which characterize a total network topology of equation <a class="reference internal" href="#equation-eq-gao-general">(7.12)</a>. The main result of the paper is that we can rewrite <a class="reference internal" href="#equation-eq-gao-general">(7.12)</a> in one-dimensional form as follows:</p>
+<div class="math notranslate nohighlight" id="equation-eq-gao-1d">
+<span class="eqno">(7.13)<a class="headerlink" href="#equation-eq-gao-1d" title="Permalink to this equation">#</a></span>\[
+    \frac{dx_{eff}}{dt} = F(x_{eff}) + \beta_{eff}G(x_{eff}, x_{eff})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_{eff}\)</span> - is an effective dynamic component representing “average” dynamics of the whole system, and <span class="math notranslate nohighlight">\(\beta_{eff}\)</span> - is a effective topological characteristic of the network which is actually a macroscopic description of <span class="math notranslate nohighlight">\(n^2\)</span> microscopic parameters of matrix <span class="math notranslate nohighlight">\(A\)</span>. They can be computed as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{eff} = \frac{\mathbf{1}^T Ax}{\mathbf{1}^TA\mathbf{1}} = \frac{\langle s^{out}x \rangle}{\langle s \rangle};\ 
+    \beta_{eff} = \frac{\mathbf{1}^T As^{in}}{\mathbf{1}^TA\mathbf{1}} = \frac{\langle s^{out}s^{in} \rangle}{\langle s \rangle}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> is a vector of ones of length <span class="math notranslate nohighlight">\(n\)</span>; <span class="math notranslate nohighlight">\(s^{in}\)</span> - vector of in-degrees of matrix <span class="math notranslate nohighlight">\(A\)</span>, i.e. sum of column elements; <span class="math notranslate nohighlight">\(s^{out}\)</span> - vector of out-degrees of matrix <span class="math notranslate nohighlight">\(A\)</span>, i.e. sum of row elements. The angle brackets <span class="math notranslate nohighlight">\(\langle . \rangle\)</span> means averaging across vector elements (don’t worry the code below will make things easier). For example, <span class="math notranslate nohighlight">\(\langle s \rangle\)</span> means averaging across all degree elements of matrix <span class="math notranslate nohighlight">\(A\)</span> (in-degree or out-degree), actually <span class="math notranslate nohighlight">\(\langle s^{in} \rangle=\langle s^{out} \rangle=\langle s \rangle\)</span>.</p>
+<p>So, let’s apply the framework to already familiar 2-dimensional task, namely:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{dx_{eff}}{dt} = -Bx_{eff} + \beta_{eff}\frac{x_{eff}}{1 + x_{eff}}
+\]</div>
+<p>Remember that <span class="math notranslate nohighlight">\(B=1\)</span> and <span class="math notranslate nohighlight">\(A\)</span> is a matrix of ones, then have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">vec1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">sout</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#out-degrees </span>
+<span class="n">sin</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#in-degrees </span>
+<span class="n">savg</span> <span class="o">=</span> <span class="p">(</span><span class="n">vec1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span> <span class="o">@</span> <span class="n">vec1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span> <span class="c1"># &lt;s&gt;</span>
+<span class="n">beff</span> <span class="o">=</span> <span class="p">(</span><span class="n">sout</span> <span class="o">*</span> <span class="n">sin</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">savg</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;beta_eff =&quot;</span><span class="p">,</span> <span class="n">beff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>beta_eff = 2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then obtain a separable differential equation (which has an analytical solution!).</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{dx_{eff}}{dt} = -x_{eff} + 2\frac{x_{eff}}{1 + x_{eff}}
+\]</div>
+<p>You probably already see that this equation has a stable non-zero solution. But how can we deny ourselves the pleasure of exploring it?</p>
+<p>The fixed points are:</p>
+<div class="math notranslate nohighlight" id="equation-eq-universal-params">
+<span class="eqno">(7.14)<a class="headerlink" href="#equation-eq-universal-params" title="Permalink to this equation">#</a></span>\[
+    x^*_1 = 0;\ x^*_2 = \frac{\beta_{eff}}{B} - 1 = 1
+\]</div>
+<p>The stability parameter <span class="math notranslate nohighlight">\(\lambda\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \lambda = -B + \frac{\beta_{eff}}{(1 + x^*)^2} \\
+    \lambda|_{x^*=0} = 1; \ \lambda|_{x^*=1} = -0.5
+\end{split}\]</div>
+<p>Indeed, it works properly! We had a stable point at <span class="math notranslate nohighlight">\(x=[1,1]^T\)</span> and unstable at <span class="math notranslate nohighlight">\(x=[0,0]^T\)</span> in multidimensional case. As result, their one dimensional analogs have the proper stability property. Someone will say: “Well, but what about really multidimensional systems?”</p>
+<p>We will use the transcriptional regulatory network in yeast proposed in <span id="id7">[<a class="reference internal" href="../stat/differential_analysis.html#id75" title="Santhanam Balaji, M Madan Babu, Lakshminarayan M Iyer, Nicholas M Luscombe, and Lakshminarayan Aravind. Comprehensive analysis of combinatorial regulation using the transcriptional regulatory network of yeast. Journal of molecular biology, 360(1):213–227, 2006.">Balaji <em>et al.</em>, 2006</a>]</span>. The full network contains 4441 nodes but we restricted it only to a number of 157 transcription factors (i.e. having non-zero out-degree (non-zero sum of columns) in the original matrix). We attached a file with the data to a repository of this book. Let’s take a look at it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#load numpy data array</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/yeast.npy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gene-Gene interaction matrix&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">A</span><span class="p">);</span> <span class="c1">#non-zero values are black pixels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/system_resilience_42_0.png" src="../_images/system_resilience_42_0.png" />
+</div>
+</div>
+<p>One can see that that this is actually a sparse matrix. Look at the dynamics of some of its components starting with initial conditions <span class="math notranslate nohighlight">\(x(0)=[2, ..., 2]^T\)</span>. We also compute <span class="math notranslate nohighlight">\(x_{eff}\)</span> and <span class="math notranslate nohighlight">\(\beta_{eff}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_nonlinear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="o">-</span><span class="n">B</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">A</span> <span class="o">@</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span> <span class="c1">#Forward Euler integration</span>
+        <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="k">def</span> <span class="nf">compute_eff</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">vec1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">sout</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">sin</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">savg</span> <span class="o">=</span> <span class="p">(</span><span class="n">vec1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span> <span class="o">@</span> <span class="n">vec1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">xeff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sout</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">savg</span>
+    <span class="n">beff</span> <span class="o">=</span> <span class="p">(</span><span class="n">sout</span> <span class="o">*</span> <span class="n">sin</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">savg</span>
+    <span class="k">return</span> <span class="n">xeff</span><span class="p">,</span> <span class="n">beff</span>
+
+<span class="c1">### SYSTEM MATRIX</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/yeast.npy&#39;</span><span class="p">)</span> <span class="c1">#gene regulatory network</span>
+<span class="c1">###</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#degradation constant</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># number of time steps</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.</span> <span class="c1">#same initial condition</span>
+<span class="c1">#x0 = np.random.random(n)*3 #random initial condition</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">compute_nonlinear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">xeff</span><span class="p">,</span> <span class="n">beff</span> <span class="o">=</span> <span class="n">compute_eff</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1">#compute effective dynamics and topological characteristic</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;beta_eff =&quot;</span><span class="p">,</span> <span class="n">beff</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">5.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative abundance&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Time trajectory&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">136</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;gene </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">xeff</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$x_</span><span class="si">{eff}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$&lt;x&gt;$&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>beta_eff = 3.446938775510204
+</pre></div>
+</div>
+<img alt="../_images/system_resilience_44_1.png" src="../_images/system_resilience_44_1.png" />
+</div>
+</div>
+<p>We observe different dynamics for genes. Some of them are upregulated by others and coverge to a stationary value, others are do not have positive regulation and exhibit a decay trajectory with a rate of <span class="math notranslate nohighlight">\(B\)</span>. Nevertheless we call this dynamics is stable and non-zero because the average dynamics is not equal to zero (<span class="math notranslate nohighlight">\(\langle x\rangle \neq 0\)</span>). Note that effective dynamics <span class="math notranslate nohighlight">\(x_{eff}\)</span> is not equal to the average one due to slightly different weighing.</p>
+<p>The second interesting result of the <span id="id8">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span> paper is that topological characteristic <span class="math notranslate nohighlight">\(\beta_{eff}\)</span> can be decomposed in well-interpretable topological properties. Let’s write the following relation:</p>
+<div class="math notranslate nohighlight" id="equation-eq-network-topology">
+<span class="eqno">(7.15)<a class="headerlink" href="#equation-eq-network-topology" title="Permalink to this equation">#</a></span>\[
+    \beta_{eff} = \langle s\rangle + SH
+\]</div>
+<p>We already know <span class="math notranslate nohighlight">\(\langle s \rangle\)</span> is a average degree of elements, but it has another name - <strong>density</strong> of a network; <span class="math notranslate nohighlight">\(S\)</span> represents the <strong>symmetry</strong> of network <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(H\)</span> represents <strong>heterogeneity</strong>. They can be computed as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+    S = \frac{\langle s^{in}s^{out} \rangle - \langle s^{in} \rangle\langle s^{out} \rangle}{\sigma_{in}\sigma_{out}};\ 
+    H = \frac{\sigma_{in}\sigma_{out}}{\langle s \rangle}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_{in}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{out}\)</span> are standard deviations of elements of vectors <span class="math notranslate nohighlight">\(s^{in}\)</span> and <span class="math notranslate nohighlight">\(s^{out}\)</span> correspondingly.</p>
+<p>To develop a better intuition on <strong>density</strong>, <strong>symmetry</strong>, and <strong>heterogeneity</strong> of a network, look at the picture from the original paper:</p>
+<p><img src="https://drive.google.com/uc?id=1mdee-Fvd85-lvrsYJ-lH3vZbSZeuFTey"
+     alt="topological properties" 
+     width="700"/></p>
+<p align = "left">
+Fig. 4. The topological characteristics of a network.
+</p>
+<p>The density property is quite self-explainable - it is just an average number of in/out degrees in a network. The symmetry means that most of nodes have bi-directed edges to each other. An asymmetric network is one where nodes with a large in-degree tend to have a small out-degree. The large heterogeneity means that some nodes may have large in/out degrees and others - small. In the network with small heterogeneity, all nodes have almost equal degrees. Let’s compute them and check that hey are actually sum into <span class="math notranslate nohighlight">\(\beta_{eff}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_topological_characteristics</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">vec1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">sout</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">sin</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sout_avg</span> <span class="o">=</span> <span class="n">sout</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">sin_avg</span> <span class="o">=</span> <span class="n">sin</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">savg</span> <span class="o">=</span> <span class="p">(</span><span class="n">vec1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span> <span class="o">@</span> <span class="n">vec1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span> <span class="c1">#density</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="p">((</span><span class="n">sout</span> <span class="o">*</span> <span class="n">sin</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">n</span> <span class="o">-</span> <span class="n">sin_avg</span> <span class="o">*</span> <span class="n">sout_avg</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sin</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sout</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="c1">#symmetry</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="p">(</span><span class="n">sin</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sout</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">savg</span> <span class="c1">#heterogenity</span>
+    <span class="k">return</span> <span class="n">savg</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">H</span>
+
+<span class="n">savg</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">compute_topological_characteristics</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;s&gt; = &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">savg</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;S =&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;H =&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;beta_eff == &lt;s&gt; + SH:&#39;</span><span class="p">,</span> <span class="n">beff</span> <span class="o">==</span> <span class="n">savg</span> <span class="o">+</span> <span class="n">S</span> <span class="o">*</span> <span class="n">H</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;s&gt; =  3.121
+S = 0.083
+H = 3.938
+beta_eff == &lt;s&gt; + SH: True
+</pre></div>
+</div>
+</div>
+</div>
+<p>These nice network characteristics confer us an instrument for improvement <span class="math notranslate nohighlight">\(\beta_{eff}\)</span> value. You remember expression <a class="reference internal" href="#equation-eq-universal-params">(7.14)</a>? It is time to plot bifurcation diagram!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">beta1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x_star0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">beta0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">x_star1</span> <span class="o">=</span> <span class="n">beta1</span> <span class="o">/</span> <span class="n">B</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\beta_</span><span class="si">{eff}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x^*_</span><span class="si">{eff}</span><span class="s1">}$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Bifurcation diagram&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">beta0</span><span class="p">,</span> <span class="n">x_star0</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">x_star1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Stable&#39;</span><span class="p">,</span> <span class="s1">&#39;Unstable&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\beta_c$&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/system_resilience_48_0.png" src="../_images/system_resilience_48_0.png" />
+</div>
+</div>
+<p>We have stable non-zero solution while <span class="math notranslate nohighlight">\(\beta_{eff} &gt; \beta_c\)</span>. The critical value of <span class="math notranslate nohighlight">\(\beta_c=1\)</span> is a root of the second expression in <a class="reference internal" href="#equation-eq-universal-params">(7.14)</a>. Of course, crossing the <span class="math notranslate nohighlight">\(\beta_c\)</span> from right to left leads to a bifurcation and a cell dies. What else interesting about value of <span class="math notranslate nohighlight">\(\beta_{eff}\)</span> is that it represents the reserve of <strong>resilience</strong> in the system. If some topological perturbation occurs (e.g. some edges are removed) then it is better to have larger value <span class="math notranslate nohighlight">\(\beta_{eff}\)</span>, otherwise the system is under risk of a killing bifurcation.</p>
+<p>How can we improve the resilience? From the equation <a class="reference internal" href="#equation-eq-network-topology">(7.15)</a> we see several options:</p>
+<ol class="simple">
+<li><p>Make the network more dense;</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(S\)</span> is negative - decrease its absolute value;</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(S\)</span> is positive - increase its absolute value;</p></li>
+<li><p>Increase <span class="math notranslate nohighlight">\(H\)</span> if <span class="math notranslate nohighlight">\(S\)</span> is positive;</p></li>
+<li><p>Decrease <span class="math notranslate nohighlight">\(H\)</span> if <span class="math notranslate nohighlight">\(S\)</span> is negative.</p></li>
+</ol>
+<p>Let’s follow the first case and consider how random weights perturbation affects resilience on a bifurcation diagram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_perturbed_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function for netwrok perturbation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">A_pert</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">nzidx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">A_pert</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="n">n_pert</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nzidx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nzidx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">n_pert</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">A_pert</span><span class="p">[</span><span class="n">nzidx</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nzidx</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">zidx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">A_pert</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">n_pert</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nzidx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">zidx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">n_pert</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">A_pert</span><span class="p">[</span><span class="n">zidx</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">zidx</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">A_pert</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#number of repetitions</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.15</span><span class="p">,</span> <span class="mf">1.35</span><span class="p">,</span> <span class="mf">1.65</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">]:</span>
+    <span class="n">beta_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">x_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">A_pert</span> <span class="o">=</span> <span class="n">get_perturbed_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">compute_nonlinear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">A_pert</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">xeff</span><span class="p">,</span> <span class="n">beff</span> <span class="o">=</span> <span class="n">compute_eff</span><span class="p">(</span><span class="n">A_pert</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1">#compute effective dynamics and topological characteristic</span>
+        <span class="n">beta_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">beff</span><span class="p">)</span>
+        <span class="n">x_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xeff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">beta_list</span><span class="p">,</span> <span class="n">x_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;p=</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
+
+<span class="n">beta0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">beta1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x_star0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">beta0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">x_star1</span> <span class="o">=</span> <span class="p">(</span><span class="n">beta1</span> <span class="o">/</span> <span class="n">B</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\beta_</span><span class="si">{eff}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x^*_</span><span class="si">{eff}</span><span class="s1">}$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Bifurcation diagram&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">beta0</span><span class="p">,</span> <span class="n">x_star0</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">x_star1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/system_resilience_50_0.png" src="../_images/system_resilience_50_0.png" />
+</div>
+</div>
+<p>The colored points on a bifurcation diagram are values of <span class="math notranslate nohighlight">\(x_{eff}\)</span> computed from the simulations of multidimensional systems at different perturbation rates <span class="math notranslate nohighlight">\(p\)</span>. If <span class="math notranslate nohighlight">\(p&lt;0\)</span> the perturbation rate means how much non-zero weights in matrix <span class="math notranslate nohighlight">\(A\)</span> shoul be left after the perturbation, else, if <span class="math notranslate nohighlight">\(p&gt;=1\)</span> the perturbation rate means how much edges should be added in matrix <span class="math notranslate nohighlight">\(A\)</span>. Hence, by incerasing <span class="math notranslate nohighlight">\(p\)</span> we increase density of a network. Why do the points do not go strictly with the theoretical prediction, but move away from the theoretical curve, and then again approach it? The reason is a <strong>sparcity</strong>. The developed theory fails to predict a stationary behavior of too sparse networks because nodes in such networks interact weakly. However, more dense network are predictable and we can use all the fruits of the original theory (or develop something better?). In any case, we see that the theory works correctly and provides a nice one-dimensional approximation for the network providing us a resilience coefficient <span class="math notranslate nohighlight">\(\beta_{eff}\)</span> which we can directly apply in practice.</p>
+<p>But wait a minute, have we come all this way through multi-dimensional dynamical systems to get back to a one-dimensional coefficient? You see that the answer is both yes and no. One-dimensional mean-field approximations are an amazing theoretical result, but not all models can achieve such an approximation. In general, we must be prepared to integrate multidimensional systems as is. It is important to recall that everything we have studied so far concerns only deterministic dynamical systems. The world is much more complicated …</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>Repeat all the steps of analysis with model \frac{dx_i}{dt} = -Bx_i + \sum^n_{j=1}A_{ij}\frac{x^2_j}{x^2_j + 1}. Draw bifurcation diagram. What specific you can say about behavior around <span class="math notranslate nohighlight">\(\beta_c\)</span>?</p>
+</div>
 </section>
-<section id="example-of-complex-system-aging">
-<h3><span class="section-number">7.3.4. </span>Example of complex system aging<a class="headerlink" href="#example-of-complex-system-aging" title="Permalink to this headline">#</a></h3>
+<section id="the-remark-on-complex-system-aging">
+<h3><span class="section-number">7.3.4. </span>The remark on complex system aging<a class="headerlink" href="#the-remark-on-complex-system-aging" title="Permalink to this headline">#</a></h3>
+<p>From the previous model, we saw that there are many ways to reduce the resilience of the system to such an extent that the system (organism) can no longer cope with the next perturbation and a catastrophic bifurcation occurs. The hypothesis of aging as a complex system in which resilience decreases is not very optimistic, in the sense that it immediately follows that aging is mostly stochastic. However, the optimistic side of this hypothesis is that if we can find a systemic effect on the body that improves its resilience, then we may well be able to avoid aging. Thus, we could improve the dynamic model by supplementing it with the mechanisms of action of various metabolites on the gene regulatory network and get a playground for testing drugs that have a systemic effect on a body resilience. In the end, it’s possible that the complex system model is simply wrong and we need to look for something better.</p>
 </section>
 </section>
 <section id="critical-slowing-down">
