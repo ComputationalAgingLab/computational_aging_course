@@ -640,49 +640,59 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="system-resilience">
-<h1><span class="section-number">7. </span>System resilience<a class="headerlink" href="#system-resilience" title="Permalink to this headline">#</a></h1>
+<h1><a class="toc-backref" href="#id11"><span class="section-number">7. </span>System resilience</a><a class="headerlink" href="#system-resilience" title="Permalink to this headline">#</a></h1>
 <p><em>What distinguishes biological systems from physical ones? - Biological systems perform computations.</em></p>
-<p>Write “In this chapter, you will learn:”
-Example of system resilience problem</p>
-<p>At some point of accumulating evidences about object of study we stop just speculating about its properties and start mathematical modelling.</p>
-<p><strong>Done</strong></p>
+<p>In this chapter, you will learn:</p>
 <ul class="simple">
-<li><p>Recap differential equations</p>
-<ul>
-<li><p>linear ODE</p></li>
-<li><p>nonlinear ODE</p></li>
-<li><p>numerical integration</p></li>
+<li><p>Step-by-step brief introduction in theory of dynamical systems from one-dimensional to multidimensional;</p></li>
+<li><p>Concepts of network, bifurcation, criticality, resilience, stability will find a mathematical embodiment;</p></li>
+<li><p>Build a simple dummy dynamical model of biological age;</p></li>
+<li><p>Build a resilience indicator from real data;</p></li>
+<li><p>Develop a complex system intuition and understand how they can be described with universal laws.</p></li>
 </ul>
-</li>
-<li><p>Stability theory and bifurcations</p>
-<ul>
-<li><p>Stability intuition (as in Sole Lecture)</p></li>
-<li><p>Types of bifurcations (see the book) (or Catastrophic bifurcation and criticality), bifurcation diagram</p></li>
-<li><p>Example of system</p></li>
-</ul>
-</li>
-<li><p>System ODE</p>
-<ul>
-<li><p>Stability in linear multidimensional case (MODELING GENE EXPRESSION WITH DIFFERENTIAL EQUATIONS)</p></li>
-<li><p>Nonlinear systems (Gene regulatory networks, Michaelis-Menten equation)</p></li>
-<li><p>Univesality principle (just reproduce the paper with simplifications)</p></li>
-<li><p>Example complex system aging (gene regulatory network) (just adjust some parameters in the network reflecting aging)</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>Plan</strong></p>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p>Critical slowing down</p>
+<li><p><a class="reference internal" href="#system-resilience" id="id11">System resilience</a></p>
 <ul>
-<li><p>real data case</p></li>
-<li><p>construct resilience indicator from data?</p></li>
-<li><p>fitting a stochastic differential equation from data?</p></li>
-<li><p>resilience analysis and maximal theoretical lifespan prediction.</p></li>
+<li><p><a class="reference internal" href="#recap-differential-equations" id="id12">Recap differential equations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#linear-ordinary-differential-equations" id="id13">Linear ordinary differential equations</a></p></li>
+<li><p><a class="reference internal" href="#non-linear-ordinary-differential-equations" id="id14">Non-linear ordinary differential equations</a></p></li>
+<li><p><a class="reference internal" href="#numerical-integration" id="id15">Numerical integration</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#stability-theory-and-bifurcations" id="id16">Stability theory and bifurcations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#stability-intuition" id="id17">Stability intuition</a></p></li>
+<li><p><a class="reference internal" href="#potential-function" id="id18">Potential function</a></p></li>
+<li><p><a class="reference internal" href="#catastrophic-bifurcation" id="id19">Catastrophic bifurcation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#system-of-differential-equations" id="id20">System of differential equations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#stability-in-linear-multidimensional-case" id="id21">Stability in linear multidimensional case</a></p></li>
+<li><p><a class="reference internal" href="#stability-in-non-linear-multidimensional-case" id="id22">Stability in non-linear multidimensional case</a></p></li>
+<li><p><a class="reference internal" href="#universality-and-resilience" id="id23">Universality and resilience</a></p></li>
+<li><p><a class="reference internal" href="#the-remark-on-complex-system-aging" id="id24">The remark on complex system aging</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#critical-slowing-down" id="id25">Critical slowing down</a></p>
+<ul>
+<li><p><a class="reference internal" href="#introduce-a-stochastic-model" id="id26">Introduce a stochastic model</a></p></li>
+<li><p><a class="reference internal" href="#slowing-down-intuition" id="id27">Slowing down intuition</a></p></li>
+<li><p><a class="reference internal" href="#construct-a-resilience-indicator-from-data" id="id28">Construct a resilience indicator from data</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#conclusion" id="id29">Conclusion</a></p></li>
+<li><p><a class="reference internal" href="#learn-more" id="id30">Learn More</a></p></li>
+<li><p><a class="reference internal" href="#credits" id="id31">Credits</a></p></li>
 </ul>
 </li>
 </ul>
+</div>
 <section id="recap-differential-equations">
-<h2><span class="section-number">7.1. </span>Recap differential equations<a class="headerlink" href="#recap-differential-equations" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id12"><span class="section-number">7.1. </span>Recap differential equations</a><a class="headerlink" href="#recap-differential-equations" title="Permalink to this headline">#</a></h2>
 <p>Differential equation is a very useful instrument for understanding and modeling real biological processes. Once you develop a basic intuition on differential equation you will see the world as a set of dynamic systes. What is a dynamic systems? Well, everything! Everything what we may observe evolving in time could be (and possibly must be) described with this instrument.</p>
 <p>In general, a differential equation is written as</p>
 <div class="math notranslate nohighlight" id="equation-diff-eq">
@@ -691,7 +701,7 @@ Example of system resilience problem</p>
 \]</div>
 <p>where f(x, t) - given function of time <span class="math notranslate nohighlight">\(t\)</span> and state variable <span class="math notranslate nohighlight">\(x\)</span> itself. Note, that <span class="math notranslate nohighlight">\(x=x(t)\)</span> is also a function of time, hence, <span class="math notranslate nohighlight">\(\dot{x} = dx(t)/dt = dx/dt\)</span> - we omit <span class="math notranslate nohighlight">\((t)\)</span> for simplicity. A huge body of knowledge of differential equations theory has been elaborated for ages. In this tutorial we only touch the most important topics needed for understanding complex systems resilience introduced in the previous chapter.</p>
 <section id="linear-ordinary-differential-equations">
-<h3><span class="section-number">7.1.1. </span>Linear ordinary differential equations<a class="headerlink" href="#linear-ordinary-differential-equations" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id13"><span class="section-number">7.1.1. </span>Linear ordinary differential equations</a><a class="headerlink" href="#linear-ordinary-differential-equations" title="Permalink to this headline">#</a></h3>
 <p>First, let’s start from the most simplest cases of so called growth/death models. Let:</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -771,7 +781,7 @@ Example of system resilience problem</p>
 <p>Two important observations: (1) the solution of equation <a class="reference internal" href="#equation-ex-sol-1">(7.2)</a> is always diverges, i.e there is no non-zero constant <span class="math notranslate nohighlight">\(Const\)</span> such that <span class="math notranslate nohighlight">\(x(\infty) \to Const\)</span>; (2) the solution of equation <a class="reference internal" href="#equation-ex-sol-2">(7.3)</a> has three regimes: one at positive constant <span class="math notranslate nohighlight">\(a\)</span> - divergence (exponential growth), one at negative <span class="math notranslate nohighlight">\(a\)</span> - convergence to zero (exponential decay), and one at <span class="math notranslate nohighlight">\(a=0\)</span> - trivial case with no dynamics. Adjusting constant <span class="math notranslate nohighlight">\(a\)</span> continiously leads to switching between regimes which is something that we call <strong>bifurcation</strong> and will study in further. In other words. they say a system undergoes a bifurcation as <span class="math notranslate nohighlight">\(a\)</span> approaches to zero (from left or right side). Of course, in this case that the system changes its behavior <strong>qualitatively</strong>.</p>
 </section>
 <section id="non-linear-ordinary-differential-equations">
-<h3><span class="section-number">7.1.2. </span>Non-linear ordinary differential equations<a class="headerlink" href="#non-linear-ordinary-differential-equations" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id14"><span class="section-number">7.1.2. </span>Non-linear ordinary differential equations</a><a class="headerlink" href="#non-linear-ordinary-differential-equations" title="Permalink to this headline">#</a></h3>
 <p>Linear differential equations and systems of them porvides a lot of possibilities for modelling technical and living systems. However, already in case of bacteria growth modeling with limited resources we force the need to use quadratic models. This is where logistic model appears:</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -886,7 +896,7 @@ Example of system resilience problem</p>
 </div>
 </section>
 <section id="numerical-integration">
-<h3><span class="section-number">7.1.3. </span>Numerical integration<a class="headerlink" href="#numerical-integration" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id15"><span class="section-number">7.1.3. </span>Numerical integration</a><a class="headerlink" href="#numerical-integration" title="Permalink to this headline">#</a></h3>
 <p>The class of integrable differential equation is very small, even so they are extremely useful for describing complex systems dynamics. In some cases, however, you may develop more sophisticated model of a process under study and the corresponding differential equation does not have a closed form solution. What can we do in this case? Consider the following complication of the logistic model:</p>
 <div class="math notranslate nohighlight" id="equation-eq-complex-logistic">
 <span class="eqno">(7.5)<a class="headerlink" href="#equation-eq-complex-logistic" title="Permalink to this equation">#</a></span>\[
@@ -949,9 +959,9 @@ Example of system resilience problem</p>
 </section>
 </section>
 <section id="stability-theory-and-bifurcations">
-<h2><span class="section-number">7.2. </span>Stability theory and bifurcations<a class="headerlink" href="#stability-theory-and-bifurcations" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id16"><span class="section-number">7.2. </span>Stability theory and bifurcations</a><a class="headerlink" href="#stability-theory-and-bifurcations" title="Permalink to this headline">#</a></h2>
 <section id="stability-intuition">
-<span id="id2"></span><h3><span class="section-number">7.2.1. </span>Stability intuition<a class="headerlink" href="#stability-intuition" title="Permalink to this headline">#</a></h3>
+<span id="id2"></span><h3><a class="toc-backref" href="#id17"><span class="section-number">7.2.1. </span>Stability intuition</a><a class="headerlink" href="#stability-intuition" title="Permalink to this headline">#</a></h3>
 <p>Now we start to develop the core dynamical system property - its stability. It is a case when mathematical framework has a strict everyday physical analogy. Let’s discuss the picture below:</p>
 <p><img src="https://drive.google.com/uc?id=1faLz8aoxlaxa3az5PR5iPW8t45W9BnBH"
      alt="potential" 
@@ -1013,7 +1023,7 @@ Fig. 1. Example of potential landscape.
 <p>one can see that for <span class="math notranslate nohighlight">\(x^*=K\)</span> the system is stable while <span class="math notranslate nohighlight">\(r&gt;0\)</span> because <span class="math notranslate nohighlight">\(r - \frac{2r}{K}K = r - 2r = -r &lt; 0\)</span>. The opposite works for <span class="math notranslate nohighlight">\(x^*=0\)</span>, then <span class="math notranslate nohighlight">\(r - \frac{2r}{K}0 = r &gt; 0\)</span> - the system is unstable (revise the plot in non-linear system paragraph).</p>
 </section>
 <section id="potential-function">
-<h3><span class="section-number">7.2.2. </span>Potential function<a class="headerlink" href="#potential-function" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id18"><span class="section-number">7.2.2. </span>Potential function</a><a class="headerlink" href="#potential-function" title="Permalink to this headline">#</a></h3>
 <p>Once we studied a system behavior around fixed points, we are ready to formulate a potential function definition. It is rather straightforward but let us do step back and discuss what drives any dynamics system. It is a funny coincidence (or not?) that symbol of function <span class="math notranslate nohighlight">\(f\)</span> is denoted with letter “f” just like a physical force <span class="math notranslate nohighlight">\(F\)</span>. Indeed, any mechanistic dynamical systems drives with some force <span class="math notranslate nohighlight">\(F\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1068,7 +1078,7 @@ Fig. 1. Example of potential landscape.
 </div>
 </section>
 <section id="catastrophic-bifurcation">
-<h3><span class="section-number">7.2.3. </span>Catastrophic bifurcation<a class="headerlink" href="#catastrophic-bifurcation" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id19"><span class="section-number">7.2.3. </span>Catastrophic bifurcation</a><a class="headerlink" href="#catastrophic-bifurcation" title="Permalink to this headline">#</a></h3>
 <p>Describe model and find critical points
 Introduce bifurcation diagram, show catastrophic bifurcation
 Say about different types of bifurcations</p>
@@ -1221,7 +1231,7 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_188182/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_189866/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
   f = lambda x, t, r, d: r * x - (1. - d * t) * x**2
 </pre></div>
 </div>
@@ -1237,11 +1247,11 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 </section>
 </section>
 <section id="system-of-differential-equations">
-<h2><span class="section-number">7.3. </span>System of differential equations<a class="headerlink" href="#system-of-differential-equations" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id20"><span class="section-number">7.3. </span>System of differential equations</a><a class="headerlink" href="#system-of-differential-equations" title="Permalink to this headline">#</a></h2>
 <p>It’s time to expand our understanding of dynamical systems to a multidimensional case. We first introduce a new concept of <strong>state vector</strong> <span class="math notranslate nohighlight">\(x\)</span> which is a replacement for state variable <span class="math notranslate nohighlight">\(x\)</span> used above for unidimensional dynamic systems. State vector is composed from <span class="math notranslate nohighlight">\(n\)</span> vector <strong>components</strong> <span class="math notranslate nohighlight">\(\{x_i\}_n\)</span> which represents different dynamical variables of a system (organism). State vector, in principle, can be composed from any physiological state variables (blood pressure, body temperature, heart rate, etc.), but it is important to choose such of them which describes the system most “completely”. For example, when you try to build a dynamical model of a running human, it is desirable to include heart rate as variable into a state vector. On the other hand, such variable as hair length is apparently redundant to include. The same logic works for a model of aging. When we try to model it on a physiological level, tissue level or molecular level, different variables should be used. However, some models can comprise state variables from different levels of system organization. In this case, we need to bind them properly with functional relations.</p>
 <p>In this section we will consider molecular model of human aging building it based on the concept of <strong>gene regulatory network</strong>, which we discuss below.</p>
 <section id="stability-in-linear-multidimensional-case">
-<h3><span class="section-number">7.3.1. </span>Stability in linear multidimensional case<a class="headerlink" href="#stability-in-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id21"><span class="section-number">7.3.1. </span>Stability in linear multidimensional case</a><a class="headerlink" href="#stability-in-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
 <p>Linear systems of differential equations allows to model a countless number of complex phenomena. We start with a simple model of gene regulation, which includes feedback control loop (Fig. 3). This is a scalable model proposed in <span id="id3">[<a class="reference internal" href="../stat/differential_analysis.html#id72" title="Ting Chen, Hongyu L He, and George M Church. Modeling gene expression with differential equations. In Biocomputing'99, pages 29–40. World Scientific, 1999.">Chen <em>et al.</em>, 1999</a>]</span> for modeling a number of genes. We restrict ourselves to a consideration only a one gene-rna-protein cascade where the protein acts as a regulator of the gene transcription.</p>
 <p><img src="https://drive.google.com/uc?id=1cB0GcpKAT1W20GOUMG2na7RMPuaYfM5Q"
      alt="gene regulatory network" 
@@ -1457,7 +1467,7 @@ Fig. 3. Dynamic system of gene regulation.
 <p>One important observation is that we can say if the system will be stable or not by looking at one parameter - largest eigenvalue. Indeed, if largest eigenvalue is negative, then all others are also negative. It is a brilliant property of linear systems. But what about non-linear?</p>
 </section>
 <section id="stability-in-non-linear-multidimensional-case">
-<h3><span class="section-number">7.3.2. </span>Stability in non-linear multidimensional case<a class="headerlink" href="#stability-in-non-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id22"><span class="section-number">7.3.2. </span>Stability in non-linear multidimensional case</a><a class="headerlink" href="#stability-in-non-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
 <p>We start with rather simple but still tractable Michaelis-Menten gene regulatory model <span id="id4">[<a class="reference internal" href="../stat/differential_analysis.html#id73" title="Uri Alon. An introduction to systems biology: design principles of biological circuits. Chapman and Hall/CRC, 2006.">Alon, 2006</a>]</span>. We first formulate this model for <span class="math notranslate nohighlight">\(n\)</span> genes where each gene <span class="math notranslate nohighlight">\(x_i\)</span> is regulated by others including itself:</p>
 <div class="math notranslate nohighlight" id="equation-eq-mm-model">
 <span class="eqno">(7.10)<a class="headerlink" href="#equation-eq-mm-model" title="Permalink to this equation">#</a></span>\[
@@ -1572,7 +1582,7 @@ the nonlinear system is qualitatively similar to that of its linearization.</p><
 <p>The limitations of Hartman-Grobman theorem follows from its requirement. The theorem fails to predict class of stability for a fixed point in case of some of eigenvalues are zero or have zero real part. The problem is that zero eigenvalues means the sytem is in critical state and any tiny change in the system parameters may switch it to the unstable regime. The problem becomes even harder when we work with really high-dimensional systems. We would like to develop the general framework for evaluating system resilience, i.e. how far its parameters from point of bifurcation, where the system dynamics dies.</p>
 </section>
 <section id="universality-and-resilience">
-<h3><span class="section-number">7.3.3. </span>Universality and resilience<a class="headerlink" href="#universality-and-resilience" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id23"><span class="section-number">7.3.3. </span>Universality and resilience</a><a class="headerlink" href="#universality-and-resilience" title="Permalink to this headline">#</a></h3>
 <p>In this section, we will demonstrate exactly how complex systems can be reduced to simple universal laws. We will see that the system that we considered above obeys a universal law that allows us to investigate its stability and resilience (yes, in this section we will consider the difference between these two concepts). We will follow a framework developed in the paper <span id="id6">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span> which in short can be formulated as following. Consider a system consisting of <span class="math notranslate nohighlight">\(n\)</span> components (nodes of a network) <span class="math notranslate nohighlight">\(x = (x_1, ..., x_n)^T\)</span>. The components of systems evolves according to the following general system of non-linear (in general) differential equations:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gao-general">
 <span class="eqno">(7.12)<a class="headerlink" href="#equation-eq-gao-general" title="Permalink to this equation">#</a></span>\[
@@ -1867,15 +1877,15 @@ beta_eff == &lt;s&gt; + SH: True
 </div>
 </section>
 <section id="the-remark-on-complex-system-aging">
-<h3><span class="section-number">7.3.4. </span>The remark on complex system aging<a class="headerlink" href="#the-remark-on-complex-system-aging" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id24"><span class="section-number">7.3.4. </span>The remark on complex system aging</a><a class="headerlink" href="#the-remark-on-complex-system-aging" title="Permalink to this headline">#</a></h3>
 <p>From the previous model, we saw that there are many ways to reduce the resilience of the system to such an extent that the system (organism) can no longer cope with the next perturbation and a catastrophic bifurcation occurs. The hypothesis of aging as a complex system in which resilience decreases is not very optimistic, in the sense that it immediately follows that aging is mostly stochastic. However, the optimistic side of this hypothesis is that if we can find a systemic effect on the body that improves its resilience, then we may well be able to avoid aging. Thus, we could improve the dynamic model by supplementing it with the mechanisms of action of various metabolites on the gene regulatory network and get a playground for testing drugs that have a systemic effect on a body resilience. In the end, it’s possible that the complex system model is simply wrong and we need to look for something better.</p>
 </section>
 </section>
 <section id="critical-slowing-down">
-<h2><span class="section-number">7.4. </span>Critical slowing down<a class="headerlink" href="#critical-slowing-down" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id25"><span class="section-number">7.4. </span>Critical slowing down</a><a class="headerlink" href="#critical-slowing-down" title="Permalink to this headline">#</a></h2>
 <p>“The bifurcation theory predicts that approaching to a critical transition boundary (aka tipping point) is accompained with the system critical slowing down and an increase in variance and temporal autocorrelations of system state variable” - do your remember this citation from the previous chapter? In this section we discuss the explicit mathematical background of the phenomenon. We also introduce one additional instrument which is widely used in dynamical modelling, namely, stochasticity. In this section we will mostly rely on the theoretical results form the paper <span id="id9">[<a class="reference internal" href="../stat/differential_analysis.html#id62" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span>.</p>
 <section id="introduce-a-stochastic-model">
-<h3><span class="section-number">7.4.1. </span>Introduce a stochastic model<a class="headerlink" href="#introduce-a-stochastic-model" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id26"><span class="section-number">7.4.1. </span>Introduce a stochastic model</a><a class="headerlink" href="#introduce-a-stochastic-model" title="Permalink to this headline">#</a></h3>
 <p>In contrast to the previous section, we return to the one dimensional models, in addition, we understood that some of multidimensional models can be reduced to one-dimensional allowing to analyze system resilience in more compact form. We start with a new model which is a combination of what we learned above:</p>
 <div class="math notranslate nohighlight" id="equation-eq-slowing-down">
 <span class="eqno">(7.16)<a class="headerlink" href="#equation-eq-slowing-down" title="Permalink to this equation">#</a></span>\[
@@ -1888,7 +1898,7 @@ beta_eff == &lt;s&gt; + SH: True
 </div>
 </section>
 <section id="slowing-down-intuition">
-<h3><span class="section-number">7.4.2. </span>Slowing down intuition<a class="headerlink" href="#slowing-down-intuition" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id27"><span class="section-number">7.4.2. </span>Slowing down intuition</a><a class="headerlink" href="#slowing-down-intuition" title="Permalink to this headline">#</a></h3>
 <p>Critical slowing down arises in dynamical systems which undergoes changing in their parameters. If some parameter changes in such way that it moves the system to the bifurcation point (critical point), several interesting effects in actual dynamics can be observed. There are three such effects:</p>
 <p>If the system is driven by stochastic force, the critical slowing down manifests itself in:</p>
 <ol class="simple">
@@ -1957,7 +1967,7 @@ beta_eff == &lt;s&gt; + SH: True
 <p>It is worth noting that there are also systems that may not show critical slowing down when approaching the bifurcation point. However, apparently, these systems are quite exotic and our search for signs of criticality can bear fruits with a high probability.</p>
 </section>
 <section id="construct-a-resilience-indicator-from-data">
-<h3><span class="section-number">7.4.3. </span>Construct a resilience indicator from data<a class="headerlink" href="#construct-a-resilience-indicator-from-data" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id28"><span class="section-number">7.4.3. </span>Construct a resilience indicator from data</a><a class="headerlink" href="#construct-a-resilience-indicator-from-data" title="Permalink to this headline">#</a></h3>
 <p>We have studied quite useful tools for data analysis. Can we use them to create an organism resilience indicator? The good resilience indicator should satisfy not only the all three properties mentioned above, but how one-dimensional variable can satisfy the third one? There is one way to do that by constructing a new latent variable from initial organism state variables. Moreover, the good resilience indicator is expected to be negatively correlated with age. How to deal with all of that? Let’s do it step by step.</p>
 <p>First let’s get the real data of mouse complete blood count (CBC) analysis. We will use one prepared dataset from the <span id="id10">[<a class="reference internal" href="../stat/differential_analysis.html#id76" title="Konstantin Avchaciov, Marina P Antoch, Ekaterina L Andrianova, Andrei E Tarkhov, Leonid I Menshikov, Olga Burmistrova, Andrei V Gudkov, and Peter O Fedichev. Unsupervised learning of aging principles from longitudinal data. Nature Communications, 13(1):6529, 2022.">Avchaciov <em>et al.</em>, 2022</a>]</span>. As authors mentioned, the samples were obtained from NIH Swiss male and female mice from Charles River Laboratories (Wilmington, MA) - please refer to the original paper for the details. We will use only one cohort of male mice to avoid batch effect.</p>
 <div class="cell docutils container">
@@ -2027,49 +2037,49 @@ beta_eff == &lt;s&gt; + SH: True
   </thead>
   <tbody>
     <tr>
-      <th>225</th>
-      <td>swiss-2034</td>
-      <td>M</td>
-      <td>109.0</td>
-      <td>11.9</td>
-      <td>6.33</td>
-      <td>37.9</td>
-    </tr>
-    <tr>
-      <th>218</th>
-      <td>swiss-2032</td>
-      <td>M</td>
-      <td>94.0</td>
-      <td>13.9</td>
-      <td>7.65</td>
-      <td>38.9</td>
-    </tr>
-    <tr>
-      <th>238</th>
-      <td>swiss-2053</td>
+      <th>242</th>
+      <td>swiss-2054</td>
       <td>M</td>
       <td>81.0</td>
-      <td>15.0</td>
+      <td>14.6</td>
       <td>8.26</td>
-      <td>45.2</td>
+      <td>45.3</td>
     </tr>
     <tr>
-      <th>283</th>
+      <th>287</th>
+      <td>swiss-2207</td>
+      <td>M</td>
+      <td>81.0</td>
+      <td>16.5</td>
+      <td>9.70</td>
+      <td>49.3</td>
+    </tr>
+    <tr>
+      <th>260</th>
+      <td>swiss-2072</td>
+      <td>M</td>
+      <td>94.0</td>
+      <td>9.4</td>
+      <td>4.11</td>
+      <td>26.0</td>
+    </tr>
+    <tr>
+      <th>257</th>
+      <td>swiss-2071</td>
+      <td>M</td>
+      <td>94.0</td>
+      <td>14.3</td>
+      <td>7.92</td>
+      <td>38.4</td>
+    </tr>
+    <tr>
+      <th>284</th>
       <td>swiss-2200</td>
       <td>M</td>
-      <td>109.0</td>
-      <td>14.0</td>
-      <td>8.09</td>
-      <td>45.4</td>
-    </tr>
-    <tr>
-      <th>234</th>
-      <td>swiss-2052</td>
-      <td>M</td>
-      <td>66.0</td>
-      <td>15.4</td>
-      <td>8.36</td>
-      <td>40.5</td>
+      <td>130.0</td>
+      <td>13.9</td>
+      <td>7.67</td>
+      <td>38.3</td>
     </tr>
   </tbody>
 </table>
@@ -2264,21 +2274,21 @@ ages:109-130;     n=6; r=0.821; P-value=0.0452
 </section>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">7.5. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id29"><span class="section-number">7.5. </span>Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
 <p>This chapter has been entirely devoted to developing an intuition about how aging can be perceived through the lens of the criticality and resilience of systems.</p>
 <p>We have studied the very foundations of the theory of dynamical systems, got acquainted with their one-dimensional and multidimensional incarnations. We saw how multidimensional ones can be reduced to one-dimensional ones, the stability of which is much easier to study.</p>
 <p>In addition, we have learned to better understand the language of complex systems by linking its most important concepts (criticality, bifurcation, phase transition, network, etc.) with mathematical counterparts. It is good to understand this new language, but it is important to use it. If possible, try to model biological processes explicitly, instead of just saying “associated”, “correlates”, “induces”.</p>
 <p>Be quantitative, numerical relationships between variables deepen your understanding of the process. However, sometimes numbers can be confusing - don’t be a slave to numbers, think twice!</p>
 </section>
 <section id="learn-more">
-<h2><span class="section-number">7.6. </span>Learn More<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id30"><span class="section-number">7.6. </span>Learn More</a><a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://www.youtube.com/playlist?list=PLcv1wv7ZF5IXWunUDAiQym866-MntorVp">Principles of Biological Design (Lectures)</a> <br />
 <a class="reference external" href="https://link.springer.com/book/10.1007/978-3-319-78145-7">Dynamical Systems with Applications using Python</a> <br />
 <a class="reference external" href="https://www.amazon.com/Introduction-Systems-Biology-Mathematical-Computational/dp/1584886420">An Introduction to Systems Biology. Design Principles of Biological Circuits</a> <br />
 <a class="reference external" href="https://www.amazon.com/Modeling-Life-Mathematics-Biological-Systems/dp/3319597302">Modelling Life</a></p>
 </section>
 <section id="credits">
-<h2><span class="section-number">7.7. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id31"><span class="section-number">7.7. </span>Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
 <p>This notebook was prepared by <a class="reference external" href="https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&amp;hl=ru">Dmitrii Kriukov</a>.</p>
 </section>
 </section>
