@@ -132,22 +132,10 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../stat/differential_analysis.html">
-   2. Differential Analysis
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat/differential_analysis_practice.html">
+   2. Differential expression analysis
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../stat/diff_analysis_practice.html">
-     2.5. Content with notebooks
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../stat/hazard_models.html">
@@ -949,7 +937,7 @@ title="Print to PDF"
 <p>First, it is beautiful, isn’t it? We see that day time affects an ability to growth and expanding carrying capacity determines limits of this growth. This simple example helps us to understand the <strong>top-down</strong> approach to modelling. This means that we do not know exactly the underlying microscopic biological mechanism inducing growth in number of bacteria, rather we try to guess the function which can <em>describe</em> the observable behaviour. This is something that also known as <strong>phenomenological</strong> model which tries to describe phenomenon without explicit pointing to the mechanism of it.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Note</p>
-<p>Surely, forward Euler’s method is not the best in terms of accuracy of approximation and speed of convergence (the famous Runge Kutta method can be much better). To dig into the plephora of algorithms for numerical integrations we recommend the following book <span id="id1">[<a class="reference internal" href="../stat/differential_analysis.html#id71" title="Mark H Holmes. Introduction to scientific computing and data analysis. Volume 13. Springer, 2016.">Holmes, 2016</a>]</span></p>
+<p>Surely, forward Euler’s method is not the best in terms of accuracy of approximation and speed of convergence (the famous Runge Kutta method can be much better). To dig into the plephora of algorithms for numerical integrations we recommend the following book <span id="id1">[<a class="reference internal" href="../bio/intro_aging_biology.html#id71" title="Mark H Holmes. Introduction to scientific computing and data analysis. Volume 13. Springer, 2016.">Holmes, 2016</a>]</span></p>
 </div>
 </section>
 </section>
@@ -1226,7 +1214,7 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_189866/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_44006/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
   f = lambda x, t, r, d: r * x - (1. - d * t) * x**2
 </pre></div>
 </div>
@@ -1247,7 +1235,7 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 <p>In this section we will consider molecular model of human aging building it based on the concept of <strong>gene regulatory network</strong>, which we discuss below.</p>
 <section id="stability-in-linear-multidimensional-case">
 <h3><a class="toc-backref" href="#id21"><span class="section-number">6.3.1. </span>Stability in linear multidimensional case</a><a class="headerlink" href="#stability-in-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
-<p>Linear systems of differential equations allows to model a countless number of complex phenomena. We start with a simple model of gene regulation, which includes feedback control loop (Fig. 3). This is a scalable model proposed in <span id="id3">[<a class="reference internal" href="../stat/differential_analysis.html#id72" title="Ting Chen, Hongyu L He, and George M Church. Modeling gene expression with differential equations. In Biocomputing'99, pages 29–40. World Scientific, 1999.">Chen <em>et al.</em>, 1999</a>]</span> for modeling a number of genes. We restrict ourselves to a consideration only a one gene-rna-protein cascade where the protein acts as a regulator of the gene transcription.</p>
+<p>Linear systems of differential equations allows to model a countless number of complex phenomena. We start with a simple model of gene regulation, which includes feedback control loop (Fig. 3). This is a scalable model proposed in <span id="id3">[<a class="reference internal" href="../bio/intro_aging_biology.html#id72" title="Ting Chen, Hongyu L He, and George M Church. Modeling gene expression with differential equations. In Biocomputing'99, pages 29–40. World Scientific, 1999.">Chen <em>et al.</em>, 1999</a>]</span> for modeling a number of genes. We restrict ourselves to a consideration only a one gene-rna-protein cascade where the protein acts as a regulator of the gene transcription.</p>
 <p><img src="https://drive.google.com/uc?id=1cB0GcpKAT1W20GOUMG2na7RMPuaYfM5Q"
      alt="gene regulatory network" 
      width="500"/></p>
@@ -1381,7 +1369,7 @@ Fig. 3. Dynamic system of gene regulation.
 <span class="n">eigvals</span> <span class="o">=</span> <span class="n">compute_eigvals</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
 <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">U</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">V</span><span class="p">]])</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1400,7 +1388,7 @@ Fig. 3. Dynamic system of gene regulation.
 <span class="n">eigvals</span> <span class="o">=</span> <span class="n">compute_eigvals</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
 <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">U</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">V</span><span class="p">]])</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1419,7 +1407,7 @@ Fig. 3. Dynamic system of gene regulation.
 <span class="n">eigvals</span> <span class="o">=</span> <span class="n">compute_eigvals</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
 <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">U</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">V</span><span class="p">]])</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1438,7 +1426,7 @@ Fig. 3. Dynamic system of gene regulation.
 <span class="n">eigvals</span> <span class="o">=</span> <span class="n">compute_eigvals</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
 <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">U</span><span class="p">,</span> <span class="n">C</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">V</span><span class="p">]])</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">compute_linear_ODE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lmb1=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;lmb2=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">eigvals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plot_linear_system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1463,7 +1451,7 @@ Fig. 3. Dynamic system of gene regulation.
 </section>
 <section id="stability-in-non-linear-multidimensional-case">
 <h3><a class="toc-backref" href="#id22"><span class="section-number">6.3.2. </span>Stability in non-linear multidimensional case</a><a class="headerlink" href="#stability-in-non-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
-<p>We start with rather simple but still tractable Michaelis-Menten gene regulatory model <span id="id4">[<a class="reference internal" href="../stat/differential_analysis.html#id73" title="Uri Alon. An introduction to systems biology: design principles of biological circuits. Chapman and Hall/CRC, 2006.">Alon, 2006</a>]</span>. We first formulate this model for <span class="math notranslate nohighlight">\(n\)</span> genes where each gene <span class="math notranslate nohighlight">\(x_i\)</span> is regulated by others including itself:</p>
+<p>We start with rather simple but still tractable Michaelis-Menten gene regulatory model <span id="id4">[<a class="reference internal" href="../bio/intro_aging_biology.html#id73" title="Uri Alon. An introduction to systems biology: design principles of biological circuits. Chapman and Hall/CRC, 2006.">Alon, 2006</a>]</span>. We first formulate this model for <span class="math notranslate nohighlight">\(n\)</span> genes where each gene <span class="math notranslate nohighlight">\(x_i\)</span> is regulated by others including itself:</p>
 <div class="math notranslate nohighlight" id="equation-eq-mm-model">
 <span class="eqno">(6.10)<a class="headerlink" href="#equation-eq-mm-model" title="Permalink to this equation">#</a></span>\[
     \frac{dx_i}{dt} = -Bx_i + \sum^n_{j=1}A_{ij}\frac{x_j}{x_j + 1}
@@ -1534,7 +1522,7 @@ Fig. 3. Dynamic system of gene regulation.
         f_2 = -Bx_2 + A_{21}\frac{x_1}{x_1 + 1} + A_{22}\frac{x_2}{x_2 + 1} = 0
     \end{cases}
 \end{split}\]</div>
-<p>It is not easy to get the solution in a closed form (try it), but we can try to <em>guess</em> at least one solution: <span class="math notranslate nohighlight">\(x=[0, 0]^T\)</span> which is true for any set of parameters. The plot above hints us that <span class="math notranslate nohighlight">\(x=[1, 1]^T\)</span> is also a stationary solution (check it), but only for a specific set of parameters, namely, <span class="math notranslate nohighlight">\(B=1\)</span> and matrix <span class="math notranslate nohighlight">\(A\)</span> consisting of ones. We will check their stability. It turns out we already know how to do that (remember <a class="reference internal" href="#stability-intuition"><span class="std std-ref">Stability intuition</span></a>) with a linearization of function <span class="math notranslate nohighlight">\(f\)</span>. We need only to generalize the techinique to multidimensional case. It is time to get acquainted with <strong>Hartman-Grobman theorem</strong> (we use its interpretation from <span id="id5">[<a class="reference internal" href="../stat/differential_analysis.html#id74" title="Alan Garfinkel, Jane Shevtsov, and Yina Guo. Modeling life. Cham: Springer, 2017.">Garfinkel <em>et al.</em>, 2017</a>]</span>):</p>
+<p>It is not easy to get the solution in a closed form (try it), but we can try to <em>guess</em> at least one solution: <span class="math notranslate nohighlight">\(x=[0, 0]^T\)</span> which is true for any set of parameters. The plot above hints us that <span class="math notranslate nohighlight">\(x=[1, 1]^T\)</span> is also a stationary solution (check it), but only for a specific set of parameters, namely, <span class="math notranslate nohighlight">\(B=1\)</span> and matrix <span class="math notranslate nohighlight">\(A\)</span> consisting of ones. We will check their stability. It turns out we already know how to do that (remember <a class="reference internal" href="#stability-intuition"><span class="std std-ref">Stability intuition</span></a>) with a linearization of function <span class="math notranslate nohighlight">\(f\)</span>. We need only to generalize the techinique to multidimensional case. It is time to get acquainted with <strong>Hartman-Grobman theorem</strong> (we use its interpretation from <span id="id5">[<a class="reference internal" href="../bio/intro_aging_biology.html#id74" title="Alan Garfinkel, Jane Shevtsov, and Yina Guo. Modeling life. Cham: Springer, 2017.">Garfinkel <em>et al.</em>, 2017</a>]</span>):</p>
 <p>To determine the stability of an equilibrium point of a vector ﬁeld <span class="math notranslate nohighlight">\(f : R^n \to R^n\)</span>:</p>
 <ol class="simple">
 <li><p>Find the linearization of <span class="math notranslate nohighlight">\(f\)</span> at the equilibrium point, which is the Jacobian.</p></li>
@@ -1578,7 +1566,7 @@ the nonlinear system is qualitatively similar to that of its linearization.</p><
 </section>
 <section id="universality-and-resilience">
 <h3><a class="toc-backref" href="#id23"><span class="section-number">6.3.3. </span>Universality and resilience</a><a class="headerlink" href="#universality-and-resilience" title="Permalink to this headline">#</a></h3>
-<p>In this section, we will demonstrate exactly how complex systems can be reduced to simple universal laws. We will see that the system that we considered above obeys a universal law that allows us to investigate its stability and resilience (yes, in this section we will consider the difference between these two concepts). We will follow a framework developed in the paper <span id="id6">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span> which in short can be formulated as following. Consider a system consisting of <span class="math notranslate nohighlight">\(n\)</span> components (nodes of a network) <span class="math notranslate nohighlight">\(x = (x_1, ..., x_n)^T\)</span>. The components of systems evolves according to the following general system of non-linear (in general) differential equations:</p>
+<p>In this section, we will demonstrate exactly how complex systems can be reduced to simple universal laws. We will see that the system that we considered above obeys a universal law that allows us to investigate its stability and resilience (yes, in this section we will consider the difference between these two concepts). We will follow a framework developed in the paper <span id="id6">[<a class="reference internal" href="../bio/intro_aging_biology.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span> which in short can be formulated as following. Consider a system consisting of <span class="math notranslate nohighlight">\(n\)</span> components (nodes of a network) <span class="math notranslate nohighlight">\(x = (x_1, ..., x_n)^T\)</span>. The components of systems evolves according to the following general system of non-linear (in general) differential equations:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gao-general">
 <span class="eqno">(6.12)<a class="headerlink" href="#equation-eq-gao-general" title="Permalink to this equation">#</a></span>\[
     \frac{dx_i}{dt} = F(x_i) + \sum_{j=1}^n A_{ij}G(x_i, x_j)
@@ -1641,7 +1629,7 @@ the nonlinear system is qualitatively similar to that of its linearization.</p><
     \lambda|_{x^*=0} = 1; \ \lambda|_{x^*=1} = -0.5
 \end{split}\]</div>
 <p>Indeed, it works properly! We had a stable point at <span class="math notranslate nohighlight">\(x=[1,1]^T\)</span> and unstable at <span class="math notranslate nohighlight">\(x=[0,0]^T\)</span> in multidimensional case. As result, their one dimensional analogs have the proper stability property. Someone will say: “Well, but what about really multidimensional systems?”</p>
-<p>We will use the transcriptional regulatory network in yeast proposed in <span id="id7">[<a class="reference internal" href="../stat/differential_analysis.html#id75" title="Santhanam Balaji, M Madan Babu, Lakshminarayan M Iyer, Nicholas M Luscombe, and Lakshminarayan Aravind. Comprehensive analysis of combinatorial regulation using the transcriptional regulatory network of yeast. Journal of molecular biology, 360(1):213–227, 2006.">Balaji <em>et al.</em>, 2006</a>]</span>. The full network contains 4441 nodes but we restricted it only to a number of 157 transcription factors (i.e. having non-zero out-degree (non-zero sum of columns) in the original matrix). We attached a file with the data to a repository of this book. Let’s take a look at it.</p>
+<p>We will use the transcriptional regulatory network in yeast proposed in <span id="id7">[<a class="reference internal" href="../bio/intro_aging_biology.html#id75" title="Santhanam Balaji, M Madan Babu, Lakshminarayan M Iyer, Nicholas M Luscombe, and Lakshminarayan Aravind. Comprehensive analysis of combinatorial regulation using the transcriptional regulatory network of yeast. Journal of molecular biology, 360(1):213–227, 2006.">Balaji <em>et al.</em>, 2006</a>]</span>. The full network contains 4441 nodes but we restricted it only to a number of 157 transcription factors (i.e. having non-zero out-degree (non-zero sum of columns) in the original matrix). We attached a file with the data to a repository of this book. Let’s take a look at it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#load numpy data array</span>
@@ -1719,7 +1707,7 @@ the nonlinear system is qualitatively similar to that of its linearization.</p><
 </div>
 </div>
 <p>We observe different dynamics for genes. Some of them are upregulated by others and coverge to a stationary value, others are do not have positive regulation and exhibit a decay trajectory with a rate of <span class="math notranslate nohighlight">\(B\)</span>. Nevertheless we call this dynamics is stable and non-zero because the average dynamics is not equal to zero (<span class="math notranslate nohighlight">\(\langle x\rangle \neq 0\)</span>). Note that effective dynamics <span class="math notranslate nohighlight">\(x_{eff}\)</span> is not equal to the average one due to slightly different weighing.</p>
-<p>The second interesting result of the <span id="id8">[<a class="reference internal" href="../stat/differential_analysis.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span> paper is that topological characteristic <span class="math notranslate nohighlight">\(\beta_{eff}\)</span> can be decomposed in well-interpretable topological properties. Let’s write the following relation:</p>
+<p>The second interesting result of the <span id="id8">[<a class="reference internal" href="../bio/intro_aging_biology.html#id70" title="Jianxi Gao, Baruch Barzel, and Albert-László Barabási. Universal resilience patterns in complex networks. Nature, 530(7590):307–312, 2016.">Gao <em>et al.</em>, 2016</a>]</span> paper is that topological characteristic <span class="math notranslate nohighlight">\(\beta_{eff}\)</span> can be decomposed in well-interpretable topological properties. Let’s write the following relation:</p>
 <div class="math notranslate nohighlight" id="equation-eq-network-topology">
 <span class="eqno">(6.15)<a class="headerlink" href="#equation-eq-network-topology" title="Permalink to this equation">#</a></span>\[
     \beta_{eff} = \langle s\rangle + SH
@@ -1810,7 +1798,7 @@ beta_eff == &lt;s&gt; + SH: True
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_perturbed_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function for netwrok perturbation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">A_pert</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1878,7 +1866,7 @@ beta_eff == &lt;s&gt; + SH: True
 </section>
 <section id="critical-slowing-down">
 <h2><a class="toc-backref" href="#id25"><span class="section-number">6.4. </span>Critical slowing down</a><a class="headerlink" href="#critical-slowing-down" title="Permalink to this headline">#</a></h2>
-<p>“The bifurcation theory predicts that approaching to a critical transition boundary (aka tipping point) is accompained with the system critical slowing down and an increase in variance and temporal autocorrelations of system state variable” - do your remember this citation from the previous chapter? In this section we discuss the explicit mathematical background of the phenomenon. We also introduce one additional instrument which is widely used in dynamical modelling, namely, stochasticity. In this section we will mostly rely on the theoretical results form the paper <span id="id9">[<a class="reference internal" href="../stat/differential_analysis.html#id62" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span>.</p>
+<p>“The bifurcation theory predicts that approaching to a critical transition boundary (aka tipping point) is accompained with the system critical slowing down and an increase in variance and temporal autocorrelations of system state variable” - do your remember this citation from the previous chapter? In this section we discuss the explicit mathematical background of the phenomenon. We also introduce one additional instrument which is widely used in dynamical modelling, namely, stochasticity. In this section we will mostly rely on the theoretical results form the paper <span id="id9">[<a class="reference internal" href="complex_systems.html#id95" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span>.</p>
 <section id="introduce-a-stochastic-model">
 <h3><a class="toc-backref" href="#id26"><span class="section-number">6.4.1. </span>Introduce a stochastic model</a><a class="headerlink" href="#introduce-a-stochastic-model" title="Permalink to this headline">#</a></h3>
 <p>In contrast to the previous section, we return to the one dimensional models, in addition, we understood that some of multidimensional models can be reduced to one-dimensional allowing to analyze system resilience in more compact form. We start with a new model which is a combination of what we learned above:</p>
@@ -1931,7 +1919,7 @@ beta_eff == &lt;s&gt; + SH: True
     <span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">:],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population size&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dynamics, $\sigma_x=</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">std</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dynamics, $\sigma_x=</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">std</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
     <span class="c1">##plot from the middle</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">:],</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">:],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -1945,7 +1933,7 @@ beta_eff == &lt;s&gt; + SH: True
     <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:])[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x[i]$&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$x[i+1]$&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Correlation, r=</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Correlation, r=</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">);</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
@@ -1964,7 +1952,7 @@ beta_eff == &lt;s&gt; + SH: True
 <section id="construct-a-resilience-indicator-from-data">
 <h3><a class="toc-backref" href="#id28"><span class="section-number">6.4.3. </span>Construct a resilience indicator from data</a><a class="headerlink" href="#construct-a-resilience-indicator-from-data" title="Permalink to this headline">#</a></h3>
 <p>We have studied quite useful tools for data analysis. Can we use them to create an organism resilience indicator? The good resilience indicator should satisfy not only the all three properties mentioned above, but how one-dimensional variable can satisfy the third one? There is one way to do that by constructing a new latent variable from initial organism state variables. Moreover, the good resilience indicator is expected to be negatively correlated with age. How to deal with all of that? Let’s do it step by step.</p>
-<p>First let’s get the real data of mouse complete blood count (CBC) analysis. We will use one prepared dataset from the <span id="id10">[<a class="reference internal" href="../stat/differential_analysis.html#id76" title="Konstantin Avchaciov, Marina P Antoch, Ekaterina L Andrianova, Andrei E Tarkhov, Leonid I Menshikov, Olga Burmistrova, Andrei V Gudkov, and Peter O Fedichev. Unsupervised learning of aging principles from longitudinal data. Nature Communications, 13(1):6529, 2022.">Avchaciov <em>et al.</em>, 2022</a>]</span>. As authors mentioned, the samples were obtained from NIH Swiss male and female mice from Charles River Laboratories (Wilmington, MA) - please refer to the original paper for the details. We will use only one cohort of male mice to avoid batch effect.</p>
+<p>First let’s get the real data of mouse complete blood count (CBC) analysis. We will use one prepared dataset from the <span id="id10">[<a class="reference internal" href="../bio/intro_aging_biology.html#id76" title="Konstantin Avchaciov, Marina P Antoch, Ekaterina L Andrianova, Andrei E Tarkhov, Leonid I Menshikov, Olga Burmistrova, Andrei V Gudkov, and Peter O Fedichev. Unsupervised learning of aging principles from longitudinal data. Nature Communications, 13(1):6529, 2022.">Avchaciov <em>et al.</em>, 2022</a>]</span>. As authors mentioned, the samples were obtained from NIH Swiss male and female mice from Charles River Laboratories (Wilmington, MA) - please refer to the original paper for the details. We will use only one cohort of male mice to avoid batch effect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#load the data</span>
@@ -2032,49 +2020,49 @@ beta_eff == &lt;s&gt; + SH: True
   </thead>
   <tbody>
     <tr>
-      <th>242</th>
-      <td>swiss-2054</td>
+      <th>248</th>
+      <td>swiss-2056</td>
       <td>M</td>
-      <td>81.0</td>
-      <td>14.6</td>
-      <td>8.26</td>
-      <td>45.3</td>
+      <td>109.0</td>
+      <td>10.5</td>
+      <td>6.34</td>
+      <td>33.1</td>
     </tr>
     <tr>
-      <th>287</th>
+      <th>288</th>
       <td>swiss-2207</td>
-      <td>M</td>
-      <td>81.0</td>
-      <td>16.5</td>
-      <td>9.70</td>
-      <td>49.3</td>
-    </tr>
-    <tr>
-      <th>260</th>
-      <td>swiss-2072</td>
-      <td>M</td>
-      <td>94.0</td>
-      <td>9.4</td>
-      <td>4.11</td>
-      <td>26.0</td>
-    </tr>
-    <tr>
-      <th>257</th>
-      <td>swiss-2071</td>
       <td>M</td>
       <td>94.0</td>
       <td>14.3</td>
-      <td>7.92</td>
-      <td>38.4</td>
+      <td>8.40</td>
+      <td>40.7</td>
     </tr>
     <tr>
-      <th>284</th>
-      <td>swiss-2200</td>
+      <th>275</th>
+      <td>swiss-2079</td>
       <td>M</td>
-      <td>130.0</td>
-      <td>13.9</td>
-      <td>7.67</td>
-      <td>38.3</td>
+      <td>109.0</td>
+      <td>14.8</td>
+      <td>9.28</td>
+      <td>48.3</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>swiss-2036</td>
+      <td>M</td>
+      <td>66.0</td>
+      <td>15.2</td>
+      <td>8.75</td>
+      <td>42.4</td>
+    </tr>
+    <tr>
+      <th>273</th>
+      <td>swiss-2079</td>
+      <td>M</td>
+      <td>81.0</td>
+      <td>14.8</td>
+      <td>8.83</td>
+      <td>44.2</td>
     </tr>
   </tbody>
 </table>
@@ -2160,7 +2148,7 @@ beta_eff == &lt;s&gt; + SH: True
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#fit linear regression</span>
 <span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_corr</span><span class="p">,</span> <span class="n">pval</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;pca1&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Results of linear regression:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; slope = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2"> pearson r = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r_corr</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2"> P-value = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">pval</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; slope = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2"> pearson r = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r_corr</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2"> P-value = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">pval</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2178,7 +2166,7 @@ beta_eff == &lt;s&gt; + SH: True
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;pca1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tmp</span><span class="p">,</span>  <span class="n">x_ci</span><span class="o">=</span><span class="s1">&#39;sd&#39;</span><span class="p">,</span> <span class="n">scatter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$p = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1"> + </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">*age$&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$p = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1"> + </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">*age$&#39;</span><span class="p">);</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$p=PCA_1$&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -2194,7 +2182,7 @@ beta_eff == &lt;s&gt; + SH: True
 <span class="n">abs_resid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;pca1&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_predict</span><span class="p">))</span>
 <span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_corr</span><span class="p">,</span> <span class="n">pval</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">abs_resid</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Results of linear regression:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; slope = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2"> pearson r = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r_corr</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2"> P-value = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">pval</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; slope = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2"> pearson r = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r_corr</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2"> P-value = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">pval</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -2244,7 +2232,7 @@ beta_eff == &lt;s&gt; + SH: True
 <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">deltas</span><span class="p">):</span>
     <span class="n">r</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;pca1_x&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;pca1_y&#39;</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ages:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">unique_ages</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">unique_ages</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">; </span><span class="se">\</span>
-<span class="s2">    n=</span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">; r=</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">; P-value=</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">)</span> 
+<span class="s2">    n=</span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">; r=</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">; P-value=</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">)</span> 
 </pre></div>
 </div>
 </div>

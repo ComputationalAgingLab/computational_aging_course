@@ -253,6 +253,9 @@ One important aspect of aging clock research is the use of statistical analysis 
 
 Overall, the study of aging clocks has the potential to provide insights into the underlying mechanisms of aging and may lead to the development of interventions that can promote healthy aging and extend the human lifespan. While there is still much to learn about aging clocks and the aging process, the potential benefits of this research make it an important area of study for the scientific community.
 
+## Credits
+This text prepared by [Simon Steshin](https://www.linkedin.com/in/simon-steshin-506ab1197/).
+
 ```{bibliography}
 :style: plain
 :filter: docname in docnames

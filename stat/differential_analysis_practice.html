@@ -1,0 +1,1266 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Differential expression analysis &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Hazard models" href="hazard_models.html" />
+    <link rel="prev" title="1. Introduction to Aging Biology" href="../bio/intro_aging_biology.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Computational Biology of Aging book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical view
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Differential expression analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hazard_models.html">
+   3. Hazard models
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine learning view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/aging_clocks.html">
+   4. Aging Clocks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamics system view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dyn/complex_systems.html">
+   5. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dyn/system_resilience.html">
+   6. System resilience
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ComputationalAgingLab/computational_aging_course/master?urlpath=tree/stat/differential_analysis_practice.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fstat/differential_analysis_practice.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/stat/differential_analysis_practice.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#required-software-and-packages">
+   2.1. Required software and packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparing-the-data">
+   2.2. Preparing the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-rpy2-functions">
+   2.3. Setting up rpy2 functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalization">
+   2.4. Normalization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quality-control">
+   2.5. Quality control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#principal-component-analysis">
+     2.5.1. Principal Component Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-testing">
+   2.6. Statistical testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gene-clustering">
+   2.7. Gene clustering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#go-analysis">
+   2.8. GO analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-more">
+   2.9. Learn more
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   2.10. Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   2.11. References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Differential expression analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#required-software-and-packages">
+   2.1. Required software and packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparing-the-data">
+   2.2. Preparing the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-rpy2-functions">
+   2.3. Setting up rpy2 functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalization">
+   2.4. Normalization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quality-control">
+   2.5. Quality control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#principal-component-analysis">
+     2.5.1. Principal Component Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-testing">
+   2.6. Statistical testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gene-clustering">
+   2.7. Gene clustering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#go-analysis">
+   2.8. GO analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-more">
+   2.9. Learn more
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   2.10. Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   2.11. References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="differential-expression-analysis">
+<h1><span class="section-number">2. </span>Differential expression analysis<a class="headerlink" href="#differential-expression-analysis" title="Permalink to this headline">#</a></h1>
+<p>Today we are going to learn how to perform differential expression analysis on aging bulk RNA-seq datasets. For this lesson we prepared longitudal RNA-seq data on aged human fibroblasts from Fleischer et al (2018). This data is already proccesed, therefore we can skip a large part devoted to raw read processing and mapping (Figure 1) and start with a table of counts.</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/TitleFigure.png" src="../_images/TitleFigure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">A typical workflow for DE analysis.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="required-software-and-packages">
+<h2><span class="section-number">2.1. </span>Required software and packages<a class="headerlink" href="#required-software-and-packages" title="Permalink to this headline">#</a></h2>
+<p>But first af all we need to set up an environment. A list of Python packages required for the analysis:</p>
+<ul>
+    <input type="checkbox"> pandas <br>
+    <input type="checkbox"> numpy <br>
+    <input type="checkbox"> rpy2 <br>
+    <input type="checkbox"> seaborn <br>
+    <input type="checkbox"> matplotlib <br>
+    <input type="checkbox"> sklearn <br>
+    <input type="checkbox"> gseapy <br>
+</ul><p>In order to perform DE analysis you should also have R environment installed (<a class="reference external" href="https://www.r-project.org/">https://www.r-project.org/</a>). While we will not write R scripts during this lesson, it is also needed to install some of R packages required for the differential expression analysis. They can be installed as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#if (!require(&quot;BiocManager&quot;, quietly = TRUE))</span>
+<span class="c1">#install.packages(&quot;BiocManager&quot;)</span>
+<span class="c1">#BiocManager::install(&quot;DESeq2&quot;, &quot;SummarizedExperiment&quot;, &quot;DEGreport&quot;) </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preparing-the-data">
+<h2><span class="section-number">2.2. </span>Preparing the data<a class="headerlink" href="#preparing-the-data" title="Permalink to this headline">#</a></h2>
+<p>We will start with uploading expression data table together with meta file containing brief sample description (age, ethnicity). While original study include both male and females profiles, we selected only the male ones for the simplicity of the further analysis. Processed files (<em>data_fibroblasts.csv</em> and <em>meta_fibroblasts.csv</em>) are available here: <a class="reference external" href="http://arcuda.skoltech.ru/~d.smirnov/ComputationalAgingCourse/">http://arcuda.skoltech.ru/~d.smirnov/ComputationalAgingCourse/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">path_data</span> <span class="o">=</span> <span class="s2">&quot;data/data_fibroblasts.csv&quot;</span> <span class="c1"># change this with your actual path to data file</span>
+<span class="n">raw_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_data</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the number of gene features and number of samples available in the dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of genes:&quot;</span><span class="p">,</span> <span class="n">raw_counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of samples:&quot;</span><span class="p">,</span> <span class="n">raw_counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of genes: 29744
+Number of samples: 99
+</pre></div>
+</div>
+</div>
+</div>
+<p>This table includes expression profiles of 99 samples with 29744 genes detected. However, some of this genes can have zero expression values across samples. We will filter them out:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw_counts</span> <span class="o">=</span> <span class="n">raw_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">raw_counts</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">raw_counts</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(24033, 99)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we will load meta file with sample descriptions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_meta</span> <span class="o">=</span> <span class="s2">&quot;data/meta_fibroblasts.csv&quot;</span> <span class="c1"># change this with your actual path to meta file</span>
+<span class="n">meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_meta</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">meta</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Ethnicity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SRX4022456</th>
+      <td>1</td>
+      <td>Asian</td>
+    </tr>
+    <tr>
+      <th>SRX4022457</th>
+      <td>12</td>
+      <td>Caucasian</td>
+    </tr>
+    <tr>
+      <th>SRX4022459</th>
+      <td>25</td>
+      <td>Caucasian</td>
+    </tr>
+    <tr>
+      <th>SRX4022461</th>
+      <td>26</td>
+      <td>Caucasian</td>
+    </tr>
+    <tr>
+      <th>SRX4022463</th>
+      <td>28</td>
+      <td>Caucasian</td>
+    </tr>
+    <tr>
+      <th>SRX4022464</th>
+      <td>29</td>
+      <td>Caucasian</td>
+    </tr>
+    <tr>
+      <th>SRX4022465</th>
+      <td>29</td>
+      <td>Caucasian</td>
+    </tr>
+    <tr>
+      <th>SRX4022466</th>
+      <td>30</td>
+      <td>Caucasian</td>
+    </tr>
+    <tr>
+      <th>SRX4022468</th>
+      <td>30</td>
+      <td>Caucasian</td>
+    </tr>
+    <tr>
+      <th>SRX4022469</th>
+      <td>30</td>
+      <td>Caucasian</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s check age range of our samples using the information from the first column of the <em>meta</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Minimal age:&quot;</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maximal age:&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minimal age: 1
+Maximal age: 96
+</pre></div>
+</div>
+</div>
+</div>
+<p>To perform further analysis we will divide samples into age groups with a step = 10 years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">right</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">ordered</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">meta</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">meta</span><span class="p">[</span><span class="s1">&#39;AgeRanges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">meta</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Ethnicity</th>
+      <th>AgeBins</th>
+      <th>AgeRanges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SRX4022456</th>
+      <td>1</td>
+      <td>Asian</td>
+      <td>0</td>
+      <td>[0, 10)</td>
+    </tr>
+    <tr>
+      <th>SRX4022457</th>
+      <td>12</td>
+      <td>Caucasian</td>
+      <td>1</td>
+      <td>[10, 20)</td>
+    </tr>
+    <tr>
+      <th>SRX4022459</th>
+      <td>25</td>
+      <td>Caucasian</td>
+      <td>2</td>
+      <td>[20, 30)</td>
+    </tr>
+    <tr>
+      <th>SRX4022461</th>
+      <td>26</td>
+      <td>Caucasian</td>
+      <td>2</td>
+      <td>[20, 30)</td>
+    </tr>
+    <tr>
+      <th>SRX4022463</th>
+      <td>28</td>
+      <td>Caucasian</td>
+      <td>2</td>
+      <td>[20, 30)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="setting-up-rpy2-functions">
+<h2><span class="section-number">2.3. </span>Setting up rpy2 functions<a class="headerlink" href="#setting-up-rpy2-functions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rpy2</span> <span class="kn">import</span> <span class="n">robjects</span>
+<span class="kn">from</span> <span class="nn">rpy2.robjects.packages</span> <span class="kn">import</span> <span class="n">importr</span>
+<span class="kn">from</span> <span class="nn">rpy2.robjects</span> <span class="kn">import</span> <span class="n">pandas2ri</span><span class="p">,</span> <span class="n">Formula</span>
+<span class="kn">import</span> <span class="nn">rpy2.robjects.numpy2ri</span>
+<span class="n">pandas2ri</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+<span class="n">robjects</span><span class="o">.</span><span class="n">numpy2ri</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">rpy2.robjects.conversion</span> <span class="kn">import</span> <span class="n">localconverter</span>
+<span class="kn">from</span> <span class="nn">rpy2.rinterface_lib.embedded</span> <span class="kn">import</span> <span class="n">RRuntimeError</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deseq</span> <span class="o">=</span> <span class="n">importr</span><span class="p">(</span><span class="s1">&#39;DESeq2&#39;</span><span class="p">)</span>
+<span class="n">sumexp</span> <span class="o">=</span> <span class="n">importr</span><span class="p">(</span><span class="s1">&#39;SummarizedExperiment&#39;</span><span class="p">)</span>
+<span class="n">degreport</span> <span class="o">=</span> <span class="n">importr</span><span class="p">(</span><span class="s1">&#39;DEGreport&#39;</span><span class="p">)</span>
+<span class="n">to_dataframe</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="s2">&quot;function(x) data.frame(x)&quot;</span><span class="p">)</span>
+<span class="n">get_clusters</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="s2">&quot;function(x) x[[&#39;df&#39;]]&quot;</span><span class="p">)</span>
+<span class="n">get_cluster_data</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="s2">&quot;function(x) x[[&#39;normalized&#39;]]&quot;</span><span class="p">)</span>
+<span class="n">to_factors</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="s2">&quot;function(x) data.frame(lapply(x,factor))&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DESeq2</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">design</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">py2rpy</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta_chr</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">py2rpy</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="n">to_factors</span><span class="p">(</span><span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">py2rpy</span><span class="p">(</span><span class="n">meta</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">design</span> <span class="o">=</span> <span class="n">design</span>
+        
+    <span class="k">def</span> <span class="nf">create_deseq_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dds</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">DESeqDataSetFromMatrix</span><span class="p">(</span><span class="n">countData</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">,</span> <span class="n">colData</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">,</span> <span class="n">design</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">design</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">normalization</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dds</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">estimateSizeFactors_DESeqDataSet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">)</span>
+        <span class="n">norm_counts</span> <span class="o">=</span> <span class="n">to_dataframe</span><span class="p">(</span><span class="n">deseq</span><span class="o">.</span><span class="n">counts_DESeqDataSet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">norm_counts</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">norm_counts</span><span class="p">)</span>
+        <span class="n">norm_counts</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+        <span class="n">norm_counts</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+        <span class="k">return</span> <span class="n">norm_counts</span>
+    
+    <span class="k">def</span> <span class="nf">transformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;vst&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;vst&quot;</span><span class="p">:</span>
+            <span class="n">mat</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">varianceStabilizingTransformation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">blind</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;rlog&quot;</span><span class="p">:</span>
+            <span class="n">mat</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">rlog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">blind</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+            
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">to_dataframe</span><span class="p">(</span><span class="n">sumexp</span><span class="o">.</span><span class="n">assay</span><span class="p">(</span><span class="n">mat</span><span class="p">))</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+        <span class="n">mat</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+        <span class="n">mat</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>   
+        <span class="k">return</span> <span class="n">mat</span>
+    
+    <span class="k">def</span> <span class="nf">LRT_testing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">dds_lrt</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">DESeq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s2">&quot;LRT&quot;</span><span class="p">,</span> <span class="n">reduced</span> <span class="o">=</span> <span class="n">Formula</span><span class="p">(</span><span class="s2">&quot;~1&quot;</span><span class="p">))</span>
+            <span class="n">res_LRT</span> <span class="o">=</span> <span class="n">to_dataframe</span><span class="p">(</span><span class="n">deseq</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">dds_lrt</span><span class="p">))</span>
+            <span class="n">res_LRT</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">res_LRT</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">rpy2</span><span class="o">.</span><span class="n">rinterface_lib</span><span class="o">.</span><span class="n">embedded</span><span class="o">.</span><span class="n">RRuntimeError</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">res_LRT</span>
+    
+    <span class="k">def</span> <span class="nf">clustering</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster_mat</span><span class="p">):</span>
+        <span class="n">cluster_mat</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">py2rpy</span><span class="p">(</span><span class="n">cluster_mat</span><span class="p">)</span>
+        <span class="n">dp</span> <span class="o">=</span> <span class="n">degreport</span><span class="o">.</span><span class="n">degPatterns</span><span class="p">(</span><span class="n">cluster_mat</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_chr</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="s2">&quot;AgeBins&quot;</span><span class="p">)</span>
+        <span class="n">cluster_content</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">get_clusters</span><span class="p">(</span><span class="n">dp</span><span class="p">))</span>
+        <span class="n">cluster_data</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">get_cluster_data</span><span class="p">(</span><span class="n">dp</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">cluster_content</span><span class="p">,</span> <span class="n">cluster_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="normalization">
+<h2><span class="section-number">2.4. </span>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">#</a></h2>
+<p>Specify a design formula for statistical testing with DESeq2 (it is important to put the factor of interest in the end of the formula!):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">design</span> <span class="o">=</span> <span class="n">Formula</span><span class="p">(</span><span class="s2">&quot;~AgeBins&quot;</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">DESeq2</span><span class="p">(</span><span class="n">raw_counts</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">design</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Initialize DESeq2 object with our data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">create_deseq_object</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perform DESeq2 normalization:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncounts</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">normalization</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then transform data using variance stabilizing transformation (VST) to get rid of heteroskedasticity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vst_mat</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">transformation</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;vst&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="quality-control">
+<h2><span class="section-number">2.5. </span>Quality control<a class="headerlink" href="#quality-control" title="Permalink to this headline">#</a></h2>
+<p>Before differential analysis we will explore a similarityof the samples in the age groups</p>
+<section id="principal-component-analysis">
+<h3><span class="section-number">2.5.1. </span>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">vst_mat</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">principalComponents</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">principalDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">principalComponents</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pcdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">principalDf</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">meta</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pcdf</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;PC2&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;AgeRanges&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">var_pc1</span> <span class="o">=</span> <span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">var_pc2</span> <span class="o">=</span> <span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PC1, (&#39;</span><span class="o">+</span> <span class="n">var_pc1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PC2, (&#39;</span><span class="o">+</span> <span class="n">var_pc2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">handles</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">order</span><span class="p">],[</span><span class="n">labels</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">order</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/differential_analysis_practice_40_0.png" src="../_images/differential_analysis_practice_40_0.png" />
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 1</p>
+<p>Perform PCA on the top 500 most variable genes in the dataset.</p>
+</div>
+</section>
+</section>
+<section id="statistical-testing">
+<h2><span class="section-number">2.6. </span>Statistical testing<a class="headerlink" href="#statistical-testing" title="Permalink to this headline">#</a></h2>
+<p>Run Likelihood Ratio Test (LRT) available in DESeq2 package:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">LRT_testing</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sort genes by the adjusted p-value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;padj&#39;</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Retrieve all the genes satisfying p-value cut-off criteria <span class="math notranslate nohighlight">\(P&lt;0.05\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sig</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;padj&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the number of significant genes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of DE genes:&quot;</span><span class="p">,</span> <span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of DE genes: 8449
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gene-clustering">
+<h2><span class="section-number">2.7. </span>Gene clustering<a class="headerlink" href="#gene-clustering" title="Permalink to this headline">#</a></h2>
+<p>To perform gene clustering we will select only a subset of significant genes, let’s say 1800 the most significant features</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngenes</span> <span class="o">=</span> <span class="mi">1800</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cluster_mat</span> <span class="o">=</span> <span class="n">vst_mat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sig</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">ngenes</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perform gene clustering by executing <em>degPatterns</em> functions from DEGreport R package:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+<span class="n">content</span><span class="p">,</span> <span class="n">clust_data</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">cluster_mat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function above returned 15 clusters consisting of more than 16 genes that are simialar in thir expression patterns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({1: 248,
+         2: 415,
+         3: 110,
+         4: 471,
+         5: 36,
+         6: 186,
+         7: 56,
+         8: 20,
+         9: 35,
+         10: 18,
+         11: 16,
+         12: 37,
+         14: 42,
+         17: 16,
+         20: 40})
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use a content from <em>clust_data</em> dataframe to explore obtained expression patterns and plot them with seaborn library</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">clust_data</span><span class="p">,</span> 
+                <span class="n">x</span><span class="o">=</span><span class="s1">&#39;AgeRanges&#39;</span><span class="p">,</span> 
+                <span class="n">y</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> 
+                <span class="n">col</span><span class="o">=</span><span class="s1">&#39;cluster&#39;</span><span class="p">,</span> 
+                <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">,</span> 
+                <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
+                <span class="n">order</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">clust_data</span><span class="o">.</span><span class="n">AgeRanges</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set_axis_labels</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Z-score of gene abundance&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">gene_number</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">cluster_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">gene_number</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axes</span><span class="p">)):</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Cluster &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cluster_ids</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;, [&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">gene_number</span><span class="p">[</span><span class="n">cluster_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span> <span class="o">+</span> <span class="s2">&quot; genes]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/differential_analysis_practice_60_0.png" src="../_images/differential_analysis_practice_60_0.png" />
+</div>
+</div>
+</section>
+<section id="go-analysis">
+<h2><span class="section-number">2.8. </span>GO analysis<a class="headerlink" href="#go-analysis" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gseapy</span>
+<span class="kn">from</span> <span class="nn">gseapy</span> <span class="kn">import</span> <span class="n">barplot</span><span class="p">,</span> <span class="n">dotplot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Select a cluster for the GO analysis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cluster_id</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enr</span> <span class="o">=</span> <span class="n">gseapy</span><span class="o">.</span><span class="n">enrichr</span><span class="p">(</span><span class="n">gene_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">content</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster_id</span><span class="p">]</span><span class="o">.</span><span class="n">genes</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+                     <span class="n">background</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                     <span class="n">gene_sets</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GO_Biological_Process_2021&#39;</span><span class="p">,</span> 
+                                <span class="s1">&#39;GO_Cellular_Component_2021&#39;</span><span class="p">,</span> 
+                                <span class="s1">&#39;GO_Molecular_Function_2021&#39;</span><span class="p">],</span>
+                     <span class="n">organism</span><span class="o">=</span><span class="s1">&#39;human&#39;</span><span class="p">,</span>
+                     <span class="n">outdir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the simplicity we will drop non informative columns and keep the terms posessing ‘Adjusted P-value’ &lt; 0.05</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enr_res</span> <span class="o">=</span> <span class="n">enr</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span>
+<span class="n">enr_res</span> <span class="o">=</span> <span class="n">enr_res</span><span class="p">[</span><span class="n">enr_res</span><span class="p">[</span><span class="s1">&#39;Adjusted P-value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To visualize top 5 enrichment terms from each set (Biological Process, Cellular_Component, Molecular Function) we can apply <em>dotplot</em> function from gseapy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dotplot</span><span class="p">(</span><span class="n">enr_res</span><span class="p">,</span>
+              <span class="n">column</span><span class="o">=</span><span class="s2">&quot;Adjusted P-value&quot;</span><span class="p">,</span>
+              <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Gene_set&#39;</span><span class="p">,</span>
+              <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+              <span class="n">top_term</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+              <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+              <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;GO analysis&quot;</span><span class="p">,</span>
+              <span class="n">xticklabels_rot</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> 
+              <span class="n">show_ring</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+              <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+             <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;GO analysis&#39;}, xlabel=&#39;Gene_set&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/differential_analysis_practice_69_1.png" src="../_images/differential_analysis_practice_69_1.png" />
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 2</p>
+<p>Perform GO analysis on genes from cluster 1, 3, 4</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 3</p>
+<p>Perform enrichment analysis on genes from cluster 1, 3, 4 using aging related databases: ‘Aging_Perturbations_from_GEO_down’, ‘Aging_Perturbations_from_GEO_up’ and ‘GTEx_Aging_Signatures_2021’.</p>
+</div>
+</section>
+<section id="learn-more">
+<h2><span class="section-number">2.9. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Detailed <a class="reference external" href="https://hbctraining.github.io/DGE_workshop_salmon/schedule/">manual</a> on differential expression analysis with DESeq2 in R</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/RNAlysis/">RNA-seq analysis</a> with Python</p></li>
+<li><p>Omics Data Analysis course at Skoltech (MA060061)</p></li>
+</ul>
+</section>
+<section id="credits">
+<h2><span class="section-number">2.10. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<p>This notebook was prepared by <a class="reference external" href="https://crei.skoltech.ru/cls/people/dmitriismirnov">Dmitrii Smirnov</a>.</p>
+</section>
+<section id="references">
+<h2><span class="section-number">2.11. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<p>[1] Fleischer, J.G., Schulte, R., Tsai, H.H. et al. Predicting age from the transcriptome of human dermal fibroblasts. Genome Biol 19, 221 (2018). <a class="reference external" href="https://doi.org/10.1186/s13059-018-1599-6%E2%80%9D">https://doi.org/10.1186/s13059-018-1599-6”</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./stat"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../bio/intro_aging_biology.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Introduction to Aging Biology</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="hazard_models.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Hazard models</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
