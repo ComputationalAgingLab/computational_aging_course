@@ -13,16 +13,14 @@ parts:
 - caption: Statistical view
   numbered: true
   chapters:
-  - file: stat/differential_analysis
-    sections:
-    - file: stat/diff_analysis_practice
+  - file: stat/differential_analysis_practice
   - file: stat/hazard_models
 - caption: Machine learning view
   numbered: true
   chapters:
   - file: ml/aging_clocks
-  - file: ml/methylation_clocks
 - caption: Dynamics system view
   numbered: true
   chapters:
-  - file: dyn/dynamical_models
+  - file: dyn/complex_systems
+  - file: dyn/system_resilience
