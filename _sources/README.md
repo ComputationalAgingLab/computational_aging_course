@@ -46,3 +46,12 @@ We are trying to minimize dependencies, but if we need some, we use [`pip-tools`
 pip-compile requirement.in
 ```
 3. Commit new requirements files.
+
+
+## Cite us 
+
+@ebook{kriukov2023compagingbook,
+  year={2023},
+  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Ekaterina Khrameeva},
+  title={Computational Biology of Aging},
+}
