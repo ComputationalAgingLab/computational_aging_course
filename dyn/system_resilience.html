@@ -1221,7 +1221,7 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_187334/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_188182/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
   f = lambda x, t, r, d: r * x - (1. - d * t) * x**2
 </pre></div>
 </div>
@@ -1660,7 +1660,7 @@ the nonlinear system is qualitatively similar to that of its linearization.</p><
     <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
     <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="c1">#Forward Euler integration</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span> <span class="c1">#Forward Euler integration</span>
         <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span>
 
@@ -1856,15 +1856,7 @@ beta_eff == &lt;s&gt; + SH: True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_187334/1606752715.py:17: RuntimeWarning: overflow encountered in multiply
-  xeff = np.mean(sout[:, None] * x, axis=0) / savg
-/tmp/ipykernel_187334/1606752715.py:17: RuntimeWarning: invalid value encountered in multiply
-  xeff = np.mean(sout[:, None] * x, axis=0) / savg
-/home/shappiron/anaconda3/lib/python3.9/site-packages/numpy/core/_methods.py:179: RuntimeWarning: overflow encountered in reduce
-  ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
-</pre></div>
-</div>
-<img alt="../_images/system_resilience_50_1.png" src="../_images/system_resilience_50_1.png" />
+<img alt="../_images/system_resilience_50_0.png" src="../_images/system_resilience_50_0.png" />
 </div>
 </div>
 <p>The colored points on a bifurcation diagram are values of <span class="math notranslate nohighlight">\(x_{eff}\)</span> computed from the simulations of multidimensional systems at different perturbation rates <span class="math notranslate nohighlight">\(p\)</span>. If <span class="math notranslate nohighlight">\(p&lt;0\)</span> the perturbation rate means how much non-zero weights in matrix <span class="math notranslate nohighlight">\(A\)</span> shoul be left after the perturbation, else, if <span class="math notranslate nohighlight">\(p&gt;=1\)</span> the perturbation rate means how much edges should be added in matrix <span class="math notranslate nohighlight">\(A\)</span>. Hence, by incerasing <span class="math notranslate nohighlight">\(p\)</span> we increase density of a network. Why do the points do not go strictly with the theoretical prediction, but move away from the theoretical curve, and then again approach it? The reason is a <strong>sparcity</strong>. The developed theory fails to predict a stationary behavior of too sparse networks because nodes in such networks interact weakly. However, more dense network are predictable and we can use all the fruits of the original theory (or develop something better?). In any case, we see that the theory works correctly and provides a nice one-dimensional approximation for the network providing us a resilience coefficient <span class="math notranslate nohighlight">\(\beta_{eff}\)</span> which we can directly apply in practice.</p>
@@ -2044,40 +2036,40 @@ beta_eff == &lt;s&gt; + SH: True
       <td>37.9</td>
     </tr>
     <tr>
-      <th>248</th>
-      <td>swiss-2056</td>
+      <th>218</th>
+      <td>swiss-2032</td>
       <td>M</td>
-      <td>109.0</td>
-      <td>10.5</td>
-      <td>6.34</td>
-      <td>33.1</td>
+      <td>94.0</td>
+      <td>13.9</td>
+      <td>7.65</td>
+      <td>38.9</td>
     </tr>
     <tr>
-      <th>230</th>
-      <td>swiss-2036</td>
-      <td>M</td>
-      <td>66.0</td>
-      <td>15.2</td>
-      <td>8.75</td>
-      <td>42.4</td>
-    </tr>
-    <tr>
-      <th>222</th>
-      <td>swiss-2034</td>
-      <td>M</td>
-      <td>66.0</td>
-      <td>13.0</td>
-      <td>6.60</td>
-      <td>36.0</td>
-    </tr>
-    <tr>
-      <th>267</th>
-      <td>swiss-2074</td>
+      <th>238</th>
+      <td>swiss-2053</td>
       <td>M</td>
       <td>81.0</td>
-      <td>13.1</td>
-      <td>8.38</td>
-      <td>39.8</td>
+      <td>15.0</td>
+      <td>8.26</td>
+      <td>45.2</td>
+    </tr>
+    <tr>
+      <th>283</th>
+      <td>swiss-2200</td>
+      <td>M</td>
+      <td>109.0</td>
+      <td>14.0</td>
+      <td>8.09</td>
+      <td>45.4</td>
+    </tr>
+    <tr>
+      <th>234</th>
+      <td>swiss-2052</td>
+      <td>M</td>
+      <td>66.0</td>
+      <td>15.4</td>
+      <td>8.36</td>
+      <td>40.5</td>
     </tr>
   </tbody>
 </table>
