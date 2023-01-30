@@ -6,7 +6,7 @@ This course is devoted to the study of key methods of computational biology of a
 
 ## For whom whis course?
 
-Any person who are interested in Aging Biology having a basic technical of bioinformatics background.
+Any person who are interested in Aging Biology having a basic technical or bioinformatics background.
 
 ## Prerequisites
 
