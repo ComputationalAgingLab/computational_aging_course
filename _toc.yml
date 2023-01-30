@@ -13,9 +13,7 @@ parts:
 - caption: Statistical view
   numbered: true
   chapters:
-  - file: stat/differential_analysis
-    sections:
-    - file: stat/diff_analysis_practice
+  - file: stat/differential_analysis_practice
   - file: stat/hazard_models
 - caption: Machine learning view
   numbered: true
