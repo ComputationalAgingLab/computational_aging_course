@@ -18,7 +18,19 @@ Please check this list of prerequisites if needed. Each subject is a clickable l
 * Fundamentals of [linear algebra](https://nla.skoltech.ru/)
 * Fundamentals of [calculus](https://www.edx.org/course/calculus-1a-differentiation?index=product&queryID=40288109e953ccd5f708fbf6bb298e9b&position=1)
 
+## Contribution
 
+This is an open project for everyone to improve it. If you would like to contribute to the book, please refer the github [page](https://github.com/ComputationalAgingLab/computational_aging_course).
+
+## Cite us
+```
+@ebook{kriukov2023compagingbook,
+  year={2023},
+  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Ekaterina Khrameeva},
+  title={Computational Biology of Aging},
+  url={https://computationalaginglab.github.io/computational_aging_course/intro.html},
+}
+```
 
 ## Contents
 

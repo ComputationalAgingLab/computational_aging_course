@@ -198,6 +198,9 @@ All the 12 hallmarks of aging are strongly related among each other. For example
 
 Aging is not yet a recognized target for drug development or for treatment. For this reason, the first clinical trials evaluating antiaging interventions must deal with the prevention or mitigation of age-associated pathologies rather than aging itself. Although such trials have been designed to target high-risk populations (such as patients with myocardial infarction and laboratory signs of inflammation in the CANTOS trial or patients with frailty or cardiovascular events to be enrolled in future metformin-related trials) and to measure the manifestation of a second cardiovascular event or aggravation of frailty, there is a risk that they are programmed too late, which is of significant concern. Indeed, at this point, academic geroscience may raise or fall as the function of the outcome of the first randomized, double-blinded phase 3 trials. The new directions of the hallmarks of aging may provide an improved framework for the development of effective interventions aimed at the extension of healthy longevity.
 
+## Credits
+This text prepared by [Irina Zhegalova](https://scholar.google.com/citations?user=JiW914oAAAAJ&hl=ru&oi=ao).
+
 ## References
 
 ```{bibliography}
