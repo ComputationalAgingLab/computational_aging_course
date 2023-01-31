@@ -16,12 +16,9 @@ If you want to contribute to this project, please follow this guide:
     git clone https://github.com/{YOUR-USERNAME}/computational_aging_course.git
     cd computational_aging_course
 
-    # Create Conda environment
-    conda create --name comp_aging_course python=3.10
-    conda activate comp_aging_course
-
-    # Install dependencies
-    pip install -r requirements.txt
+    # Create Conda environment (alternatively you can use mamba distributive which is faster)
+    conda env create -f environment.yml
+    conda activate cba_course
 
     # Compile book
     jupyter-book build .
@@ -39,17 +36,9 @@ If you found some mistakes or mistypes in materials, or if you want to provide s
 
 
 ## How to add dependencies
-We are trying to minimize dependencies, but if we need some, we use [`pip-tools`](https://github.com/jazzband/pip-tools) for management. To add new pip package:
-1. Add package to `requirements.in`
-2. Compile `requirements.txt`: 
-```
-pip-compile requirement.in
-```
-3. Commit new requirements files.
-
+We are trying to minimize dependencies, but if we need some, we just add them to the `environment.yml` file. Note, if you added some dependencies try to build your fork of the book by creating a new environment.
 
 ## Cite us 
-
 ```
 @ebook{kriukov2023compagingbook,
   year={2023},
