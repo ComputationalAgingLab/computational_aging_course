@@ -24,7 +24,7 @@ This is an open project for everyone to improve it. If you would like to contrib
 
 ## Cite us
 ```
-@ebook{kriukov2023compagingbook,
+@online{kriukov2023compagingbook,
   year={2023},
   author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Ekaterina Khrameeva},
   title={Computational Biology of Aging},
