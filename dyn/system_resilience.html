@@ -946,13 +946,13 @@ title="Print to PDF"
 <section id="stability-intuition">
 <span id="id2"></span><h3><a class="toc-backref" href="#id17"><span class="section-number">6.2.1. </span>Stability intuition</a><a class="headerlink" href="#stability-intuition" title="Permalink to this headline">#</a></h3>
 <p>Now we start to develop the core dynamical system property - its stability. It is a case when mathematical framework has a strict everyday physical analogy. Let’s discuss the picture below:</p>
-<p><img src="https://drive.google.com/uc?id=1faLz8aoxlaxa3az5PR5iPW8t45W9BnBH"
-     alt="potential" 
-     width="600"/></p>
-<p align = "left">
-Fig. 1. Example of potential landscape.
-</p>
-<p>We see a ball in three positions. You can easily say which position is stable, unstable, or metastable. Indeed, the first position denoted <span class="math notranslate nohighlight">\(x^*_1\)</span> - is stable position. Mathematically speaking, the position of <span class="math notranslate nohighlight">\(x\)</span> is called stable if after any arbitrarily small perturbation <span class="math notranslate nohighlight">\(y\)</span> the system return the the initial state <span class="math notranslate nohighlight">\(x^*_1\)</span>. The opposite case for <span class="math notranslate nohighlight">\(x^*_2\)</span> where any small perturbation force the system to leave the previous state. The third case <span class="math notranslate nohighlight">\(x^*_3\)</span> is metastable (or marginally stable) that is this position is a midpoint between stable and unstable regimes of the system (remember equation <a class="reference internal" href="#equation-ex-sol-2">(6.3)</a> with <span class="math notranslate nohighlight">\(a=0\)</span>). This third case is also called <strong>critical</strong> and it is very important for our discussion of system <strong>resilience</strong>. One minor technical thing remained. We need to understand how to obtain this so called <strong>potential landscape</strong> depicted at Fig.1, i.e. some function whose maxima, minima and <em>saddles</em> (or flat valleys) describes the full set of fixed (or critical) points <span class="math notranslate nohighlight">\(\{x^* | \frac{dx}{dt}|_{x=x^*}=0\}\)</span>, and, what is more important, characterizes stability properties of these points.</p>
+<figure class="align-default" id="potential">
+<a class="reference internal image-reference" href="../_images/Potential.png"><img alt="../_images/Potential.png" src="../_images/Potential.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Example of potential landscape.</span><a class="headerlink" href="#potential" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We see a ball in three positions. You can easily say which position is stable, unstable, or metastable. Indeed, the first position denoted <span class="math notranslate nohighlight">\(x^*_1\)</span> - is stable position. Mathematically speaking, the position of <span class="math notranslate nohighlight">\(x\)</span> is called stable if after any arbitrarily small perturbation <span class="math notranslate nohighlight">\(y\)</span> the system return the the initial state <span class="math notranslate nohighlight">\(x^*_1\)</span>. The opposite case for <span class="math notranslate nohighlight">\(x^*_2\)</span> where any small perturbation force the system to leave the previous state. The third case <span class="math notranslate nohighlight">\(x^*_3\)</span> is metastable (or marginally stable) that is this position is a midpoint between stable and unstable regimes of the system (remember equation <a class="reference internal" href="#equation-ex-sol-2">(6.3)</a> with <span class="math notranslate nohighlight">\(a=0\)</span>). This third case is also called <strong>critical</strong> and it is very important for our discussion of system <strong>resilience</strong>. One minor technical thing remained. We need to understand how to obtain this so called <strong>potential landscape</strong> depicted at <a class="reference internal" href="#potential"><span class="std std-numref">Fig. 6.1</span></a>, i.e. some function whose maxima, minima and <em>saddles</em> (or flat valleys) describes the full set of fixed (or critical) points <span class="math notranslate nohighlight">\(\{x^* | \frac{dx}{dt}|_{x=x^*}=0\}\)</span>, and, what is more important, characterizes stability properties of these points.</p>
 <p>Let’s use already familiar logistic model for all derivations.</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -1167,12 +1167,13 @@ Say about different types of bifurcations</p>
 </div>
 <p>Wow, it’s super fast! This intervention totally changes the behaviour of the system making it growing. But is it a stable growth? Might it be that the organism just take a new biological age state? The answer not, and to demonstrate it comprehensively we introduce a concept of <strong>bifurcation diagram</strong>.</p>
 <p>Bifurcation diagram is a just a plot with all possible <span class="math notranslate nohighlight">\(x^*\)</span> depending on some system parameter (from \theta). In our current case, we are interested in parameter <span class="math notranslate nohighlight">\(\delta\)</span> whose values determine the qualitative behavior of the system. Bifurcation diagram is better to plot by hands if possible.</p>
-<p><img src="https://drive.google.com/uc?id=1u7FV9KT6r0Zvp3eb9H1KyX2TTihbavVs"
-     alt="potential" 
-     width="500"/></p>
-<p align = "left">
-Fig. 2. Bifurcation diagram for the toy aging model.
-</p><p>The solid blue line on the diagram is a set of stable solutions for the system <a class="reference internal" href="#equation-eq-aging-dummy">(6.7)</a>. The dashed blue line at point <span class="math notranslate nohighlight">\(x=0\)</span>, otherwise, a set of unstable solutions. The set of initial conditions taken above the stable line result in convergence to the stable solution. The set of initial conditions taken between the stable and the unstable lines result in convergence to the stable solution. Black arrows point the direction of system evolution. When we increase <span class="math notranslate nohighlight">\(\delta\)</span> starting from <span class="math notranslate nohighlight">\(0\)</span> the stable solution increases in magnitude untill we achieve point <span class="math notranslate nohighlight">\(\delta_c\)</span> which is a critical threshold after which a bifurcation occurs. After crossing the critical threshold no physical stable solutions remain (here we assume that biological age cannot accept negative values, so red line cannot be a solution) and system is doomed to diverge.</p>
+<figure class="align-default" id="bifurcation">
+<a class="reference internal image-reference" href="../_images/bifurcation.png"><img alt="../_images/bifurcation.png" src="../_images/bifurcation.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Bifurcation diagram for the toy aging model.</span><a class="headerlink" href="#bifurcation" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The solid blue line on the diagram is a set of stable solutions for the system <a class="reference internal" href="#equation-eq-aging-dummy">(6.7)</a>. The dashed blue line at point <span class="math notranslate nohighlight">\(x=0\)</span>, otherwise, a set of unstable solutions. The set of initial conditions taken above the stable line result in convergence to the stable solution. The set of initial conditions taken between the stable and the unstable lines result in convergence to the stable solution. Black arrows point the direction of system evolution. When we increase <span class="math notranslate nohighlight">\(\delta\)</span> starting from <span class="math notranslate nohighlight">\(0\)</span> the stable solution increases in magnitude untill we achieve point <span class="math notranslate nohighlight">\(\delta_c\)</span> which is a critical threshold after which a bifurcation occurs. After crossing the critical threshold no physical stable solutions remain (here we assume that biological age cannot accept negative values, so red line cannot be a solution) and system is doomed to diverge.</p>
 <p>Okay, let’s gather two insights from the bifurcation diagram about our model:</p>
 <ol class="simple">
 <li><p>It is not necessary to cross the critical threshold to obtain arbitrarily large biological age. It is enough that <span class="math notranslate nohighlight">\(\delta\)</span> would be close to <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
@@ -1214,7 +1215,7 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_95055/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_113180/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
   f = lambda x, t, r, d: r * x - (1. - d * t) * x**2
 </pre></div>
 </div>
@@ -1235,13 +1236,13 @@ Fig. 2. Bifurcation diagram for the toy aging model.
 <p>In this section we will consider molecular model of human aging building it based on the concept of <strong>gene regulatory network</strong>, which we discuss below.</p>
 <section id="stability-in-linear-multidimensional-case">
 <h3><a class="toc-backref" href="#id21"><span class="section-number">6.3.1. </span>Stability in linear multidimensional case</a><a class="headerlink" href="#stability-in-linear-multidimensional-case" title="Permalink to this headline">#</a></h3>
-<p>Linear systems of differential equations allows to model a countless number of complex phenomena. We start with a simple model of gene regulation, which includes feedback control loop (Fig. 3). This is a scalable model proposed in <span id="id3">[]</span> for modeling a number of genes. We restrict ourselves to a consideration only a one gene-rna-protein cascade where the protein acts as a regulator of the gene transcription.</p>
-<p><img src="https://drive.google.com/uc?id=1cB0GcpKAT1W20GOUMG2na7RMPuaYfM5Q"
-     alt="gene regulatory network" 
-     width="500"/></p>
-<p align = "left">
-Fig. 3. Dynamic system of gene regulation.
-</p>
+<p>Linear systems of differential equations allows to model a countless number of complex phenomena. We start with a simple model of gene regulation, which includes feedback control loop (<a class="reference internal" href="#grn"><span class="std std-numref">Fig. 6.3</span></a>). This is a scalable model proposed in <span id="id3">[]</span> for modeling a number of genes. We restrict ourselves to a consideration only a one gene-rna-protein cascade where the protein acts as a regulator of the gene transcription.</p>
+<figure class="align-default" id="grn">
+<a class="reference internal image-reference" href="../_images/gene_regulatory.png"><img alt="../_images/gene_regulatory.png" src="../_images/gene_regulatory.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Dynamic system of gene regulation.</span><a class="headerlink" href="#grn" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>We first write the system of differential equations and explain variables:</p>
 <div class="math notranslate nohighlight" id="equation-eq-linear-system">
 <span class="eqno">(6.9)<a class="headerlink" href="#equation-eq-linear-system" title="Permalink to this equation">#</a></span>\[\begin{split}
@@ -1720,12 +1721,12 @@ the nonlinear system is qualitatively similar to that of its linearization.</p><
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma_{in}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{out}\)</span> are standard deviations of elements of vectors <span class="math notranslate nohighlight">\(s^{in}\)</span> and <span class="math notranslate nohighlight">\(s^{out}\)</span> correspondingly.</p>
 <p>To develop a better intuition on <strong>density</strong>, <strong>symmetry</strong>, and <strong>heterogeneity</strong> of a network, look at the picture from the original paper:</p>
-<p><img src="https://drive.google.com/uc?id=1mdee-Fvd85-lvrsYJ-lH3vZbSZeuFTey"
-     alt="topological properties" 
-     width="700"/></p>
-<p align = "left">
-Fig. 4. The topological characteristics of a network.
-</p>
+<figure class="align-default" id="topology">
+<a class="reference internal image-reference" href="../_images/topology_properties.png"><img alt="../_images/topology_properties.png" src="../_images/topology_properties.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">The topological characteristics of a network.</span><a class="headerlink" href="#topology" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The density property is quite self-explainable - it is just an average number of in/out degrees in a network. The symmetry means that most of nodes have bi-directed edges to each other. An asymmetric network is one where nodes with a large in-degree tend to have a small out-degree. The large heterogeneity means that some nodes may have large in/out degrees and others - small. In the network with small heterogeneity, all nodes have almost equal degrees. Let’s compute them and check that hey are actually sum into <span class="math notranslate nohighlight">\(\beta_{eff}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1866,7 +1867,7 @@ beta_eff == &lt;s&gt; + SH: True
 </section>
 <section id="critical-slowing-down">
 <h2><a class="toc-backref" href="#id25"><span class="section-number">6.4. </span>Critical slowing down</a><a class="headerlink" href="#critical-slowing-down" title="Permalink to this headline">#</a></h2>
-<p>“The bifurcation theory predicts that approaching to a critical transition boundary (aka tipping point) is accompained with the system critical slowing down and an increase in variance and temporal autocorrelations of system state variable” - do your remember this citation from the previous chapter? In this section we discuss the explicit mathematical background of the phenomenon. We also introduce one additional instrument which is widely used in dynamical modelling, namely, stochasticity. In this section we will mostly rely on the theoretical results form the paper <span id="id9">[<a class="reference internal" href="complex_systems.html#id95" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span>.</p>
+<p>“The bifurcation theory predicts that approaching to a critical transition boundary (aka tipping point) is accompained with the system critical slowing down and an increase in variance and temporal autocorrelations of system state variable” - do your remember this citation from the previous chapter? In this section we discuss the explicit mathematical background of the phenomenon. We also introduce one additional instrument which is widely used in dynamical modelling, namely, stochasticity. In this section we will mostly rely on the theoretical results form the paper <span id="id9">[<a class="reference internal" href="complex_systems.html#id97" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span>.</p>
 <section id="introduce-a-stochastic-model">
 <h3><a class="toc-backref" href="#id26"><span class="section-number">6.4.1. </span>Introduce a stochastic model</a><a class="headerlink" href="#introduce-a-stochastic-model" title="Permalink to this headline">#</a></h3>
 <p>In contrast to the previous section, we return to the one dimensional models, in addition, we understood that some of multidimensional models can be reduced to one-dimensional allowing to analyze system resilience in more compact form. We start with a new model which is a combination of what we learned above:</p>
@@ -2020,49 +2021,49 @@ beta_eff == &lt;s&gt; + SH: True
   </thead>
   <tbody>
     <tr>
-      <th>211</th>
-      <td>swiss-2028</td>
-      <td>M</td>
-      <td>66.0</td>
-      <td>15.5</td>
-      <td>9.07</td>
-      <td>44.8</td>
-    </tr>
-    <tr>
-      <th>227</th>
-      <td>swiss-2035</td>
+      <th>267</th>
+      <td>swiss-2074</td>
       <td>M</td>
       <td>81.0</td>
-      <td>13.4</td>
-      <td>7.68</td>
-      <td>41.9</td>
+      <td>13.1</td>
+      <td>8.38</td>
+      <td>39.8</td>
     </tr>
     <tr>
-      <th>290</th>
+      <th>288</th>
       <td>swiss-2207</td>
       <td>M</td>
-      <td>130.0</td>
-      <td>13.8</td>
-      <td>8.49</td>
-      <td>39.1</td>
+      <td>94.0</td>
+      <td>14.3</td>
+      <td>8.40</td>
+      <td>40.7</td>
     </tr>
     <tr>
-      <th>218</th>
-      <td>swiss-2032</td>
+      <th>200</th>
+      <td>swiss-2025</td>
       <td>M</td>
-      <td>94.0</td>
-      <td>13.9</td>
-      <td>7.65</td>
-      <td>38.9</td>
+      <td>66.0</td>
+      <td>17.4</td>
+      <td>9.99</td>
+      <td>49.2</td>
     </tr>
     <tr>
-      <th>278</th>
-      <td>swiss-2116</td>
+      <th>213</th>
+      <td>swiss-2028</td>
       <td>M</td>
       <td>94.0</td>
-      <td>13.6</td>
-      <td>7.85</td>
-      <td>40.0</td>
+      <td>12.8</td>
+      <td>7.27</td>
+      <td>36.3</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>swiss-2054</td>
+      <td>M</td>
+      <td>81.0</td>
+      <td>14.6</td>
+      <td>8.26</td>
+      <td>45.3</td>
     </tr>
   </tbody>
 </table>
