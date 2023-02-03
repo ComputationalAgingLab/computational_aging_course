@@ -22,6 +22,10 @@ Please check this list of prerequisites if needed. Each subject is a clickable l
 
 This is an open project for everyone to improve it. If you would like to contribute to the book, please refer the github [page](https://github.com/ComputationalAgingLab/computational_aging_course).
 
+## Acknowledgements
+
+We would like to thank [Skoltech](https://www.skoltech.ru/) for the help in creating this book and the opportunity to test the material presented in it as part of the course of the same name.
+
 ## Cite us
 ```
 @online{kriukov2023compagingbook,
