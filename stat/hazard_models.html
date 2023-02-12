@@ -667,7 +667,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[m(t) = \frac{f(t)}{S(t)} = -\frac{S'(t)}{S(t)}\]</div>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1</p>
 <p>Show that <span class="math notranslate nohighlight">\(f(t) = -S'(t)\)</span>.</p>
 </div>
 <p>This is actually the thing that increases exponentially as we age and have a name of Gompertz law (quite more complex than just a probability, isn’t it?). Now let’s consider different kinds of such functions.</p>
@@ -690,7 +690,7 @@ title="Print to PDF"
     f(t) = m_0\cdot \exp(-m_0t)
 \]</div>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 2</p>
 <p>Derive an expression for <span class="math notranslate nohighlight">\(S(t)\)</span> at constant risk. <strong>Hint:</strong> use the result from the previous exercise.</p>
 </div>
 <p>Let’s draw plots for <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(S\)</span>:</p>
@@ -717,7 +717,7 @@ title="Print to PDF"
 </div>
 <p>The corresponding survival curve resembles a <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_distribution">distribution</a> of time until radioactive particle decay or so called <em>“law of rare events”</em> where events independently occur with a rate <span class="math notranslate nohighlight">\(m_0\)</span>. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging! Then, <span class="math notranslate nohighlight">\(m_0\)</span> actually describes average number of failures per unit of time and, correspondingly, <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a <strong>mean survival time</strong>.</p>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 3</p>
 <p>Prove that <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a mean survival time using a definition of expectation.</p>
 </div>
 <p>We obtained an object, or system, with survivability depending on one critical subsystem what is not reliable. Can we do better? Sure, we can add an additional critical sustystem reserving the original. As a naive example, just imagine an organism’s life depends only of two kidney functioning. If one fails the other can work for two. This (of course) oversimplified system can be represented with the following diagram of parallel connection,</p>
@@ -775,7 +775,7 @@ title="Print to PDF"
 <p>In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example <span id="id2">[<a class="reference internal" href="../dyn/complex_systems.html#id39" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.</p>
 <img src="https://nanohub.org/app/site/resources/2013/01/16583/slides/016.03.jpg" alt="connections" width="600"/>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 4</p>
 <p>Compute an expression for mortality risk of sequential subsystems connection.</p>
 </div>
 </section>
@@ -850,7 +850,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[S(t) = e^{-\frac{A}{b}(e^{bt} - 1)}\]</div>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 5</p>
 <p>Derive the formula for the Gompertz survival curve from scratch.</p>
 </div>
 <p>It’s time to draw!</p>
@@ -1276,7 +1276,7 @@ Name: E, dtype: int64
 <div class="math notranslate nohighlight">
 \[ \widehat{\mu}(t) = \int_0^t S(x)dx \]</div>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 6</p>
 <p>Prove that <span class="math notranslate nohighlight">\(\int_0^t S(x)dx = \int_0^t xf(x)dx\)</span> if <span class="math notranslate nohighlight">\(t \to \infty\)</span></p>
 </div>
 <p>Of course we have a function for this:</p>
@@ -1300,7 +1300,7 @@ miR-137 25.71
 </div>
 </div>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 7</p>
 <p>Explore <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> documentation, write code for median survival time computation. Compare and explain results.</p>
 </div>
 <p>Comparing means is a nice first shot to say that something is different. But in aging domain there are a lot of situations when means are very close to each other (especially when you test some new drug in mice). How to conduct more rigorous analysis? Wouldn’t it be better to compare the survival curves themselves?</p>
@@ -1426,10 +1426,22 @@ miR-137 25.71
 <p>The result is here and we can surely <em>reject null hypothesis about equality of survival curves at the 0.005 level of significance</em>. It worth to repeat that using statistical tests is really important in survival analysis, especially in aging domain where you can see as tiny results can be presented as a big advance in science, frequently without rigorous statistical comparison of case-control curves.</p>
 <p>There are some important facts you should know about logrank test:</p>
 <ul class="simple">
-<li><p>logrank test has maximum power when survival functions are proportional, with coefficient <span class="math notranslate nohighlight">\(k&gt;1\)</span>: <span class="math notranslate nohighlight">\(S_1(t) = kS_2(t)\)</span>;</p></li>
+<li><p>logrank test has maximum power when hazard functions are proportional, with coefficient <span class="math notranslate nohighlight">\(k&gt;1\)</span>: <span class="math notranslate nohighlight">\(h_1(t) = kh_2(t)\)</span>;</p></li>
 <li><p>logrank test is sensitive to differences in tails of distributions;</p></li>
 <li><p>logrank test has low power if two curves intersect.</p></li>
 </ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 8</p>
+<p>Choose and download two mice survival datasets from <a class="reference external" href="https://www.lifespan.io/animal-life-expectancy-comparisons/">ALEC</a> by applying different strain/sex/intervention filters. Complete the following tasks:</p>
+<ul class="simple">
+<li><p>Estimate datasets with Kaplan-Meier and Weibull estimators;</p></li>
+<li><p>Plot their survival plots (in one axes);</p></li>
+<li><p>Plot their hazard plots (in one axes);</p></li>
+<li><p>Compare datasets with Logrank test;</p></li>
+<li><p>Answer the question: is the Logrank appropriate for your choice of datasets? Explain why?</p></li>
+<li><p>Explore <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> documentation, write code for median survival time calculation for your datasets. Compare and explain results.</p></li>
+</ul>
+</div>
 </section>
 <section id="gompertz-estimator">
 <h3><span class="section-number">3.4.3. </span>Gompertz estimator*<a class="headerlink" href="#gompertz-estimator" title="Permalink to this headline">#</a></h3>
