@@ -874,7 +874,7 @@ title="Print to PDF"
 </div>
 <p>Excellent! We solved a new kind of dynamical system describing bacterial growth with limited resources. As before we observe three different regimes for <span class="math notranslate nohighlight">\(r&gt;0\)</span> - logistic growth; <span class="math notranslate nohighlight">\(r=0\)</span> - no dynamics; <span class="math notranslate nohighlight">\(r&lt;0\)</span> - logistic decay (not exponential!). But we also see something new, our solutions for growth are bounded with carrying capacity <span class="math notranslate nohighlight">\(K=1\)</span> and, for all initial conditions (even for larger than <span class="math notranslate nohighlight">\(K\)</span>), trajectories <em>attracts</em> to a fixed value <span class="math notranslate nohighlight">\(K\)</span> which is called <strong>attractor</strong>. In the next chapter we will address more to attractors, but before that, we need to learn what to do with non-integrable non-linear differential equations.</p>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 1</p>
 <p>What kind of growth exhibits equation <span class="math notranslate nohighlight">\(\dot{x} = a*x^2\)</span>? Solve the equation for positive <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(x_0 &gt; 0\)</span>. What wrong with this equation if we would try it for modeling real systems growth? What is the name of this model (try to google or chatGPT it)?</p>
 </div>
 </section>
@@ -1056,8 +1056,15 @@ title="Print to PDF"
 <p>As we computed in the previous paragraph, for a positive <span class="math notranslate nohighlight">\(r\)</span> we have convex potential landscape around the point <span class="math notranslate nohighlight">\(x=K\)</span> (attractor) such that any imaginary ball placed at this point returns to it after small perturbation. Moreover, the point <span class="math notranslate nohighlight">\(x=0\)</span> reads as unstable, equivalently, potential function around <span class="math notranslate nohighlight">\(x=0\)</span> is concave. Hovewer, once a parameter <span class="math notranslate nohighlight">\(r\)</span> crosses <span class="math notranslate nohighlight">\(0\)</span> towards negative values we observe a completely opposite picture. The point <span class="math notranslate nohighlight">\(x=K\)</span> becomes unstable and divides two different regimes: complete decay (left) and unlimited growth (right). Unlimited growth is a new property of this system which initially assumed to model limiting a reproduction capacity. So, possibly negative values of <span class="math notranslate nohighlight">\(r\)</span> makes this concrete model non-physical.</p>
 <p>Interestingly that a sequence of parameters <span class="math notranslate nohighlight">\(r\)</span> changes the shape of potential function ultimately converting it to the qualitatively different state. In the next paragraph we consider how briefly to describe the stability properties of system with one diagram tracking its journey towards bifurcation.</p>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
-<p>Compute a potential function for the equation <span class="math notranslate nohighlight">\(\dot{x} = ax^2\)</span>? Which type of stability its fixed point has?</p>
+<p class="admonition-title">Exercise 2</p>
+<p>Consider the model <span class="math notranslate nohighlight">\(\dot{x} = ax^2\)</span>:</p>
+<ul class="simple">
+<li><p>Find an analytical solution for the model, assuming that <span class="math notranslate nohighlight">\(x(0) = x_0 &gt; 0\)</span>;</p></li>
+<li><p>Compute a potential function for it;</p></li>
+<li><p>Compute its fixed points;</p></li>
+<li><p>Make a conclusion about stability of fixed points;</p></li>
+<li><p>Look up this <a class="reference external" href="https://iopscience.iop.org/article/10.1070/PU1996v039n01ABEH000127/meta">paper</a>. Explain how the author uses the model you just learned? And it was supposed to happen in 2025? What do you think of the author’s reasoning?</p></li>
+</ul>
 </div>
 </section>
 <section id="catastrophic-bifurcation">
@@ -1073,7 +1080,7 @@ Say about different types of bifurcations</p>
 \]</div>
 <p>You may notice some ambiguity of this model. On the one hand, we model biological age <span class="math notranslate nohighlight">\(x\)</span>, but terms models number of cells and costs on their pairwise communications. The reason is that biological age is actually a *<em>latent variable</em> describing organism state. This variable may be constructed, in principle, as a combination of other explicit variables that has direct physical meaning. Therefore, latent variable may be correlated with actual number of cells at one time interval and with costs for an organism interval at another time interval. Unfortunately it is very difficult to formulate <em>aging</em> as unimodal explicit physical process (otherwise it would have already been done), so it is convenient to use latent representation.</p>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 3</p>
 <p>Compute critical points, potential function and analytical solution for the equation <a class="reference internal" href="#equation-eq-aging-dummy">(6.7)</a>.</p>
 </div>
 <p>The fixed points for the equation <a class="reference internal" href="#equation-eq-aging-dummy">(6.7)</a> are:</p>
@@ -1215,7 +1222,7 @@ Say about different types of bifurcations</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_31780/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_175647/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
   f = lambda x, t, r, d: r * x - (1. - d * t) * x**2
 </pre></div>
 </div>
@@ -1224,7 +1231,7 @@ Say about different types of bifurcations</p>
 </div>
 <p>At value <span class="math notranslate nohighlight">\(d=0.013\)</span> this looks more realistically than the intervention case, we start aging after ending the growth proportially to time. Indeed we grow rapidly at earlier stage of life and, after that, start to age exponentialy by a quadratic increase in costs of system maintenance. It should be emphasized that the resulting model is a toy model and rather serves the purpose of demonstrating how a slight modification of the logistic model can describe biological age. One should maintain a healthy skepticism about all such models and always question their usefulness and plausibility.</p>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercise 5</p>
 <p>Solve the equation <a class="reference internal" href="#equation-eq-aging-dummy-time">(6.8)</a> analytically and draw a bifurcation diagram (on a sheet of paper). What difference with the initial model?</p>
 </div>
 <p>This a good first steps to the world of really complex aging models. But we already can say much even with this <em>one-dimensional</em> models. More insights are waiting us in the multidimensional world which we will discuss below.</p>
@@ -1867,7 +1874,7 @@ beta_eff == &lt;s&gt; + SH: True
 </section>
 <section id="critical-slowing-down">
 <h2><a class="toc-backref" href="#id25"><span class="section-number">6.4. </span>Critical slowing down</a><a class="headerlink" href="#critical-slowing-down" title="Permalink to this headline">#</a></h2>
-<p>“The bifurcation theory predicts that approaching to a critical transition boundary (aka tipping point) is accompained with the system critical slowing down and an increase in variance and temporal autocorrelations of system state variable” - do your remember this citation from the previous chapter? In this section we discuss the explicit mathematical background of the phenomenon. We also introduce one additional instrument which is widely used in dynamical modelling, namely, stochasticity. In this section we will mostly rely on the theoretical results form the paper <span id="id9">[<a class="reference internal" href="complex_systems.html#id97" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span>.</p>
+<p>“The bifurcation theory predicts that approaching to a critical transition boundary (aka tipping point) is accompained with the system critical slowing down and an increase in variance and temporal autocorrelations of system state variable” - do your remember this citation from the previous chapter? In this section we discuss the explicit mathematical background of the phenomenon. We also introduce one additional instrument which is widely used in dynamical modelling, namely, stochasticity. In this section we will mostly rely on the theoretical results form the paper <span id="id9">[<a class="reference internal" href="complex_systems.html#id98" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span>.</p>
 <section id="introduce-a-stochastic-model">
 <h3><a class="toc-backref" href="#id26"><span class="section-number">6.4.1. </span>Introduce a stochastic model</a><a class="headerlink" href="#introduce-a-stochastic-model" title="Permalink to this headline">#</a></h3>
 <p>In contrast to the previous section, we return to the one dimensional models, in addition, we understood that some of multidimensional models can be reduced to one-dimensional allowing to analyze system resilience in more compact form. We start with a new model which is a combination of what we learned above:</p>
@@ -2021,40 +2028,31 @@ beta_eff == &lt;s&gt; + SH: True
   </thead>
   <tbody>
     <tr>
-      <th>219</th>
-      <td>swiss-2033</td>
+      <th>239</th>
+      <td>swiss-2053</td>
       <td>M</td>
-      <td>66.0</td>
+      <td>94.0</td>
       <td>14.0</td>
-      <td>7.27</td>
-      <td>38.8</td>
+      <td>7.63</td>
+      <td>41.1</td>
     </tr>
     <tr>
-      <th>280</th>
-      <td>swiss-2128</td>
+      <th>279</th>
+      <td>swiss-2116</td>
+      <td>M</td>
+      <td>109.0</td>
+      <td>15.2</td>
+      <td>8.53</td>
+      <td>47.0</td>
+    </tr>
+    <tr>
+      <th>266</th>
+      <td>swiss-2074</td>
       <td>M</td>
       <td>66.0</td>
-      <td>12.6</td>
-      <td>7.56</td>
-      <td>35.4</td>
-    </tr>
-    <tr>
-      <th>244</th>
-      <td>swiss-2054</td>
-      <td>M</td>
-      <td>109.0</td>
-      <td>14.6</td>
-      <td>8.90</td>
-      <td>45.0</td>
-    </tr>
-    <tr>
-      <th>248</th>
-      <td>swiss-2056</td>
-      <td>M</td>
-      <td>109.0</td>
-      <td>10.5</td>
-      <td>6.34</td>
-      <td>33.1</td>
+      <td>14.8</td>
+      <td>8.47</td>
+      <td>38.8</td>
     </tr>
     <tr>
       <th>286</th>
@@ -2064,6 +2062,15 @@ beta_eff == &lt;s&gt; + SH: True
       <td>17.2</td>
       <td>9.49</td>
       <td>45.2</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>swiss-2027</td>
+      <td>M</td>
+      <td>81.0</td>
+      <td>16.2</td>
+      <td>9.30</td>
+      <td>48.5</td>
     </tr>
   </tbody>
 </table>
