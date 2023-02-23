@@ -14,7 +14,7 @@ parts:
   numbered: true
   chapters:
   - file: stat/differential_analysis_practice
-  - file: stat/hazard_models
+  - file: stat/survival_analysis
 - caption: Machine learning view
   numbered: true
   chapters:

@@ -1,12 +1,12 @@
-# Welcome to Computational Biology of Aging book
+# Welcome to the Computational Biology of Aging coursebook
 
 ## Abstract
 
 This course is devoted to the study of key methods of computational biology of aging, which have had a significant impact on the field in recent years. We will take a detailed look at aging clock models, survival curves, Gompertz models, dynamical models as well as key aspects of the biology of aging (including its molecular part). Students will get experience in differential gene expression or methylation analysis in the context of aging, hazard ratio models fitting and interpretation, aging clocks construction and their exploration and develop an intuition in dynamical systems modeling. The course aims to form a systematic view of the biology of aging, and offer a holistic computational methodology for the study of this problem.
 
-## For whom this course?
+## Who is this course for?
 
-Any person who are interested in Aging Biology having a basic technical or bioinformatics background.
+Any person who is interested in Aging Biology has a basic technical or bioinformatics background.
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ Please check this list of prerequisites if needed. Each subject is a clickable l
 
 ## Contribution
 
-This is an open project for everyone to improve it. If you would like to contribute to the book, please refer the github [page](https://github.com/ComputationalAgingLab/computational_aging_course).
+This is an open project for everyone to improve it. If you would like to contribute to the book, please refer to the github [page](https://github.com/ComputationalAgingLab/computational_aging_course).
 
 ## Acknowledgements
 
