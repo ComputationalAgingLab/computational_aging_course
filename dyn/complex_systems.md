@@ -77,7 +77,7 @@ In total, complexity looks like a useful term to make things simpler. Its intuit
 :::{note}
 Some additional definitions of [complexity](https://en.wikipedia.org/wiki/Complexity):
 - In general, the number of systems and links between them describes a model.
-- In dynamical systems, statistical complexity measures the size of the minimum program able to statistically reproduce the patterns (configurations) contained in the data set (sequence) {cite}`crutchfield1989inferring`.
+- In dynamic systems, statistical complexity measures the size of the minimum program able to statistically reproduce the patterns (configurations) contained in the data set (sequence) {cite}`crutchfield1989inferring`.
 - In information processing, complexity is a measure of the total number of properties transmitted by an object and detected by an observer.
 :::
 
@@ -148,7 +148,7 @@ Glucose dynamics during oral glucose tolerance test by frailty status. Mean ± S
 
 ## Summary: combining the learned concepts
 
-Is the living organism the **complex** dynamical **network** of interacting elements acquiring discrete **emergent** states through the **canalization**, forming modules experiencing loss of **resilience** through the loss of **complexity** during aging and approaching its **critical transition** point ultimately falling into the death state? - the question is open to You!
+Is the living organism the **complex** dynamic **network** of interacting elements acquiring discrete **emergent** states through the **canalization**, forming modules experiencing loss of **resilience** through the loss of **complexity** during aging and approaching its **critical transition** point ultimately falling into the death state? - the question is open to You!
 
 Aging biology is, in particular, so challenging because of the absence of longitudinal highly dense data: chemical signals are not so easy for measurements like electrical signals in neurons, moreover, data quality is rather poor frequently. 
 

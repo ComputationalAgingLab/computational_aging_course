@@ -19,8 +19,12 @@ parts:
   numbered: true
   chapters:
   - file: ml/aging_clocks
-- caption: Dynamics system view
+- caption: Dynamic system view
   numbered: true
   chapters:
   - file: dyn/complex_systems
   - file: dyn/system_resilience
+- caption: Projects
+  numbered: true
+  chapters:
+  - file: projects/template
