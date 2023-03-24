@@ -73,53 +73,40 @@ We conducted such analysis for each of the tissues as well as for all three tiss
 ### GO enrichment analysis
 Gene Onthology enrichment analysis was done with **gseapy** python package to identify functional categories for the obtained DEGs. In the genes overexpressed with age across multiple datasets in the brain, the enrichment terms are the following:
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_over_brain.jpg"
-  alt="Enrichment terms in the brain overexpressed genes"
-  title="Enrichment terms in the brain overexpressed genes"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
-  
+```{figure} figs/Enrich_terms_over_brain.jpg
+Enrichment terms in the brain overexpressed genes.
+```
   
 In the muscle overexpressed genes with age, the picture is the following:
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_over_muscle.jpg"
-  alt="Enrichment terms in the muscle overexpressed genes"
-  title="Enrichment terms in the muscle overexpressed genes"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
-  
+```{figure} figs/Enrich_terms_over_muscle.jpg
+Enrichment terms in the muscle overexpressed genes.
+```
+
 For heart overexpressed genes:
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_over_heart.jpg"
-  alt="Enrichment terms in the heart overexpressed genes"
-  title="Enrichment terms in the heart overexpressed genes"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+```{figure} figs/Enrich_terms_over_heart.jpg
+Enrichment terms in the heart overexpressed genes.
+```
   
 For heart underexpressed:
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_under_heart.jpg"
-  alt="Enrichment terms in the heart underexpressed genes"
-  title="Enrichment terms in the heart underexpressed genes"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
-  
+```{figure} figs/Enrich_terms_under_heart.jpg
+Enrichment terms in the heart underexpressed genes.
+```  
+
 Enriched terms in the genes differentially overexpressed with age across multiple datasets in all three tissues are:
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_over_allthetissues.jpg"
-  alt="Enrichment terms overexpressed genes in all tissues "
-  title="Enrichment terms overexpressed genes in all tissues"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
-  
+```{figure} figs/Enrich_terms_over_allthetissues.jpg
+Enrichment terms overexpressed genes in all tissues.
+```  
+
 While for underexpressed:
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_under_allthetissues.jpg"
-  alt="Enrichment terms underexpressed genes in all tissues "
-  title="Enrichment terms underexpressed genes in all tissues"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
-  
+```{figure} figs/Enrich_terms_under_allthetissues.jpg
+Enrichment terms underexpressed genes in all tissues.
+```  
+
 
 ### Gene expression comparison in Brain, Heart and Muscle
 
@@ -138,12 +125,9 @@ Description of common upregulated genes in Brain, Heart and Muscle tissues
   
   **5. SKAP2**: Differential expression of SKAP2 may influence T-cell activation and migration, which are essential for immune surveillance and defense against infections and cancer
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/uregulated genes intersection.png"
-  alt="Upregulated genes intersection in all tissues "
-  title="Upregulated genes intersection genes in all tissues"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
-
+```{figure} figs/upregulated_genes_intersection.png
+Upregulated genes intersection in all tissues.
+```  
 
 #### Downregulated genes:
 Description of common upregulated genes in Brain, Heart and Muscle tissues
@@ -156,11 +140,9 @@ Description of common upregulated genes in Brain, Heart and Muscle tissues
   
   **4. SLC6A3**: encodes a dopamine transporter protein that is involved in the regulation of dopamine signaling in the brain
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/downregulated gebes ibtersection.png"
-  alt="Downregulated genes intersection in all tissues "
-  title="Downregulated genes intersection genes in all tissues"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+```{figure} figs/downregulated_genes_intersection.png
+Downregulated genes intersection in all tissues.
+```  
 
 ### GenAge intersection analysis
 
@@ -183,11 +165,10 @@ In the upregulated set of genes seven genes were reported in GenAge.
   
   **7. HNRNPD**: This gene encodes a protein called heterogeneous nuclear ribonucleoprotein D, which is involved in RNA processing and gene expression regulation
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Genage iontersection with upregulated genes.png"
-  alt="Genage iontersection with upregulated genes in all tissues "
-  title="Genage iontersection with upregulated genes in all tissues"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+```{figure} figs/Genage_intersection_with_upregulated_genes.png
+Genage intersection with upregulated genes in all tissues.
+```  
+
 
 #### Downregulated genes intersectio with GenAge:
 Incase of downregulated genes only three genes were reported in GenAge database.
@@ -198,11 +179,11 @@ Incase of downregulated genes only three genes were reported in GenAge database.
 
   **3. NUDT1 (nucleoside diphosphate-linked moiety X motif 1)**: an enzyme involved in nucleotide metabolism and DNA damage response
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Genage intersection with downregulated genes.png"
-  alt="Genage intersection with downregulated genes in all tissues "
-  title="Genage iontersection with downregulated genes in all tissues"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+
+```{figure} figs/Genage_intersection_with_downregulated_genes.png
+Genage intersection with downregulated genes in all tissues.
+```  
+
 
 ## Discussion
 
@@ -210,19 +191,15 @@ Incase of downregulated genes only three genes were reported in GenAge database.
 
 According to the results of <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7906136/">2021 original paper</a> all tissues and every tissue studied consistently overexpressed the following genes:
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Palmer_table_overexpressed.jpg"
-  alt="Table of the top-5 genes most consistently overexpressed with age across datasets for all tissues and for each tissue studied. `palmer2021ageing`"
-  title="Overexpressed genes"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+```{figure} figs/Palmer_table_overexpressed.jpg
+Table of the top-5 genes most consistently overexpressed with age across datasets for all tissues and for each tissue studied (`palmer2021ageing`).
+```  
   
 And for underexpressed genes the results are the following:
 
-<img
-  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Palmer_table_underexpressed.jpg"
-  alt="Table of the top-5 genes most consistently underexpressed with age across datasets for all tissues and for each tissue studied. `palmer2021ageing`"
-  title="Underexpressed genes"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+```{figure} figs/Palmer_table_underexpressed.jpg
+Table of the top-5 genes most consistently underexpressed with age across datasets for all tissues and for each tissue studied (`palmer2021ageing`).
+```  
 
 According to our findings, immune system activation genes were overexpressed in the brain. Differentiation-related genes were overexpressed in muscles, potentially resulting in a decrease of regeneration activity and muscle tissue deterioration in ageing people. An increase in GABA signaling and ion transport was observed in the heart. All tissues collectively exhibit an increase in the activity of immune and proteilytic genes, while metabolic genes are down-regulated. The described results are in line with the conclusions made in the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7906136/">original paper</a>. 
 
