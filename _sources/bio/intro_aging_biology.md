@@ -31,7 +31,7 @@ Hallmarks taxonomy.
 
 ## Primary hallmarks
 ### Genomic instability
-Genomic instability is when DNA repair system is unable to handle with accumulated DNA damage both exodenous and endogenous ({numref}`cell_integrity_1`). 
+Genomic instability is when DNA repair system is unable to handle with accumulated DNA damage both exogenous and endogenous ({numref}`cell_integrity_1`). 
 
 ```{figure} figs/Loss_of_cellular_integrity_1.png
 :name: cell_integrity_1
@@ -78,7 +78,7 @@ Mutation affect gene resulatory network
 
 ```{figure} figs/Age-related_transcriptional_stress_model.png
 :name: transct_stress
-transct_stress
+Transcriptional stress
 ```
 
 Mitochondrial DNA instability is somewhat similar to nuclear DNA instability, but there are some differences as well. There are many mitochondria per cell, and their mtDNA have high replicative index. They have oxidative microenvironment due to their role inside cell, and they have no protective histones molecules on their DNA (probably due to bacterial origin). Contrary to common beliefs, some findings suggest that most mtDNA mutations in aged cells arise from replication errors caused by mtDNA polymerase gamma rather than from oxidative stress {cite}`LOPEZOTIN2023243`.

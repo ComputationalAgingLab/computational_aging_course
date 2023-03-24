@@ -1,0 +1,779 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Dynamic Organism State Indicator &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Meta-analysis of aging transcriptomes" href="../meta/report.html" />
+    <link rel="prev" title="6. System resilience" href="../../../dyn/system_resilience.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Welcome to the Computational Biology of Aging coursebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/differential_analysis_practice.html">
+   2. Differential expression analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/survival_analysis.html">
+   3. Survival analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine learning view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../ml/aging_clocks.html">
+   4. Aging Clocks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic system view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/complex_systems.html">
+   5. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/system_resilience.html">
+   6. System resilience
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Dynamic Organism State Indicator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../meta/report.html">
+   Meta-analysis of aging transcriptomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../parkinson/report.html">
+   Computational Model of Parkinson’s Disease
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unsupervized/report.html">
+   Unsupervised aging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fprojects/2023/dosi/report.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/projects/2023/dosi/report.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theories-of-aging">
+     Theories of aging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pca">
+     PCA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cox-proportional-hazards">
+     Cox Proportional Hazards
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cox-ph-output">
+     COX PH output
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results-and-discussion">
+   Results and Discussion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     PCA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Cox Proportional Hazards
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dosi-and-health-conditions">
+     DOSI and health conditions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dosi-and-cmi">
+     DOSI and CMI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dosi-and-health-risks">
+     DOSI and health risks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-lifespan-prediction">
+     Maximum lifespan prediction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Dynamic Organism State Indicator</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theories-of-aging">
+     Theories of aging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pca">
+     PCA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cox-proportional-hazards">
+     Cox Proportional Hazards
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cox-ph-output">
+     COX PH output
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results-and-discussion">
+   Results and Discussion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     PCA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Cox Proportional Hazards
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dosi-and-health-conditions">
+     DOSI and health conditions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dosi-and-cmi">
+     DOSI and CMI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dosi-and-health-risks">
+     DOSI and health risks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-lifespan-prediction">
+     Maximum lifespan prediction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="dynamic-organism-state-indicator">
+<h1>Dynamic Organism State Indicator<a class="headerlink" href="#dynamic-organism-state-indicator" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>Our team encouraged to reproduce the Cox proportional hazards analysis from paper by <a class="reference external" href="https://www.nature.com/articles/s41467-021-23014-1">Pyrkov Timothy V., et al., Nature Communications 2021</a> on the NHANES dataset (unfortunately other datasets are proprietary).</p>
+<section id="theories-of-aging">
+<h3>Theories of aging<a class="headerlink" href="#theories-of-aging" title="Permalink to this headline">#</a></h3>
+<p>Nowadays there are three  <strong>main theories of aging</strong> :</p>
+<ul class="simple">
+<li><p>Programmed aging theory, which considers aging as certain predetermined, timed phenomena that causes death directly</p></li>
+<li><p>Stochastic aging theory, which considers aging as events that occur randomly, accumulate over time and cause death directly</p></li>
+<li><p>Quasi - programmed theory, which assumes that aging as a shadow, manifestation of growth, development, differentiation. This theory claims that aging is a pseudo-program that doesn’t cause death directly</p></li>
+</ul>
+<p><a class="reference external" href="https://doi.org/10.4161%2Fcc.27188">https://doi.org/10.4161/cc.27188</a></p>
+<p>In the article authors support stochastic theory of aging, and we are going to reproduce it.</p>
+</section>
+<section id="pca">
+<h3>PCA<a class="headerlink" href="#pca" title="Permalink to this headline">#</a></h3>
+<p>To understand the character of age-related evolution of the organism authors employed dimensionality-reduction technique (PCA) for Complete Blood Count covariates. We will remind the main thery aspect about this technique:</p>
+<p><strong>Principal Component Analysis</strong> (PCA) decomposes multivariate dataset in a set of orthogonal components that explain a maximum amount of variance. The best-fitting line is the one that minimizes the average squared perpendicular distance from the points to the line. In the picture you can see principle components of some data as an example.</p>
+<figure class="align-default">
+<img alt="../../../_images/pca.png" src="../../../_images/pca.png" />
+</figure>
+</section>
+<section id="cox-proportional-hazards">
+<h3>Cox Proportional Hazards<a class="headerlink" href="#cox-proportional-hazards" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://arxiv.org/pdf/1708.04649.pdf">https://arxiv.org/pdf/1708.04649.pdf</a></p>
+<p>CoxPH is a hybrid of the parametric and non-parametric approaches, in other words, semi-parametric model, which can obtain a more consistent estimator under a broader range of conditions compared to the parametric models, and a more precise estimator than the non-parametric methods.</p>
+<p>The Basic Cox Model formula for patient <span class="math notranslate nohighlight">\(i\)</span> is the folowing:</p>
+<figure class="align-default">
+<img alt="../../../_images/0.PNG" src="../../../_images/0.PNG" />
+</figure>
+<p>Formula consists of the baseline hazard function, <span class="math notranslate nohighlight">\(h_0(t)\)</span> and the partial hazard <span class="math notranslate nohighlight">\(exp(X_i β)\)</span>. The baseline hazard function <span class="math notranslate nohighlight">\(h_0(t)\)</span> can be an arbitrary nonnegative function of time, <span class="math notranslate nohighlight">\(X_i = (x_{i1}, x_{i2}, · · · , x_{iP} )\)</span> is the covariate vector for instance i, and <span class="math notranslate nohighlight">\(β^T = (β_1, β_2, · · · , β_P )\)</span> is the coefficient vector. <span class="math notranslate nohighlight">\(X_i\)</span> is a covariate vector for time-invariant covariates, however, there is a need to use Cox with time-varying covariates, one could try an extended Cox model by adding the vector of time-varying covariates multiplied by vector of their coefficients.</p>
+<ul class="simple">
+<li><p>The Cox model is a semi-parametric algorithm since the baseline hazard function, <span class="math notranslate nohighlight">\(h_0(t)\)</span>, is unspecified and the outcome distribution is unknown.</p></li>
+<li><p>Cox model is a proportional hazards model since the hazard ratio is a constant independent of the baseline hazard function and time because all the subjects share the same baseline hazard function.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../../_images/2.PNG" src="../../../_images/2.PNG" />
+</figure>
+<figure class="align-default">
+<img alt="../../../_images/3.PNG" src="../../../_images/3.PNG" />
+</figure>
+<p>Cox PH is a regression model, however, as the baseline hazard function <span class="math notranslate nohighlight">\(h_0(t)\)</span> is not specified, it is not possible to fit the model using the standard likelihood function. Hazard function <span class="math notranslate nohighlight">\(h_0(t)\)</span>  is a nuisance function, while the coefficients β are the parameters of interest in the model. To estimate the coefficients, Cox proposed a partial likelihood which depends only on the parameter of interest β
+and is free of the nuisance parameters.</p>
+<p>The hazard function refers to the probability that an instance with covariate X fails at time t on the condition that it survives until time t can be expressed by <span class="math notranslate nohighlight">\(h(t, X)dt\)</span> with <span class="math notranslate nohighlight">\(dt → 0\)</span>. Let <span class="math notranslate nohighlight">\(J (J ≤ N)\)</span> be the total number of events of interest that occurred during the observation period for N instances, and <span class="math notranslate nohighlight">\(T_1 &lt; T_2 &lt; · · · &lt; T_J\)</span> is the distinct ordered time to event of interest. Let <span class="math notranslate nohighlight">\(X_j\)</span> be the corresponding covariate vector for the subject who fails at <span class="math notranslate nohighlight">\(T_j\)</span> , and
+<span class="math notranslate nohighlight">\(R_j\)</span> be the set of risk subjects at <span class="math notranslate nohighlight">\(T_j\)</span> . Thus, conditional on the fact that the event occurs
+at <span class="math notranslate nohighlight">\(T_j\)</span>, the individual probability corresponding to covariate <span class="math notranslate nohighlight">\(R_j\)</span> can be formulated as
+follows:</p>
+<figure class="align-default">
+<img alt="../../../_images/4.PNG" src="../../../_images/4.PNG" />
+</figure>
+<p>The partial likelihood is the product of the probability of each subject. Referring to
+the Cox assumption and the presence of the censoring, the partial likelihood is defined
+as follows:</p>
+<figure class="align-default">
+<img alt="../../../_images/5.PNG" src="../../../_images/5.PNG" />
+</figure>
+<p>Here <span class="math notranslate nohighlight">\(j = 1, 2, · · · , N\)</span>. Censoring is accounted by <span class="math notranslate nohighlight">\(δ_j\)</span>, if <span class="math notranslate nohighlight">\(δ_j = 1\)</span>, the <span class="math notranslate nohighlight">\(j_{th}\)</span> term in the product is the conditional probability, otherwise, when <span class="math notranslate nohighlight">\(δ_j = 0\)</span>, the corresponding term is 1, which means that the term will not have any effect on the final product. The coefficient vector <span class="math notranslate nohighlight">\(β\)</span> is estimated by maximizing this partial likelihood, or equivalently, minimizing the negative log-partial likelihood.</p>
+</section>
+<section id="cox-ph-output">
+<h3>COX PH output<a class="headerlink" href="#cox-ph-output" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival6.html">https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival6.html</a></p>
+<p>The main output of Cox PH model are estimated <span class="math notranslate nohighlight">\(β\)</span> coefficients in a form of loghazard ratios or hazard ratios. The loghazard ratio represents the increase in the expected log of the relative hazard for each one unit increase in the predictor covariate, holding other covariates constant. The hazard ratios are computed by exponentiating loghazard ratios for more interpretability and can show the increase in the expected hazard in percents.</p>
+<p>In the article we are going to reproduce authors mostly are interested in computing log-partial hazard for every patient, referred as DOSI - dynamic organism state indicator.</p>
+</section>
+</section>
+<section id="results-and-discussion">
+<h2>Results and Discussion<a class="headerlink" href="#results-and-discussion" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h3>PCA<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<img alt="../../../_images/PCA_res.jpg" src="../../../_images/PCA_res.jpg" />
+</figure>
+<p>The average points clearly correlate to different stages of organism development and aging and follow a well-defined trajectory or flow in the multivariate configuration space spanned by the physiological variables.</p>
+<p>We divided the aging trajectory into three discrete periods that correspond to infancy (under 20 years old), middle age (20–50 years old), and senior age (beyond 50 years old) (older than 50 y.o.). The trajectory was essentially linear inside each segment.</p>
+</section>
+<section id="id2">
+<h3>Cox Proportional Hazards<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<img alt="../../../_images/Cov.png" src="../../../_images/Cov.png" />
+</figure>
+<p>Hazard ratios for Cox model covariates</p>
+<p>Interestingly, our model has better result in used evaluation metric, Concordance Index:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Our model</p></th>
+<th class="head"><p>Article</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>train</p></td>
+<td><p>0.723</p></td>
+<td><p>0.68</p></td>
+</tr>
+<tr class="row-odd"><td><p>test</p></td>
+<td><p>0.72</p></td>
+<td><p>0.67</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-default">
+<img alt="../../../_images/Ha_m.png" src="../../../_images/Ha_m.png" />
+</figure>
+<p>Here we can see organism state changes during age. As we can see, body weight and DOSI change with age, and we can distinguish three main phases. In the first phase, the body grows, both indicators grow. Then the state of the body reaches a certain plateau. And finally, at the end we observe the third phase, aging. The log-hazards ratio begins to grow exponentially again, and body weight begins to decrease.</p>
+</section>
+<section id="dosi-and-health-conditions">
+<h3>DOSI and health conditions<a class="headerlink" href="#dosi-and-health-conditions" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<img alt="../../../_images/Density.png" src="../../../_images/Density.png" />
+</figure>
+<p>Futher we analyzed relationship between DOSI and frailty. For this we obtained data about 10 health conditions: hypertension, arthritis, cancers, coronary heart disease, angina pectoris, emphysema, heart attack, stroke, congestive heart failure, bronchitis.</p>
+<p>The normalized distribution of DOSI values (after normalization for the respective mean levels in age- and sex-matched cohorts of healthy subjects) showed a progressive shift and greater variability in groups stratified by increasing number of health condition diagnoses.</p>
+</section>
+<section id="dosi-and-cmi">
+<h3>DOSI and CMI<a class="headerlink" href="#dosi-and-cmi" title="Permalink to this headline">#</a></h3>
+<p>To separate the effects of chronic diseases from disease-free aging, special index was calculated for each participant. It is CMI - compound morbidity index. CMI is number of diagnosed diseases from the list: Hypertension, Arthritis, Cancers, Coronary heart disease, Angina pectoris, Emphysema, Heart attack, Stroke, Congestive heart failure, Bronchitis.</p>
+<figure class="align-default">
+<img alt="../../../_images/CMI.png" src="../../../_images/CMI.png" />
+</figure>
+<p>So, it can take values from 0 to -1.</p>
+<p>Based on CMI, all participants were divided into 3 groups:</p>
+<p>•	non-frail (CMI &lt;0.1)</p>
+<p>•	frail (0,1&lt;=CMI&lt;0.6)</p>
+<p>•	most-frail (CMI&gt;0.6)</p>
+<p>Frail fraction calculation</p>
+<p>Then for each age cohort frail fraction was calculated.</p>
+<figure class="align-default">
+<img alt="../../../_images/Frail_fraction.png" src="../../../_images/Frail_fraction.png" />
+</figure>
+<p>Calculating of frail fraction was performed in R:</p>
+<figure class="align-default">
+<img alt="../../../_images/R_frail.png" src="../../../_images/R_frail.png" />
+</figure>
+<p>The fraction of frail persons is strongly correlated with the excess DOSI levels:</p>
+<figure class="align-default">
+<img alt="../../../_images/2A.png" src="../../../_images/2A.png" />
+</figure>
+<p>Excess DOSI level is the difference between the DOSI of an individual and its average and the age-matched cohort.</p>
+<p>The fraction of most-frail and frail subjects is increasing exponentially at every given age. We also observe strong correlation between DOSI level and organism state during different aging states:</p>
+<figure class="align-default">
+<img alt="../../../_images/2B.png" src="../../../_images/2B.png" />
+</figure>
+</section>
+<section id="dosi-and-health-risks">
+<h3>DOSI and health risks<a class="headerlink" href="#dosi-and-health-risks" title="Permalink to this headline">#</a></h3>
+<p>From all participants were chosen only non-frail individuals, those, who has minimal number of diagnosed diseases from the list above. There is a plot, showing the dependence between DOSI level and smoking habits of subjects:</p>
+<figure class="align-default">
+<img alt="../../../_images/2C.png" src="../../../_images/2C.png" />
+</figure>
+<p>We see, that in the most healthy individuals with life-shortening behavior, such as smoking, the DOSI was also elevated. It can indicate a higher level of risks of future diseases and death. It is an example, how DOSI index can be used in order to predict future risks of chronic age-related diseases.</p>
+</section>
+<section id="maximum-lifespan-prediction">
+<h3>Maximum lifespan prediction<a class="headerlink" href="#maximum-lifespan-prediction" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<img alt="../../../_images/Regression.png" src="../../../_images/Regression.png" />
+</figure>
+<p>Interestingly, the DOSI’s variability did rise with age. We plotted the inverse variance of the DOSI computed in cohorts comprising the most healthy people that were sex- and age-matched in order to confirm our theoretical predictions of the inverse relationship between resilience and fluctuations. Extrapolation predicted that, if the tendency persists as people get older, the population variability would continue to rise until they were between 120 and 150 years old.</p>
+</section>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<p>This project was done by <a class="reference external" href="https://github.com/MargitSi">Margarita Sidorova</a>, <a class="reference external" href="https://www.linkedin.com/in/manullunam/">Tatiana Pashkovskaia</a>, <a class="reference external" href="https://github.com/AnnaPonomarevaSkoltech">Anna Ponomareva</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./projects/2023/dosi"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../../../dyn/system_resilience.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>System resilience</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../meta/report.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Meta-analysis of aging transcriptomes</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

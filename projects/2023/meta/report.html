@@ -1,0 +1,908 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Meta-analysis of aging transcriptomes &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Computational Model of Parkinson’s Disease" href="../parkinson/report.html" />
+    <link rel="prev" title="Dynamic Organism State Indicator" href="../dosi/report.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Welcome to the Computational Biology of Aging coursebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/differential_analysis_practice.html">
+   2. Differential expression analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/survival_analysis.html">
+   3. Survival analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine learning view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../ml/aging_clocks.html">
+   4. Aging Clocks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic system view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/complex_systems.html">
+   5. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/system_resilience.html">
+   6. System resilience
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dosi/report.html">
+   Dynamic Organism State Indicator
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Meta-analysis of aging transcriptomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../parkinson/report.html">
+   Computational Model of Parkinson’s Disease
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unsupervized/report.html">
+   Unsupervised aging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fprojects/2023/meta/report.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/projects/2023/meta/report.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weak-points-of-the-paper">
+     Weak points of the paper
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#suggestions-for-approach-improvements">
+     Suggestions for approach improvements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing-of-the-gene-expression-data">
+     Preprocessing of the gene expression data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#quality-control-pca">
+       Quality control - PCA
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#statistical-testing">
+       Statistical testing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#meta-analysis-of-the-datasets">
+     Meta-analysis of the datasets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-enrichment-analysis">
+     GO enrichment analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gene-expression-comparison-in-brain-heart-and-muscle">
+     Gene expression comparison in Brain, Heart and Muscle
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#upregulated-and-downregulated-genes-common-between-brain-heart-and-muscle">
+       Upregulated and Downregulated genes common between Brain, Heart and Muscle:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#upregulated-genes">
+       Upregulated genes:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#downregulated-genes">
+       Downregulated genes:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#genage-intersection-analysis">
+     GenAge intersection analysis
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#upregulated-genes-intersection-with-genage">
+       Upregulated genes intersection with GenAge:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#downregulated-genes-intersectio-with-genage">
+       Downregulated genes intersectio with GenAge:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-list-of-differentially-expressed-genes-across-aging">
+     The list of differentially expressed genes across aging
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Meta-analysis of aging transcriptomes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weak-points-of-the-paper">
+     Weak points of the paper
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#suggestions-for-approach-improvements">
+     Suggestions for approach improvements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing-of-the-gene-expression-data">
+     Preprocessing of the gene expression data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#quality-control-pca">
+       Quality control - PCA
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#statistical-testing">
+       Statistical testing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#meta-analysis-of-the-datasets">
+     Meta-analysis of the datasets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#go-enrichment-analysis">
+     GO enrichment analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gene-expression-comparison-in-brain-heart-and-muscle">
+     Gene expression comparison in Brain, Heart and Muscle
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#upregulated-and-downregulated-genes-common-between-brain-heart-and-muscle">
+       Upregulated and Downregulated genes common between Brain, Heart and Muscle:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#upregulated-genes">
+       Upregulated genes:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#downregulated-genes">
+       Downregulated genes:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#genage-intersection-analysis">
+     GenAge intersection analysis
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#upregulated-genes-intersection-with-genage">
+       Upregulated genes intersection with GenAge:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#downregulated-genes-intersectio-with-genage">
+       Downregulated genes intersectio with GenAge:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-list-of-differentially-expressed-genes-across-aging">
+     The list of differentially expressed genes across aging
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="meta-analysis-of-aging-transcriptomes">
+<h1>Meta-analysis of aging transcriptomes<a class="headerlink" href="#meta-analysis-of-aging-transcriptomes" title="Permalink to this headline">#</a></h1>
+<p>All code for tasks described in this report is avaliable in our <a href="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/AgeingTranscriptionMetaRegression.ipynb">Jupyter Notebook</a>.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>In this project, we reproduce the results of a gene expression meta-analysis performed by <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7906136/">Daniel Palmer and colleagues in 2021</a>. In this study transcriptomic signatures associate with ageing were identified for brain, heart and muscle tissues based on the analysis of 127 publicly-available microarray and RNA-Seq datasets from mice, rats, and humans.<br>
+Overall, changes in gene expression with age followed the following patterns:</p>
+<ul>
+  <li>overexpression of immune and stress response genes with age</li>
+  <li>underexpression of metabolic and developmental genes</li>
+</ul>
+In muscle and heart tissues genes involved in cell response processes were found to be activated. It was also found that genes differentially expressed with age were mainly central for protein-protein interaction networks. Previously in the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2732303/">paper from 2009</a> by the same authors similar common ageing gene signatures were identified such as:
+<ul>
+  <li>overexpression of inflammation, immune response and lysosomes related genes</li>
+  <li>underexpression of collagen, energy metabolism (especiallu mitochondrial) genes</li>
+  <li>changes in expression of apoptosis genes and cell cycle regulation genes</li>
+</ul>
+Finally, it was found that genes differentially expressed with age are rarely tissue-specific but rather are commonly expressed in multiple tissues.<br>
+The outline of analysis pipeline from the original study is the following:
+<ol>
+<li>Linear regression performed for each gene inside each dataset. The slope of the regression corresponds to the direction in change of gene expression with age (if positive - gene is upregulated with age and vice versa)</li>
+<li>Genes for which regression slope is statistically significant are selected</li>
+<li>Meta regression analysis was performed with <i>Cumulative Binomial test</i></li>
+<li>False discovery rate correction was performed by permutating gene IDs in the original dataset and repeating the meta-regression analysis. Based on this an average percentage of statistically significantly differentially expressed genes was identified - this allowed calculating critical p-value at which FDR was less than 0.05</li>
+<li>Tissue specificity analysis was run with <i>tau</i> index used as a measure of tissue specificity</li>
+<li>Differentially expressed genes (DEGs) that had evidence of association with age across multiple datasets were selected for further analysis</li>
+<li>Enrichment analysis with David and topGO R tool was performed</li>
+</ol>
+As additional steps authors also performed:
+<ul>
+<li>dN/dS analysis - ratio of non-synonymous to synonymous substitutions in the sequences of main DEGs in different species. These calculations showed that those genes are predominantly evolutionary conserved across species</li>
+<li>Random Forest ML model on GO terms was built to identify the GO terms that can best predict whether a particular gene will be over- or underexpressed with age</li>
+</ul>
+<hr>
+<section id="weak-points-of-the-paper">
+<h3>Weak points of the paper<a class="headerlink" href="#weak-points-of-the-paper" title="Permalink to this headline">#</a></h3>
+<p>To detect DEGs that were differentially expressed across multiple datasets, the authors used the cumulative binomial test. In cases where the total dataset number is small (in which the gene was studied), such meta-regression tests are not statistically significant because they don’t reflect the effect size. Additionally, two different data types are explored, RNA-seq and microarray RNA sequencing, which might require additional correction for the specific details of experimental techniques.</p>
+</section>
+<section id="suggestions-for-approach-improvements">
+<h3>Suggestions for approach improvements<a class="headerlink" href="#suggestions-for-approach-improvements" title="Permalink to this headline">#</a></h3>
+<p>In our project we applied meta-regression using the <a href="https://pymare.readthedocs.io">PyMare</a> package for a higher specificity of the analysis. In this approach we did not select the statistically significant sloped inside each dataset but rather gave all the genes in each dataset as input to the meta-regression analyzer. PyMare itself estimates which of the slope estimates are statistically significant acorss multiple datasets based on:</p>
+<ul>
+  <li>list of slope coefficients for eacg dataset</li>
+  <li>list of variances for these slopes</li>
+  <li>list of samples numbers for each dataset</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h2>
+<section id="preprocessing-of-the-gene-expression-data">
+<h3>Preprocessing of the gene expression data<a class="headerlink" href="#preprocessing-of-the-gene-expression-data" title="Permalink to this headline">#</a></h3>
+<p>For the sake of time we decided to focus our analysis on brain, heart, and muscle tissues from mice only. From the data avaliable on the <a class="reference external" href="https://github.com/maglab/AgeingSignatures2020_supplementary">github repository</a> we selected 27 mice microarray datasets originated from brain, heart and muscle (12 samples for brain, 5 for heart and 10 for muscle). Each dataset contains samples from mice of several age groups (usually several individuals inside each group). For each of these samples expression levels of around 20000 genes are studied.</p>
+<section id="quality-control-pca">
+<h4>Quality control - PCA<a class="headerlink" href="#quality-control-pca" title="Permalink to this headline">#</a></h4>
+<p>To explore the similarity of the samples within each dataset and each age group we applied the Principal Component Analysis (PCA) method of data clustering. The samples from different ages were, however, intermingled with each other so it was impossible to remove some samples due to out-clustering.</p>
+</section>
+<section id="statistical-testing">
+<h4>Statistical testing<a class="headerlink" href="#statistical-testing" title="Permalink to this headline">#</a></h4>
+<p>To estimate differencially expressed genes (DEGs) we conducted <strong>linear regression</strong> analysis for all the datasets using <a href="https://www.statsmodels.org/dev/generated/statsmodels.regression.linear_model.OLS.html">statsmodels.OLS</a> python function. The regression equation was as following:</p>
+<div class="math notranslate nohighlight">
+\[Y_{ij} = \beta_{0j} + \beta_{1j}Age{i} + \epsilon_{ij}\]</div>
+<p>Where Y is the expression of of gene <i>j</i> in sample <i>i</i>, <i>β<sub>0j</sub></i> is the intercept for gene <i>j</i>, <i>β<sub>1j</sub></i> is the regression slope for gene <i>j</i>, Age<sub>i</sub> is the age of the indidividual studies in the sample, and <i>ε<sub>ij</sub></i> is the error term.<br>The slope of this regression identifies the direction of differencial expression with age. 0.05 <i>p-value</i> cut-off was then used to identify the significance of the coefficients (used only for binomial testing) and the coefficients variances were calculated using the same package (used ofr PyMare meta-regression).</p>
+<hr>
+</section>
+</section>
+<section id="meta-analysis-of-the-datasets">
+<h3>Meta-analysis of the datasets<a class="headerlink" href="#meta-analysis-of-the-datasets" title="Permalink to this headline">#</a></h3>
+<p>To identify genes differentially expressed in tissue across all datasets we applied <strong>meta-regression</strong> function from the <strong>PyMare</strong> package. This function takes as input the estimated regression coefficients for individual datasets and the variances for these coefficients as well as dataset sizes. It produces weighted estimates for gene expression change direction with age(called <strong>total effect</strong>), taking into account the level of uncertainty, and number of datasets analyzed.<br>
+We conducted such analysis for each of the tissues as well as for all three tissues together. In the latter case we also passed the tissue parameters as extra cofounder parameter.</p>
+</section>
+<section id="go-enrichment-analysis">
+<h3>GO enrichment analysis<a class="headerlink" href="#go-enrichment-analysis" title="Permalink to this headline">#</a></h3>
+<p>Gene Onthology enrichment analysis was done with <strong>gseapy</strong> python package to identify functional categories for the obtained DEGs. In the genes overexpressed with age across multiple datasets in the brain, the enrichment terms are the following:</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_over_brain.jpg"
+  alt="Enrichment terms in the brain overexpressed genes"
+  title="Enrichment terms in the brain overexpressed genes"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+<p>In the muscle overexpressed genes with age, the picture is the following:</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_over_muscle.jpg"
+  alt="Enrichment terms in the muscle overexpressed genes"
+  title="Enrichment terms in the muscle overexpressed genes"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+<p>For heart overexpressed genes:</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_over_heart.jpg"
+  alt="Enrichment terms in the heart overexpressed genes"
+  title="Enrichment terms in the heart overexpressed genes"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+<p>For heart underexpressed:</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_under_heart.jpg"
+  alt="Enrichment terms in the heart underexpressed genes"
+  title="Enrichment terms in the heart underexpressed genes"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+<p>Enriched terms in the genes differentially overexpressed with age across multiple datasets in all three tissues are:</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_over_allthetissues.jpg"
+  alt="Enrichment terms overexpressed genes in all tissues "
+  title="Enrichment terms overexpressed genes in all tissues"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+<p>While for underexpressed:</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Enrich_terms_under_allthetissues.jpg"
+  alt="Enrichment terms underexpressed genes in all tissues "
+  title="Enrichment terms underexpressed genes in all tissues"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+</section>
+<section id="gene-expression-comparison-in-brain-heart-and-muscle">
+<h3>Gene expression comparison in Brain, Heart and Muscle<a class="headerlink" href="#gene-expression-comparison-in-brain-heart-and-muscle" title="Permalink to this headline">#</a></h3>
+<section id="upregulated-and-downregulated-genes-common-between-brain-heart-and-muscle">
+<h4>Upregulated and Downregulated genes common between Brain, Heart and Muscle:<a class="headerlink" href="#upregulated-and-downregulated-genes-common-between-brain-heart-and-muscle" title="Permalink to this headline">#</a></h4>
+<p>We carried out intersection analysis of Upregulated and Downregulated genes that are common between all three tissues. Five genes (<strong>ACER2, RHPN2, CD2AP, RRAGC, SKAP2</strong>) were overexpressed whereas four genes (<strong>CRB3, HOXD12, UBN1, SLC6A3</strong>) were underexpressed in Brain, Heart and Muscle.</p>
+</section>
+<section id="upregulated-genes">
+<h4>Upregulated genes:<a class="headerlink" href="#upregulated-genes" title="Permalink to this headline">#</a></h4>
+<p>Description of common upregulated genes in Brain, Heart and Muscle tissues
+<strong>1. ACER2</strong>: may lead to changes in the metabolism of ceramide and other lipid molecules</p>
+<p><strong>2. RHPN2</strong>: may affect cell adhesion, migration, and signaling, which could impact various physiological and pathological processes</p>
+<p><strong>3. CD2AP</strong>: may disrupt the structure and function of the glomerular filtration barrier in the kidney, leading to proteinuria, inflammation, and progressive kidney damage.</p>
+<p><strong>4. RRAGC</strong>: may affect the activity of the mTORC1 signaling pathway, which plays a key role in regulating cell growth, autophagy, and metabolism</p>
+<p><strong>5. SKAP2</strong>: Differential expression of SKAP2 may influence T-cell activation and migration, which are essential for immune surveillance and defense against infections and cancer</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/uregulated genes intersection.png"
+  alt="Upregulated genes intersection in all tissues "
+  title="Upregulated genes intersection genes in all tissues"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+</section>
+<section id="downregulated-genes">
+<h4>Downregulated genes:<a class="headerlink" href="#downregulated-genes" title="Permalink to this headline">#</a></h4>
+<p>Description of common upregulated genes in Brain, Heart and Muscle tissues</p>
+<p><strong>1. CRB3</strong>: encodes a protein that is important for maintaining the structure and function of epithelial cells</p>
+<p><strong>2. HOXD12</strong>: member of the homeobox gene family that is involved in regulating embryonic development and differentiation</p>
+<p><strong>3. UBN1</strong>: involved in chromatin remodeling, which is important for regulating gene expression.</p>
+<p><strong>4. SLC6A3</strong>: encodes a dopamine transporter protein that is involved in the regulation of dopamine signaling in the brain</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/downregulated gebes ibtersection.png"
+  alt="Downregulated genes intersection in all tissues "
+  title="Downregulated genes intersection genes in all tissues"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+</section>
+</section>
+<section id="genage-intersection-analysis">
+<h3>GenAge intersection analysis<a class="headerlink" href="#genage-intersection-analysis" title="Permalink to this headline">#</a></h3>
+<p>From GenAge database we have downloaded the genes associated with age. The set of genes were intersected with Upregulated and Downregulated genes (from the anlaysis of three tissues all together) identified in our study.</p>
+<section id="upregulated-genes-intersection-with-genage">
+<h4>Upregulated genes intersection with GenAge:<a class="headerlink" href="#upregulated-genes-intersection-with-genage" title="Permalink to this headline">#</a></h4>
+<p>In the upregulated set of genes seven genes were reported in GenAge.</p>
+<p><strong>1. EFEMP1</strong>: encodes a protein that is involved in cell adhesion and signaling</p>
+<p><strong>2. TRP53BP1</strong>: This gene is involved in the DNA damage response and plays a role in maintaining genomic stability</p>
+<p><strong>3. PAWR</strong>: involved in the regulation of apoptosis (programmed cell death) and has been implicated in various physiological and pathological processes, including cancer and neurodegeneration</p>
+<p><strong>4. CDKN1A</strong>: This gene encodes a protein called p21, which is a key regulator of cell cycle progression and DNA damage response</p>
+<p><strong>5. GRN</strong>: encodes a protein called progranulin, which is involved in various physiological processes, including inflammation, wound healing, and neuronal development</p>
+<p><strong>6. GPX4</strong>: encodes an enzyme called glutathione peroxidase 4, which plays a critical role in protecting cells from oxidative stress</p>
+<p><strong>7. HNRNPD</strong>: This gene encodes a protein called heterogeneous nuclear ribonucleoprotein D, which is involved in RNA processing and gene expression regulation</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Genage iontersection with upregulated genes.png"
+  alt="Genage iontersection with upregulated genes in all tissues "
+  title="Genage iontersection with upregulated genes in all tissues"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+</section>
+<section id="downregulated-genes-intersectio-with-genage">
+<h4>Downregulated genes intersectio with GenAge:<a class="headerlink" href="#downregulated-genes-intersectio-with-genage" title="Permalink to this headline">#</a></h4>
+<p>Incase of downregulated genes only three genes were reported in GenAge database.</p>
+<p><strong>1. POU1F1 (Pit-1)</strong>: a transcription factor that plays a critical role in the development and function of the pituitary gland</p>
+<p><strong>2. FOXM1</strong>: a transcription factor that regulates the expression of genes involved in cell cycle progression, DNA replication, and repair</p>
+<p><strong>3. NUDT1 (nucleoside diphosphate-linked moiety X motif 1)</strong>: an enzyme involved in nucleotide metabolism and DNA damage response</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Genage intersection with downregulated genes.png"
+  alt="Genage intersection with downregulated genes in all tissues "
+  title="Genage iontersection with downregulated genes in all tissues"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+</section>
+</section>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h2>
+<section id="the-list-of-differentially-expressed-genes-across-aging">
+<h3>The list of differentially expressed genes across aging<a class="headerlink" href="#the-list-of-differentially-expressed-genes-across-aging" title="Permalink to this headline">#</a></h3>
+<p>According to the results of <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7906136/">2021 original paper</a> all tissues and every tissue studied consistently overexpressed the following genes:</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Palmer_table_overexpressed.jpg"
+  alt="Table of the top-5 genes most consistently overexpressed with age across datasets for all tissues and for each tissue studied. `palmer2021ageing`"
+  title="Overexpressed genes"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+<p>And for underexpressed genes the results are the following:</p>
+<p><img
+  src="https://github.com/d-kozhevnikova/Ageing-transcriptome-meta-analysis/blob/main/figs/Palmer_table_underexpressed.jpg"
+  alt="Table of the top-5 genes most consistently underexpressed with age across datasets for all tissues and for each tissue studied. `palmer2021ageing`"
+  title="Underexpressed genes"
+  style="display: inline-block; margin: 0 auto; max-width: 300px"></p>
+<p>According to our findings, immune system activation genes were overexpressed in the brain. Differentiation-related genes were overexpressed in muscles, potentially resulting in a decrease of regeneration activity and muscle tissue deterioration in ageing people. An increase in GABA signaling and ion transport was observed in the heart. All tissues collectively exhibit an increase in the activity of immune and proteilytic genes, while metabolic genes are down-regulated. The described results are in line with the conclusions made in the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7906136/">original paper</a>.</p>
+</section>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<p>THis repository was created by Andrey Stapran (MSc 2nd year LS), Shahzeb Khan (MSc 2nd year LS) and Daria Kozhevnikova (MSc 1st year LS) as part of a final project for <strong>Computational Biology of Aging</strong> course taught by <strong>Professor Ekaterina Khrameeva</strong> at Skolkovo Institute of Science and Technology, Moscow</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Palmer, Daniel et al. “Ageing transcriptome meta-analysis reveals similarities and differences between key mammalian tissues.” Aging vol. 13,3 (2021): 3313-3341. doi:10.18632/aging.202648</p></li>
+<li><p>de Magalhães, João Pedro et al. “Meta-analysis of age-related gene expression profiles identifies common signatures of aging.” Bioinformatics (Oxford, England) vol. 25,7 (2009): 875-81. doi:10.1093/bioinformatics/btp073</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./projects/2023/meta"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../dosi/report.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Dynamic Organism State Indicator</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../parkinson/report.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Computational Model of Parkinson’s Disease</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

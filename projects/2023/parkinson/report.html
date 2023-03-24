@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Computational Model of Parkinson’s Disease &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Unsupervised aging" href="../unsupervized/report.html" />
+    <link rel="prev" title="Meta-analysis of aging transcriptomes" href="../meta/report.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Welcome to the Computational Biology of Aging coursebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/differential_analysis_practice.html">
+   2. Differential expression analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/survival_analysis.html">
+   3. Survival analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine learning view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../ml/aging_clocks.html">
+   4. Aging Clocks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic system view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/complex_systems.html">
+   5. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/system_resilience.html">
+   6. System resilience
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dosi/report.html">
+   Dynamic Organism State Indicator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../meta/report.html">
+   Meta-analysis of aging transcriptomes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Computational Model of Parkinson’s Disease
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unsupervized/report.html">
+   Unsupervised aging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ComputationalAgingLab/computational_aging_course/master?urlpath=tree/projects/2023/parkinson/report.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fprojects/2023/parkinson/report.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/projects/2023/parkinson/report.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-this-course-work-we-aim-to">
+     In this course work we
+     <strong>
+      aim
+     </strong>
+     to:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bgtcs-model">
+     BGTCS Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduce-age-term-into-the-system">
+     Introduce Age term into the system
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#power-spectral-density-psd-in-three-areas-of-basal-ganglia">
+       Power Spectral Density (PSD) in three areas of basal ganglia
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#amplitude-of-peak-in-beta-band">
+       Amplitude of peak in beta band
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-different-hypotheses-of-pd-formation">
+     Check different hypotheses of PD formation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Computational Model of Parkinson’s Disease</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-this-course-work-we-aim-to">
+     In this course work we
+     <strong>
+      aim
+     </strong>
+     to:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bgtcs-model">
+     BGTCS Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduce-age-term-into-the-system">
+     Introduce Age term into the system
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#power-spectral-density-psd-in-three-areas-of-basal-ganglia">
+       Power Spectral Density (PSD) in three areas of basal ganglia
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#amplitude-of-peak-in-beta-band">
+       Amplitude of peak in beta band
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-different-hypotheses-of-pd-formation">
+     Check different hypotheses of PD formation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="computational-model-of-parkinson-s-disease">
+<h1>Computational Model of Parkinson’s Disease<a class="headerlink" href="#computational-model-of-parkinson-s-disease" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>Parkinson’s Disease (PD) is a widespread age-related neurodegenerative disorder, which involves several neural pathways of motors and non-motors. The main symptoms of PD, rigidity, slowness of movement, and tremor, appear mostly at older age and get worse with increasing age. The core pathology underlying PD is degeneration of dopaminergic neurons in the substantia nigra pars compacta (SNc) in midbrain, leading to the decrease in the dopamine (DA) level in striatum. This in turn makes the thalamic neurons inhibited. Without the thalamic input, the motor cortex neurons are not as excited, and therefore the motor system is less able to execute the motor plans in response to the patient’s volition.</p>
+<p>Importantly, parkinsonism leads to various electrophysiological changes in the basal ganglia-thalamo cortical system (BGTCS). The main structures comprising this system are the striatum, the substantia nigra, the globus pallidus internal (GPi) and external (GPe) segments, and the subthalamic nucleus (STN).</p>
+<p>This work focuses on mean-field computational model of the BGTCS, introduced by van Albada and Robinson in 2009 <a class="reference external" href="https://arxiv.org/pdf/1801.01822.pdf">1</a>.</p>
+<section id="in-this-course-work-we-aim-to">
+<h3>In this course work we <strong>aim</strong> to:<a class="headerlink" href="#in-this-course-work-we-aim-to" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>Reproduce the model and its two main states: dopamine depleted (DD) and healthy (noDD);</p></li>
+<li><p>Introduce the age term into the model. Explore how the system dynamics unfold with aging;</p></li>
+<li><p>Explore how different hypothesis of PD change the dynamics of the system.</p></li>
+</ol>
+</section>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h2>
+<section id="bgtcs-model">
+<h3>BGTCS Model<a class="headerlink" href="#bgtcs-model" title="Permalink to this headline">#</a></h3>
+<p>This model captured the direct, indirect, and hyperdirect pathways, 5 types of progressive dopamine loss, and sought to identify differences between healthy and PD states [1, 2]. Their study is also an early example of using functional connectivity to distinguish the healthy and diseased states and map the model to known anatomical regions. The work exemplifies a balance of the qualities of 1) exemplary knowledge of PD and literature review for hypotheses to test and calibrations, 2) sophisticated numerical methods, and 3) a rich set of phenomena captured at the appropriate systems level, in this case using mean field theory for efficient simplification of a complicated system. Most modeling studies are under-weighted in one or two of those categories.</p>
+<p>The model consists of 9 second order differential equations: 1 of firing rate of cortex and 8 of mean firing rate of all populations:</p>
+<div class="math notranslate nohighlight">
+\[\dot{\phi}_e^{i+1}=\gamma_e^2 \cdot\left(S\left[V_e^i, Q_e, \theta_e\right]-\phi_e^i\right)-2 \cdot \gamma_e \cdot \dot{\phi}_e^i\]</div>
+<div class="math notranslate nohighlight">
+\[\dot{V}_e^{i+1}=\alpha \gamma_e \cdot\left(v_{e e} \phi_e+v_{e i} S\left[V_i^i, Q_i, \theta_i\right]+v_{e s} S\left[V_s^{\left(i-\tau_{e s}\right)}, Q_s, \theta_s\right]-V_e^i\right)-a P b \cdot \dot{V}_e^i\]</div>
+<div class="math notranslate nohighlight">
+\[\dot{V}_i^{i+1}=\alpha \gamma_e \cdot\left(v_{i i} S\left[V_i^i, Q_i, \theta_i\right]+v_{i e} \phi_e^i+v_{i s} S\left[V_s^{\left(i-\tau_{i s}\right)}, Q_s, \theta_s\right]-V_i^i\right)-a P b \cdot \dot{V}_i^i\]</div>
+<p>and the same equations for <span class="math notranslate nohighlight">\(V_{D 1}, V_{D 2}, V_{p 1}, V_{p 2}, V_{S T N}, V_r, V_s\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import class and visualisation functions</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">mfm_model</span> <span class="kn">import</span> <span class="n">MFM</span>
+<span class="kn">from</span> <span class="nn">mfm_model</span> <span class="kn">import</span> <span class="n">plot_beta_envelope</span><span class="p">,</span> <span class="n">plot_psd</span>
+<span class="kn">from</span> <span class="nn">mfm_model</span> <span class="kn">import</span> <span class="n">plot_activity</span><span class="p">,</span> <span class="n">plot_limit_cycles</span>
+<span class="kn">from</span> <span class="nn">mfm_model</span> <span class="kn">import</span> <span class="n">print_var</span><span class="p">,</span> <span class="n">plot_slidingw_var</span><span class="p">,</span> <span class="n">plot_accum_var</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># healthy state generate and plot avtivity for all populations</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DD&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;noise&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;cDBS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;pDBS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;fname&#39;</span><span class="p">:</span> <span class="s1">&#39;data/healthy_test.mfm&#39;</span><span class="p">}</span>
+
+<span class="n">mfm</span> <span class="o">=</span> <span class="n">MFM</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> 
+<span class="n">mfm</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">mfm</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 0:00:11 [==================== 100.00 % ====================] 0:00:00 
+
+Saving data...
+  RunID: 000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># defauls PD state generate and plot activity</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DD&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;noise&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;cDBS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;pDBS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;fname&#39;</span><span class="p">:</span> <span class="s1">&#39;data/pd_test.mfm&#39;</span><span class="p">}</span>
+
+<span class="n">mfm</span> <span class="o">=</span> <span class="n">MFM</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> 
+<span class="n">mfm</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">mfm</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 0:00:10 [==================== 100.00 % ====================] 0:00:00 
+
+Saving data...
+  RunID: 000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="introduce-age-term-into-the-system">
+<h3>Introduce Age term into the system<a class="headerlink" href="#introduce-age-term-into-the-system" title="Permalink to this headline">#</a></h3>
+<p>Dopamine depletion can be modeled by decreasing the firing thresholds of striatal neurons as well as corticostriatal connection strengths to both D1 and D2 neurons [<a class="reference external" href="https://arxiv.org/pdf/1801.01822.pdf">1</a>, <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6673853/pdf/zns3567.pdf">2</a>]</p>
+<figure class="align-default">
+<img alt="../../../_images/ageform.png" src="../../../_images/ageform.png" />
+</figure>
+<p>By gradually increasing <em><strong>h</strong></em> and <span class="math notranslate nohighlight">\(\chi\)</span> parameters, we modeled the progressive dopamine depletion that occurs in PD with age. The following values were used:</p>
+<p>h, xi</p>
+<p>10 0.05   (~60 yo)</p>
+<p>15 0.6    (~70 yo)</p>
+<p>24 0.6    (~80 yo)</p>
+<section id="power-spectral-density-psd-in-three-areas-of-basal-ganglia">
+<h4>Power Spectral Density (PSD) in three areas of basal ganglia<a class="headerlink" href="#power-spectral-density-psd-in-three-areas-of-basal-ganglia" title="Permalink to this headline">#</a></h4>
+<figure class="align-default">
+<img alt="../../../_images/agePSD.png" src="../../../_images/agePSD.png" />
+</figure>
+</section>
+<section id="amplitude-of-peak-in-beta-band">
+<h4>Amplitude of peak in beta band<a class="headerlink" href="#amplitude-of-peak-in-beta-band" title="Permalink to this headline">#</a></h4>
+<figure class="align-default">
+<img alt="../../../_images/agePSD2.png" src="../../../_images/agePSD2.png" />
+</figure>
+</section>
+</section>
+<section id="check-different-hypotheses-of-pd-formation">
+<h3>Check different hypotheses of PD formation<a class="headerlink" href="#check-different-hypotheses-of-pd-formation" title="Permalink to this headline">#</a></h3>
+<p>We implemented all 5 hypothesis introduced in the paper:</p>
+<p><strong>#1</strong>: reducing  both firing thresholds and corticostriatal connection strengths to D1 and D2 neurons in striatum</p>
+<p><strong>#2</strong>: increasing νd2e and decreasing νd1e (direct/indirect pathway model)</p>
+<p><strong>#3</strong>: reducing lateral inhibition in the GPe, which mimicks enhanced levels of enkephalin;</p>
+<p><strong>#4</strong>: reducing cortical interactions to capture loss of intrinsic cortical dopamine;</p>
+<p><strong>#5</strong>: combination of 2, 3, 4</p>
+<p>We also combined #1 and #5 together to model more severe PD:</p>
+<p><strong>#15</strong>: combine 1 and 5</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we generate activity for all hypothesis</span>
+<span class="n">hyp_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hyp_list</span><span class="p">:</span>
+    <span class="c1"># defauls PD state generate and plot activity</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DD&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s1">&#39;noise&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s1">&#39;cDBS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s1">&#39;pDBS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s1">&#39;DDmode&#39;</span><span class="p">:</span> <span class="n">h</span><span class="p">,</span>
+                <span class="s1">&#39;fname&#39;</span><span class="p">:</span> <span class="s1">&#39;data/hyp_test_</span><span class="si">{}</span><span class="s1">.mfm&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">h</span><span class="p">)}</span>
+
+    <span class="n">mfm</span> <span class="o">=</span> <span class="n">MFM</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> 
+    <span class="n">mfm</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">mfm</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 0:00:10 [==================== 100.00 % ====================] 0:00:00 
+
+Saving data...
+  RunID: 000
+ 0:00:10 [==================== 100.00 % ====================] 0:00:00 
+
+Saving data...
+  RunID: 000
+ 0:00:10 [==================== 100.00 % ====================] 0:00:00 
+
+Saving data...
+  RunID: 000
+ 0:00:09 [==================== 100.00 % ====================] 0:00:00 
+
+Saving data...
+  RunID: 000
+ 0:00:10 [==================== 100.00 % ====================] 0:00:00 
+
+Saving data...
+  RunID: 000
+ 0:00:10 [==================== 100.00 % ====================] 0:00:00 
+
+Saving data...
+  RunID: 000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can compare how the activity changes with the change of different parameters (according to hypothesis).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;data/hyp_test_1.mfm&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;data/hyp_test_2.mfm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;data/hyp_test_3.mfm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;data/hyp_test_4.mfm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;data/hyp_test_5.mfm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;data/hyp_test_15.mfm&#39;</span><span class="p">]</span>
+<span class="n">list_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;15&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_beta_envelope</span><span class="p">(</span><span class="n">list_files</span><span class="p">,</span> <span class="n">list_names</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/report_18_0.png" src="../../../_images/report_18_0.png" />
+</div>
+</div>
+<p>The higher the envelope and the longer its “wave”, the worse is PD - we can see that <strong>15</strong> mode and <strong>5</strong> mode has the higest envelopes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_psd</span><span class="p">(</span><span class="n">list_files</span><span class="p">,</span> <span class="n">list_names</span><span class="p">,</span> <span class="n">beta_peak</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/report_20_0.png" src="../../../_images/report_20_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{}
+</pre></div>
+</div>
+</div>
+</div>
+<p>As it is seen in real PD patients the STN, GPe(p2) and GPi(p1) areas have more powerfull beta band, with high peak in PD</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_limit_cycles</span><span class="p">(</span><span class="n">list_files</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:],</span> <span class="n">list_names</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/report_22_0.png" src="../../../_images/report_22_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h2>
+<p>The BGTCS model successfully catches the main PD hallmarks: the increase of oscillation in the beta range (at 29 Hz), the alteration of firing rate (activity) (an increase in STN and a decrease in GPe), an increase of the variance of the activity in STN and GPe, and an increase of amplitude and duration of beta-envelope.</p>
+<p>Second, we have tested the model parameters corresponding to the 5 hypotheses of PD, suggested by van Albada and Robinson <a class="reference external" href="https://arxiv.org/pdf/1801.01822.pdf">1</a>. By testing different parameters under hypothesis #1, we modeled progressive dopamine depletion to illustrate PD progression with age. As expected, amplitude and duration of beta peak (29 Hz) increased in PD state with age in STN, p1 and p2 areas.</p>
+<p>We also compared the results, i.e. reproducing PD hallmarks, of the 5 hypotheses, as well as the combination of hypotheses 1 and 5. Under hypotheses 2, 3, and 4, the system dynamics did not change too much in PD state, as compared to the healthy state. On the contrary, hypotheses 5 and 15 were able to model severe PD dynamic changes.</p>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<p>Kuzmina Ekaterina - validating #2, 3, 4, 5 hypothesis of aging</p>
+<p>Molodova Maria - validating #1 hypothesis and how parameters in this hypothesis affect PD severity</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<p>[1] Van Albada SJ, Robinson PA. Mean-field modeling of the basal ganglia-thalamocortical sys tem. I. Firing rates in healthy and parkinsonian states (2009) J Theor Biol 257: 642–663, DOI: 10.1016/j.jtbi.2008.12.018</p>
+<p>[2] Leblois A, Boraud T, Meissner W, Bergman H, Hansel D. Competition between feedback loops underlies normal and pathological dynamics in the basal ganglia. J Neurosci. 2006 Mar 29;26(13):3567-83. doi: 10.1523/JNEUROSCI.5050-05.2006. PMID: 16571765; PMCID: PMC6673853.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./projects/2023/parkinson"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../meta/report.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Meta-analysis of aging transcriptomes</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../unsupervized/report.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unsupervised aging</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

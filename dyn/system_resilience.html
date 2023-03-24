@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dynamic Organism State Indicator" href="../projects/2023/dosi/report.html" />
     <link rel="prev" title="5. Complex systems approach" href="complex_systems.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -110,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome to Computational Biology of Aging book
+                    Welcome to the Computational Biology of Aging coursebook
                 </a>
             </li>
         </ul>
@@ -138,8 +139,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../stat/hazard_models.html">
-   3. Hazard models
+  <a class="reference internal" href="../stat/survival_analysis.html">
+   3. Survival analysis
   </a>
  </li>
 </ul>
@@ -157,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Dynamics system view
+  Dynamic system view
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -169,6 +170,33 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    6. System resilience
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/dosi/report.html">
+   Dynamic Organism State Indicator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/meta/report.html">
+   Meta-analysis of aging transcriptomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/parkinson/report.html">
+   Computational Model of Parkinson’s Disease
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/unsupervized/report.html">
+   Unsupervised aging
   </a>
  </li>
 </ul>
@@ -1219,7 +1247,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_434110/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_47098/1557638224.py:1: RuntimeWarning: overflow encountered in double_scalars
   f = lambda x, t, r, d: r * x - (1. - d * t) * x**2
 </pre></div>
 </div>
@@ -2025,49 +2053,49 @@ beta_eff == &lt;s&gt; + SH: True
   </thead>
   <tbody>
     <tr>
-      <th>244</th>
-      <td>swiss-2054</td>
-      <td>M</td>
-      <td>109.0</td>
-      <td>14.6</td>
-      <td>8.90</td>
-      <td>45.0</td>
-    </tr>
-    <tr>
-      <th>290</th>
-      <td>swiss-2207</td>
-      <td>M</td>
-      <td>130.0</td>
-      <td>13.8</td>
-      <td>8.49</td>
-      <td>39.1</td>
-    </tr>
-    <tr>
-      <th>245</th>
-      <td>swiss-2054</td>
-      <td>M</td>
-      <td>130.0</td>
-      <td>14.8</td>
-      <td>8.89</td>
-      <td>40.6</td>
-    </tr>
-    <tr>
-      <th>236</th>
-      <td>swiss-2052</td>
+      <th>228</th>
+      <td>swiss-2035</td>
       <td>M</td>
       <td>94.0</td>
-      <td>14.6</td>
-      <td>8.08</td>
-      <td>42.5</td>
+      <td>12.8</td>
+      <td>7.01</td>
+      <td>36.6</td>
     </tr>
     <tr>
-      <th>266</th>
-      <td>swiss-2074</td>
+      <th>251</th>
+      <td>swiss-2057</td>
+      <td>M</td>
+      <td>94.0</td>
+      <td>11.4</td>
+      <td>6.68</td>
+      <td>32.9</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>swiss-2027</td>
+      <td>M</td>
+      <td>81.0</td>
+      <td>16.2</td>
+      <td>9.30</td>
+      <td>48.5</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>swiss-2034</td>
+      <td>M</td>
+      <td>81.0</td>
+      <td>14.3</td>
+      <td>7.49</td>
+      <td>43.8</td>
+    </tr>
+    <tr>
+      <th>216</th>
+      <td>swiss-2032</td>
       <td>M</td>
       <td>66.0</td>
-      <td>14.8</td>
-      <td>8.47</td>
-      <td>38.8</td>
+      <td>14.2</td>
+      <td>8.10</td>
+      <td>41.3</td>
     </tr>
   </tbody>
 </table>
@@ -2314,6 +2342,13 @@ ages:109-130;     n=6; r=0.821; P-value=0.0452
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title"><span class="section-number">5. </span>Complex systems approach</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../projects/2023/dosi/report.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Dynamic Organism State Indicator</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
