@@ -24,7 +24,12 @@ parts:
   chapters:
   - file: dyn/complex_systems
   - file: dyn/system_resilience
-- caption: Projects
-  numbered: true
+- caption: Student projects
   chapters:
-  - file: projects/template
+  - file: projects/2023/dosi/report
+  - file: projects/2023/meta/report
+  - file: projects/2023/parkinson/report
+  - file: projects/2023/unsupervized/report
+  
+  
+
