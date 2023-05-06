@@ -19,6 +19,8 @@ parts:
   numbered: true
   chapters:
   - file: ml/aging_clocks
+  - url: https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing
+    title: Practice - DIY Aging Clocks
 - caption: Dynamic system view
   numbered: true
   chapters:
