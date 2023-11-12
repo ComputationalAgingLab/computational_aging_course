@@ -14,6 +14,9 @@ parts:
   numbered: true
   chapters:
   - file: stat/differential_analysis_practice
+  - file: meth/meth
+  - url: https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing
+    title: Practice - WGCNA on DNA methylation
   - file: stat/survival_analysis
 - caption: Machine learning view
   numbered: true
