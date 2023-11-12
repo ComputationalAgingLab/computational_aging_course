@@ -42,7 +42,7 @@ We are trying to minimize dependencies, but if we need some, we just add them to
 ```
 @online{kriukov2023compagingbook,
   year={2023},
-  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Ekaterina Khrameeva},
+  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov, Evgeniy Efimov, and Ekaterina Khrameeva},
   title={Computational Biology of Aging},
   url={https://computationalaginglab.github.io/computational_aging_course/intro.html},
 }
