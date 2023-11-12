@@ -137,8 +137,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../meth/meth.html">
+   3. Omics Data Analysis in Aging: Methylomics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
+   Practice - WGCNA on DNA methylation
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../stat/survival_analysis.html">
-   3. Survival analysis
+   4. Survival analysis
   </a>
  </li>
 </ul>
@@ -150,7 +160,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ml/aging_clocks.html">
-   4. Aging Clocks
+   5. Aging Clocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">
+   Practice - DIY Aging Clocks
   </a>
  </li>
 </ul>
@@ -162,12 +177,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/complex_systems.html">
-   5. Complex systems approach
+   6. Complex systems approach
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/system_resilience.html">
-   6. System resilience
+   7. System resilience
   </a>
  </li>
 </ul>
@@ -664,57 +679,57 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-aging-biology">
-<h1><a class="toc-backref" href="#id140"><span class="section-number">1. </span>Introduction to Aging Biology</a><a class="headerlink" href="#introduction-to-aging-biology" title="Permalink to this headline">#</a></h1>
+<h1><a class="toc-backref" href="#id170"><span class="section-number">1. </span>Introduction to Aging Biology</a><a class="headerlink" href="#introduction-to-aging-biology" title="Permalink to this headline">#</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#introduction-to-aging-biology" id="id140">Introduction to Aging Biology</a></p>
+<li><p><a class="reference internal" href="#introduction-to-aging-biology" id="id170">Introduction to Aging Biology</a></p>
 <ul>
-<li><p><a class="reference internal" href="#introduction" id="id141">Introduction</a></p></li>
-<li><p><a class="reference internal" href="#primary-hallmarks" id="id142">Primary hallmarks</a></p>
+<li><p><a class="reference internal" href="#introduction" id="id171">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#primary-hallmarks" id="id172">Primary hallmarks</a></p>
 <ul>
-<li><p><a class="reference internal" href="#genomic-instability" id="id143">Genomic instability</a></p>
+<li><p><a class="reference internal" href="#genomic-instability" id="id173">Genomic instability</a></p>
 <ul>
-<li><p><a class="reference internal" href="#evolutionary-role-of-mutations" id="id144">Evolutionary role of mutations</a></p></li>
-<li><p><a class="reference internal" href="#how-mutations-accumulate" id="id145">How mutations accumulate</a></p></li>
+<li><p><a class="reference internal" href="#evolutionary-role-of-mutations" id="id174">Evolutionary role of mutations</a></p></li>
+<li><p><a class="reference internal" href="#how-mutations-accumulate" id="id175">How mutations accumulate</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#telomere-shortening" id="id146">Telomere shortening</a></p></li>
-<li><p><a class="reference internal" href="#epigenetic-alterations" id="id147">Epigenetic alterations</a></p>
+<li><p><a class="reference internal" href="#telomere-shortening" id="id176">Telomere shortening</a></p></li>
+<li><p><a class="reference internal" href="#epigenetic-alterations" id="id177">Epigenetic alterations</a></p>
 <ul>
-<li><p><a class="reference internal" href="#dna-methylation" id="id148">DNA methylation</a></p></li>
-<li><p><a class="reference internal" href="#heterochromatin" id="id149">Heterochromatin</a></p></li>
-<li><p><a class="reference internal" href="#transposons-reactivation" id="id150">Transposons reactivation</a></p></li>
+<li><p><a class="reference internal" href="#dna-methylation" id="id178">DNA methylation</a></p></li>
+<li><p><a class="reference internal" href="#heterochromatin" id="id179">Heterochromatin</a></p></li>
+<li><p><a class="reference internal" href="#transposons-reactivation" id="id180">Transposons reactivation</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#loss-of-proteostasis" id="id151">Loss of proteostasis</a></p></li>
-<li><p><a class="reference internal" href="#disabled-autophagy" id="id152">Disabled autophagy</a></p></li>
+<li><p><a class="reference internal" href="#loss-of-proteostasis" id="id181">Loss of proteostasis</a></p></li>
+<li><p><a class="reference internal" href="#disabled-autophagy" id="id182">Disabled autophagy</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#antagonistic-hallmarks" id="id153">Antagonistic hallmarks</a></p>
+<li><p><a class="reference internal" href="#antagonistic-hallmarks" id="id183">Antagonistic hallmarks</a></p>
 <ul>
-<li><p><a class="reference internal" href="#cellular-senescence" id="id154">Cellular senescence</a></p></li>
-<li><p><a class="reference internal" href="#disrupted-nutrient-signaling" id="id155">Disrupted nutrient signaling</a></p></li>
-<li><p><a class="reference internal" href="#mitochondrial-dysfunction-oxidant-stress" id="id156">Mitochondrial dysfunction: oxidant stress</a></p></li>
+<li><p><a class="reference internal" href="#cellular-senescence" id="id184">Cellular senescence</a></p></li>
+<li><p><a class="reference internal" href="#disrupted-nutrient-signaling" id="id185">Disrupted nutrient signaling</a></p></li>
+<li><p><a class="reference internal" href="#mitochondrial-dysfunction-oxidant-stress" id="id186">Mitochondrial dysfunction: oxidant stress</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#integrative-hallmarks" id="id157">Integrative hallmarks</a></p>
+<li><p><a class="reference internal" href="#integrative-hallmarks" id="id187">Integrative hallmarks</a></p>
 <ul>
-<li><p><a class="reference internal" href="#stem-cell-exhaustion" id="id158">Stem cell exhaustion</a></p></li>
-<li><p><a class="reference internal" href="#altered-intercellular-signaling" id="id159">Altered intercellular signaling</a></p></li>
-<li><p><a class="reference internal" href="#chronic-inflammation" id="id160">Chronic inflammation</a></p></li>
-<li><p><a class="reference internal" href="#dysbiosis" id="id161">Dysbiosis</a></p></li>
+<li><p><a class="reference internal" href="#stem-cell-exhaustion" id="id188">Stem cell exhaustion</a></p></li>
+<li><p><a class="reference internal" href="#altered-intercellular-signaling" id="id189">Altered intercellular signaling</a></p></li>
+<li><p><a class="reference internal" href="#chronic-inflammation" id="id190">Chronic inflammation</a></p></li>
+<li><p><a class="reference internal" href="#dysbiosis" id="id191">Dysbiosis</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#conclusions" id="id162">Conclusions</a></p></li>
-<li><p><a class="reference internal" href="#credits" id="id163">Credits</a></p></li>
-<li><p><a class="reference internal" href="#references" id="id164">References</a></p></li>
+<li><p><a class="reference internal" href="#conclusions" id="id192">Conclusions</a></p></li>
+<li><p><a class="reference internal" href="#credits" id="id193">Credits</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id194">References</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id141"><span class="section-number">1.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id171"><span class="section-number">1.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>It has only (already?!) been 40 years since a new era in ageing research was inaugurated following the isolation of the first long-lived strains of Caenorhabditis elegans (C. elegans) <span id="id1">[<a class="reference internal" href="#id110" title="Michael R. Klass. A method for the isolation of longevity mutants in the nematode Caenorhabditis elegans and initial results. Mechanisms of Ageing and Development, 22(3):279–286, July 1983. doi:10.1016/0047-6374(83)90082-9.">Klass, 1983</a>]</span>. More and more people are studying ageing hoping to extend healthy lifespan of humankind.
 But what is ageing exactly? It is a complex process, which continue throughout the whole life and leads to the death of individual. It is characterized by time-dependent decline in functional capacity <span id="id2">[<a class="reference internal" href="#id115" title="Carlos López-Otín, Maria A. Blasco, Linda Partridge, Manuel Serrano, and Guido Kroemer. The Hallmarks of Aging. Cell, 153(6):1194–1217, June 2013. doi:10.1016/j.cell.2013.05.039.">López-Otín <em>et al.</em>, 2013</a>]</span> and accumulation of molecular damage <span id="id3">[<a class="reference internal" href="#id128" title="Kirsten Seale, Steve Horvath, Andrew Teschendorff, Nir Eynon, and Sarah Voisin. Making sense of the ageing methylome. Nat Rev Genet, 23(10):585–605, October 2022. doi:10/grvsxr.">Seale <em>et al.</em>, 2022</a>]</span>. It is estimated there will be 2.1 billion elderly by 2050 (United Nations, 2017) and age-associated diseases double in cases every 5 years. It is also our unhealthy eating habits getting worse (Atallah et al., 2018), our physical activity continue to decrease (Fiorito et al., 2019), not to mention pollution impact (Santangelo et al., 2011).
 There are two major paradigms around ageing: the first one is seeing ageing as a consequence of developmental process, for example, some mutations can provide with some advantages early in live, but become pathological later in life <span id="id4">[<a class="reference internal" href="#id132" title="Jan Vijg and Xiao Dong. Pathogenic Mechanisms of Somatic Mutation and Genome Mosaicism in Aging. Cell, 182(1):12–23, July 2020. doi:10.1016/j.cell.2020.06.024.">Vijg and Dong, 2020</a>]</span>. The second paradigm is ageing resulting from a stochastic process of damage accumulation <span id="id5">[<a class="reference internal" href="#id128" title="Kirsten Seale, Steve Horvath, Andrew Teschendorff, Nir Eynon, and Sarah Voisin. Making sense of the ageing methylome. Nat Rev Genet, 23(10):585–605, October 2022. doi:10/grvsxr.">Seale <em>et al.</em>, 2022</a>]</span>.
@@ -746,9 +761,9 @@ The common thing between these two theories is cellular and molecular impairment
 </figure>
 </section>
 <section id="primary-hallmarks">
-<h2><a class="toc-backref" href="#id142"><span class="section-number">1.2. </span>Primary hallmarks</a><a class="headerlink" href="#primary-hallmarks" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id172"><span class="section-number">1.2. </span>Primary hallmarks</a><a class="headerlink" href="#primary-hallmarks" title="Permalink to this headline">#</a></h2>
 <section id="genomic-instability">
-<h3><a class="toc-backref" href="#id143"><span class="section-number">1.2.1. </span>Genomic instability</a><a class="headerlink" href="#genomic-instability" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id173"><span class="section-number">1.2.1. </span>Genomic instability</a><a class="headerlink" href="#genomic-instability" title="Permalink to this headline">#</a></h3>
 <p>Genomic instability is when DNA repair system is unable to handle with accumulated DNA damage both exogenous and endogenous (<a class="reference internal" href="#cell-integrity-1"><span class="std std-numref">Fig. 1.3</span></a>).</p>
 <figure class="align-default" id="cell-integrity-1">
 <img alt="../_images/Loss_of_cellular_integrity_1.png" src="../_images/Loss_of_cellular_integrity_1.png" />
@@ -771,14 +786,14 @@ The common thing between these two theories is cellular and molecular impairment
 </figcaption>
 </figure>
 <section id="evolutionary-role-of-mutations">
-<h4><a class="toc-backref" href="#id144"><span class="section-number">1.2.1.1. </span>Evolutionary role of mutations</a><a class="headerlink" href="#evolutionary-role-of-mutations" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id174"><span class="section-number">1.2.1.1. </span>Evolutionary role of mutations</a><a class="headerlink" href="#evolutionary-role-of-mutations" title="Permalink to this headline">#</a></h4>
 <p>But why reparation system is unable to handle DNA damage?
 The first thing is that efficiency of reparation decline with age <span id="id11">[<a class="reference internal" href="#id120" title="Karl N. Miller, Stella G. Victorelli, Hanna Salmonowicz, Nirmalya Dasgupta, Tianhui Liu, João F. Passos, and Peter D. Adams. Cytoplasmic DNA: sources, sensing, and role in aging and disease. Cell, 184(22):5506–5526, October 2021. doi:10.1016/j.cell.2021.09.034.">Miller <em>et al.</em>, 2021</a>]</span> so DNA reparation machinery is unable to handle DNA damage. But the second reason is that somatic mutagenesis plays important roles in development and may be beneficial early in life.
 For example, recent paper <span id="id12">[<a class="reference internal" href="#id138" title="Riley J. Mangan, Fernando C. Alsina, Federica Mosti, Jesús Emiliano Sotelo-Fonseca, Daniel A. Snellings, Eric H. Au, Juliana Carvalho, Laya Sathyan, Graham D. Johnson, Timothy E. Reddy, Debra L. Silver, and Craig B. Lowe. Adaptive sequence divergence forged new neurodevelopmental enhancers in humans. Cell, 185(24):4587-4603.e23, November 2022. doi:10.1016/j.cell.2022.10.016.">Mangan <em>et al.</em>, 2022</a>]</span>  demonstrated role of “human ancestor quickly evolved regions” (HAQERs) in hominin divergence from human-chimpanzee ancestor (HCA).  According to findings, these regions have elevated mutation rates and undergo positive selection. Due to that, HAQERs obtained both hominin-unique enhancers envolved into the development of cerebral cortex and variants that are linked to range of human-specific diseases such as neuroblastoma, bipolar disorder and schizophrenia.
 Another example is somatic hypermutation in immune system. This phenomena envolved in production of highly-specific antibodies through accumulation of point mutations at a very high rate in the V-regions of the immunoglobulin-coding genes of B lymphocytes <span id="id13">[<a class="reference internal" href="#id139" title="Valerie H. Odegard and David G. Schatz. Targeting of somatic hypermutation. Nature Reviews Immunology, 6(8):573–583, August 2006. doi:10.1038/nri1896.">Odegard and Schatz, 2006</a>]</span></p>
 </section>
 <section id="how-mutations-accumulate">
-<h4><a class="toc-backref" href="#id145"><span class="section-number">1.2.1.2. </span>How mutations accumulate</a><a class="headerlink" href="#how-mutations-accumulate" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id175"><span class="section-number">1.2.1.2. </span>How mutations accumulate</a><a class="headerlink" href="#how-mutations-accumulate" title="Permalink to this headline">#</a></h4>
 <p>The main question remains how a single mutation inside one cell can cause such a damage? There are three interrelated mechanisms <span id="id14">[<a class="reference internal" href="#id132" title="Jan Vijg and Xiao Dong. Pathogenic Mechanisms of Somatic Mutation and Genome Mosaicism in Aging. Cell, 182(1):12–23, July 2020. doi:10.1016/j.cell.2020.06.024.">Vijg and Dong, 2020</a>]</span> addressing this question (<a class="reference internal" href="#pathogenic-mosaicism"><span class="std std-numref">Fig. 1.6</span></a>):</p>
 <ol class="simple">
 <li><p>Clonal expansion - cells with mutation can become a substantial percentage of all cells in the tissue (blue cells at the  <a class="reference internal" href="#pathogenic-mosaicism"><span class="std std-numref">Fig. 1.6</span></a>). If mutation is associated with Mendelian diseases, their effects may be even greater</p></li>
@@ -815,7 +830,7 @@ Another example is somatic hypermutation in immune system. This phenomena envolv
 </section>
 </section>
 <section id="telomere-shortening">
-<h3><a class="toc-backref" href="#id146"><span class="section-number">1.2.2. </span>Telomere shortening</a><a class="headerlink" href="#telomere-shortening" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id176"><span class="section-number">1.2.2. </span>Telomere shortening</a><a class="headerlink" href="#telomere-shortening" title="Permalink to this headline">#</a></h3>
 <p>Mammalian telomers consist of tandem repetitive nucleotide sequence, which is TTAGGG, measuring several to tens of kilobases and terminating at the 30 end in a single-stranded 75 to 300-nt overhang enriched in guanine nucleotides, which form a cap structure that functions to maintain the integrity of chromosomes (<a class="reference internal" href="#telomere-structure"><span class="std std-numref">Fig. 1.10</span></a>)</p>
 <figure class="align-default" id="telomere-structure">
 <img alt="../_images/telomere_structure-1.jpg" src="../_images/telomere_structure-1.jpg" />
@@ -832,7 +847,7 @@ Another example is somatic hypermutation in immune system. This phenomena envolv
 </figure>
 </section>
 <section id="epigenetic-alterations">
-<h3><a class="toc-backref" href="#id147"><span class="section-number">1.2.3. </span>Epigenetic alterations</a><a class="headerlink" href="#epigenetic-alterations" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id177"><span class="section-number">1.2.3. </span>Epigenetic alterations</a><a class="headerlink" href="#epigenetic-alterations" title="Permalink to this headline">#</a></h3>
 <p>Epigenetics is a way to regulate gene expression via posttranslational histone modifications, DNA methylation, non-coding RNA and chromatin remodeling (the latter is sometimes separated from epigenetics into chromatin folding). A lot of proteins are envolved into gene regulations: enzymes, such as DNA methyltransferases, histone deacetylases; chromatin remodellers, ncRNA-processing enzymes, histones themselves etc. Epigenetic modifications can lead to changes in gene expression, which can influence many age-related processes, such as cell senescence, DNA damage, and oxidative stress.</p>
 <p>Most aging epigenetic changes are associated with reactivation of silenced regions: decreased global DNA methylation levels, active histone acetylase enzymes, heterochromatin relaxation, transposons derepression. It is important to note that epigenetics alterations mediate effects of several well-known pathways involved in ageing, for example, histone demethylases effect insulin/insulin growth factor-1 (IGF-1) signaling pathway, members of SIRT family are histone deacetylaseses.</p>
 <figure class="align-default" id="loss-of-cellular-integrity">
@@ -842,7 +857,7 @@ Another example is somatic hypermutation in immune system. This phenomena envolv
 </figcaption>
 </figure>
 <section id="dna-methylation">
-<h4><a class="toc-backref" href="#id148"><span class="section-number">1.2.3.1. </span>DNA methylation</a><a class="headerlink" href="#dna-methylation" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id178"><span class="section-number">1.2.3.1. </span>DNA methylation</a><a class="headerlink" href="#dna-methylation" title="Permalink to this headline">#</a></h4>
 <p>DNA methylation is a process in which methyl groups are added to DNA, mainly at promoter regions, that mostly lead to DNA silencing.</p>
 <p>Majority of age-related changes in DNA methylation affect introns and intergenic regions, including those of several tumor suppressor genes and Polycomb target genes.
 Epigenetic clocks based on DNA methylation status at selected sites have been introduced to predict chronological age and mortality risk, as well as to evaluate interventions that may extend human lifespan.</p>
@@ -854,7 +869,7 @@ Epigenetic clocks based on DNA methylation status at selected sites have been in
 </figure>
 </section>
 <section id="heterochromatin">
-<h4><a class="toc-backref" href="#id149"><span class="section-number">1.2.3.2. </span>Heterochromatin</a><a class="headerlink" href="#heterochromatin" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id179"><span class="section-number">1.2.3.2. </span>Heterochromatin</a><a class="headerlink" href="#heterochromatin" title="Permalink to this headline">#</a></h4>
 <p>Heterochromatin is a type of tightly packed DNA that is associated with gene silencing. It has been suggested that heterochromatin may play a role in aging by increasing the rate of epigenetic alterations, which can lead to age-related diseases. Additionally, heterochromatin has been linked to telomere-mitochondrial dysfunction and the PGC-1alpha pathway of aging, suggesting a potential role in the aging process.</p>
 <p>Mutations or abberant DNA methylation (along with many other factors) can trigger heterochromatin loss, so that previously silenced regions start to transcribe.</p>
 <figure class="align-default" id="heterochromatin-and-aging">
@@ -865,7 +880,7 @@ Epigenetic clocks based on DNA methylation status at selected sites have been in
 </figure>
 </section>
 <section id="transposons-reactivation">
-<h4><a class="toc-backref" href="#id150"><span class="section-number">1.2.3.3. </span>Transposons reactivation</a><a class="headerlink" href="#transposons-reactivation" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id180"><span class="section-number">1.2.3.3. </span>Transposons reactivation</a><a class="headerlink" href="#transposons-reactivation" title="Permalink to this headline">#</a></h4>
 <p>Heterochromatin loss leads to transposon reactivation, active transposons can migrate to other cells causing senescence, transposons in cytospasm can promote inflammation, transposons can integrate to new locations inside genome.</p>
 <p>Retrotransposons consist of long interspersed nuclear elements (LINEs), which encode the required proteins for retrotransposition, and SINEs, which are short, non-coding RNAs that hijack the LINE protein machinery. Retrotransposons are reactivated in senescent cells and during lifetime and generate deleterious effects through genetic and epigenetic changes or by activation of immune pathways triggered after identification of retrotransposon nucleic acids as foreign DNA.</p>
 <figure class="align-default" id="mechanisms-of-retrotransposon-activation">
@@ -877,7 +892,7 @@ Epigenetic clocks based on DNA methylation status at selected sites have been in
 </section>
 </section>
 <section id="loss-of-proteostasis">
-<h3><a class="toc-backref" href="#id151"><span class="section-number">1.2.4. </span>Loss of proteostasis</a><a class="headerlink" href="#loss-of-proteostasis" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id181"><span class="section-number">1.2.4. </span>Loss of proteostasis</a><a class="headerlink" href="#loss-of-proteostasis" title="Permalink to this headline">#</a></h3>
 <p>Intracellular proteostasis can be disrupted due to the enhanced production of erroneously translated, misfolded or incomplete proteins. Another mechanism driving the collapse of the proteostasis network resides in slowed translation elongation and cumulative oxidative damage of proteins, increasingly distracting the chaperones from folding healthy proteins required for cellular fitness. In addition, numerous age-related neurodegenerative diseases including ALS and Alzheimer can be caused by mutations in proteins that render them intrinsically prone to misfolding and aggregation, hence saturating the mechanisms of protein repair, removal, and turnover that are required for maintenance of the healthy state.</p>
 <figure class="align-default" id="protein-syntesis-aging-graph">
 <img alt="../_images/protein_syntesis_aging_graph.png" src="../_images/protein_syntesis_aging_graph.png" />
@@ -887,7 +902,7 @@ Epigenetic clocks based on DNA methylation status at selected sites have been in
 </figure>
 </section>
 <section id="disabled-autophagy">
-<h3><a class="toc-backref" href="#id152"><span class="section-number">1.2.5. </span>Disabled autophagy</a><a class="headerlink" href="#disabled-autophagy" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id182"><span class="section-number">1.2.5. </span>Disabled autophagy</a><a class="headerlink" href="#disabled-autophagy" title="Permalink to this headline">#</a></h3>
 <p>Macroautophagy is characterized by capturing cytoplasmic material into the autophagosomes, which later fuse with lysosomes for the digestion of its content. It is not only involved in proteostasis but also affects non-proteinaceous macromolecules (ectopic cytosolic DNA, lipid vesicles, and glycogen) and entire organelles (mitophagy, lysophagy, reticulophagy, pexophagy), as well as invading pathogens (xenophagy). Moreover, autophagy is a highly selective cellular pathway that is associated with tissue and cellular homeostasis. Selective autophagy can be further divided into many subtypes on the basis of the specific cargos involved. These subtypes target various macromolecules (glycophagy and lipophagy) (<a class="reference internal" href="#autophagy-mechanisms"><span class="std std-numref">Fig. 1.17</span></a>, pathways (2)–(5)), mitochondria (mitophagy) (<a class="reference internal" href="#autophagy-mechanisms"><span class="std std-numref">Fig. 1.17</span></a>, pathway (6)), the endoplasmic reticulum (ER) (ER-phagy) (<a class="reference internal" href="#autophagy-mechanisms"><span class="std std-numref">Fig. 1.17</span></a>, pathway (7)), parts of the nucleus (nucleophagy) (<a class="reference internal" href="#autophagy-mechanisms"><span class="std std-numref">Fig. 1.17</span></a>, pathway (8)), pathogens (xenophagy) (<a class="reference internal" href="#autophagy-mechanisms"><span class="std std-numref">Fig. 1.17</span></a> pathway (9)) and lysosomes themselves (lysophagy) (<a class="reference internal" href="#autophagy-mechanisms"><span class="std std-numref">Fig. 1.17</span></a>, pathway (10)).</p>
 <figure class="align-default" id="autophagy-mechanisms">
 <img alt="../_images/autophagy_mechanisms.png" src="../_images/autophagy_mechanisms.png" />
@@ -901,9 +916,9 @@ Reduction of autophagic flux may participate in the accumulation of protein aggr
 </section>
 </section>
 <section id="antagonistic-hallmarks">
-<h2><a class="toc-backref" href="#id153"><span class="section-number">1.3. </span>Antagonistic hallmarks</a><a class="headerlink" href="#antagonistic-hallmarks" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id183"><span class="section-number">1.3. </span>Antagonistic hallmarks</a><a class="headerlink" href="#antagonistic-hallmarks" title="Permalink to this headline">#</a></h2>
 <section id="cellular-senescence">
-<h3><a class="toc-backref" href="#id154"><span class="section-number">1.3.1. </span>Cellular senescence</a><a class="headerlink" href="#cellular-senescence" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id184"><span class="section-number">1.3.1. </span>Cellular senescence</a><a class="headerlink" href="#cellular-senescence" title="Permalink to this headline">#</a></h3>
 <p>Cellular senescence is characterized by stable proliferative arrest mediated by the activation of the tumor suppressors TP53 and CDKN2A/p16, and their downstream effectors CDKN1A/p21 and retinoblastoma-1 (RB1) family proteins, respectively.</p>
 <figure class="align-default" id="senescence-inducing-stimuli-and-biomarkers">
 <img alt="../_images/Senescence-inducing_stimuli_and_biomarkers.png" src="../_images/Senescence-inducing_stimuli_and_biomarkers.png" />
@@ -921,7 +936,7 @@ Reduction of autophagic flux may participate in the accumulation of protein aggr
 </figure>
 </section>
 <section id="disrupted-nutrient-signaling">
-<h3><a class="toc-backref" href="#id155"><span class="section-number">1.3.2. </span>Disrupted nutrient signaling</a><a class="headerlink" href="#disrupted-nutrient-signaling" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id185"><span class="section-number">1.3.2. </span>Disrupted nutrient signaling</a><a class="headerlink" href="#disrupted-nutrient-signaling" title="Permalink to this headline">#</a></h3>
 <p>The nutrient-sensing network is highly conserved in evolution. It includes extracellular ligands, such as insulins and IGFs, the receptor tyrosine kinases with which they interact, as well as intracellular signaling cascades. These cascades involve the PI3K-AKT and the Ras-MEK-ERK pathways, as well as transcription factors, including FOXOs and E26 factors, which transactivate genes involved in diverse cellular processes. The mechanistic target of rapamycin (mTOR) complex-1 (MTORC1) <span id="id18">[]</span> responds to nutrients, including glucose and amino acids, and to stressors such as hypoxia and low energy to modulate the activity of numerous proteins including transcription factors such as SREBP and TFEB. This network is a central regulator of cellular activity, including autophagy, mRNA and ribosome biogenesis, protein synthesis, glucose, nucleotide and lipid metabolism, mitochondrial biogenesis, and proteasomal activity. Network activity responds to nutrition and stress status by activating anabolism if nutrients are present and stress is low or by inducing cellular defense pathways in response to stress and nutrient-shortage.</p>
 <figure class="align-default" id="mtor-pathway">
 <img alt="../_images/mTOR_pathway.png" src="../_images/mTOR_pathway.png" />
@@ -932,16 +947,16 @@ Reduction of autophagic flux may participate in the accumulation of protein aggr
 <p>Diet is one of the most practical targets for interventions into human aging. Mechanistically, overnutrition: (1) triggers intracellular nutrient sensors, such as MTORC1 (activated by leucine and other amino acids), and the acetyltransferase EP300 (activated by acetyl coenzyme A); (2) inhibits sensors that detect nutrient scarcity, such as AMP-activated kinase (AMPK) and the deacetylases SIRT1 and SIRT3 (which respond to NAD”); and (3) abolishes catabolic reactions (glycogenolysis, proteolysis for gluconeogenesis, and lipolysis coupled to ketogenesis) with consequent suppression of adaptive cellular stress responses, including autophagy, antioxidant defense, and DNA repair. Conversely, fasting and dietary restriction inhibit MTORC1 and EP300; activate AMPK, SIRT1, and SIRT3; and stimulate adaptive cellular stress responses as they suppress the somatotrophic axis and extend longevity in multiple model organisms including primates.</p>
 </section>
 <section id="mitochondrial-dysfunction-oxidant-stress">
-<h3><a class="toc-backref" href="#id156"><span class="section-number">1.3.3. </span>Mitochondrial dysfunction: oxidant stress</a><a class="headerlink" href="#mitochondrial-dysfunction-oxidant-stress" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id186"><span class="section-number">1.3.3. </span>Mitochondrial dysfunction: oxidant stress</a><a class="headerlink" href="#mitochondrial-dysfunction-oxidant-stress" title="Permalink to this headline">#</a></h3>
 <p>Mitochondrial function declines, leading to diminished energy (ATP) production as well as increased intracellular ROS.</p>
 <p>Model: Direct evidence of a role for mitochondrial decline in driving processes of ageing derives from mice harboring mutations in the mitochondrial DNA polymerase subunit gamma (POLG).
 These mutant mice show reduced mitochondrial abundance and abnormal mitochondrial morphology (e.g., fragmented cristae and disrupted external membrane; Trifunovic et al., 2004) and exhibit premature ageing (e.g., alopecia, kyphosis, reduced body weight, reduced subcutaneous fat, reduced bone mineral density consistent with osteoporosis, anemia, and cardiomyopathy). Notably, the premature ageing phenotypes associated with mitochondrial dysfunction mirror those of telomerase-deficient mice, p53-hyperactivated mice (Tyner et al., 2002), and PGC1a/ b-null mice (Lai et al., 2008).</p>
 </section>
 </section>
 <section id="integrative-hallmarks">
-<h2><a class="toc-backref" href="#id157"><span class="section-number">1.4. </span>Integrative hallmarks</a><a class="headerlink" href="#integrative-hallmarks" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id187"><span class="section-number">1.4. </span>Integrative hallmarks</a><a class="headerlink" href="#integrative-hallmarks" title="Permalink to this headline">#</a></h2>
 <section id="stem-cell-exhaustion">
-<h3><a class="toc-backref" href="#id158"><span class="section-number">1.4.1. </span>Stem cell exhaustion</a><a class="headerlink" href="#stem-cell-exhaustion" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id188"><span class="section-number">1.4.1. </span>Stem cell exhaustion</a><a class="headerlink" href="#stem-cell-exhaustion" title="Permalink to this headline">#</a></h3>
 <p>Aging is associated with reduced tissue renewal at steady state, as well as with impaired tissue repair upon injury, which rely to a large extent on injury-induced cellular de-differentiation and plasticity.</p>
 <p>Cellular reprogramming toward pluripotency consists in the conversion of adult somatic cells into embryonic pluripotent cells (known as induced pluripotent stem cells or iPSCs) by the concomitant action of four externally transduced transcription factors, namely, OCT4, SOX2, KLF4, and MYC (OSKM). Full reprogramming not only implies a change of cellular identity but also cellular rejuvenation, characterized by a number of aging features that are reset to the embryonic state, as indicated by p16 reduction, extension of telomeres, and resetting of the DNA methylation clock. Interestingly, rejuvenation occurs in a progressive fashion starting shortly after the initiation of de-differentiation. Indeed, it is possible to initiate reprogramming with OSKM, interrupt the process at an intermediate state, and allow cells to return to their original identity. This transient cellular perturbation, variously known as “partial,” “transient,” or “intermediate” reprogramming, is able to rejuvenate cellular markers of aging such as the DNA methylation clock, DNA damage, epigenetic patterns, and aging-associated changes in the transcriptome, both in vitro and in vivo, and recapitulates features of natural tissue repair.</p>
 <figure class="align-default" id="id19">
@@ -952,12 +967,12 @@ These mutant mice show reduced mitochondrial abundance and abnormal mitochondria
 </figure>
 </section>
 <section id="altered-intercellular-signaling">
-<h3><a class="toc-backref" href="#id159"><span class="section-number">1.4.2. </span>Altered intercellular signaling</a><a class="headerlink" href="#altered-intercellular-signaling" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id189"><span class="section-number">1.4.2. </span>Altered intercellular signaling</a><a class="headerlink" href="#altered-intercellular-signaling" title="Permalink to this headline">#</a></h3>
 <p>Aging is coupled to progressive alterations in intercellular communication that increase the noise in the system and compromise homeostatic and hormetic regulation. Although the primary causes of such alterations are cell intrinsic, as this is particularly well documented for the SASP, these derangements in intercellular communication ultimately sum up to a hallmark on its own that bridges the cell-intrinsic hallmarks to meta-cellular hallmarks including the chronification of inflammatory reactions coupled to the decline of immunosurveillance against pathogens and premalignant cells, as well as the alterations in the bidirectional communication between human genome and microbiome, which finally results in dysbiosis.</p>
 <p>It was noted that single transfusion of old blood induces features of aging in young mice within a few days, and the simple dilution of the blood of old mice with saline buffer containing 5% albumin induces rejuvenation in multiple tissues, indicating the existence of circulating factors that favor the aging process. Among the pro-aging blood-borne factors, the chemokine CCL11/eotaxin and the inflammation related protein p2-microglobulin reduce neurogenesis, IL-6 and TGF-beta impair hematopoiesis, and the complement factor C1q compromises muscle repair. Theoretically, the neutralization of these factors might have potent anti-aging effects.</p>
 </section>
 <section id="chronic-inflammation">
-<h3><a class="toc-backref" href="#id160"><span class="section-number">1.4.3. </span>Chronic inflammation</a><a class="headerlink" href="#chronic-inflammation" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id190"><span class="section-number">1.4.3. </span>Chronic inflammation</a><a class="headerlink" href="#chronic-inflammation" title="Permalink to this headline">#</a></h3>
 <p>Inflammation increases during aging (“inflammaging”) with systemic manifestations, as well as with pathological local phenotypes including arteriosclerosis, neuroinflammation, osteoarthritis, and intervertebral discal degeneration. Accordingly, the circulating concentrations of inflammatory cytokines and biomarkers (such as CRP) increase with aging. Elevated IL-6 levels in plasma constitute a predictive biomarker of allcause mortality in aging human populations.</p>
 <p>Inflammaging occurs as a result of multiple derangements that stem from all the other hallmarks. For example, inflammation is triggered by the translocation of nuclear and mtDNA, into the cytosol where it stimulates pro-inflammatory DNA sensors, especially when autophagy is ineffective and hence unable to intercept ectopic DNA. Genomic instability favors clonal hematopoiesis of indeterminate potential (CHIP), with the expansion of myeloid cells that often bear a pro-inflammatory phenotype, driving for instance cardiovascular aging.</p>
 <figure class="align-default" id="aging-inflammation">
@@ -969,7 +984,7 @@ These mutant mice show reduced mitochondrial abundance and abnormal mitochondria
 <p>Overexpression of pro-inflammatory proteins can be secondary to epigenetic dysregulation, deficient proteostasis, or disabled autophagy. Excessive trophic signals resulting in activation of the GH/IGF1/PI3K/AKT/mTORC1 axis trigger inflammation. In addition, inflammation is favored by the SASP secondary to the accrual of senescent cells, as well as by the accumulation of extracellular debris and infectious pathogens, which are not cleared due to senescence, and by exhaustion of myeloid and lymphoid cells. Finally, inflammaging is also exacerbated by perturbations of circadian rhythms and by intestinal barrier dysfunction.</p>
 </section>
 <section id="dysbiosis">
-<h3><a class="toc-backref" href="#id161"><span class="section-number">1.4.4. </span>Dysbiosis</a><a class="headerlink" href="#dysbiosis" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id191"><span class="section-number">1.4.4. </span>Dysbiosis</a><a class="headerlink" href="#dysbiosis" title="Permalink to this headline">#</a></h3>
 <p>Over recent years, the gut microbiome has emerged as a key factor in multiple physiological processes such as nutrient digestion and absorption, protection against pathogens, and production of essential metabolites including vitamins, amino acid derivatives, secondary bile acids, and short-chain fatty acids (SCFAs). The intestinal microbiota also signals to the peripheral and central nervous systems and other distant organs and strongly impacts on the overall maintenance of host health.</p>
 <p>Disruption of this bacteria-host bidirectional communication results in dysbiosis and contributes to a variety of pathological conditions, such as obesity, type 2 diabetes, ulcerative colitis, neurological disorders, CVDs, and cancer. The progress in this field has generated an enormous interest in exploring gut microbiota alterations in aging.</p>
 <p>The microbial community within the intestinal tract is highly variable among individuals as a consequence of host genetic variants (ethnicity), dietary factors, and lifestyle habits (culture), as well as environmental conditions (geography), which makes difficult to unveil the relationships between microbiota and pleiotropic age-associated disease manifestations. Nonetheless, some meta-analyses have revealed microbiota-disease associations that have been validated across distinct pathologies. Once bacterial diversity is established during childhood, it remains relatively stable during adulthood. However, the architecture and activity of this bacterial community undergoes gradual changes during aging, finally leading to a general decrease in ecological diversity.</p>
@@ -985,16 +1000,16 @@ These mutant mice show reduced mitochondrial abundance and abnormal mitochondria
 </section>
 </section>
 <section id="conclusions">
-<h2><a class="toc-backref" href="#id162"><span class="section-number">1.5. </span>Conclusions</a><a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id192"><span class="section-number">1.5. </span>Conclusions</a><a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
 <p>All the 12 hallmarks of aging are strongly related among each other. For example, genomic instability (including that caused by telomere shortening) crosstalks to epigenetic alterations (e.g., through the loss-of-function mutation of epigenetic modifiers such as TET2), loss of proteostasis (e.g., due to the production of mutated, misfolded proteins), disabled macroautophagy (e.g., through the capacity of autophagy to remove supernumerary centrosomes, extranuclear chromatin, and cytosolic DNA), deregulated nutrient-sensing (e.g., because SIRT6 is an NAD+ sensor involved in DNA repair but also responding to nutrient scarcity), mitochondrial dysfunction (e.g., due to the mutation of mtDNA), cellular senescence (e.g., because DNA damage triggers senescence), altered intercellular communication (e.g., by hampering activation of communication pathways), chronic inflammation (e.g., because CHIP and leakage of DNA into the cytosol induce inflammation), and dysbiosis (e.g., because mutations in intestinal cells favors dysbiosis, whereas specific microbial proteins and metabolites act as mutagens). Similar functional relationships can be listed for most if not all hallmarks of aging, illustrating their formidable interconnectivity.</p>
 <p>Aging is not yet a recognized target for drug development or for treatment. For this reason, the first clinical trials evaluating antiaging interventions must deal with the prevention or mitigation of age-associated pathologies rather than aging itself. Although such trials have been designed to target high-risk populations (such as patients with myocardial infarction and laboratory signs of inflammation in the CANTOS trial or patients with frailty or cardiovascular events to be enrolled in future metformin-related trials) and to measure the manifestation of a second cardiovascular event or aggravation of frailty, there is a risk that they are programmed too late, which is of significant concern. Indeed, at this point, academic geroscience may raise or fall as the function of the outcome of the first randomized, double-blinded phase 3 trials. The new directions of the hallmarks of aging may provide an improved framework for the development of effective interventions aimed at the extension of healthy longevity.</p>
 </section>
 <section id="credits">
-<h2><a class="toc-backref" href="#id163"><span class="section-number">1.6. </span>Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id193"><span class="section-number">1.6. </span>Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
 <p>This text prepared by <a class="reference external" href="https://scholar.google.com/citations?user=JiW914oAAAAJ&amp;hl=ru&amp;oi=ao">Irina Zhegalova</a>.</p>
 </section>
 <section id="references">
-<h2><a class="toc-backref" href="#id164"><span class="section-number">1.7. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id194"><span class="section-number">1.7. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <div class="docutils container" id="id20">
 <dl class="citation">
 <dt class="label" id="id100"><span class="brackets"><a class="fn-backref" href="#id10">1</a></span></dt>

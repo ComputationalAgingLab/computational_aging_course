@@ -1,0 +1,1001 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Omics Data Analysis in Aging: Methylomics &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Survival analysis" href="../stat/survival_analysis.html" />
+    <link rel="prev" title="2. Differential expression analysis" href="../stat/differential_analysis_practice.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to the Computational Biology of Aging coursebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical view
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat/differential_analysis_practice.html">
+   2. Differential expression analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Omics Data Analysis in Aging: Methylomics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
+   Practice - WGCNA on DNA methylation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat/survival_analysis.html">
+   4. Survival analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine learning view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/aging_clocks.html">
+   5. Aging Clocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">
+   Practice - DIY Aging Clocks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic system view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dyn/complex_systems.html">
+   6. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dyn/system_resilience.html">
+   7. System resilience
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/dosi/report.html">
+   Dynamic Organism State Indicator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/meta/report.html">
+   Meta-analysis of aging transcriptomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/parkinson/report.html">
+   Computational Model of Parkinson’s Disease
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/unsupervized/report.html">
+   Unsupervised aging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fmeth/meth.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/meth/meth.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-dna-methylation">
+   3.1. What is DNA methylation?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-measure-dna-methylation">
+   3.2. How to measure DNA methylation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-analyze-dna-methylation">
+   3.3. How to analyze DNA methylation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-processing-and-quality-control">
+     3.3.1. Data processing and quality control
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#processing-bisulfite-sequencing-data">
+       3.3.1.1. Processing bisulfite sequencing data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#processing-microarray-data">
+       3.3.1.2. Processing microarray data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#looking-at-the-data">
+       3.3.1.3. Looking at the data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualisation-and-statistical-analysis">
+   3.4. Visualisation and statistical analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   3.5. Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   3.6. Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   3.7. References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Omics Data Analysis in Aging: Methylomics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-dna-methylation">
+   3.1. What is DNA methylation?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-measure-dna-methylation">
+   3.2. How to measure DNA methylation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-analyze-dna-methylation">
+   3.3. How to analyze DNA methylation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-processing-and-quality-control">
+     3.3.1. Data processing and quality control
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#processing-bisulfite-sequencing-data">
+       3.3.1.1. Processing bisulfite sequencing data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#processing-microarray-data">
+       3.3.1.2. Processing microarray data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#looking-at-the-data">
+       3.3.1.3. Looking at the data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualisation-and-statistical-analysis">
+   3.4. Visualisation and statistical analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   3.5. Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   3.6. Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   3.7. References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="omics-data-analysis-in-aging-methylomics">
+<h1><a class="toc-backref" href="#id193"><span class="section-number">3. </span>Omics Data Analysis in Aging: Methylomics</a><a class="headerlink" href="#omics-data-analysis-in-aging-methylomics" title="Permalink to this headline">#</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#omics-data-analysis-in-aging-methylomics" id="id193">Omics Data Analysis in Aging: Methylomics</a></p>
+<ul>
+<li><p><a class="reference internal" href="#what-is-dna-methylation" id="id194">What is DNA methylation?</a></p></li>
+<li><p><a class="reference internal" href="#how-to-measure-dna-methylation" id="id195">How to measure DNA methylation</a></p></li>
+<li><p><a class="reference internal" href="#how-to-analyze-dna-methylation" id="id196">How to analyze DNA methylation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#data-processing-and-quality-control" id="id197">Data processing and quality control</a></p>
+<ul>
+<li><p><a class="reference internal" href="#processing-bisulfite-sequencing-data" id="id198">Processing bisulfite sequencing data</a></p></li>
+<li><p><a class="reference internal" href="#processing-microarray-data" id="id199">Processing microarray data</a></p></li>
+<li><p><a class="reference internal" href="#looking-at-the-data" id="id200">Looking at the data</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#visualisation-and-statistical-analysis" id="id201">Visualisation and statistical analysis</a></p></li>
+<li><p><a class="reference internal" href="#practice" id="id202">Practice</a></p></li>
+<li><p><a class="reference internal" href="#credits" id="id203">Credits</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id204">References</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="what-is-dna-methylation">
+<h2><a class="toc-backref" href="#id194"><span class="section-number">3.1. </span>What is DNA methylation?</a><a class="headerlink" href="#what-is-dna-methylation" title="Permalink to this headline">#</a></h2>
+<p>Considering the previous chapters, you must have already seen that epigenetics plays a huge role in our lives. And indeed, epigenetic mechanisms tightly control all the intricate behaviors of our cells. Which functions to provide, which range of proteins to produce, and how to react to external signals: all of this information is not encoded explicitly in the DNA sequence, and is regulated by the epigenome <span id="id1">[<a class="reference internal" href="#id163" title="CY Lim, BB Knowles, D Solter, and DM Messerschmidt. Epigenetic control of early mouse development. Current topics in developmental biology, 120:311–360, 2016.">Lim <em>et al.</em>, 2016</a>]</span>. There are a lot of various epigenetic mechanisms including histone modifications, nucleosome remodelling, noncoding RNAs, etc. <span id="id2">[<a class="reference internal" href="#id165" title="Dominik Saul and Robyn Laura Kosinsky. Epigenetics of aging and aging-associated diseases. International journal of molecular sciences, 22(1):401, 2021.">Saul and Kosinsky, 2021</a>]</span>, however, DNA methylation is one of the most investigated types of epigenetic modifications. As you can see from the <a class="reference internal" href="#epigenetics"><span class="std std-numref">Fig. 3.1</span></a> below, we’re descending to the very depths of gene regulation.</p>
+<figure class="align-default" id="epigenetics">
+<a class="reference internal image-reference" href="../_images/epigenetics.png"><img alt="../_images/epigenetics.png" src="../_images/epigenetics.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Overview of epigenetic mechanisms</span><a class="headerlink" href="#epigenetics" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Methyl groups can be attached to the cytosine bases of DNA at the 5th carbon atom of the pyrimidine ring (annotated as 5mC), and it is most commonly observed in a CpG context (cytosine followed by a guanine nucleotide) <span id="id3">[<a class="reference internal" href="#id166" title="Kirsten Seale, Steve Horvath, Andrew Teschendorff, Nir Eynon, and Sarah Voisin. Making sense of the ageing methylome. Nature Reviews Genetics, 23(10):585–605, 2022.">Seale <em>et al.</em>, 2022</a>]</span>, although other types of DNA methylation such as methylation of the nitrogen atom at the 6-th position of adenine (6mA) have also been discovered but remain poorly characterized <span id="id4">[<a class="reference internal" href="#id167" title="Lakshminarayan M Iyer, Dapeng Zhang, and L Aravind. Adenine methylation in eukaryotes: apprehending the complex evolutionary history and functional potential of an epigenetic modification. Bioessays, 38(1):27–40, 2016.">Iyer <em>et al.</em>, 2016</a>]</span>.</p>
+<p>How does methylation appear? Well, there are two options (<a class="reference internal" href="#methylation-pathways"><span class="std std-numref">Fig. 3.2</span></a>). First of all, DNA methyltransferase 3 (DNMT3) can produce methylation at the completely unmethylated sites (so-called <em>de novo</em> mechanism). Secondly, since CpG sites are symmetrical on both strands, it’s easy to imagine some mechanism that would recognise a site that is methylated at one strand and is unmethylated at the opposite one. Such situation occurs, for example, after DNA replication, where the mother strand retains its methylation pattern, but the daughter strand is built from raw nucleotides, so it’s not modified yet. In such cases, UHRF1 recognises these so-called hemi-methylated sites and recruits DNA methyltransferase 1 (DNMT1), which faithfully restores the symmetry <span id="id5">[<a class="reference internal" href="#id168" title="Maxim VC Greenberg and Deborah Bourc’his. The diverse roles of dna methylation in mammalian development and disease. Nature reviews Molecular cell biology, 20(10):590–607, 2019.">Greenberg and Bourc’his, 2019</a>]</span>. Both reactions require S-adenosyl methionine (SAM) as a donor of methyl groups.</p>
+<figure class="align-default" id="methylation-pathways">
+<a class="reference internal image-reference" href="../_images/methylation_pathways.png"><img alt="../_images/methylation_pathways.png" src="../_images/methylation_pathways.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Methylation pathways: <em>de novo</em> methylation by DNMT3A/B, a complex containing a conserved methyltransferase domain (MTase) and two histone reader domains, ATRX-DNMT3-DNMT3L (ADD) and PWPP, is (a) repelled by methylation at H3K4 and recruited by the binding of ADD to unmodified H3K4 in promoters and (b) enhanced by the interaction between PWWP and H3K36me3 in gene bodies; (c) maintenance methylation by DNMT1, a complex in which the catalytic MTase domain is blocked by its own replication foci targeting sequence (RFTS) domain, is mediated by the UHRF1 complex which recognizes hemi-methylated DNA using SRA domain, ubiquitinates H3 tails using RING domain, rescues DNMT1 from self-inhibition by binding to RFTS and targeting it to the ubiquitinated H3, thereby providing access of MTase to the unmethylated CpG site (adapted from <span id="id6">[<a class="reference internal" href="#id168" title="Maxim VC Greenberg and Deborah Bourc’his. The diverse roles of dna methylation in mammalian development and disease. Nature reviews Molecular cell biology, 20(10):590–607, 2019.">Greenberg and Bourc’his, 2019</a>]</span>)</span><a class="headerlink" href="#methylation-pathways" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Demethylation is a less straightforward process. Up to date, no enzyme has been discovered that can directly convert methylated cytosines into unmethylated ones. Instead, ten-eleven translocation (TET) family enzymes can successively oxidize methyl cytosine to hydroxymethyl, to formyl, and to carboxyl cytosine, which is then excised from DNA by thymine DNA glycosylase (TDG). The empty space is recognised by the base excision repair system, which recruits a new cytosine to replace the excised one. In addition to this active pathway, methylation can be removed passively as a result of dilution during DNA replication <span id="id7">[<a class="reference internal" href="#id168" title="Maxim VC Greenberg and Deborah Bourc’his. The diverse roles of dna methylation in mammalian development and disease. Nature reviews Molecular cell biology, 20(10):590–607, 2019.">Greenberg and Bourc’his, 2019</a>]</span>. For example, if we imagine a case, in which, at the same time, cells divide rapidly, they replicate their DNA rapidly, and the UHRF1 or DNMT1 proteins are somehow inhibited, then there will be more and more cells with almost no methylation on both strands. This is what happens, for example, at the early stages of embryonic development.</p>
+<p>DNAm is evolutionarily more ancient than the first eukaryote, nevertheless, it has been lost during evolution multiple times independently, likely because this modification is in fact quite toxic, since it can easily lead to spontaneous oxidative deamination of 5 methylcytosine into thymine <span id="id8">[<a class="reference internal" href="#id167" title="Lakshminarayan M Iyer, Dapeng Zhang, and L Aravind. Adenine methylation in eukaryotes: apprehending the complex evolutionary history and functional potential of an epigenetic modification. Bioessays, 38(1):27–40, 2016.">Iyer <em>et al.</em>, 2016</a>]</span>. This is also the reason why the number of CpG sites in mammals, for example, is 5 times lower than expected from their nucleotide distribution. To make it even worse, DNA methyltransferase enzymes (DNMTs) are prone to produce 3mC instead of 5mC, thereby creating DNA lesions, and only co-evolution of methyltransferases with alkylation repair enzymes apparently allowed DNA methylation to be retained at all <span id="id9">[<a class="reference internal" href="#id168" title="Maxim VC Greenberg and Deborah Bourc’his. The diverse roles of dna methylation in mammalian development and disease. Nature reviews Molecular cell biology, 20(10):590–607, 2019.">Greenberg and Bourc’his, 2019</a>]</span>.</p>
+<p>It is important to note that due to a multitude of pathways and regulators, these processes of methylation (<a class="reference internal" href="#methylation-pathways"><span class="std std-numref">Fig. 3.2</span></a>) and demethylation (<a class="reference internal" href="#demethylation-pathways"><span class="std std-numref">Fig. 3.3</span></a>) are in dynamic equilibrium to each other, and the exact point of balance is established for each CpG site at each cellular state.</p>
+<figure class="align-default" id="demethylation-pathways">
+<a class="reference internal image-reference" href="../_images/demethylation_pathways.png"><img alt="../_images/demethylation_pathways.png" src="../_images/demethylation_pathways.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Demethylation pathways: 5mC can be actively oxidized in a series of reactions mediated by the Ten-eleven-translocase (TET) family proteins to 5-hydroxymethyl- (5hmC), 5-formyl- (5fC), and 5-carboxycytosine (5caC) (noteworthy, each further step of oxidation occurs at a progressively slower rate <span id="id10">[<a class="reference internal" href="#id169" title="Shinsuke Ito, Li Shen, Qing Dai, Susan C Wu, Leonard B Collins, James A Swenberg, Chuan He, and Yi Zhang. Tet proteins can convert 5-methylcytosine to 5-formylcytosine and 5-carboxylcytosine. Science, 333(6047):1300–1303, 2011.">Ito <em>et al.</em>, 2011</a>]</span>), whereupon 5hmC is converted to 5-hydroxymethyl uracil (5hmU) by the APOBEC (apolipoprotein B mRNA editing enzyme, catalytic) family members. 5fC, 5caC, and 5hmU can be excised, primarily by TDG, to yield an apurinic / apyrimidinic site (AP site) which is rescued by the base excision repair (BER) machinery. Alternatively, 5mC can spontaneously convert to thymine via hydrolytic deamination and then be subjected to BER as well <span id="id11">[<a class="reference internal" href="#id170" title="Gonca Bayraktar and Michael R Kreutz. The role of activity-dependent dna demethylation in the adult brain and in neurological disorders. Frontiers in molecular neuroscience, 11:169, 2018.">Bayraktar and Kreutz, 2018</a>]</span>.</span><a class="headerlink" href="#demethylation-pathways" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- 
+```{figure} figs/methylation_chemistry.png
+:name: methylation_chemistry
+DNA methylation biosynthesis from a chemistry viewpoint: (a) cytosine (de)methylation; (b) adenine (de)methylation. For thorough description, read {cite}`liu2023`
+``` -->
+<p>— Work in progress —</p>
+</section>
+<section id="how-to-measure-dna-methylation">
+<h2><a class="toc-backref" href="#id195"><span class="section-number">3.2. </span>How to measure DNA methylation</a><a class="headerlink" href="#how-to-measure-dna-methylation" title="Permalink to this headline">#</a></h2>
+<p>The history of measuring DNA methylation is quite long (<a class="reference internal" href="#dnam-profiling-timeline"><span class="std std-numref">Fig. 3.4</span></a>), and we’re not going to stop at every point of this timeline (if you’re eager to get the historical perspective, see <span id="id12">[<a class="reference internal" href="#id173" title="Shizhao Li and Trygve O Tollefsbol. Dna methylation methods: global dna methylation and methylomic analyses. Methods, 187:28–43, 2021.">Li and Tollefsbol, 2021</a>]</span>), because most of these methods have long sunk into history. For example, even though liquid chromatography and mass spectrometry (LC-MS) is perfectly capable of profiling both 5mC, 5hmC, and all other DNA modifications, is never used for this task today because of its exorbitant costs.</p>
+<figure class="align-default" id="dnam-profiling-timeline">
+<img alt="../_images/dnam_profiling_timeline.jpg" src="../_images/dnam_profiling_timeline.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Evolution of the DNA methylation profiling methods <span id="id13">[<a class="reference internal" href="#id173" title="Shizhao Li and Trygve O Tollefsbol. Dna methylation methods: global dna methylation and methylomic analyses. Methods, 187:28–43, 2021.">Li and Tollefsbol, 2021</a>]</span></span><a class="headerlink" href="#dnam-profiling-timeline" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Electrophoresis and first-generation (Sanger) sequencing methods are plainly outdated, while third-generation sequencing (Oxford Nanopore, PacBio) is too young and underdeveloped yet to be widely accepted by the epigenetics community. Only two methods survived the sands of time: microarray hybridization and second-generation sequencing, both of which we will discuss in more details today.</p>
+<p>Essentially, the main take-home message from this chapter is that the microarrays represent an old technique that is relatively inaccurate, covers a small percentage of CpG sites, and is difficult to compare between different datasets (huge batch effect). However, it is still being upgraded (more CpGs are being included) and widely used, especially in human methylation profiling, for the only reason of its cost and ease of handling. Nevertheless, it is inevitable that the highly accurate and comprehensive (up to 100% of CpGs can be covered) sequencing-based methods, which have already become the “gold standard” in the field, will gradually replace microarrays as long as they become more and more affordable for the wider community.</p>
+<p>Both microarray and sequencing technologies rely on amplification, during which DNA is fragmented, and the fragments are multiplied several times to increase their concentration. Across these steps, DNA methylation cannot be maintained, therefore, DNA should undergo some pretreatment which later allows distinguishing methylated from unmethylated. The main pretreatment methods are based either on:</p>
+<ol class="simple">
+<li><p><strong>restriction enzymes</strong> (MRE-seq; <a class="reference internal" href="#dnam-profiling-restriction-affinity"><span class="std std-numref">Fig. 3.5</span></a>, left column),</p></li>
+<li><p><strong>affinity enrichment</strong> (MeDIP-seq and MBD-seq; <a class="reference internal" href="#dnam-profiling-restriction-affinity"><span class="std std-numref">Fig. 3.5</span></a>, center and right columns), or</p></li>
+<li><p><strong>bisulfite conversion</strong> (BS-seq, <a class="reference internal" href="#dnam-profiling-bisulfite"><span class="std std-numref">Fig. 3.6</span></a>) <span id="id14">[<a class="reference internal" href="#id173" title="Shizhao Li and Trygve O Tollefsbol. Dna methylation methods: global dna methylation and methylomic analyses. Methods, 187:28–43, 2021.">Li and Tollefsbol, 2021</a>, <a class="reference internal" href="#id172" title="Ieva Rauluseviciute, Finn Drabløs, and Morten Beck Rye. Dna methylation data by sequencing: experimental approaches and recommendations for tools and pipelines for data analysis. Clinical epigenetics, 11(1):1–13, 2019.">Rauluseviciute <em>et al.</em>, 2019</a>]</span>.</p></li>
+</ol>
+<p>In MRE-seq, various methylation-sensitive restriction enzymes are used to cleave DNA at unmethylated sites, so DNA region methylation status can be deduced from the number of times a cutting site is observed (the more observations, the more methylated it is). The coverage of CpGs is therefore fully dependent on the range of cleavage sites that can be recognized by the enzymes. In MeDIP-seq, antibodies affine to 5-methylcytosines (or 5-hydroxymethylcytosines) are used to pull (“immunoprecipitate”) only methylated and single-stranded fragments from the solution. The main drawback of this approach is that the antibodies are biased to bind CG-rich fragments, yielding a lot of false negatives in CG-poor regions. In MBD-seq, methyl-CpG-binding domain proteins attach to the double-stranded methylated DNA fragments. Although, they cannot distinguish between 5mC and 5hmC, and bind unstably to the hemi-methylated DNA, yielding false negatives again. Most unfortunately, all affinity-based approaches are unable to profile methylation at single-base resolution, because whole fragments are pulled if they contain methylated CpGs, even though the unmethylated ones are also present.</p>
+<figure class="align-default" id="dnam-profiling-restriction-affinity">
+<img alt="../_images/dnam_profiling_restriction_affinity.jpg" src="../_images/dnam_profiling_restriction_affinity.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Restriction enzymes-based and affinity enrichment-based methods for DNA methylation profiling <span id="id15">[<a class="reference internal" href="#id173" title="Shizhao Li and Trygve O Tollefsbol. Dna methylation methods: global dna methylation and methylomic analyses. Methods, 187:28–43, 2021.">Li and Tollefsbol, 2021</a>]</span></span><a class="headerlink" href="#dnam-profiling-restriction-affinity" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Bisulfite conversion is the most widely adopted approach for DNA methylation profiling. In it, DNA is treated with sodium bisulfite, which converts unmethylated cytosines into uracils (replaced with thymine during amplification), while methylation provides protection from this conversion, so 5mC remains intact. As a result, 5mC will be read as C, while unmethylated C becomes T. Comparing the converted fragments with the reference genome allows resolving modified cytosines from the unmodified ones. The main sources of bias in BS-seq are incomplete BS conversion, BS-induced DNA degradation, PCR amplification, and DNA modifications (both 5mC and 5hmC are protected from BS) <span id="id16">[<a class="reference internal" href="#id173" title="Shizhao Li and Trygve O Tollefsbol. Dna methylation methods: global dna methylation and methylomic analyses. Methods, 187:28–43, 2021.">Li and Tollefsbol, 2021</a>]</span>. Still, it provides the greatest accuracy, reproducibility, and coverage, so our further discussions will only be related to the post-BS conversion approaches.</p>
+<figure class="align-default" id="dnam-profiling-bisulfite">
+<img alt="../_images/dnam_profiling_bisulfite.jpg" src="../_images/dnam_profiling_bisulfite.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.6 </span><span class="caption-text">Schematic representation of the bisulfite conversion reactions and resulting DNA fragments, adapted from <span id="id17">[<a class="reference internal" href="#id171" title="Benjamin D Singer. A practical guide to the measurement and analysis of dna methylation. American journal of respiratory cell and molecular biology, 61(4):417–428, 2019.">Singer, 2019</a>]</span></span><a class="headerlink" href="#dnam-profiling-bisulfite" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Finally, after pre-treatment is done, DNA fragments are sent either to bead chip microarrays or to deep sequencing machines.
+In microarrays, essentially, DNA fragments bind to the arrays of short nucleotide beads attached to a chip. The binding is based on whether these fragments are complementary to the bead sequences. Therefore, DNAm coverage fully depends on whether a particular sequence is present in the beads. The DNAm BeadChip microarray technology is advanced by the Illumina company and has been through four generations with successive increases in methylome coverage: ~1.500 CpGs (in promoters), ~27k CpGs (in promoters), ~450k CpGs (in promoters and proximal enhancers), and ~850k CpGs (adding sites in distal enhancers to the 450k coverage). Both 450k and 850k platforms are still widely used, especially in the human cancer studies.</p>
+<p>Sequencing is done either across the whole genome (whole genome BS, WGBS) or after the isolation of CpG-rich regions by applying restriction enzymes prior to bisulfite conversion (reduced representation BS, RRBS). RRBS was developed as a compromise between covering a large proportion of methylome, while discarding methylation sites far outside of CpG islands, thus substantially reducing the sequencing costs (although some CpG-rich regions remain uncovered due to the restriction enzyme specificity) <span id="id18">[<a class="reference internal" href="#id173" title="Shizhao Li and Trygve O Tollefsbol. Dna methylation methods: global dna methylation and methylomic analyses. Methods, 187:28–43, 2021.">Li and Tollefsbol, 2021</a>]</span>.</p>
+<p>Some of the aforementioned methods have been adapted to profile 5hmC and other DNA modifications in addition to or instead of 5mC. In terms of profiling methylation in single cells, numerous approaches (BS-based, primarily) have been suggested that often combine it with the profiling of transcriptomics, chromatin openness, histone modifications, etc. <span id="id19">[<a class="reference internal" href="#id174" title="Jongseong Ahn, Sunghoon Heo, Jihyun Lee, and Duhee Bang. Introduction to single-cell dna methylation profiling methods. Biomolecules, 11(7):1013, 2021.">Ahn <em>et al.</em>, 2021</a>]</span></p>
+<p>Combinatorial strategies have been gaining attention in the past decade, for they allow profiling DNA methylation simultaneously with other epigenomics or transcriptomics features. For example, in NOMe-seq, the addition of GpC methyltransferase before bisulfite sequencing provides both DNA methylation and nucleosome occupancy (i.e., accessibility of DNA regions for transcription) profiles. NOMe-seq and other techniques, sometimes coupled with capturing single cells (sc), such as ChIP-BS-seq (DNAm + histone modifications), scCOOL-seq (DNAm + chromatin accessibility) scNMT-seq (DNAm + chromatin accessibility + transcriptomics), etc. <span id="id20">[<a class="reference internal" href="#id174" title="Jongseong Ahn, Sunghoon Heo, Jihyun Lee, and Duhee Bang. Introduction to single-cell dna methylation profiling methods. Biomolecules, 11(7):1013, 2021.">Ahn <em>et al.</em>, 2021</a>, <a class="reference internal" href="#id175" title="Liesbeth Minnoye, Georgi K Marinov, Thomas Krausgruber, Lixia Pan, Alexandre P Marand, Stefano Secchia, William J Greenleaf, Eileen EM Furlong, Keji Zhao, Robert J Schmitz, and others. Chromatin accessibility profiling methods. Nature Reviews Methods Primers, 1(1):10, 2021.">Minnoye <em>et al.</em>, 2021</a>]</span> are paving the road for comprehensive understanding of biological processes on a whole new multi-omics level.</p>
+<p>In the end, the choice of DNAm profiling methods stems from the cost-effectiveness considerations and posed biological questions. While it is undoubtedly beneficial to comprehensively profile whole methylomes at single-base resolution using WGBS, the costs of such an endeavor make researchers resort to the less comprehensive and more biased, although far more affordable approaches such as RRBS and microarray technologies. The features, advantages, and disadvantages of the methods we’ve discussed here are displayed in <a class="reference internal" href="#dnam-profiling-comparison"><span class="std std-numref">Table 3.1</span></a> (adapted from <span id="id21">[<a class="reference internal" href="#id173" title="Shizhao Li and Trygve O Tollefsbol. Dna methylation methods: global dna methylation and methylomic analyses. Methods, 187:28–43, 2021.">Li and Tollefsbol, 2021</a>, <a class="reference internal" href="#id172" title="Ieva Rauluseviciute, Finn Drabløs, and Morten Beck Rye. Dna methylation data by sequencing: experimental approaches and recommendations for tools and pipelines for data analysis. Clinical epigenetics, 11(1):1–13, 2019.">Rauluseviciute <em>et al.</em>, 2019</a>, <a class="reference internal" href="#id171" title="Benjamin D Singer. A practical guide to the measurement and analysis of dna methylation. American journal of respiratory cell and molecular biology, 61(4):417–428, 2019.">Singer, 2019</a>]</span>).</p>
+<table class="table" id="dnam-profiling-comparison">
+<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">DNAm profiling methods overview (assembled from the papers mentioned previously in this section)</span><a class="headerlink" href="#dnam-profiling-comparison" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Profiling Method</p></th>
+<th class="head"><p>Pre-treatment</p></th>
+<th class="head"><p>Target</p></th>
+<th class="head"><p>Context</p></th>
+<th class="head"><p>5mC / 5hmC</p></th>
+<th class="head"><p>Coverage</p></th>
+<th class="head"><p>Quantification</p></th>
+<th class="head"><p>Wet lab requirements</p></th>
+<th class="head"><p>Sources of bias</p></th>
+<th class="head"><p>Costs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>MRE-seq</p></th>
+<td><p>Restriction enzymes</p></td>
+<td><p>Cleaves at unmethylated</p></td>
+<td><p>CpG</p></td>
+<td><p>5mC only</p></td>
+<td><p>Low (&lt;6% of CpGs, depends on restriction sites)</p></td>
+<td><p>Relative</p></td>
+<td><p>Low</p></td>
+<td><p>Restriction sites, fragment size</p></td>
+<td><p>Low</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>MeDIP-seq, MBD-seq, etc.</p></th>
+<td><p>Affinity enrichment</p></td>
+<td><p>Pulls at methylated</p></td>
+<td><p>CpG</p></td>
+<td><p>Either</p></td>
+<td><p>Medium (60-85% of CpGs)</p></td>
+<td><p>Relative</p></td>
+<td><p>Low</p></td>
+<td><p>Copy number, CG content, CpG density</p></td>
+<td><p>Low to medium</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Microarray-based</p></th>
+<td><p>Bisulfite conversion</p></td>
+<td><p>Converts C, intact 5mC</p></td>
+<td><p>CpG (specified by probe sequences)</p></td>
+<td><p>Merged</p></td>
+<td><p>Low (specific sites, &lt;5% of CpGs)</p></td>
+<td><p>Absolute</p></td>
+<td><p>Medium (specialized platform)</p></td>
+<td><p>Background correction, inter-array normalization, probe-design bias, dye bias</p></td>
+<td><p>Medium</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>WGBS</p></th>
+<td><p>Bisulfite conversion</p></td>
+<td><p>Converts C, intact 5mC</p></td>
+<td><p>Any</p></td>
+<td><p>Merged</p></td>
+<td><p>Highest (up to 100% of methylome)</p></td>
+<td><p>Absolute</p></td>
+<td><p>High (specialized chemistry and computational platforms)</p></td>
+<td><p>Incomplete conversion, PCR artifacts</p></td>
+<td><p>Very high</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>RRBS</p></th>
+<td><p>Bisulfite conversion</p></td>
+<td><p>Same as WGBS, but at CG-enriched</p></td>
+<td><p>Any (mostly CpG)</p></td>
+<td><p>Merged</p></td>
+<td><p>High at CGIs (85%), low in total (13% of CpGs)</p></td>
+<td><p>Absolute</p></td>
+<td><p>High</p></td>
+<td><p>Incomplete conversion, PCR artifacts</p></td>
+<td><p>High</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>oxBS-seq</p></th>
+<td><p>Bisulfite conversion</p></td>
+<td><p>5hmC</p></td>
+<td><p>Any</p></td>
+<td><p>Both</p></td>
+<td><p>High</p></td>
+<td><p>Absolute</p></td>
+<td><p>High</p></td>
+<td><p>Incomplete conversion, PCR artifacts</p></td>
+<td><p>Very high</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>TAB-seq</p></th>
+<td><p>Bisulfite conversion</p></td>
+<td><p>5mC</p></td>
+<td><p>Any</p></td>
+<td><p>5hmC only</p></td>
+<td><p>High</p></td>
+<td><p>Absolute</p></td>
+<td><p>High</p></td>
+<td><p>Incomplete conversion, PCR artifacts</p></td>
+<td><p>Very high</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="how-to-analyze-dna-methylation">
+<h2><a class="toc-backref" href="#id196"><span class="section-number">3.3. </span>How to analyze DNA methylation</a><a class="headerlink" href="#how-to-analyze-dna-methylation" title="Permalink to this headline">#</a></h2>
+<p>Computational analysis of DNA methylation consists of three main steps <span id="id22">[<a class="reference internal" href="#id176" title="Christoph Bock. Analysing and interpreting dna methylation data. Nature Reviews Genetics, 13(10):705–719, 2012.">Bock, 2012</a>, <a class="reference internal" href="#id172" title="Ieva Rauluseviciute, Finn Drabløs, and Morten Beck Rye. Dna methylation data by sequencing: experimental approaches and recommendations for tools and pipelines for data analysis. Clinical epigenetics, 11(1):1–13, 2019.">Rauluseviciute <em>et al.</em>, 2019</a>]</span>:</p>
+<ol class="simple">
+<li><p><strong>Data processing and quality control</strong></p></li>
+<li><p><strong>Visualization and statistical analysis</strong></p></li>
+<li><p><strong>Validation and interpretation</strong></p></li>
+</ol>
+<p>We will briefly outline this workflow and discuss some important caveats that arise during each step. Bisulfite conversion-based approaches are of the most interest to the researchers nowadays, so we will omit the peculiarities of other approaches to DNAm profiling here (if you’re that interested, see <span id="id23">[<a class="reference internal" href="#id176" title="Christoph Bock. Analysing and interpreting dna methylation data. Nature Reviews Genetics, 13(10):705–719, 2012.">Bock, 2012</a>, <a class="reference internal" href="#id172" title="Ieva Rauluseviciute, Finn Drabløs, and Morten Beck Rye. Dna methylation data by sequencing: experimental approaches and recommendations for tools and pipelines for data analysis. Clinical epigenetics, 11(1):1–13, 2019.">Rauluseviciute <em>et al.</em>, 2019</a>]</span>).</p>
+<section id="data-processing-and-quality-control">
+<h3><a class="toc-backref" href="#id197"><span class="section-number">3.3.1. </span>Data processing and quality control</a><a class="headerlink" href="#data-processing-and-quality-control" title="Permalink to this headline">#</a></h3>
+<section id="processing-bisulfite-sequencing-data">
+<h4><a class="toc-backref" href="#id198"><span class="section-number">3.3.1.1. </span>Processing bisulfite sequencing data</a><a class="headerlink" href="#processing-bisulfite-sequencing-data" title="Permalink to this headline">#</a></h4>
+<p>Processing raw bisulfite sequencing data must deal with the following tasks:</p>
+<ol class="simple">
+<li><p><strong>Trim</strong> sequencing adaptors from the ends of reads (adaptors are added to reads to improve capturing of the smaller-sized ones) and trim reads with low quality (e.g., incorrectly converted)</p></li>
+<li><p><strong>Align</strong> (or map) reads to the reference genome</p></li>
+<li><p><strong>Calculate</strong> methylation fractions (or beta values) per site</p></li>
+</ol>
+<p>Trimming is, to some extent, a trivial task, and tools for trimming have been largely adopted from other omics data analyses such as DNA-seq or RNA-seq.</p>
+<p>Read alignment, however, is rather challenging, because bisulfite conversion produces reads with reduced complexity (far fewer cytosines than in the original sequence), which increases chances to observe a read that can be mapped to multiple genomic regions. But more importantly, alignment algorithms must take into account that some of the Ts it observes in the reads are originally Cs (in the reference genome). To overcome this problem, two main branches have been proposed: wild-card aligners and three-letter aligners.</p>
+<p>Wild-card aligners (such as BSMAP) substitute every C in the reference by the wild card Y, which can be aligned to both C and T in the sequencing reads. As can be seen from an example in <a class="reference internal" href="#align"><span class="std std-numref">Fig. 3.7</span></a>, wild-card aligners may introduce bias by overestimating methylation proportions (methylated reads contain Cs that raise read sequence complexity enough so that these reads can be mapped unambiguously, but the unmethylated reads bearing Ts are prone to be discarded because they align to different genomic regions simultaneously).</p>
+<p>On the other hand, three-letter aligners (such as Bismark or BS Seeker) that replace every C in the reference genome with a T (therefore, only three letters from the genomic alphabet are left: A, G, and T) are simpler in use (because conventional genomic aligners can be employed) and are not biased towards overestimating or underestimating methylation fractions. However, since they reduce sequence complexity even more, a large fraction of reads aligns ambiguously and is discarded (<a class="reference internal" href="#align"><span class="std std-numref">Fig. 3.7</span></a>).</p>
+<figure class="align-default" id="align">
+<a class="reference internal image-reference" href="../_images/align.png"><img alt="../_images/align.png" src="../_images/align.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.7 </span><span class="caption-text">Strategies for bisulfite alignment <span id="id24">[<a class="reference internal" href="#id176" title="Christoph Bock. Analysing and interpreting dna methylation data. Nature Reviews Genetics, 13(10):705–719, 2012.">Bock, 2012</a>]</span></span><a class="headerlink" href="#align" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In conclusion, <em>wild-card aligners provide higher coverage at the cost of overestimating methylation, while three-letter aligners yield precise values, but only for a fraction of reads, at the expense of losing coverage</em>. It is worth noting that profiling genomic regions with higher sequence identity (containing transposable elements or duplications) or using shorter reads suffers the most from the aforementioned issues <span id="id25">[<a class="reference internal" href="#id176" title="Christoph Bock. Analysing and interpreting dna methylation data. Nature Reviews Genetics, 13(10):705–719, 2012.">Bock, 2012</a>]</span>. As a result, <strong>even though WGBS theoretically covers up to 100% of a methylome, it cannot be achieved in practice</strong> due to the methodology of three-letter alignment, although newer algorithms are doing their best to increase their output coverage <span id="id26">[<a class="reference internal" href="#id178" title="Guilherme de Sena Brandine and Andrew D Smith. Fast and memory-efficient mapping of short bisulfite sequencing reads using a two-letter alphabet. NAR Genomics and Bioinformatics, 3(4):lqab115, 2021.">de Sena Brandine and Smith, 2021</a>, <a class="reference internal" href="#id177" title="Kevin Yu Yuan Huang, Yan-Jiun Huang, and Pao-Yang Chen. Bs-seeker3: ultrafast pipeline for bisulfite sequencing. BMC bioinformatics, 19:1–4, 2018.">Huang <em>et al.</em>, 2018</a>]</span>.</p>
+<p>After performing the alignment, we can calculate methylation fractions by simply dividing the number of observed Cs by the sum of Cs and Ts per methylation site, and it is exactly what most researchers do. However, additional post-alignment adjustments can improve the accuracy of this approach: for example, it does not distinguish between the bisulfite conversion-induced Ts and genetic variants. The Bis-SNP variant caller (an extension of a popular Genome Analysis Toolkit, GATK) attempts to deal with this bias by leveraging the fact that “bisulphite‑induced C‑to‑T variants exhibit a G on the opposing strand, whereas genetic C‑to‑T variants exhibit an A instead” <span id="id27">[<a class="reference internal" href="#id176" title="Christoph Bock. Analysing and interpreting dna methylation data. Nature Reviews Genetics, 13(10):705–719, 2012.">Bock, 2012</a>]</span>, along with being handy in the SNP analysis in general <span id="id28">[<a class="reference internal" href="#id179" title="Yaping Liu, Kimberly D Siegmund, Peter W Laird, and Benjamin P Berman. Bis-snp: combined dna methylation and snp calling for bisulfite-seq data. Genome biology, 13(7):1–14, 2012.">Liu <em>et al.</em>, 2012</a>]</span>.
+In addition to all that, the <strong>success rate of bisulfite conversion</strong> is another metric that should be accounted for. Quality control of this rate can be performed by adding standardized DNA with known DNAm values, either pre-constructed oligomers or methylation-free viral DNA.</p>
+<p>As you can see, there are enough steps to be worried about if you want to process your data in the best way possible. Although multiple comparison reviews are out there, almost none of them attempts to provide actual guidelines on which tools would be better to use in which circumstances, and, since the techniques are updated and developed every year, even those reviews that do try to suggest such ‘gold standards’ <span id="id29">[<a class="reference internal" href="#id172" title="Ieva Rauluseviciute, Finn Drabløs, and Morten Beck Rye. Dna methylation data by sequencing: experimental approaches and recommendations for tools and pipelines for data analysis. Clinical epigenetics, 11(1):1–13, 2019.">Rauluseviciute <em>et al.</em>, 2019</a>]</span> are quite outdated, so the researchers have to choose on their own.</p>
+</section>
+<section id="processing-microarray-data">
+<h4><a class="toc-backref" href="#id199"><span class="section-number">3.3.1.2. </span>Processing microarray data</a><a class="headerlink" href="#processing-microarray-data" title="Permalink to this headline">#</a></h4>
+<p>The Illumina microarrays are, on the one hand, easier to process than sequencing results (no alignment required, since probes contain pre-defined sequences), but, on the other hand, are far more laborious.</p>
+<p>Instead of sequencing reads, microarrays provide colour signals of different intensities across a time range. The coloured image processing is virtually always done with the vendor-supplied software, so you won’t have to bother about it. However, after the signals are counted, the bioinformatician’s work begins.</p>
+<p>First of all, just as with bulk BS-seq, bias may arise from <strong>sample DNA composition</strong> (polymorphisms or cell heterogeneity), but, more importantly for the microarray methodology, <strong>bias comes from the arrays themselves</strong>:</p>
+<ul class="simple">
+<li><p>cross-reactions between probes,</p></li>
+<li><p>background bias,</p></li>
+<li><p>nonlinear dye bias,</p></li>
+<li><p>probe-type bias (starting from Infinium 450k, probes are manufactured in two types, each with its specific characteristics, and both are present in every platform),</p></li>
+<li><p>and batch effects between two arrays.</p></li>
+</ul>
+<p>We are not trying to become full-stack DNA methylation bioinformaticians in the scope of this course, so we will not go into full discussion about all these and about a whole battery of various normalization and bias correction approaches that have been described specifically to tackle these problems with microarray data (if you do want to delve deeper, see reviews <span id="id30">[<a class="reference internal" href="#id181" title="Kazuhiko Nakabayashi. Illumina HumanMethylation BeadChip for Genome-Wide DNA Methylation Profiling: Advantages and Limitations, pages 1–15. Springer International Publishing, Cham, 2017.">Nakabayashi, 2017</a>, <a class="reference internal" href="#id182" title="H Welsh, CMPF Batalha, W Li, KL Mpye, Nadja Cristhina de Souza-Pinto, Michel Satya Naslavsky, and EJ Parra. A systematic evaluation of normalization methods and probe replicability using infinium epic methylation data. Clinical Epigenetics, 15(1):1–12, 2023.">Welsh <em>et al.</em>, 2023</a>, <a class="reference internal" href="#id180" title="Michael C Wu, Bonnie R Joubert, Pei-fen Kuan, Siri E Håberg, Wenche Nystad, Shyamal D Peddada, and Stephanie J London. A systematic assessment of normalization approaches for the infinium 450k methylation platform. Epigenetics, 9(2):318–329, 2014.">Wu <em>et al.</em>, 2014</a>]</span>). In short, <strong>SeSAMe coupled with pOOBAH filtering (SeSAMe 2)</strong> appears the best performing microarray processing algorithm <span id="id31">[<a class="reference internal" href="#id182" title="H Welsh, CMPF Batalha, W Li, KL Mpye, Nadja Cristhina de Souza-Pinto, Michel Satya Naslavsky, and EJ Parra. A systematic evaluation of normalization methods and probe replicability using infinium epic methylation data. Clinical Epigenetics, 15(1):1–12, 2023.">Welsh <em>et al.</em>, 2023</a>]</span>, although it is a relatively young tool, so you will rarely encounter datasets processed by it. More often, researchers resort to the <strong>good old practices</strong> such as the default pre-processing steps of the <em>minfi</em> R package (quantile normalization for blood and DLPFC samples and noob procedure otherwise, according to the <a class="reference external" href="https://bioconductor.org/packages/release/bioc/manuals/minfi/man/minfi.pdf">minfi manual</a>).</p>
+<p>In the end, even if you use only the best processing tools, microarrays are still notorious for their between-array batch effect. Wet lab researchers are highly advised to profile samples in mixed order so as to minimize the magnitude of potential confounders (for example, to process samples from different tissues or the case and control samples on the same day, and not on different weeks). However, you will unlikely get this information from the open-source databases, and you will certainly be unable to change the way the datasets are collected. Several batch correction techniques are implemented in the aforementioned approaches, and there are also specific tools (e.g., ComBat, surrogate variable analysis (SVA), RUVm, etc. <span id="id32">[<a class="reference internal" href="#id181" title="Kazuhiko Nakabayashi. Illumina HumanMethylation BeadChip for Genome-Wide DNA Methylation Profiling: Advantages and Limitations, pages 1–15. Springer International Publishing, Cham, 2017.">Nakabayashi, 2017</a>]</span>), but they still have quite a room for improvement <span id="id33">[<a class="reference internal" href="#id184" title="Jason P Ross, Susan van Dijk, Melinda Phang, Michael R Skilton, Peter L Molloy, and Yalchin Oytam. Batch-effect detection, correction and characterisation in illumina humanmethylation450 and methylationepic beadchip array data. Clinical Epigenetics, 14(1):1–28, 2022.">Ross <em>et al.</em>, 2022</a>, <a class="reference internal" href="#id183" title="Tristan Zindler, Helge Frieling, Alexandra Neyazi, Stefan Bleich, and Eva Friedel. Simulating combat: how batch correction can lead to the systematic introduction of false positive results in dna methylation microarray studies. BMC bioinformatics, 21:1–15, 2020.">Zindler <em>et al.</em>, 2020</a>]</span>.</p>
+</section>
+<section id="looking-at-the-data">
+<h4><a class="toc-backref" href="#id200"><span class="section-number">3.3.1.3. </span>Looking at the data</a><a class="headerlink" href="#looking-at-the-data" title="Permalink to this headline">#</a></h4>
+<p>Further in our course (and in a lot of research settings, really), you will be spared from processing the raw reads, so let’s briefly overview how the actual processed DNA methylation matrix looks like.</p>
+<p>For bisulfite sequencing, it comes in a variety of data formats. The major separation lies between the binary files (e.g., <em>.bigWig</em>) and the more familiar tab/comma-separated text files (e.g., Bismark <em>.cov</em> files, BS-Seeker <em>.CGmap</em> files, <em>.bed</em> and <em>.bedGraph</em> files, etc.). A lot of processing tools employ their own data format, so the format you get to work with depends on what you (or the authors of your dataset) have chosen to process your reads.</p>
+<p>The main information that is always present in these files is <strong>genomic position</strong> (chromosome and DNA base number) and <strong>methylation level</strong> (a.k.a. methylation fraction or beta value). Ideally, to perform quality control on your sites, you want to also know the coverage—<strong>total number of counts</strong> (methylated + unmethylated)—per site, which is not always readily available (in case of <em>.bigWig</em>, for example). As DNAm may occur on both strands, but the annotation is done against the positive (Watson) strand positions only, some formats also mention the <strong>strand directionality</strong> per DNAm site (+/- or F/R), but some do not, so you might want to look at the reference genome to infer this information. Other columns may include the information on methylated and unmethylated counts, on the <strong>genomic context</strong> around a DNAm site (CpG, CHG, CHH, where H stands for ‘not G’), or something else. A good example of how processed DNAm data looks like is displayed in the <a class="reference external" href="https://github.com/khuang28jhu/bs3">BS-Seeker3 manual</a> (<a class="reference internal" href="#processed-dnam-formatting"><span class="std std-numref">Fig. 3.8</span></a>), although most of these columns are usually absent in the outputs of common processing frameworks (e.g., Bismark <em>.cov</em>).</p>
+<p>The other caveat you should be aware of is <strong>genomic positioning</strong>. As you can see from <a class="reference internal" href="#processed-dnam-formatting"><span class="std std-numref">Fig. 3.8</span></a>, BS-Seeker uses single-base notation (column 3), but it’s not always the case. Some pipelines output two-base notation, some even employ three-base regions, but you should not be misled: all of these regions involve only one DNA methylation site. In the 1-base case, it’s obvious to see where exactly it lands; in 3-base, it’s usually the position in-between the starting and ending positions; but the 2-base case is probably the most misleading, as it can be both. We advise you to always check your notation against the reference genome (<a class="reference external" href="https://www.genome.ucsc.edu/cgi-bin/hgGateway">UCSC browser</a> will suffice) bearing in mind strand directionality, if you’re dealing with more than one dataset (especially if they’re processed by different tools), which often happens when building and using methylation clocks, for example.</p>
+<figure class="align-default" id="processed-dnam-formatting">
+<img alt="../_images/processed_dnam_formatting.png" src="../_images/processed_dnam_formatting.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.8 </span><span class="caption-text">Example of processed DNA methylation data (BS-Seeker3 <em>CGmap</em> formatting)</span><a class="headerlink" href="#processed-dnam-formatting" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Files after microarray processing are similar, but a ton more uniform:</p>
+<ul class="simple">
+<li><p>they are mostly tab/comma-separated text files,</p></li>
+<li><p>genomic positions are always notated in the Illumina ID style (this is an important caveat, since you have to convert these IDs into common genomic coordinates if you wish to compare microarray and BS-seq datasets, e.g., Illumina cg07881041 corresponds to chr19:5236005 in the hg38 human genome assembly),</p></li>
+<li><p>no strand information (can be inferred from genomic positions),</p></li>
+<li><p>context is always CpG,</p></li>
+<li><p>no counts (instead, there are methylated and unmethylated signal intensities, which are to be discarded after calculating methylation fraction values).</p></li>
+</ul>
+<p>To sum up, the only info you can get directly from the processed microarray data is <em>CpG site ID</em> and its <em>methylation level</em>. Extremely user-friendly. Especially if you forget about all the numerous normalizations and bias corrections that have led you to these methylation levels.</p>
+</section>
+</section>
+</section>
+<section id="visualisation-and-statistical-analysis">
+<h2><a class="toc-backref" href="#id201"><span class="section-number">3.4. </span>Visualisation and statistical analysis</a><a class="headerlink" href="#visualisation-and-statistical-analysis" title="Permalink to this headline">#</a></h2>
+<p>Finally, after methylation percentages are calculated, we step into the realm of data analysis and interpretation. The amount of tools and approaches available for it is overwhelming, so we will only mention a few.</p>
+<p>One of the obvious direct approaches is to look at your data, which can be done via the good old UCSC Genome Browser, SeqMonk, the Integrative Genomics Viewer (IGV), or many other tools <span id="id34">[<a class="reference internal" href="#id176" title="Christoph Bock. Analysing and interpreting dna methylation data. Nature Reviews Genetics, 13(10):705–719, 2012.">Bock, 2012</a>]</span>. In addition to visualizing methylation profiles, it is also useful to perform some form of unsupervised dimensionality reduction, for example, by principal component analysis (PCA) or hierarchical clustering, to elucidate the major groups of samples in your data (and to detect some outliers).</p>
+<p>But of course, probably the most widely adopted approach is to find differentially methylated (DM) positions (a.k.a. DMPs, DMSs [sites], or DMCs [CpG sites]) or regions (DMRs) by comparing two or more studied groups, for example, to find differences between DNA methylation in a certain cancer type and healthy controls, or between cancer types. And, essentially, the main goal of DNAm profiling in the first place is to identify systematic differences between samples and sample groups, which is exactly the job for DM analysis.</p>
+<p>DMP analysis is more suitable for the microarray-based data, since a lot of genes there are covered with only one CpG site, or several sites are spread too far apart from each other (e.g., one is situated in a promoter, and another one is in a gene body).
+In WBGS and RRBS, on the other hand, a promoter can be covered with a dozen of CpG sites, and the variation at each of them can be a lot higher than the variation of methylation across the whole promoter (due to sequencing variability). In addition to that, DNAm sites are known to correlate really well within CpG islands, or in otherwise close proximity to each other <span id="id35">[<a class="reference internal" href="#id185" title="Ornella Affinito, Domenico Palumbo, Annalisa Fierro, Mariella Cuomo, Giulia De Riso, Antonella Monticelli, Gennaro Miele, Lorenzo Chiariotti, and Sergio Cocozza. Nucleotide distance influences co-methylation between nearby cpg sites. Genomics, 112(1):144–150, 2020.">Affinito <em>et al.</em>, 2020</a>]</span>. Therefore, it is logical to interrogate DNA methylation not at individual sites, but in whole regions, which can be derived by splitting genome either into equally sized ranges, or into CpG-dense fragments (especially relevant for RRBS) <span id="id36">[]</span>.
+There are numerous statistical approaches to calculating differential methylation, whose pros and cons have been thoroughly discussed and reviewed elsewhere <span id="id37">[<a class="reference internal" href="#id188" title="Yongjun Piao, Wanxue Xu, Kwang Ho Park, Keun Ho Ryu, and Rong Xiang. Comprehensive evaluation of differential methylation analysis methods for bisulfite sequencing data. International Journal of Environmental Research and Public Health, 18(15):7975, 2021.">Piao <em>et al.</em>, 2021</a>, <a class="reference internal" href="#id187" title="Adib Shafi, Cristina Mitrea, Tin Nguyen, and Sorin Draghici. A survey of the approaches for identifying differential methylation using bisulfite sequencing data. Briefings in bioinformatics, 19(5):737–753, 2018.">Shafi <em>et al.</em>, 2018</a>]</span>. The key feature in these approaches is the statistical test they use to estimate statistically significant differences in DNAm levels. Model assumptions about how DNAm levels per site/region are distributed and different genome segmentation methods are also embedded into these approaches, so the outcomes of their work (i.e., discovered DMRs) are inevitably different.</p>
+<p>Another, less widely adopted, but still pretty insightful method is the analysis of methylation variability (again, at individual positions, VMPs, or at regions, VMRs), since variable methylation has also been linked to cancers, diseases, and aging <span id="id38">[<a class="reference internal" href="#id166" title="Kirsten Seale, Steve Horvath, Andrew Teschendorff, Nir Eynon, and Sarah Voisin. Making sense of the ageing methylome. Nature Reviews Genetics, 23(10):585–605, 2022.">Seale <em>et al.</em>, 2022</a>]</span>. For example, increasing variance of housekeeping genes was shown to predict chronological age and aging-associated pathologies with even greater accuracy than methylation clocks built on changes in mean DNAm <span id="id39">[<a class="reference internal" href="#id189" title="Xiaoyue Mei, Joshua Blanchard, Connor Luellen, Michael J Conboy, and Irina M Conboy. Fail-tests of dna methylation clocks, and development of a noise barometer for measuring epigenetic pressure of aging and disease. Aging (Albany NY), 15(17):8552, 2023.">Mei <em>et al.</em>, 2023</a>]</span>. Approaches to VM analysis are numerous as well, and are compared elsewhere <span id="id40">[<a class="reference internal" href="#id190" title="Xuan Li, Weiliang Qiu, Jarrett Morrow, Dawn L DeMeo, Scott T Weiss, Yuejiao Fu, and Xiaogang Wang. A comparative study of tests for homogeneity of variances with application to dna methylation data. PloS one, 10(12):e0145295, 2015.">Li <em>et al.</em>, 2015</a>]</span>.</p>
+<p>It is worth to keep in mind that methylation differences and variations may actually arise not from changes in DNAm profiles themselves, but from changes in cell composition: for instance, it is well-known that, during aging, the distribution of immune cells in blood shifts strongly towards the myeloid lineage cells [Nishi 2019], which likely affects training epigenetic clocks on bulk blood DNAm data. Therefore, it can be useful to assess cell-type heterogeneity between sample groups, which has also been reviewed in great length elsewhere <span id="id41">[<a class="reference internal" href="#id192" title="Andrew E Teschendorff and Caroline L Relton. Statistical and integrative system-level analysis of dna methylation data. Nature Reviews Genetics, 19(3):129–147, 2018.">Teschendorff and Relton, 2018</a>]</span>.</p>
+<p>All things combined, evaluating differences in mean DNAm, in DNAm variance, and in DNAm heterogeneity (<a class="reference internal" href="#dnam-analysis-combination"><span class="std std-numref">Fig. 3.9</span></a>) provides a multi-dimensional outlook on epigenetic alterations, which may help us elucidate disease- and age-related features of the epigenome.</p>
+<figure class="align-default" id="dnam-analysis-combination">
+<img alt="../_images/dnam_analysis_combination.png" src="../_images/dnam_analysis_combination.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.9 </span><span class="caption-text">Combining differential DNAm, variable DNAm, and cell-type heterogeneity in DNAm to compare healthy epigenome with progressing cancer epigenetic profiles: (a) two examples of VMCs, one driven by single-nucleotide polymorphisms (SNPs) located in <em>cis</em> with the indicated CpG site (defining a well-known <em>cis</em> methylation quantitative trait locus (<em>cis</em>-mQTL)) (left panel) and another driven by variation in immune-cell contamination (right panel). Panels illustrate how SNPs and <strong>cell-type composition can drive large variation in DNAm</strong>, while <strong>variation may not correlate</strong> with case versus control status. (b) Contrast between DMCs and DVCs. drawn from normal cervical smears (green) and either cervical intraepithelial neoplasia (CIN2+) or cervical cancer (both blue). Observe how a DMC is typically characterized by most samples in one phenotype exhibiting a deviation in DNAm value. By contrast, a DVC is characterized by a very stable DNAm profile in one phenotype but by DNAm outliers driving large variation in the other. (c) Example of a CpG that exhibits progression in DNAm between successive stages in cervical carcinogenesis. When comparing normal cervical smears that progress to CIN2+ to those that do not (Normal → Normal), this CpG <strong>can be identified only via a test for differential variance</strong>. When comparing CIN2+ to normal cervical smears, differential variance is still the <strong>main distinguishing feature</strong>. Only when comparing (invasive) cervical cancer to normal cervix does this CpG exhibit a stronger difference in average DNAm. Thus, this panel emphasizes the importance of selecting the appropriate statistical test, as the <strong>choice of test will have a dramatic impact on feature selection</strong>. (Adopted from <span id="id42">[<a class="reference internal" href="#id192" title="Andrew E Teschendorff and Caroline L Relton. Statistical and integrative system-level analysis of dna methylation data. Nature Reviews Genetics, 19(3):129–147, 2018.">Teschendorff and Relton, 2018</a>]</span>)</span><a class="headerlink" href="#dnam-analysis-combination" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>— Work in progress —</p>
+</section>
+<section id="practice">
+<h2><a class="toc-backref" href="#id202"><span class="section-number">3.5. </span>Practice</a><a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
+<p>Since we’ve already covered differential expression analysis in our previous practical lesson, let’s do something different this time with DNA methylation. The practice on weighted gene-coexpression network analysis awaits you either at <code class="docutils literal notranslate"><span class="pre">~/meth/meth_practice.ipynb</span></code> in this repository (if you cloned it), or at <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">Google Colab</a> (don’t forget to make your own copy). Happy hunting!</p>
+</section>
+<section id="credits">
+<h2><a class="toc-backref" href="#id203"><span class="section-number">3.6. </span>Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<p>This text was prepared by <a class="reference external" href="https://www.linkedin.com/in/evgeniy-efimov-84152725b">Evgeniy Efimov</a>.</p>
+</section>
+<section id="references">
+<h2><a class="toc-backref" href="#id204"><span class="section-number">3.7. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id43">
+<dl class="citation">
+<dt class="label" id="id185"><span class="brackets"><a class="fn-backref" href="#id35">1</a></span></dt>
+<dd><p>Ornella Affinito, Domenico Palumbo, Annalisa Fierro, Mariella Cuomo, Giulia De Riso, Antonella Monticelli, Gennaro Miele, Lorenzo Chiariotti, and Sergio Cocozza. Nucleotide distance influences co-methylation between nearby cpg sites. <em>Genomics</em>, 112(1):144–150, 2020.</p>
+</dd>
+<dt class="label" id="id174"><span class="brackets">2</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id20">2</a>)</span></dt>
+<dd><p>Jongseong Ahn, Sunghoon Heo, Jihyun Lee, and Duhee Bang. Introduction to single-cell dna methylation profiling methods. <em>Biomolecules</em>, 11(7):1013, 2021.</p>
+</dd>
+<dt class="label" id="id170"><span class="brackets"><a class="fn-backref" href="#id11">3</a></span></dt>
+<dd><p>Gonca Bayraktar and Michael R Kreutz. The role of activity-dependent dna demethylation in the adult brain and in neurological disorders. <em>Frontiers in molecular neuroscience</em>, 11:169, 2018.</p>
+</dd>
+<dt class="label" id="id176"><span class="brackets">4</span><span class="fn-backref">(<a href="#id22">1</a>,<a href="#id23">2</a>,<a href="#id24">3</a>,<a href="#id25">4</a>,<a href="#id27">5</a>,<a href="#id34">6</a>)</span></dt>
+<dd><p>Christoph Bock. Analysing and interpreting dna methylation data. <em>Nature Reviews Genetics</em>, 13(10):705–719, 2012.</p>
+</dd>
+<dt class="label" id="id178"><span class="brackets"><a class="fn-backref" href="#id26">5</a></span></dt>
+<dd><p>Guilherme de Sena Brandine and Andrew D Smith. Fast and memory-efficient mapping of short bisulfite sequencing reads using a two-letter alphabet. <em>NAR Genomics and Bioinformatics</em>, 3(4):lqab115, 2021.</p>
+</dd>
+<dt class="label" id="id168"><span class="brackets">6</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>,<a href="#id7">3</a>,<a href="#id9">4</a>)</span></dt>
+<dd><p>Maxim VC Greenberg and Deborah Bourc’his. The diverse roles of dna methylation in mammalian development and disease. <em>Nature reviews Molecular cell biology</em>, 20(10):590–607, 2019.</p>
+</dd>
+<dt class="label" id="id177"><span class="brackets"><a class="fn-backref" href="#id26">7</a></span></dt>
+<dd><p>Kevin Yu Yuan Huang, Yan-Jiun Huang, and Pao-Yang Chen. Bs-seeker3: ultrafast pipeline for bisulfite sequencing. <em>BMC bioinformatics</em>, 19:1–4, 2018.</p>
+</dd>
+<dt class="label" id="id169"><span class="brackets"><a class="fn-backref" href="#id10">8</a></span></dt>
+<dd><p>Shinsuke Ito, Li Shen, Qing Dai, Susan C Wu, Leonard B Collins, James A Swenberg, Chuan He, and Yi Zhang. Tet proteins can convert 5-methylcytosine to 5-formylcytosine and 5-carboxylcytosine. <em>Science</em>, 333(6047):1300–1303, 2011.</p>
+</dd>
+<dt class="label" id="id167"><span class="brackets">9</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>Lakshminarayan M Iyer, Dapeng Zhang, and L Aravind. Adenine methylation in eukaryotes: apprehending the complex evolutionary history and functional potential of an epigenetic modification. <em>Bioessays</em>, 38(1):27–40, 2016.</p>
+</dd>
+<dt class="label" id="id173"><span class="brackets">10</span><span class="fn-backref">(<a href="#id12">1</a>,<a href="#id13">2</a>,<a href="#id14">3</a>,<a href="#id15">4</a>,<a href="#id16">5</a>,<a href="#id18">6</a>,<a href="#id21">7</a>)</span></dt>
+<dd><p>Shizhao Li and Trygve O Tollefsbol. Dna methylation methods: global dna methylation and methylomic analyses. <em>Methods</em>, 187:28–43, 2021.</p>
+</dd>
+<dt class="label" id="id190"><span class="brackets"><a class="fn-backref" href="#id40">11</a></span></dt>
+<dd><p>Xuan Li, Weiliang Qiu, Jarrett Morrow, Dawn L DeMeo, Scott T Weiss, Yuejiao Fu, and Xiaogang Wang. A comparative study of tests for homogeneity of variances with application to dna methylation data. <em>PloS one</em>, 10(12):e0145295, 2015.</p>
+</dd>
+<dt class="label" id="id163"><span class="brackets"><a class="fn-backref" href="#id1">12</a></span></dt>
+<dd><p>CY Lim, BB Knowles, D Solter, and DM Messerschmidt. Epigenetic control of early mouse development. <em>Current topics in developmental biology</em>, 120:311–360, 2016.</p>
+</dd>
+<dt class="label" id="id179"><span class="brackets"><a class="fn-backref" href="#id28">13</a></span></dt>
+<dd><p>Yaping Liu, Kimberly D Siegmund, Peter W Laird, and Benjamin P Berman. Bis-snp: combined dna methylation and snp calling for bisulfite-seq data. <em>Genome biology</em>, 13(7):1–14, 2012.</p>
+</dd>
+<dt class="label" id="id189"><span class="brackets"><a class="fn-backref" href="#id39">14</a></span></dt>
+<dd><p>Xiaoyue Mei, Joshua Blanchard, Connor Luellen, Michael J Conboy, and Irina M Conboy. Fail-tests of dna methylation clocks, and development of a noise barometer for measuring epigenetic pressure of aging and disease. <em>Aging (Albany NY)</em>, 15(17):8552, 2023.</p>
+</dd>
+<dt class="label" id="id175"><span class="brackets"><a class="fn-backref" href="#id20">15</a></span></dt>
+<dd><p>Liesbeth Minnoye, Georgi K Marinov, Thomas Krausgruber, Lixia Pan, Alexandre P Marand, Stefano Secchia, William J Greenleaf, Eileen EM Furlong, Keji Zhao, Robert J Schmitz, and others. Chromatin accessibility profiling methods. <em>Nature Reviews Methods Primers</em>, 1(1):10, 2021.</p>
+</dd>
+<dt class="label" id="id181"><span class="brackets">16</span><span class="fn-backref">(<a href="#id30">1</a>,<a href="#id32">2</a>)</span></dt>
+<dd><p>Kazuhiko Nakabayashi. <em>Illumina HumanMethylation BeadChip for Genome-Wide DNA Methylation Profiling: Advantages and Limitations</em>, pages 1–15. Springer International Publishing, Cham, 2017.</p>
+</dd>
+<dt class="label" id="id188"><span class="brackets"><a class="fn-backref" href="#id37">17</a></span></dt>
+<dd><p>Yongjun Piao, Wanxue Xu, Kwang Ho Park, Keun Ho Ryu, and Rong Xiang. Comprehensive evaluation of differential methylation analysis methods for bisulfite sequencing data. <em>International Journal of Environmental Research and Public Health</em>, 18(15):7975, 2021.</p>
+</dd>
+<dt class="label" id="id172"><span class="brackets">18</span><span class="fn-backref">(<a href="#id14">1</a>,<a href="#id21">2</a>,<a href="#id22">3</a>,<a href="#id23">4</a>,<a href="#id29">5</a>)</span></dt>
+<dd><p>Ieva Rauluseviciute, Finn Drabløs, and Morten Beck Rye. Dna methylation data by sequencing: experimental approaches and recommendations for tools and pipelines for data analysis. <em>Clinical epigenetics</em>, 11(1):1–13, 2019.</p>
+</dd>
+<dt class="label" id="id184"><span class="brackets"><a class="fn-backref" href="#id33">19</a></span></dt>
+<dd><p>Jason P Ross, Susan van Dijk, Melinda Phang, Michael R Skilton, Peter L Molloy, and Yalchin Oytam. Batch-effect detection, correction and characterisation in illumina humanmethylation450 and methylationepic beadchip array data. <em>Clinical Epigenetics</em>, 14(1):1–28, 2022.</p>
+</dd>
+<dt class="label" id="id165"><span class="brackets"><a class="fn-backref" href="#id2">20</a></span></dt>
+<dd><p>Dominik Saul and Robyn Laura Kosinsky. Epigenetics of aging and aging-associated diseases. <em>International journal of molecular sciences</em>, 22(1):401, 2021.</p>
+</dd>
+<dt class="label" id="id166"><span class="brackets">21</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id38">2</a>)</span></dt>
+<dd><p>Kirsten Seale, Steve Horvath, Andrew Teschendorff, Nir Eynon, and Sarah Voisin. Making sense of the ageing methylome. <em>Nature Reviews Genetics</em>, 23(10):585–605, 2022.</p>
+</dd>
+<dt class="label" id="id187"><span class="brackets"><a class="fn-backref" href="#id37">22</a></span></dt>
+<dd><p>Adib Shafi, Cristina Mitrea, Tin Nguyen, and Sorin Draghici. A survey of the approaches for identifying differential methylation using bisulfite sequencing data. <em>Briefings in bioinformatics</em>, 19(5):737–753, 2018.</p>
+</dd>
+<dt class="label" id="id171"><span class="brackets">23</span><span class="fn-backref">(<a href="#id17">1</a>,<a href="#id21">2</a>)</span></dt>
+<dd><p>Benjamin D Singer. A practical guide to the measurement and analysis of dna methylation. <em>American journal of respiratory cell and molecular biology</em>, 61(4):417–428, 2019.</p>
+</dd>
+<dt class="label" id="id192"><span class="brackets">24</span><span class="fn-backref">(<a href="#id41">1</a>,<a href="#id42">2</a>)</span></dt>
+<dd><p>Andrew E Teschendorff and Caroline L Relton. Statistical and integrative system-level analysis of dna methylation data. <em>Nature Reviews Genetics</em>, 19(3):129–147, 2018.</p>
+</dd>
+<dt class="label" id="id182"><span class="brackets">25</span><span class="fn-backref">(<a href="#id30">1</a>,<a href="#id31">2</a>)</span></dt>
+<dd><p>H Welsh, CMPF Batalha, W Li, KL Mpye, Nadja Cristhina de Souza-Pinto, Michel Satya Naslavsky, and EJ Parra. A systematic evaluation of normalization methods and probe replicability using infinium epic methylation data. <em>Clinical Epigenetics</em>, 15(1):1–12, 2023.</p>
+</dd>
+<dt class="label" id="id180"><span class="brackets"><a class="fn-backref" href="#id30">26</a></span></dt>
+<dd><p>Michael C Wu, Bonnie R Joubert, Pei-fen Kuan, Siri E Håberg, Wenche Nystad, Shyamal D Peddada, and Stephanie J London. A systematic assessment of normalization approaches for the infinium 450k methylation platform. <em>Epigenetics</em>, 9(2):318–329, 2014.</p>
+</dd>
+<dt class="label" id="id183"><span class="brackets"><a class="fn-backref" href="#id33">27</a></span></dt>
+<dd><p>Tristan Zindler, Helge Frieling, Alexandra Neyazi, Stefan Bleich, and Eva Friedel. Simulating combat: how batch correction can lead to the systematic introduction of false positive results in dna methylation microarray studies. <em>BMC bioinformatics</em>, 21:1–15, 2020.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./meth"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../stat/differential_analysis_practice.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Differential expression analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../stat/survival_analysis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Survival analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

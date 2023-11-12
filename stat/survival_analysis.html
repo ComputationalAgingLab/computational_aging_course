@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. Survival analysis &#8212; Computational aging book</title>
+    <title>4. Survival analysis &#8212; Computational aging book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Aging Clocks" href="../ml/aging_clocks.html" />
-    <link rel="prev" title="2. Differential expression analysis" href="differential_analysis_practice.html" />
+    <link rel="next" title="5. Aging Clocks" href="../ml/aging_clocks.html" />
+    <link rel="prev" title="3. Omics Data Analysis in Aging: Methylomics" href="../meth/meth.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -138,9 +138,19 @@ const thebe_selector_output = ".output, .cell_output"
    2. Differential expression analysis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../meth/meth.html">
+   3. Omics Data Analysis in Aging: Methylomics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
+   Practice - WGCNA on DNA methylation
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. Survival analysis
+   4. Survival analysis
   </a>
  </li>
 </ul>
@@ -152,7 +162,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ml/aging_clocks.html">
-   4. Aging Clocks
+   5. Aging Clocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">
+   Practice - DIY Aging Clocks
   </a>
  </li>
 </ul>
@@ -164,12 +179,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/complex_systems.html">
-   5. Complex systems approach
+   6. Complex systems approach
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/system_resilience.html">
-   6. System resilience
+   7. System resilience
   </a>
  </li>
 </ul>
@@ -407,88 +422,88 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#survival-curve">
-   3.1. Survival curve
+   4.1. Survival curve
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mortality-risk">
-   3.2. Mortality risk
+   4.2. Mortality risk
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gompertz-law-and-other-kinds-of-mortality-functions">
-   3.3. Gompertz law and other kinds of mortality functions
+   4.3. Gompertz law and other kinds of mortality functions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constant-risk-model">
-     3.3.1. Constant risk model
+     4.3.1. Constant risk model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#weibull-risk-model">
-     3.3.2. Weibull risk model
+     4.3.2. Weibull risk model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gompertz-risk-model">
-     3.3.3. Gompertz risk model
+     4.3.3. Gompertz risk model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimation-and-comparison-of-survival-curves">
-   3.4. Estimation and comparison of survival curves
+   4.4. Estimation and comparison of survival curves
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kaplan-meier-estimator">
-     3.4.1. Kaplan-Meier estimator
+     4.4.1. Kaplan-Meier estimator
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logrank-test">
-     3.4.2. Logrank test
+     4.4.2. Logrank test
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gompertz-estimator">
-     3.4.3. Gompertz estimator*
+     4.4.3. Gompertz estimator*
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion">
-   3.5. Conclusion
+   4.5. Conclusion
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cox-proportional-hazards-model-project">
-   3.6. Cox proportional hazards model [Project]
+   4.6. Cox proportional hazards model [Project]
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#task">
-     3.6.1. Task
+     4.6.1. Task
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learn-more">
-   3.7. Learn more
+   4.7. Learn more
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#credits">
-   3.8. Credits
+   4.8. Credits
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acknowledgements">
-   3.9. Acknowledgements
+   4.9. Acknowledgements
   </a>
  </li>
 </ul>
@@ -512,88 +527,88 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#survival-curve">
-   3.1. Survival curve
+   4.1. Survival curve
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mortality-risk">
-   3.2. Mortality risk
+   4.2. Mortality risk
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gompertz-law-and-other-kinds-of-mortality-functions">
-   3.3. Gompertz law and other kinds of mortality functions
+   4.3. Gompertz law and other kinds of mortality functions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constant-risk-model">
-     3.3.1. Constant risk model
+     4.3.1. Constant risk model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#weibull-risk-model">
-     3.3.2. Weibull risk model
+     4.3.2. Weibull risk model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gompertz-risk-model">
-     3.3.3. Gompertz risk model
+     4.3.3. Gompertz risk model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimation-and-comparison-of-survival-curves">
-   3.4. Estimation and comparison of survival curves
+   4.4. Estimation and comparison of survival curves
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kaplan-meier-estimator">
-     3.4.1. Kaplan-Meier estimator
+     4.4.1. Kaplan-Meier estimator
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logrank-test">
-     3.4.2. Logrank test
+     4.4.2. Logrank test
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gompertz-estimator">
-     3.4.3. Gompertz estimator*
+     4.4.3. Gompertz estimator*
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion">
-   3.5. Conclusion
+   4.5. Conclusion
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cox-proportional-hazards-model-project">
-   3.6. Cox proportional hazards model [Project]
+   4.6. Cox proportional hazards model [Project]
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#task">
-     3.6.1. Task
+     4.6.1. Task
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learn-more">
-   3.7. Learn more
+   4.7. Learn more
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#credits">
-   3.8. Credits
+   4.8. Credits
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acknowledgements">
-   3.9. Acknowledgements
+   4.9. Acknowledgements
   </a>
  </li>
 </ul>
@@ -607,7 +622,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="survival-analysis">
-<h1><span class="section-number">3. </span>Survival analysis<a class="headerlink" href="#survival-analysis" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4. </span>Survival analysis<a class="headerlink" href="#survival-analysis" title="Permalink to this headline">#</a></h1>
 <p><strong>Aging</strong> - increased chance of death with age.</p>
 <p>You have seen this picture previously <span id="id1">[]</span>.</p>
 <figure class="align-default">
@@ -615,7 +630,7 @@ title="Print to PDF"
 </figure>
 <p>At this lesson, we learn how to understand such mortality risk and survival curves. We will learn Gompertz model - the seminal concept in aging research. We learn how to analyze real survival data, fit survival models, compare survival curves, and make conclusions about your survival experiment.</p>
 <section id="survival-curve">
-<h2><span class="section-number">3.1. </span>Survival curve<a class="headerlink" href="#survival-curve" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1. </span>Survival curve<a class="headerlink" href="#survival-curve" title="Permalink to this headline">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(T\)</span> is a non-negative random variable with a corresponding distribution function:</p>
 <div class="math notranslate nohighlight">
 \[F(t) = P(T\leq t)\]</div>
@@ -662,7 +677,7 @@ title="Print to PDF"
 <p>This plot is what we actually call <em>survival curve</em>. The intuition behind this is rather straightforward - it shows how many of experimental objects survived before a partucular moment of time. You can see a lot of empirical versions of such curves in articles. Rigorous analysis of this curves helps to avoid a misinterpretation of typical drug-testing experiment or other. And it’s what we are going to do in further.</p>
 </section>
 <section id="mortality-risk">
-<h2><span class="section-number">3.2. </span>Mortality risk<a class="headerlink" href="#mortality-risk" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2. </span>Mortality risk<a class="headerlink" href="#mortality-risk" title="Permalink to this headline">#</a></h2>
 <p>You could have heard that mortality risk increases exponentially with aging. But what does this actually mean?</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
@@ -700,9 +715,9 @@ title="Print to PDF"
 <p>This is actually the thing that increases exponentially as we age and have a name of Gompertz law (quite more complex than just a probability, isn’t it?). Now let’s consider different kinds of such functions.</p>
 </section>
 <section id="gompertz-law-and-other-kinds-of-mortality-functions">
-<h2><span class="section-number">3.3. </span>Gompertz law and other kinds of mortality functions<a class="headerlink" href="#gompertz-law-and-other-kinds-of-mortality-functions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3. </span>Gompertz law and other kinds of mortality functions<a class="headerlink" href="#gompertz-law-and-other-kinds-of-mortality-functions" title="Permalink to this headline">#</a></h2>
 <section id="constant-risk-model">
-<h3><span class="section-number">3.3.1. </span>Constant risk model<a class="headerlink" href="#constant-risk-model" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.1. </span>Constant risk model<a class="headerlink" href="#constant-risk-model" title="Permalink to this headline">#</a></h3>
 <p>We start with the simplest case of a constant mortality function.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -807,7 +822,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="weibull-risk-model">
-<h3><span class="section-number">3.3.2. </span>Weibull risk model<a class="headerlink" href="#weibull-risk-model" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.2. </span>Weibull risk model<a class="headerlink" href="#weibull-risk-model" title="Permalink to this headline">#</a></h3>
 <p>Let’s proceed with our example of aging system consisted from “unaging” or fragile elements. Now let’s assume that we have <span class="math notranslate nohighlight">\(n\)</span> independent subsystems having the same constant mortality rate <span class="math notranslate nohighlight">\(m\)</span> and connected in parrallel within a system <span class="math notranslate nohighlight">\(Z\)</span>. Using the formula above we have:</p>
 <div class="math notranslate nohighlight">
 \[ S_Z(t) =  1 - (1 - S(t))^n = 1 - (1 - e^{-mt})^n\]</div>
@@ -861,7 +876,7 @@ title="Print to PDF"
 <p>The latter expression is a <a class="reference external" href="https://en.wikipedia.org/wiki/Weibull_distribution">Weibull distribution</a> density function known for its high flexibility for modelling a lot of biological and technical phenomena. Interestingly, the mortality risk for our system of <span class="math notranslate nohighlight">\(n\)</span> elements growths as a power function of time - the higher number of parallel fragile elements we have the faster the function growths! This implies one important corollary for us: it is not a good strategy to have an infinite number of low-reliable critical elements in our system, instead, it is better to have a number of highly-reliable elements (with low mortality risk) confering us a great lifespan.</p>
 </section>
 <section id="gompertz-risk-model">
-<h3><span class="section-number">3.3.3. </span>Gompertz risk model<a class="headerlink" href="#gompertz-risk-model" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.3. </span>Gompertz risk model<a class="headerlink" href="#gompertz-risk-model" title="Permalink to this headline">#</a></h3>
 <p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="../dyn/complex_systems.html#id40" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>. Mathematically, it can be formulated as follows:</p>
 <div class="math notranslate nohighlight">
 \[ m(t) = Ae^{bt} \]</div>
@@ -920,7 +935,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="estimation-and-comparison-of-survival-curves">
-<h2><span class="section-number">3.4. </span>Estimation and comparison of survival curves<a class="headerlink" href="#estimation-and-comparison-of-survival-curves" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.4. </span>Estimation and comparison of survival curves<a class="headerlink" href="#estimation-and-comparison-of-survival-curves" title="Permalink to this headline">#</a></h2>
 <p>The time has come to consider real data and understand how to estimate survival curves from them, and, what is more important, how to compare them. For these purposes we use a <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> that is a nice library survival analysis. First, let’s look at the toy dataset of <em>miR-137</em> gene knock-out in fruit flies.</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
@@ -1025,7 +1040,7 @@ Name: E, dtype: int64
 </div>
 <p>Things are getting clear! We apparently see quite strong an effect of decreasing of average lifespan in knock-outed flies. However, we do not see a dynamics: what about maximum lifespan and concaveness of survival curve? The whole picture is available only after estimation of survival curve from data.</p>
 <section id="kaplan-meier-estimator">
-<h3><span class="section-number">3.4.1. </span>Kaplan-Meier estimator<a class="headerlink" href="#kaplan-meier-estimator" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.1. </span>Kaplan-Meier estimator<a class="headerlink" href="#kaplan-meier-estimator" title="Permalink to this headline">#</a></h3>
 <p>There are a plenty approaches to estimate survival curve or mortality risk from data. Most of them could be splitted into two big classes: parametric and non-parametric. The first class includes Gompertz or Weibull estimators mentioned above. They have a lot of nice properties which we discuss in the next session but also one disadvantage - they assume some model behind. In most cases we do not know the true model generating our observations. So, we may use non-parametric estimators which are free from model assumptions. The most frequently used is a <a class="reference external" href="https://en.wikipedia.org/wiki/Kaplan%E2%80%93Meier_estimator">Kaplan-Meier estimator</a> having a nice property to be <strong>unbiased estimate</strong> of <span class="math notranslate nohighlight">\(S(t)\)</span> when censoring excluded:</p>
 <div class="math notranslate nohighlight">
 \[ {\widehat {S}}(t)=\prod \limits _{i:\ t_{i}\leq t}\left(1-{\frac {d_{i}}{n_{i}}}\right) \]</div>
@@ -1333,7 +1348,7 @@ miR-137 25.71
 <p>Comparing means is a nice first shot to say that something is different. But in aging domain there are a lot of situations when means are very close to each other (especially when you test some new drug in mice). How to conduct more rigorous analysis? Wouldn’t it be better to compare the survival curves themselves?</p>
 </section>
 <section id="logrank-test">
-<h3><span class="section-number">3.4.2. </span>Logrank test<a class="headerlink" href="#logrank-test" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.2. </span>Logrank test<a class="headerlink" href="#logrank-test" title="Permalink to this headline">#</a></h3>
 <p>Okay, we need to compare two survival curves. <a class="reference external" href="https://web.stanford.edu/~lutian/coursepdf/survweek3.pdf">Logrank</a> is probably the most popular nonparametric test doing that. Let’s designate <span class="math notranslate nohighlight">\(S_0(t)\)</span> and <span class="math notranslate nohighlight">\(S_1(t)\)</span> as control and case survival curves (control and <em>mir-137</em> in our case). Formulate null hypothesis:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(S_0(t) = S_1(t)\)</span></p></li>
@@ -1471,7 +1486,7 @@ miR-137 25.71
 </div>
 </section>
 <section id="gompertz-estimator">
-<h3><span class="section-number">3.4.3. </span>Gompertz estimator*<a class="headerlink" href="#gompertz-estimator" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.3. </span>Gompertz estimator*<a class="headerlink" href="#gompertz-estimator" title="Permalink to this headline">#</a></h3>
 <p>This is an additional subsection developing an intuition about fitting custom parametric estimators by power of <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/jupyter_notebooks/Piecewise%20Exponential%20Models%20and%20Creating%20Custom%20Models.html?highlight=Gompertz#Univarite-models-in-lifelines">lifelines</a>. We spend a lot of time discussing Gompertz risk model, so it would be inexcusably not to fit Gompertz model on our pretty flies data. Do it!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1608,7 +1623,7 @@ miR-137 25.71
 </section>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">3.5. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Mortality curves  can have different shapes (increasing, decreasing, u-shape, const) which say us a lot about aging of a particular organism.</p></li>
 <li><p>Constant mortality function models “non-aging” organism which has only one critical subsystem and therefore is fragile.</p></li>
@@ -1621,7 +1636,7 @@ miR-137 25.71
 </ul>
 <img src="https://lifelines.readthedocs.io/en/latest/_images/map.png" alt="connections" width="500"/></section>
 <section id="cox-proportional-hazards-model-project">
-<h2><span class="section-number">3.6. </span>Cox proportional hazards model [Project]<a class="headerlink" href="#cox-proportional-hazards-model-project" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.6. </span>Cox proportional hazards model [Project]<a class="headerlink" href="#cox-proportional-hazards-model-project" title="Permalink to this headline">#</a></h2>
 <p><strong>Disclaimer</strong>: within this project section we will use “mortality risk” and “hazard” as synonyms (i.e. <span class="math notranslate nohighlight">\(m(t)=h(t)\)</span>) in the sense we discussed them in the previous sections.</p>
 <p><strong>Learn <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/Survival%20Regression.html#cox-s-proportional-hazard-model">the documentation</a> about Cox proportional hazards models.</strong></p>
 <p>Now is the time of advanced topics! The idea behind <a class="reference external" href="https://en.wikipedia.org/wiki/Proportional_hazards_model#The_Cox_model">Cox’s proportional hazard model</a> is that the log-hazard of an individual is a linear function of their covariates (independent of time) and a population-level baseline hazard that changes over time. Mathematically:</p>
@@ -1629,7 +1644,7 @@ miR-137 25.71
 \[\underbrace{h(t | x)}_{\text{hazard}} = \overbrace{b_0(t)}^{\text{baseline hazard}} \underbrace{\exp \overbrace{\left(\sum_{i=1}^n b_i (x_i - \overline{x_i})\right)}^{\text{log-partial hazard}}}_ {\text{partial hazard}}\]</div>
 <p>Note a few behaviors about this model: the only time component is in the baseline hazard, <span class="math notranslate nohighlight">\(b_0(t)\)</span>. In the above equation, the partial hazard is a time-invariant scalar factor that only increases or decreases the baseline hazard. Thus changes in covariates will only inflate or deflate the baseline hazard</p>
 <section id="task">
-<h3><span class="section-number">3.6.1. </span>Task<a class="headerlink" href="#task" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.6.1. </span>Task<a class="headerlink" href="#task" title="Permalink to this headline">#</a></h3>
 <p>Reproduce the Cox proportional hazards analysis from <a class="reference external" href="https://www.nature.com/articles/s41467-021-23014-1?ref=upstract.com&amp;curator=upstract.com">this paper</a> on NHANES dataset. Critically consider the paper and answer the following questions:</p>
 <ul class="simple">
 <li><p>What the main idea of using Cox analysis in the paper?</p></li>
@@ -1642,7 +1657,7 @@ miR-137 25.71
 </section>
 </section>
 <section id="learn-more">
-<h2><span class="section-number">3.7. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://crr.umd.edu/sites/crr.umd.edu/files/Free%20Ebook%20Probability%20Distributions%20Used%20in%20Reliability%20Engineering.pdf">Reliability theory textbook</a></p></li>
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=rLNzoYmnkgQ&amp;ab_channel=ComputerScienceCenter">Russian video lecture</a>.</p></li>
@@ -1653,11 +1668,11 @@ miR-137 25.71
 with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
 </section>
 <section id="credits">
-<h2><span class="section-number">3.8. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.8. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
 <p>This notebook was prepared by <a class="reference external" href="https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&amp;hl=ru">Dmitrii Kriukov</a>.</p>
 </section>
 <section id="acknowledgements">
-<h2><span class="section-number">3.9. </span>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.9. </span>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
 <p>We thank <a class="reference external" href="https://scholar.google.com/citations?hl=ru&amp;user=J2F6xmcAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Alexander Fedintsev</a>, who made a significant contribution to the theoretical part of this notebook.</p>
 </section>
 </section>
@@ -1689,17 +1704,17 @@ with your book. For more information about this, see <a class="reference externa
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="differential_analysis_practice.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../meth/meth.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Differential expression analysis</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Omics Data Analysis in Aging: Methylomics</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../ml/aging_clocks.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Aging Clocks</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Aging Clocks</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

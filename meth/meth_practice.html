@@ -1,0 +1,1190 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Weighted gene correlation network analysis (WGCNA) &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to the Computational Biology of Aging coursebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat/differential_analysis_practice.html">
+   2. Differential expression analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="meth.html">
+   3. Omics Data Analysis in Aging: Methylomics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
+   Practice - WGCNA on DNA methylation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat/survival_analysis.html">
+   4. Survival analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine learning view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/aging_clocks.html">
+   5. Aging Clocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">
+   Practice - DIY Aging Clocks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic system view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dyn/complex_systems.html">
+   6. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dyn/system_resilience.html">
+   7. System resilience
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/dosi/report.html">
+   Dynamic Organism State Indicator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/meta/report.html">
+   Meta-analysis of aging transcriptomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/parkinson/report.html">
+   Computational Model of Parkinson’s Disease
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/unsupervized/report.html">
+   Unsupervised aging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ComputationalAgingLab/computational_aging_course/master?urlpath=tree/meth/meth_practice.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fmeth/meth_practice.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/meth/meth_practice.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Weighted gene correlation network analysis (WGCNA)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#initialization">
+     Initialization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-building-gene-correlation-network">
+   Part I. Building gene correlation network
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-the-pywgcna-object">
+     Setting up the PyWGCNA object
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-gene-network-modules">
+     Constructing gene network modules
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-gene-network-modules-using-combined-methylation-sites">
+     Constructing gene network modules (using combined methylation sites)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#updating-sample-information-and-assiging-color-to-them-for-dowstream-analysis">
+       Updating sample information and assiging color to them for dowstream analysis
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#updating-gene-information">
+       Updating gene information
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#saving-and-loading-your-pywgcna">
+       Saving and loading your PyWGCNA
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relating-modules-to-external-information-and-identifying-important-genes">
+     Relating modules to external information and identifying important genes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-hub-genes-for-each-modules">
+     Finding hub genes for each modules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-functional-enrichment-analysis-using-pywgcna">
+   Part II. Functional enrichment analysis using PyWGCNA
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gene-ontology-go-analysis">
+     Gene ontology (GO) analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-visualizing-networks-with-pywgcna">
+   Part III. Visualizing networks with PyWGCNA
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iv-the-real-home-work">
+   Part IV. The real (home)work
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Weighted gene correlation network analysis (WGCNA)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Weighted gene correlation network analysis (WGCNA)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#initialization">
+     Initialization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-building-gene-correlation-network">
+   Part I. Building gene correlation network
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-the-pywgcna-object">
+     Setting up the PyWGCNA object
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-gene-network-modules">
+     Constructing gene network modules
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-gene-network-modules-using-combined-methylation-sites">
+     Constructing gene network modules (using combined methylation sites)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#updating-sample-information-and-assiging-color-to-them-for-dowstream-analysis">
+       Updating sample information and assiging color to them for dowstream analysis
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#updating-gene-information">
+       Updating gene information
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#saving-and-loading-your-pywgcna">
+       Saving and loading your PyWGCNA
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relating-modules-to-external-information-and-identifying-important-genes">
+     Relating modules to external information and identifying important genes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-hub-genes-for-each-modules">
+     Finding hub genes for each modules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-functional-enrichment-analysis-using-pywgcna">
+   Part II. Functional enrichment analysis using PyWGCNA
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gene-ontology-go-analysis">
+     Gene ontology (GO) analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-visualizing-networks-with-pywgcna">
+   Part III. Visualizing networks with PyWGCNA
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iv-the-real-home-work">
+   Part IV. The real (home)work
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="weighted-gene-correlation-network-analysis-wgcna">
+<h1>Weighted gene correlation network analysis (WGCNA)<a class="headerlink" href="#weighted-gene-correlation-network-analysis-wgcna" title="Permalink to this headline">#</a></h1>
+<p><strong>(applied to DNA methylation data)</strong></p>
+<p>This notebook was prepared by <a class="reference external" href="https://www.linkedin.com/in/evgeniy-efimov-84152725b">Evgeniy Efimov</a> for the course on Computational Biology of Aging.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment if you work using Google Colab</span>
+
+<span class="c1"># The notebook will restart automatically after this cell is executed</span>
+<span class="c1"># !pip install -q condacolab</span>
+<span class="c1"># import condacolab</span>
+<span class="c1"># condacolab.install()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import condacolab</span>
+<span class="c1"># condacolab.check()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !wget -nv https://raw.githubusercontent.com/GentlemanOfFate/computational_aging_course/main/environment_meth.yml</span>
+
+<span class="c1"># !mamba env update -n base -f environment_meth.yml</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !wget -r -np -R -nv https://raw.githubusercontent.com/GentlemanOfFate/computational_aging_course/main/meth/data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">PyWGCNA</span>
+<span class="kn">import</span> <span class="nn">biomart</span>
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;./data&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">PyWGCNA</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">biomart</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;PyWGCNA&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this practice, we will perform WGCNA for the dataset of <em>in vitro</em> cellular reprogramming in human fibroblasts. The article by Ohnuki <em>et al.</em> can be found at <a class="reference external" href="https://doi.org/10.1073/pnas.1413299111">https://doi.org/10.1073/pnas.1413299111</a>, and the whole dataset is deposited as <a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE54848">GSE54848</a>. We have downloaded and pre-processed the data of interest from this set, which includes samples of DNA methylation starting from normal fibroblasts, going through several days of reprogramming, and ending with induced pluripotent stem cells (iPSCs). Human embryonic stem cells (hESCs) are also included for comparison.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-i-building-gene-correlation-network">
+<h1>Part I. Building gene correlation network<a class="headerlink" href="#part-i-building-gene-correlation-network" title="Permalink to this headline">#</a></h1>
+<section id="setting-up-the-pywgcna-object">
+<h2>Setting up the PyWGCNA object<a class="headerlink" href="#setting-up-the-pywgcna-object" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metLev</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">/reprog_metlevs.pkl.gz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PyWGCNA was developed for gene expression data, so don&#39;t be surprised by such names of variables as geneExp or geneExpr</span>
+
+<span class="n">pyWGCNA_reprog</span> <span class="o">=</span> <span class="n">PyWGCNA</span><span class="o">.</span><span class="n">WGCNA</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;reprog_metlevs&#39;</span><span class="p">,</span> 
+                               <span class="n">species</span><span class="o">=</span><span class="s1">&#39;homo sapiens&#39;</span><span class="p">,</span> 
+                               <span class="n">geneExp</span><span class="o">=</span><span class="n">metLev</span><span class="p">,</span>
+                               <span class="n">outputPath</span><span class="o">=</span><span class="s1">&#39;wgcna_reprog_&#39;</span><span class="p">,</span>
+                               <span class="n">TPMcutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="c1"># since we&#39;re working with DNAm, this cutoff is unrelatable and should be zeroed</span>
+                               <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pyWGCNA_reprog</span><span class="o">.</span><span class="n">geneExpr</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we were working with gene expression data, we would next use the <code class="docutils literal notranslate"><span class="pre">preprocess()</span></code> function to remove lowly-expressed genes (with expression levels less than <code class="docutils literal notranslate"><span class="pre">TPMcutoff</span></code>) and genes with too many missing values, and to perform hierarchical clustering (to see if there are any obvious outliers). In our case however, there is no such notion as lowly-methylated sites, and there are no missing values in the data.</p>
+<p>Therefore, we actually use the <code class="docutils literal notranslate"><span class="pre">processing()</span></code> function only to do the clustering part:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog</span><span class="o">.</span><span class="n">preprocess</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, no samples are removed after clustering (at initialization, <code class="docutils literal notranslate"><span class="pre">pyWGCNA_reprog.cut</span> <span class="pre">=</span> <span class="pre">inf</span></code>)</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Question 1</p>
+<p>Describe what you can infer from this dendrogram. Should we exclude any samples here? If yes, why? <strong>(0.25 pts)</strong></p>
+</div>
+</section>
+<section id="constructing-gene-network-modules">
+<h2>Constructing gene network modules<a class="headerlink" href="#constructing-gene-network-modules" title="Permalink to this headline">#</a></h2>
+<p>Now we get to construct the gene network and identify its modules</p>
+<p>PyWGCNA function findModules performs all of the required steps in one go:</p>
+<ol class="simple">
+<li><p>Choosing the soft-thresholding power: analysis of network topology</p></li>
+<li><p>Co-expression similarity and adjacency</p></li>
+<li><p>Topological Overlap Matrix (TOM)</p></li>
+<li><p>Clustering using TOM</p></li>
+<li><p>Merging of modules whose expression profiles are very similar</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog</span><span class="o">.</span><span class="n">findModules</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>…</p>
+<p>Oops, something’s gone wrong. The trouble is, PyWGCNA employs a very memory-consuming approach to calculating network connectivity. It is still manageable with gene expression matrices, but with almost 500k sites it becomes unbearable for any RAM we can get our hands on in this course (even if we decrease block size). We have three obvious options:</p>
+<ol class="simple">
+<li><p>Sample (randomly or not) fewer sites</p></li>
+<li><p>Annotate sites along their genes and combine them gene-wise</p></li>
+<li><p>Delve into the PyWGCNA code and rewrite the <code class="docutils literal notranslate"><span class="pre">pickSoftThreshold()</span></code> function so that it would consume less memory –&gt; git commit?</p></li>
+</ol>
+<p>Option 3 seems like a nice opportunity for a final project, don’t you think? That’s why we’re skipping it for now.</p>
+<p>Let’s choose option 2 over option 1, because it will instantly return us to the realm of genes rather than methylation sites, which is exactly the type of data PyWGCNA is used to work with.</p>
+<p>How exactly can we do that? If you were on your own, you would have to peruse through the Illumina website to find microarray probe annotations and process them. Luckily for you, we’ve already done it and provided you with simplified annotations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">illumina_anno</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">/Illumina_850k_v2_annotation_cleaned.csv.gz&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">illumina_anno</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reprog_sites_anno</span> <span class="o">=</span> <span class="n">illumina_anno</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">illumina_anno</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pyWGCNA_reprog</span><span class="o">.</span><span class="n">geneExpr</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Out of </span><span class="si">{</span><span class="n">pyWGCNA_reprog</span><span class="o">.</span><span class="n">geneExpr</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> sites from the reprogramming dataset, </span><span class="si">{</span><span class="n">reprog_sites_anno</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> were annotated&#39;</span><span class="p">)</span>
+
+<span class="n">reprog_sites_anno</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">/reprog_sites_annotation.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since methylation sites in promoters and gene bodies tend to show different methylation patterns, let’s focus our today’s analysis on the promoter sites only (i.e., sites located in the vicinity of transcription start sites).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reprog_sites_anno_promoters</span> <span class="o">=</span> <span class="n">reprog_sites_anno</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">reprog_sites_anno_promoters</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="o">~</span><span class="n">reprog_sites_anno_promoters</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;TSS&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
+    <span class="o">~</span><span class="n">reprog_sites_anno_promoters</span><span class="p">[</span><span class="s1">&#39;Group_Gencode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;TSS&#39;</span><span class="p">),</span> 
+    <span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="s1">&#39;Group_Gencode&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">reprog_sites_anno_promoters</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="s1">&#39;Group_Gencode&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">reprog_sites_anno_promoters</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">/reprog_sites_promoters_annotation.csv&#39;</span><span class="p">)</span>
+
+<span class="n">reprog_sites_anno_promoters</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>PyWGCNA has a function to retrieve annotation data from Ensembl Biomart, <code class="docutils literal notranslate"><span class="pre">PyWGCNA.getGeneList()</span></code>. But it works so unbearably slow that we chose to do it our own way, using the Python <code class="docutils literal notranslate"><span class="pre">biomart</span></code> module</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up connection to server</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">biomart</span><span class="o">.</span><span class="n">BiomartServer</span><span class="p">(</span><span class="s1">&#39;http://ensembl.org/biomart&#39;</span><span class="p">)</span>
+<span class="n">mart</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="s1">&#39;hsapiens_gene_ensembl&#39;</span><span class="p">]</span>
+
+<span class="c1"># List the types of data we want</span>
+<span class="n">attributes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ensembl_transcript_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hgnc_symbol&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;ensembl_gene_id&#39;</span><span class="p">,</span>  <span class="s1">&#39;gene_biotype&#39;</span><span class="p">,</span> <span class="s1">&#39;transcript_biotype&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get the mapping between the attributes</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">mart</span><span class="o">.</span><span class="n">search</span><span class="p">({</span><span class="s1">&#39;attributes&#39;</span><span class="p">:</span> <span class="n">attributes</span><span class="p">})</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+
+<span class="n">genes_trascripts_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
+<span class="n">genes_trascripts_df</span><span class="p">[</span><span class="n">attributes</span><span class="p">]</span> <span class="o">=</span> <span class="n">genes_trascripts_df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">genes_trascripts_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">genes_trascripts_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First let&#39;s check if there are matching transcript IDs</span>
+<span class="n">genes_trascripts_matched1</span> <span class="o">=</span> <span class="n">genes_trascripts_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">reprog_sites_anno_promoters</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> 
+    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;ensembl_transcript_id&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;Transcript_Gencode&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+<span class="c1"># Now let&#39;s check if there are matching gene names for what&#39;s left out</span>
+<span class="n">genes_trascripts_matched2</span> <span class="o">=</span> <span class="n">genes_trascripts_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">reprog_sites_anno_promoters</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">genes_trascripts_matched1</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> 
+    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;hgnc_symbol&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;Gene&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+<span class="c1"># And combine them</span>
+<span class="n">genes_trascripts_matched</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">genes_trascripts_matched1</span><span class="p">,</span> <span class="n">genes_trascripts_matched2</span><span class="p">],</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Drop some probes that got duplicated in the process</span>
+<span class="n">genes_trascripts_matched</span> <span class="o">=</span> <span class="n">genes_trascripts_matched</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+<span class="c1"># For some reason, some HGNC symbols retrieved from biomart are empty strings. Let&#39;s convert what we can using our Illumina annotation</span>
+<span class="n">genes_trascripts_matched</span><span class="p">[</span><span class="s1">&#39;hgnc_symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">genes_trascripts_matched</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Gene&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;hgnc_symbol&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;&#39;</span> <span class="k">else</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;hgnc_symbol&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Select and save only the gene-related information</span>
+<span class="n">cgGeneList</span> <span class="o">=</span> <span class="n">genes_trascripts_matched</span><span class="p">[[</span><span class="s1">&#39;hgnc_symbol&#39;</span><span class="p">,</span> <span class="s1">&#39;ensembl_gene_id&#39;</span><span class="p">,</span> <span class="s1">&#39;gene_biotype&#39;</span><span class="p">]]</span>
+<span class="n">cgGeneList</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./data/cgGeneList.csv&#39;</span><span class="p">)</span>
+
+<span class="n">cgGeneList</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog</span><span class="o">.</span><span class="n">geneExpr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reprog_metlevs_grouped</span> <span class="o">=</span> <span class="n">pyWGCNA_reprog</span><span class="o">.</span><span class="n">geneExpr</span><span class="p">[:,</span> <span class="n">cgGeneList</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">cgGeneList</span><span class="p">[</span><span class="s1">&#39;ensembl_gene_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;ensembl_gene_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">reprog_metlevs_grouped</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">/reprog_metlevs_grouped.csv.gz&#39;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">)</span>
+<span class="n">reprog_metlevs_grouped</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="constructing-gene-network-modules-using-combined-methylation-sites">
+<h2>Constructing gene network modules (using combined methylation sites)<a class="headerlink" href="#constructing-gene-network-modules-using-combined-methylation-sites" title="Permalink to this headline">#</a></h2>
+<p>Here we go again…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span> <span class="o">=</span> <span class="n">PyWGCNA</span><span class="o">.</span><span class="n">WGCNA</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;metlevs_grouped&#39;</span><span class="p">,</span> 
+                                       <span class="n">species</span><span class="o">=</span><span class="s1">&#39;homo sapiens&#39;</span><span class="p">,</span> 
+                                       <span class="n">geneExp</span><span class="o">=</span><span class="n">reprog_metlevs_grouped</span><span class="p">,</span> 
+                                       <span class="n">outputPath</span><span class="o">=</span><span class="s1">&#39;wgcna_reprog_&#39;</span><span class="p">,</span>
+                                       <span class="n">TPMcutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                       <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">preprocess</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Question 2</p>
+<p>Compare this dendrogram with what we’ve got earlier for the ungrouped matrix. Do you notice any changes? Should we remove any samples in this case? <strong>(0.25 pts)</strong></p>
+</div>
+<p>Finally, <strong>now</strong> we get to construct the connectivity network.</p>
+<p>Prepare to wait for a while, we’re basically performing a huge computational analysis workflow via a single function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">findModules</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Question 3</p>
+<p>Did you notice anything odd about how this function ran? <em>hint</em>: if not, look carefully through the log. How do you think, what should we do about this behaviour? <strong>(0.25 pts)</strong></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Question 4</p>
+<p>How many modules were identified? What is the main take-away from the last dendrogram? How can we modify WGCNA construction behaviour to change the number of modules retained for analysis? <strong>(0.25 pts)</strong></p>
+</div>
+<section id="updating-sample-information-and-assiging-color-to-them-for-dowstream-analysis">
+<h3>Updating sample information and assiging color to them for dowstream analysis<a class="headerlink" href="#updating-sample-information-and-assiging-color-to-them-for-dowstream-analysis" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampleInfo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">/meta.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">updateSampleInfo</span><span class="p">(</span><span class="n">sampleInfo</span><span class="o">=</span><span class="n">sampleInfo</span><span class="p">)</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">geneExpr</span><span class="o">.</span><span class="n">obs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add colors for metadata</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_types</span> <span class="o">=</span> <span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">geneExpr</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;SampleType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">setMetadataColor</span><span class="p">(</span><span class="s1">&#39;SampleType&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">sample_types</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;tab10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">as_hex</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_types</span><span class="p">))})</span>
+
+<span class="n">reprog_days</span> <span class="o">=</span> <span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">geneExpr</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Day&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">setMetadataColor</span><span class="p">(</span><span class="s1">&#39;Day&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">reprog_days</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reprog_days</span><span class="p">))</span><span class="o">.</span><span class="n">as_hex</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">reprog_days</span><span class="p">))})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="updating-gene-information">
+<h3>Updating gene information<a class="headerlink" href="#updating-gene-information" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load genes metadata that we&#39;ve retrieved from Biomart earlier</span>
+<span class="n">cgGeneList</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">/cgGeneList.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">geneList</span> <span class="o">=</span> <span class="n">cgGeneList</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="s1">&#39;ensembl_gene_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ensembl_gene_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;hgnc_symbol&#39;</span><span class="p">:</span> <span class="s1">&#39;gene_name&#39;</span><span class="p">})</span>
+
+<span class="c1"># Add genes metadata to our object</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">updateGeneInfo</span><span class="p">(</span><span class="n">geneList</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">geneExpr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>note</strong>: For downstream analysis, we want to keep aside the Grey module (if there is one), which is the collection of genes that could not be assigned to any other module.</p>
+</section>
+<section id="saving-and-loading-your-pywgcna">
+<h3>Saving and loading your PyWGCNA<a class="headerlink" href="#saving-and-loading-your-pywgcna" title="Permalink to this headline">#</a></h3>
+<p>You can save or load your PyWGCNA object with the <code class="docutils literal notranslate"><span class="pre">saveWGCNA()</span></code> or <code class="docutils literal notranslate"><span class="pre">readWGCNA()</span></code> functions respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">saveWGCNA</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="relating-modules-to-external-information-and-identifying-important-genes">
+<h2>Relating modules to external information and identifying important genes<a class="headerlink" href="#relating-modules-to-external-information-and-identifying-important-genes" title="Permalink to this headline">#</a></h2>
+<p>PyWGCNA performs some important analysis after identifying modules in <code class="docutils literal notranslate"><span class="pre">analyseWGCNA()</span></code> function including:</p>
+<ol class="simple">
+<li><p>Quantifying module–trait relationship</p></li>
+<li><p>Gene relationship to trait and modules</p></li>
+<li><p>Gene-ontology analysis</p></li>
+</ol>
+<p>That is why we’ve added sample and gene information beforehand.</p>
+<p>For showing module relationship heatmap, PyWGCNA needs user to choose and set colors from Matplotlib colors for metadata by using <code class="docutils literal notranslate"><span class="pre">setMetadataColor()</span></code> function.</p>
+<p>You also can select which data trait in which order you wish to show in module eigengene heatmap</p>
+<p>Expect to wait for a while, again…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span> <span class="o">=</span> <span class="n">PyWGCNA</span><span class="o">.</span><span class="n">readWGCNA</span><span class="p">(</span><span class="s2">&quot;wgcna_reprog_metlevs_grouped.p&quot;</span><span class="p">)</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">geneExpr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">analyseWGCNA</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">saveWGCNA</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Question 5</p>
+<p>That’s a lot of heatmaps and barplots. What can you assume about the dynamics of promoter DNA methylation modules across cellular reprogramming based on these plots (and on what you know about reprogramming and embryonic stem cells)? (0.5 pts)</p>
+<p><em>hint</em>: Check the <code class="docutils literal notranslate"><span class="pre">./wgcna_reprog_figures/GO</span> <span class="pre">folder</span></code>, you might find something useful in there</p>
+</div>
+</section>
+<section id="finding-hub-genes-for-each-modules">
+<h2>Finding hub genes for each modules<a class="headerlink" href="#finding-hub-genes-for-each-modules" title="Permalink to this headline">#</a></h2>
+<p>You can also find hub genes in each module based on their connectivity by using the <code class="docutils literal notranslate"><span class="pre">top_n_hub_genes()</span></code> function.</p>
+<p>It will give you dataframe sorted by connectivity along with the additional gene information you have in your metadata.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modules</span> <span class="o">=</span> <span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">datExpr</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">moduleColors</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">top_n_hub_genes</span><span class="p">(</span><span class="n">moduleName</span><span class="o">=</span><span class="n">modules</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-ii-functional-enrichment-analysis-using-pywgcna">
+<h1>Part II. Functional enrichment analysis using PyWGCNA<a class="headerlink" href="#part-ii-functional-enrichment-analysis-using-pywgcna" title="Permalink to this headline">#</a></h1>
+<p>After finding coexpression modules, you can investigate each module separately using functional enrichment analysis. PyWGCNA supports this directly from the GO, KEGG, and REACTOME databases using the <code class="docutils literal notranslate"><span class="pre">functional_enrichment_analysis()</span></code> function.</p>
+<p>Let’s get straight into it!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reload PyWGCNA object you&#39;ve made if you&#39;ve lost connection or something else...</span>
+<span class="n">pyWGCNA_reprog_grouped</span> <span class="o">=</span> <span class="n">PyWGCNA</span><span class="o">.</span><span class="n">readWGCNA</span><span class="p">(</span><span class="s2">&quot;wgcna_reprog_metlevs_grouped.p&quot;</span><span class="p">)</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">datExpr</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">moduleColors</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="gene-ontology-go-analysis">
+<h2>Gene ontology (GO) analysis<a class="headerlink" href="#gene-ontology-go-analysis" title="Permalink to this headline">#</a></h2>
+<p>Say we want to investigate the black module. After defining which gene set libraries we want to use, (pick from <a class="reference external" href="https://maayanlab.cloud/Enrichr/#libraries">here</a>), we make the following call:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">moduleName</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">figureType</span> <span class="o">=</span> <span class="s2">&quot;png&quot;</span>
+<span class="n">gene_set_library</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GO_Biological_Process_2023&quot;</span><span class="p">,</span> <span class="s2">&quot;GO_Cellular_Component_2023&quot;</span><span class="p">,</span> <span class="s2">&quot;GO_Molecular_Function_2023&quot;</span><span class="p">]</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">functional_enrichment_analysis</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;GO&quot;</span><span class="p">,</span>
+                                                      <span class="n">moduleName</span><span class="o">=</span><span class="n">moduleName</span><span class="p">,</span>
+                                                      <span class="n">sets</span><span class="o">=</span><span class="n">gene_set_library</span><span class="p">,</span>
+                                                      <span class="n">p_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                                      <span class="n">file_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;GO_</span><span class="si">{</span><span class="n">moduleName</span><span class="si">}</span><span class="s2">_2023&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">figureType</span> <span class="o">=</span> <span class="s2">&quot;png&quot;</span>
+<span class="n">gene_set_library</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;KEGG_2021_Human&quot;</span><span class="p">]</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">functional_enrichment_analysis</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;KEGG&quot;</span><span class="p">,</span>
+                                                      <span class="n">moduleName</span><span class="o">=</span><span class="n">moduleName</span><span class="p">,</span>
+                                                      <span class="n">sets</span><span class="o">=</span><span class="n">gene_set_library</span><span class="p">,</span>
+                                                      <span class="n">p_value</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">figureType</span> <span class="o">=</span> <span class="s2">&quot;pdf&quot;</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">functional_enrichment_analysis</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;REACTOME&quot;</span><span class="p">,</span>
+                                                      <span class="n">moduleName</span><span class="o">=</span><span class="n">moduleName</span><span class="p">,</span>
+                                                      <span class="n">p_value</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 1</p>
+<p>Repeat GO analysis for the other modules and describe the outcomes. What else could we do to perform functional enrichment? (0.5 pts)</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 2</p>
+<p>Using top-10 hub genes, try to make an informed guess about the functional enrichments of each module (0.5 pts)</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-iii-visualizing-networks-with-pywgcna">
+<h1>Part III. Visualizing networks with PyWGCNA<a class="headerlink" href="#part-iii-visualizing-networks-with-pywgcna" title="Permalink to this headline">#</a></h1>
+<p>After you finding your modules, you can plot each module or all modules together as a network.</p>
+<p>You can plot each module as a network using the <code class="docutils literal notranslate"><span class="pre">CoexpressionModulePlot()</span></code> function. This will save the plot as an html file in the output directory figures/network with the module name. For this example, it will save at figures/network/black.html.</p>
+<p>You can define the number of genes and connections you want to see and the minimum TOM value to be considered a connection or not.</p>
+<p>The HTML file is an interactive network so if you click on any nodes you can see additional information about each node (gene).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">CoexpressionModulePlot</span><span class="p">(</span><span class="n">modules</span><span class="o">=</span><span class="p">[</span><span class="n">moduleName</span><span class="p">],</span> <span class="n">numGenes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">numConnections</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">minTOM</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also filter genes based on the information you have in <code class="docutils literal notranslate"><span class="pre">datExpr.var</span></code>. Imagine we only want to see protein coding genes in the black module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;gene_biotype&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;protein_coding&quot;</span><span class="p">]}</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">CoexpressionModulePlot</span><span class="p">(</span><span class="n">modules</span><span class="o">=</span><span class="p">[</span><span class="n">moduleName</span><span class="p">],</span> <span class="n">filters</span><span class="o">=</span><span class="n">filters</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">moduleName</span><span class="si">}</span><span class="s2">_protein_coding&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 3</p>
+<p>Draw coexpression plots for every module using protein coding genes only and try to assume biological meaning behind each module’s networks (1 pt)</p>
+</div>
+<p>If you want to display a network for more than one module and to show the connections between each module, you can simply provide a list of modules to the <code class="docutils literal notranslate"><span class="pre">CoexpressionModulePlot()</span></code> function.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 4</p>
+<p>Draw coexpression plots for all modules combined. You might find it useful to play around with filters and with the <code class="docutils literal notranslate"><span class="pre">numGenes</span></code> and <code class="docutils literal notranslate"><span class="pre">numConnections</span></code> variables. Don’t forget to set <code class="docutils literal notranslate"><span class="pre">file_name=&quot;all&quot;</span></code> to save it as a separate file (1.5 pts)</p>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-iv-the-real-home-work">
+<h1>Part IV. The real (home)work<a class="headerlink" href="#part-iv-the-real-home-work" title="Permalink to this headline">#</a></h1>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 5</p>
+<p>Perform weighted gene-coexpression network analysis for the CpG sites (in our reprogramming dataset) located outside of promoters and try to make some conclusions about the dynamics of DNA methylation in all modules that you’ve managed to find, both in promoters and non-promoters. You are expected to provide these conclusions as a list of no less than three concise bullet points (5 pts)</p>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./meth"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
