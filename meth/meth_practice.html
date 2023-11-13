@@ -141,7 +141,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
-   Practice - WGCNA on DNA methylation
+   Practice - WGCNA for Methylomics
   </a>
  </li>
  <li class="toctree-l1">
@@ -422,8 +422,13 @@ title="Print to PDF"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#initialization">
-     Initialization
+    <a class="reference internal nav-link" href="#google-colab-initialization">
+     Google Colab initialization
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#environment-initialization">
+     Environment initialization
     </a>
    </li>
   </ul>
@@ -524,8 +529,13 @@ title="Print to PDF"
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#initialization">
-     Initialization
+    <a class="reference internal nav-link" href="#google-colab-initialization">
+     Google Colab initialization
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#environment-initialization">
+     Environment initialization
     </a>
    </li>
   </ul>
@@ -615,11 +625,11 @@ title="Print to PDF"
 <h1>Weighted gene correlation network analysis (WGCNA)<a class="headerlink" href="#weighted-gene-correlation-network-analysis-wgcna" title="Permalink to this headline">#</a></h1>
 <p><strong>(applied to DNA methylation data)</strong></p>
 <p>This notebook was prepared by <a class="reference external" href="https://www.linkedin.com/in/evgeniy-efimov-84152725b">Evgeniy Efimov</a> for the course on Computational Biology of Aging.</p>
+<section id="google-colab-initialization">
+<h2>Google Colab initialization<a class="headerlink" href="#google-colab-initialization" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment if you work using Google Colab</span>
-
-<span class="c1"># The notebook will restart automatically after this cell is executed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The notebook will restart automatically after this cell is executed</span>
 <span class="c1"># !pip install -q condacolab</span>
 <span class="c1"># import condacolab</span>
 <span class="c1"># condacolab.install()</span>
@@ -646,13 +656,16 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !wget -r -np -R -nv https://raw.githubusercontent.com/GentlemanOfFate/computational_aging_course/main/meth/data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !wget -nv &#39;https://raw.githubusercontent.com/GentlemanOfFate/computational_aging_course/main/meth/data/reprog_metlevs.pkl.gz&#39; -P &#39;./data&#39;</span>
+<span class="c1"># !wget -nv &#39;https://raw.githubusercontent.com/GentlemanOfFate/computational_aging_course/main/meth/data/meta.csv&#39; -P &#39;./data&#39;</span>
+<span class="c1"># !wget -nv &#39;https://raw.githubusercontent.com/GentlemanOfFate/computational_aging_course/main/meth/data/Illumina_850k_v2_annotation_cleaned.csv.gz&#39; -P &#39;./data&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="initialization">
-<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="environment-initialization">
+<h2>Environment initialization<a class="headerlink" href="#environment-initialization" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -773,6 +786,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>Since methylation sites in promoters and gene bodies tend to show different methylation patterns, let’s focus our today’s analysis on the promoter sites only (i.e., sites located in the vicinity of transcription start sites).</p>
+<p>Since we’re only learning here, we would better off taking only a subset of DNAm sites to spare our time and computational resourses. Let’s focus on the first 10 chromosomes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reprog_sites_anno_promoters</span> <span class="o">=</span> <span class="n">reprog_sites_anno</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -783,6 +797,12 @@ title="Print to PDF"
     <span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="s1">&#39;Group_Gencode&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 
 <span class="n">reprog_sites_anno_promoters</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="s1">&#39;Group_Gencode&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">numChromosomes</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">reprog_sites_anno_promoters</span><span class="p">[[</span><span class="s1">&#39;Chr&#39;</span><span class="p">,</span> <span class="s1">&#39;Pos&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">reprog_sites_anno_promoters</span><span class="p">[</span><span class="s1">&#39;hg38_pos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">reprog_sites_anno_promoters</span> <span class="o">=</span> <span class="n">reprog_sites_anno_promoters</span><span class="p">[</span>
+    <span class="n">reprog_sites_anno_promoters</span><span class="p">[</span><span class="s1">&#39;Chr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;chr&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numChromosomes</span><span class="o">+</span><span class="mi">1</span><span class="p">)])]</span>
 
 <span class="n">reprog_sites_anno_promoters</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">/reprog_sites_promoters_annotation.csv&#39;</span><span class="p">)</span>
 
@@ -969,6 +989,14 @@ title="Print to PDF"
 </section>
 <section id="relating-modules-to-external-information-and-identifying-important-genes">
 <h2>Relating modules to external information and identifying important genes<a class="headerlink" href="#relating-modules-to-external-information-and-identifying-important-genes" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span> <span class="o">=</span> <span class="n">PyWGCNA</span><span class="o">.</span><span class="n">readWGCNA</span><span class="p">(</span><span class="s2">&quot;wgcna_reprog_metlevs_grouped.p&quot;</span><span class="p">)</span>
+<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">geneExpr</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>PyWGCNA performs some important analysis after identifying modules in <code class="docutils literal notranslate"><span class="pre">analyseWGCNA()</span></code> function including:</p>
 <ol class="simple">
 <li><p>Quantifying module–trait relationship</p></li>
@@ -979,14 +1007,6 @@ title="Print to PDF"
 <p>For showing module relationship heatmap, PyWGCNA needs user to choose and set colors from Matplotlib colors for metadata by using <code class="docutils literal notranslate"><span class="pre">setMetadataColor()</span></code> function.</p>
 <p>You also can select which data trait in which order you wish to show in module eigengene heatmap</p>
 <p>Expect to wait for a while, again…</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span> <span class="o">=</span> <span class="n">PyWGCNA</span><span class="o">.</span><span class="n">readWGCNA</span><span class="p">(</span><span class="s2">&quot;wgcna_reprog_metlevs_grouped.p&quot;</span><span class="p">)</span>
-<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">geneExpr</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">analyseWGCNA</span><span class="p">()</span>
@@ -1020,7 +1040,15 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">top_n_hub_genes</span><span class="p">(</span><span class="n">moduleName</span><span class="o">=</span><span class="n">modules</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">top_n_hub_genes</span><span class="p">(</span><span class="n">moduleName</span><span class="o">=</span><span class="n">modules</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">modules</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">module</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> module: </span><span class="si">{</span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">top_n_hub_genes</span><span class="p">(</span><span class="n">moduleName</span><span class="o">=</span><span class="n">module</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)[</span><span class="s2">&quot;gene_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1034,8 +1062,14 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reload PyWGCNA object you&#39;ve made if you&#39;ve lost connection or something else...</span>
-<span class="n">pyWGCNA_reprog_grouped</span> <span class="o">=</span> <span class="n">PyWGCNA</span><span class="o">.</span><span class="n">readWGCNA</span><span class="p">(</span><span class="s2">&quot;wgcna_reprog_metlevs_grouped.p&quot;</span><span class="p">)</span>
-<span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">datExpr</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">moduleColors</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="c1"># pyWGCNA_reprog_grouped = PyWGCNA.readWGCNA(&quot;wgcna_reprog_metlevs_grouped.p&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyWGCNA_reprog_grouped</span><span class="o">.</span><span class="n">datExpr</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">moduleColors</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1098,7 +1132,7 @@ title="Print to PDF"
 <section class="tex2jax_ignore mathjax_ignore" id="part-iii-visualizing-networks-with-pywgcna">
 <h1>Part III. Visualizing networks with PyWGCNA<a class="headerlink" href="#part-iii-visualizing-networks-with-pywgcna" title="Permalink to this headline">#</a></h1>
 <p>After you finding your modules, you can plot each module or all modules together as a network.</p>
-<p>You can plot each module as a network using the <code class="docutils literal notranslate"><span class="pre">CoexpressionModulePlot()</span></code> function. This will save the plot as an html file in the output directory figures/network with the module name. For this example, it will save at figures/network/black.html.</p>
+<p>You can plot each module as a network using the <code class="docutils literal notranslate"><span class="pre">CoexpressionModulePlot()</span></code> function. This will save the plot as an html file in the output directory <code class="docutils literal notranslate"><span class="pre">wgcna_reprog_figures/network</span></code> with the module name. For this example, it will be saved at <code class="docutils literal notranslate"><span class="pre">wgcna_reprog_figures/network/black.html</span></code>.</p>
 <p>You can define the number of genes and connections you want to see and the minimum TOM value to be considered a connection or not.</p>
 <p>The HTML file is an interactive network so if you click on any nodes you can see additional information about each node (gene).</p>
 <div class="cell docutils container">
