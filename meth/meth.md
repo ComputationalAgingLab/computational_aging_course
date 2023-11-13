@@ -5,15 +5,15 @@
 
 ## What is DNA methylation?
 
-Considering the previous chapters, you must have already seen that epigenetics plays a huge role in our lives. And indeed, epigenetic mechanisms tightly control all the intricate behaviors of our cells. Which functions to provide, which range of proteins to produce, and how to react to external signals: all of this information is not encoded explicitly in the DNA sequence, and is regulated by the epigenome {cite}`lim2016`. There are a lot of various epigenetic mechanisms including histone modifications, nucleosome remodelling, noncoding RNAs, etc. {cite}`saul2021`, however, DNA methylation is one of the most investigated types of epigenetic modifications. As you can see from the {numref}`epigenetics` below, we’re descending to the very depths of gene regulation.
+Considering the previous chapters, you must have already seen that **epigenetics plays a huge role in our lives**. And indeed, epigenetic mechanisms tightly control all the intricate behaviors of our cells. Which functions to provide, which range of proteins to produce, and how to react to external signals: all of this information is not encoded explicitly in the DNA sequence, and is regulated by the epigenome {cite}`lim2016`. There are a lot of various epigenetic mechanisms including histone modifications, nucleosome remodelling, noncoding RNAs, etc. {cite}`saul2021`, however, DNA methylation is one of the most investigated types of epigenetic modifications. As you can see from the {numref}`epigenetics` below, we’re descending to the very depths of gene regulation.
 
 ```{figure} figs/epigenetics.png
 :name: epigenetics
 :width: 600
-Overview of epigenetic mechanisms
+Overview of epigenetic mechanisms {cite}`hanna2018`
 ```
 
-Methyl groups can be attached to the cytosine bases of DNA at the 5th carbon atom of the pyrimidine ring (annotated as 5mC), and it is most commonly observed in a CpG context (cytosine followed by a guanine nucleotide) {cite}`seale2022`, although other types of DNA methylation such as methylation of the nitrogen atom at the 6-th position of adenine (6mA) have also been discovered but remain poorly characterized {cite}`iyer2016`.
+Methyl groups can be attached to the cytosine bases of DNA at the 5th carbon atom of the pyrimidine ring (annotated as 5mC), and it is most commonly observed in a **CpG context** (cytosine followed by a guanine nucleotide) {cite}`seale2022`, although other types of DNA methylation such as methylation of the nitrogen atom at the 6-th position of adenine (6mA) have also been discovered but remain poorly characterized {cite}`iyer2016`.
 
 How does methylation appear? Well, there are two options ({numref}`methylation_pathways`). First of all, DNA methyltransferase 3 (DNMT3) can produce methylation at the completely unmethylated sites (so-called *de novo* mechanism). Secondly, since CpG sites are symmetrical on both strands, it’s easy to imagine some mechanism that would recognise a site that is methylated at one strand and is unmethylated at the opposite one. Such situation occurs, for example, after DNA replication, where the mother strand retains its methylation pattern, but the daughter strand is built from raw nucleotides, so it’s not modified yet. In such cases, UHRF1 recognises these so-called hemi-methylated sites and recruits DNA methyltransferase 1 (DNMT1), which faithfully restores the symmetry {cite}`greenberg2019`. Both reactions require S-adenosyl methionine (SAM) as a donor of methyl groups.
 
@@ -41,6 +41,21 @@ Demethylation pathways: 5mC can be actively oxidized in a series of reactions me
 DNA methylation biosynthesis from a chemistry viewpoint: (a) cytosine (de)methylation; (b) adenine (de)methylation. For thorough description, read {cite}`liu2023`
 ``` -->
 
+## Why DNA methylation?
+
+Now that we know, what DNA methylation is, it’s about time to find out what it does.
+
+At some point, the “histone code” hypothesis was introduced in attempt to describe a certain pattern that governs which modification of which histone at which position serves a repressive or an activating function {cite}`jenuwein2001`. However tempting it could be to assign these labels, considering the vast complexity of histone modification combinations, such a code might prove difficult to establish. Albeit, some patterns have earned enough credibility to be called “canonical” ({numref}`epigenetic_patterns`).
+ 
+```{figure} figs/epigenetic_patterns.png
+:name: epigenetic_patterns
+Canonical epigenetic patterns. H3K4me3 is associated with active promoters and with CpG islands, regions of high genomic CpG occurrence, in general. H3K27ac appears at transcription-promoting regions (both promoters and enhancers), whereas H3K36me3 occupies transcribed gene bodies (supposedly, for prevention of spurious transcription and facilitation of already bound RNA polymerase). DNAm is usually highly methylated in gene bodies and intergenic regions, but is free of methylation at activating histones. On the other hand, transcriptionally inactive regions are usually fully covered with H3K9me2/3 or with H3K27me3 which overrides other activating histones and unmethylated DNA {cite}`hanna2018`.
+```
+
+As we can see from {numref}`epigenetic_patterns`, DNAm is canonically repressive when occurs at promoter/enhancer regions. The reasoning behind is that methylated cytosine prevents transcription factors from binding to DNA, although even unmethylated cytosines can also be inaccessible upon H3K27 trimethylation. However, there are transcription factors with higher affinity to methylated cytosines in their respective binding motifs; for example, cell pluripotency factors KLF4 and OCT4, the homeobox proteins HOXB13, the NKX neural patterning factors, and C/EBPα {cite}`greenberg2019`, which appear in the “Reprogramming” section of this paper.
+
+In addition, methylation at regions upstream of promoters can evict Polycomb repressor complex 2 (PRC2) from there, thus preventing H3K27 methylation and activating transcription of these promoters, such as in the case of neural genes during neurogenesis, FOXA2 during endoderm development, and ZDBF2 in early embryos {cite}`greenberg2019`. In general, however, the main evolutionary role of DNAm is considered to be the support of genomic stability through silencing transposable genetic elements, which account for roughly half of human genomic space {cite}`sanchez2016`, and other repetitive regions. This silencing is performed not only by TF inaccessibility, but also due to high rates of spontaneous and mutagenic deamination occurring in CpG-rich promoters of transposable elements {cite}`greenberg2019`.
+
 --- Work in progress ---
 
 ## How to measure DNA methylation
@@ -56,11 +71,11 @@ Electrophoresis and first-generation (Sanger) sequencing methods are plainly out
 
 Essentially, the main take-home message from this chapter is that the microarrays represent an old technique that is relatively inaccurate, covers a small percentage of CpG sites, and is difficult to compare between different datasets (huge batch effect). However, it is still being upgraded (more CpGs are being included) and widely used, especially in human methylation profiling, for the only reason of its cost and ease of handling. Nevertheless, it is inevitable that the highly accurate and comprehensive (up to 100% of CpGs can be covered) sequencing-based methods, which have already become the “gold standard” in the field, will gradually replace microarrays as long as they become more and more affordable for the wider community.
 
-Both microarray and sequencing technologies rely on amplification, during which DNA is fragmented, and the fragments are multiplied several times to increase their concentration. Across these steps, DNA methylation cannot be maintained, therefore, DNA should undergo some pretreatment which later allows distinguishing methylated from unmethylated. The main pretreatment methods are based either on:
+Both microarray and sequencing technologies rely on amplification, during which DNA is fragmented, and the fragments are multiplied several times to increase their concentration. Across these steps, DNA methylation cannot be maintained, therefore, DNA should undergo some pretreatment which later allows distinguishing methylated from unmethylated. The main pretreatment methods are based either on {cite}`rauluseviciute2019, li2021`:
 
-1. **restriction enzymes** (MRE-seq; {numref}`dnam_profiling_restriction_affinity`, left column), 
-2. **affinity enrichment** (MeDIP-seq and MBD-seq; {numref}`dnam_profiling_restriction_affinity`, center and right columns), or 
-3. **bisulfite conversion** (BS-seq, {numref}`dnam_profiling_bisulfite`) {cite}`rauluseviciute2019, li2021`.
+1. **restriction enzymes** (MRE-seq; {numref}`dnam_profiling_restriction_affinity`, left column),
+2. **affinity enrichment** (MeDIP-seq and MBD-seq; {numref}`dnam_profiling_restriction_affinity`, center and right columns), or
+3. **bisulfite conversion** (BS-seq, {numref}`dnam_profiling_bisulfite`).
 
 In MRE-seq, various methylation-sensitive restriction enzymes are used to cleave DNA at unmethylated sites, so DNA region methylation status can be deduced from the number of times a cutting site is observed (the more observations, the more methylated it is). The coverage of CpGs is therefore fully dependent on the range of cleavage sites that can be recognized by the enzymes. In MeDIP-seq, antibodies affine to 5-methylcytosines (or 5-hydroxymethylcytosines) are used to pull (“immunoprecipitate”) only methylated and single-stranded fragments from the solution. The main drawback of this approach is that the antibodies are biased to bind CG-rich fragments, yielding a lot of false negatives in CG-poor regions. In MBD-seq, methyl-CpG-binding domain proteins attach to the double-stranded methylated DNA fragments. Although, they cannot distinguish between 5mC and 5hmC, and bind unstably to the hemi-methylated DNA, yielding false negatives again. Most unfortunately, all affinity-based approaches are unable to profile methylation at single-base resolution, because whole fragments are pulled if they contain methylated CpGs, even though the unmethylated ones are also present.
 
@@ -258,7 +273,7 @@ Files after microarray processing are similar, but a ton more uniform:
 
 To sum up, the only info you can get directly from the processed microarray data is *CpG site ID* and its *methylation level*. Extremely user-friendly. Especially if you forget about all the numerous normalizations and bias corrections that have led you to these methylation levels.
 
-## Visualisation and statistical analysis
+### Visualisation and statistical analysis
 
 Finally, after methylation percentages are calculated, we step into the realm of data analysis and interpretation. The amount of tools and approaches available for it is overwhelming, so we will only mention a few.
 
@@ -267,7 +282,7 @@ One of the obvious direct approaches is to look at your data, which can be done 
 But of course, probably the most widely adopted approach is to find differentially methylated (DM) positions (a.k.a. DMPs, DMSs \[sites], or DMCs [CpG sites]) or regions (DMRs) by comparing two or more studied groups, for example, to find differences between DNA methylation in a certain cancer type and healthy controls, or between cancer types. And, essentially, the main goal of DNAm profiling in the first place is to identify systematic differences between samples and sample groups, which is exactly the job for DM analysis.
 
 DMP analysis is more suitable for the microarray-based data, since a lot of genes there are covered with only one CpG site, or several sites are spread too far apart from each other (e.g., one is situated in a promoter, and another one is in a gene body).
-In WBGS and RRBS, on the other hand, a promoter can be covered with a dozen of CpG sites, and the variation at each of them can be a lot higher than the variation of methylation across the whole promoter (due to sequencing variability). In addition to that, DNAm sites are known to correlate really well within CpG islands, or in otherwise close proximity to each other {cite}`affinito2020`. Therefore, it is logical to interrogate DNA methylation not at individual sites, but in whole regions, which can be derived by splitting genome either into equally sized ranges, or into CpG-dense fragments (especially relevant for RRBS) {cite}`chatterjee2016`.
+In WBGS and RRBS, on the other hand, a promoter can be covered with a dozen of CpG sites, and the variation at each of them can be a lot higher than the variation of methylation across the whole promoter (due to sequencing variability). In addition to that, DNAm sites are known to correlate really well within CpG islands, or in otherwise close proximity to each other {cite}`affinito2020`. Therefore, it is logical to interrogate DNA methylation not at individual sites, but in whole regions, which can be derived by splitting genome either into equally sized ranges, or into CpG-dense fragments (especially relevant for RRBS) {cite}`chatterjee2017`.
 There are numerous statistical approaches to calculating differential methylation, whose pros and cons have been thoroughly discussed and reviewed elsewhere {cite}`shafi2018, piao2021`. The key feature in these approaches is the statistical test they use to estimate statistically significant differences in DNAm levels. Model assumptions about how DNAm levels per site/region are distributed and different genome segmentation methods are also embedded into these approaches, so the outcomes of their work (i.e., discovered DMRs) are inevitably different.
 
 Another, less widely adopted, but still pretty insightful method is the analysis of methylation variability (again, at individual positions, VMPs, or at regions, VMRs), since variable methylation has also been linked to cancers, diseases, and aging {cite}`seale2022`. For example, increasing variance of housekeeping genes was shown to predict chronological age and aging-associated pathologies with even greater accuracy than methylation clocks built on changes in mean DNAm {cite}`mei2023`. Approaches to VM analysis are numerous as well, and are compared elsewhere {cite}`li2015`.
@@ -281,11 +296,76 @@ All things combined, evaluating differences in mean DNAm, in DNAm variance, and 
 Combining differential DNAm, variable DNAm, and cell-type heterogeneity in DNAm to compare healthy epigenome with progressing cancer epigenetic profiles: (a) two examples of VMCs, one driven by single-nucleotide polymorphisms (SNPs) located in *cis* with the indicated CpG site (defining a well-known *cis* methylation quantitative trait locus (*cis*-mQTL)) (left panel) and another driven by variation in immune-cell contamination (right panel). Panels illustrate how SNPs and **cell-type composition can drive large variation in DNAm**, while **variation may not correlate** with case versus control status. (b) Contrast between DMCs and DVCs. drawn from normal cervical smears (green) and either cervical intraepithelial neoplasia (CIN2+) or cervical cancer (both blue). Observe how a DMC is typically characterized by most samples in one phenotype exhibiting a deviation in DNAm value. By contrast, a DVC is characterized by a very stable DNAm profile in one phenotype but by DNAm outliers driving large variation in the other. (c) Example of a CpG that exhibits progression in DNAm between successive stages in cervical carcinogenesis. When comparing normal cervical smears that progress to CIN2+ to those that do not (Normal → Normal), this CpG **can be identified only via a test for differential variance**. When comparing CIN2+ to normal cervical smears, differential variance is still the **main distinguishing feature**. Only when comparing (invasive) cervical cancer to normal cervix does this CpG exhibit a stronger difference in average DNAm. Thus, this panel emphasizes the importance of selecting the appropriate statistical test, as the **choice of test will have a dramatic impact on feature selection**. (Adopted from {cite}`teschendorff2018`)
 ```
 
---- Work in progress ---
+Another approach is to raise the stakes of dimensionality by investigating interconnected and co-methylated groups of DNAm sites or regions on the level of whole methylomes instead of looking for changes in individual sites or regions, since long-range genomic interactions are as prominent and influential as the short-ranged ones thanks to chromatin folding and compactization. **Weighted gene co-expression network analysis** (WGCNA) was initially developed to study such interconnected groups in the context of gene expression, but it was later leveraged for other omics data, including methylomics {cite}`langfelder2018, seale2022`.
+
+The core principle of WGCNA is to use network language to integrate individual nodes (genes or DNAm sites) of complex systems into clusters in an unsupervised manner and infer biological insights from how these clusters behave from sample to sample.
+
+The main steps of WGCNA are to {cite}`langfelder2018, seale2022, rezaie2023` ({numref}`wgcna_pipeline`):
+
+1. Measure **pairwise correlations** between nodes (genes or DNAm sites).
+2. Calculate **proximity between nodes** based on these correlations.
+3. Construct correlation network based on proximities by computing a [**topological overlap matrix**](https://search.r-project.org/CRAN/refmans/WGCNA/html/TOMsimilarityFromExpr.html) (or TOM).
+4. Find **clusters (modules) of closely connected nodes** via hierarchical clustering and dynamic tree cutting (to merge some of the least differing clusters).
+5. Combine the information about all nodes per module in a sample using dimensionality reduction techniques such as SVD (singular value decomposition) and extract the first component of this “summary” (a.k.a., the **eigengene**)
+6. For every node, calculate its correlation with the module’s eigengene, therefore inferring module membership for this node. Nodes with highest module membership are the ones that lie at the network’s core and are called “hub” nodes.
+7. Correlate modules with experimental traits and compute eigengenes for every experimental sample category.
+
+```{figure} figs/wgcna_pipeline.png
+:name: wgcna_pipeline
+WGCNA pipeline [{cite}`langfelder2018`]
+```
+
+Such systemic approach allows uncovering less obvious interactions and changes than the trivial comparisons of average or variable methylation levels can provide.
+
+### Interpretation and validation of DNAm analysis
+
+Nevertheless, making biological assumptions or, even better, theories based on DNAm analysis is still enormously challenging.
+
+The first step towards interpreting DNAm analysis is similar across many omics data analyses: **functional enrichment**, which is usually performed by identifying outstanding gene ontology (GO) terms, KEGG pathways, or REACTOME interactions for the DNAm sites, regions, or modules that were selected during the previously described analyses. It’s worth noting that, since covered DNAm sites may (and, in some methodologies, must) be distributed unequally across different genes, identified DMPs and VMPs should be adjusted so as not to over-represent some genes due to this technical variability alone. Alternatively, DNAm sites across certain regions can be combined: for example, assigned to gene promoters (if they fit within certain distance from the transcription start sites, TSS, of these genes) or enhancers, which are only then sent to the common **gene set enrichment analysis** (GSEA) tools {cite}`teschendorff2018`.
+
+Not without certain difficulties, DNAm data can be integrated with **genotyping** data (approximately 20% of inter-individual DNAm variation is explained by genetic variation, so it should be adjusted for this inheritance, especially in the non-inbred study organisms such as outbred mice or humans), **gene expression** data (in general, DNAm is a bad predictor for expression levels, significantly worse than histone modifications are, but some parts of gene’s DNAm sites may be more predictive than others, although the exact correlations are still being debated, and more consistency is required), and with other omics modalities.
+
+On the system level, comparing WGCNA-selected modules between sample groups or even datasets may shed light on how conserved these modules are: for example, a recent paper reported finding modules correlated with maximum lifespan by comparing DNAm profiles of a multitude of mammalian species ({numref}`wgcna_mammals_small`). In addition, the same paper also connected different modules to different behaviors in response to pro-longevity interventions such as growth hormone receptor knockout, caloric restriction, or cellular reprogramming mediated by applying four transcription factors (so-called Yamanaka factors) {cite}`haghani2023`.
+
+```{figure} figs/wgcna_mammals_small.png
+:name: wgcna_mammals_small
+DNAm network relates to mammalian phylogeny and traits. (**A**) Phyloepigenetic tree from the DNAm data generated from blood samples. (**B**) Unsupervised WGCNA networks identified 55 co-methylation modules. (**C**) EWAS of log-transformed maximum life span. Each dot corresponds to the methylation levels of a highly conserved CpG. Shown is the log (base 10)–transformed P value (y axis) versus the human genome coordinate Hg19 (x axis). (**D**) Co-methylation module correlated with maximum life span of mammals. Eigengene (first principal component of scaled CpGs in the midnightblue module) versus log (base e) transformed maximum life span. Each dot corresponds to a different species {cite}`haghani2023`.
+```
+
+Another system-level approach is to “integrate DNAm and gene expression data in the context of a gene function network, for instance a [protein-protein interaction] PPI network, to identify hot spots (gene modules) where there is **significant epigenetic deregulation** in relation to some phenotype of interest” {cite}`teschendorff2018`. Such approach is called a **functional epigenetic modules** (FEM) algorithm, which, for example, “successfully identified two separate gene modules with the main targets of epigenetic silencing mapping to a target (*HAND2*) and co activator (*TGFB1I1*) of the progesterone receptor, a key tumour suppressor pathway for which inactivation is thought to contribute causally to the development of endometrial cancer” {cite}`teschendorff2018`.
+
+The **causality of DNAm dynamics** is another great area of research, and is still largely underdeveloped. As you could notice, we’ve been mostly talking about correlations and associations for the past several paragraphs. But, as we all know, **correlation does not imply causation**. Especially since reverse causation (biological feature may influence DNAm at a particular site stronger than vice versa) Even more sophisticated frameworks are needed to resolve how methylation affects other layers of biological systems.
+
+Of course, in some cases, researchers try to prove causality directly by editing some DNAm sites or by doing some other kinds of experimental validation, and these approaches will likely remain the “gold standard” of causality studies, but they all are painfully unscalable. Therefore, computational algorithms are being developed to yield some evidence on causality by other means, the most prominent examples of them being ({numref}`interpretation_approaches`):
+
+1. **Exposure-outcome mediation** (EOM; the effect of exposure on an outcome is tested to be statistically significant once adjusted for DNAm-mediation): simple and quantifiable, but too assumptive and rigid (relies on complete, not partial mediation, which is not the case for DNAm).
+2. **Causal inference test** (CIT; similar to EOM, but replaces exposure with genotype \[mQTLs]): less prone to confounding and reverse causation, since it relies on genotype anchoring, but it fails to estimate the magnitude of the mediated effect, and doesn’t account for other possible mediation routes, along which genotype may affect outcome (pleiotropy).
+3. **Mendelian randomization** (MR; in essence, it uses established relationships between genotypes \[mQTLs] and exposures or mediators of interest to estimate the effects they have on some outcome, or vice versa; for deeper dive into theory behind MR, read [Davey 2014]): estimates effect magnitude, smaller measurement error, more robust against pleiotropy, but relies wholly on the availability of mQTL identification, and requires large sample sizes.
+
+```{figure} figs/interpretation_approaches.png
+:name: interpretation_approaches
+Integrative approaches to the interpretation of DNA methylation data. (**Aa**) General causality framework exemplified by that (**Ad**) *AHRR* gene methylation is strongly associated with smoking and lung cancer risk. (*Ab*) To strengthen causal inference from exposure to outcome and from exposure to mediator, a genetic variant (G1) or combination of multiple variants that robustly correlate with the exposure can be used (such as (**Ae**) SNPs at the *CHRNA* gene that are established correlates of heavy smokers). Solid lines represent the established association of the instrumental variable (SNP) with the factor for which it is acting as a proxy, and dashed lines represent the relationships being tested in the Mendelian randomization (MR) framework. The association of G1 with the outcome (and mediator) provides evidence of a causal impact of the exposure on these factors. (*Ac*) When considering the causal pathway from the mediator (DNAm) to the outcome, a second genetic variant (G2) or combination of multiple variants can be used. G2 is a *cis* methylation quantitative trait locus (*cis*-mQTL) that robustly correlates with the DNAm site of interest. G1 and G2 analyses can, if desired, be conducted in entirely different sample sets with causal inference remaining valid. (**B**) Integration of DNAm data with matched SNPs and mRNA expression can be used to elucidate the role of genome-wide association study (GWAS) SNPs. For instance, a genetic variant defining a *cis* expression QTL (*cis*-eQTL) for a transcription factor (TF) can be found to be associated with a large number of *trans*-mQTLs. For *cis*-eQTLs associated with increased TF activity, these *trans*-mQTLs exhibit a skew towards hypomethylation (loss of methylation is indicated by the transition Cm (methylated cytosine) to C (cytosine)) and are enriched for binding sites of this TF and for *cis* expression quantitative trait methylation loci (*cis*-eQTMs) defined by the corresponding TF gene targets. An example of a SNP associated with ulcerative colitis illustrates how relevant disrupted pathways can be identified (adapted from {cite}`teschendorff2018`).
+```
+
+In the end, we’d like to also mention that DNA methylation has been used quite extensively in a variety of ways to construct so-called **epigenetic aging clocks** and **predict acceleration or deceleration of biological aging** in various research environments. However tempting it would be to rush into this hyped up field, we shall restrain ourselves for now, since we’re going to have a full other chapter dedicated to aging clocks. Just don’t forget about our discussion on DNAm causality when you’ll be heading your way into it.
+
+## Conclusions
+
+**DNA methylation** is a fascinating biological feature that interacts with so many other layers to regulate cellular functions. It finds its way in a lot of different *disease states, heritable traits, early-life-induced repercussions for mental and general health, and into aging*.
+
+Nevertheless, **measuring and analysing it is still substantially challenging**, both in regards to computational resources and skills, and in terms of theoretical foundations for inferring causal interactions rather than just associations.
+
+We are extremely delighted if you have managed to reach this point of our lengthy discussion, and if you find yourself in a more cognizant position than where you were when starting it. We hope that this chapter equipped you with enough knowledge to get the comprehensive outlook on DNA methylomics, and to carry out your own, scientifically strong research in the field, acknowledged for the many experimental and theoretical obstacles that may be meddling with it.
 
 ## Practice
 
-Since we've already covered differential expression analysis in our previous practical lesson, let's do something different this time with DNA methylation. The practice on weighted gene-coexpression network analysis awaits you either at `~/meth/meth_practice.ipynb` in this repository (if you cloned it), or at [Google Colab](https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing) (don't forget to make your own copy). Happy hunting!
+Now, let’s get practical. Since we've already covered differential expression analysis in our previous lesson, let's do something different this time with DNA methylation.
+
+As we’ve already mentioned in the part on statistical analysis, weighted gene-coexpression network analysis (WGCNA) has been used to elucidate lifespan-correlated DNAm modules. This time, let’s turn out head not towards the signatures of aging, but that of rejuvenation. Cellular reprogramming leverages certain transcriptions factors applied constantly or transiently (turned on and off using other activators) to convert somatic cells into a pluripotent state, either in culture (*in vitro*), or administered *in vivo*.
+
+The procedure is extremely dangerous for the cells, and most of them die, but the ones that survive appear rejuvenated. This rejuvenation has been shown for both the molecular level of epigenomic and transcriptomic profiles and up to cell motility, whole blood biomarkers, histology, etc. The paper we will be working with {cite}`ohnuki2014` reports performing in vitro reprogramming of human skin fibroblasts.
+
+The practice on WGCNA for DNA methylomics awaits you either at `./meth/meth_practice.ipynb` in this repository (if you cloned it), or at [Google Colab](https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing) (don't forget to make your own copy). Happy hunting!
 
 ## Credits
 
