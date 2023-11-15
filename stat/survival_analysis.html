@@ -145,7 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
-   Practice - WGCNA on DNA methylation
+   Practice - WGCNA for Methylomics
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -421,75 +421,94 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#survival-curve">
-   4.1. Survival curve
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mortality-risk">
-   4.2. Mortality risk
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gompertz-law-and-other-kinds-of-mortality-functions">
-   4.3. Gompertz law and other kinds of mortality functions
+  <a class="reference internal nav-link" href="#main-concepts">
+   4.1. Main concepts
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#constant-risk-model">
-     4.3.1. Constant risk model
+    <a class="reference internal nav-link" href="#cdf-and-pdf">
+     4.1.1. CDF and PDF
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#weibull-risk-model">
-     4.3.2. Weibull risk model
+    <a class="reference internal nav-link" href="#survival-curve">
+     4.1.2. Survival curve
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gompertz-risk-model">
-     4.3.3. Gompertz risk model
+    <a class="reference internal nav-link" href="#mortality-risk">
+     4.1.3. Mortality risk
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estimation-and-comparison-of-survival-curves">
-   4.4. Estimation and comparison of survival curves
+  <a class="reference internal nav-link" href="#survival-analysis-methods-and-challenges">
+   4.2. Survival analysis methods and challenges
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-data">
+     4.2.1. Real data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nonparametric-methods">
+   4.3. Nonparametric methods
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kaplan-meier-estimator">
-     4.4.1. Kaplan-Meier estimator
+     4.3.1. 1. Kaplan-Meier estimator
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parametric-methods">
+   4.4. Parametric methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponential-model-constant-risk-model">
+     4.4.1. 1. Exponential model (constant risk model)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weibull-model">
+     4.4.2. 2. Weibull  model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gompertz-model">
+     4.4.3. 3. Gompertz  model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fittting-gompertz-model">
+     4.4.4. Fittting Gompertz model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparison-of-survival-curves">
+   4.5. Comparison of survival curves
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logrank-test">
-     4.4.2. Logrank test
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gompertz-estimator">
-     4.4.3. Gompertz estimator*
+     4.5.1. 1. Logrank test
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion">
-   4.5. Conclusion
+   4.6. Conclusion
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cox-proportional-hazards-model-project">
-   4.6. Cox proportional hazards model [Project]
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task">
-     4.6.1. Task
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learn-more">
@@ -526,75 +545,94 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#survival-curve">
-   4.1. Survival curve
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mortality-risk">
-   4.2. Mortality risk
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gompertz-law-and-other-kinds-of-mortality-functions">
-   4.3. Gompertz law and other kinds of mortality functions
+  <a class="reference internal nav-link" href="#main-concepts">
+   4.1. Main concepts
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#constant-risk-model">
-     4.3.1. Constant risk model
+    <a class="reference internal nav-link" href="#cdf-and-pdf">
+     4.1.1. CDF and PDF
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#weibull-risk-model">
-     4.3.2. Weibull risk model
+    <a class="reference internal nav-link" href="#survival-curve">
+     4.1.2. Survival curve
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gompertz-risk-model">
-     4.3.3. Gompertz risk model
+    <a class="reference internal nav-link" href="#mortality-risk">
+     4.1.3. Mortality risk
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estimation-and-comparison-of-survival-curves">
-   4.4. Estimation and comparison of survival curves
+  <a class="reference internal nav-link" href="#survival-analysis-methods-and-challenges">
+   4.2. Survival analysis methods and challenges
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-data">
+     4.2.1. Real data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nonparametric-methods">
+   4.3. Nonparametric methods
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kaplan-meier-estimator">
-     4.4.1. Kaplan-Meier estimator
+     4.3.1. 1. Kaplan-Meier estimator
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parametric-methods">
+   4.4. Parametric methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponential-model-constant-risk-model">
+     4.4.1. 1. Exponential model (constant risk model)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weibull-model">
+     4.4.2. 2. Weibull  model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gompertz-model">
+     4.4.3. 3. Gompertz  model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fittting-gompertz-model">
+     4.4.4. Fittting Gompertz model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparison-of-survival-curves">
+   4.5. Comparison of survival curves
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logrank-test">
-     4.4.2. Logrank test
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gompertz-estimator">
-     4.4.3. Gompertz estimator*
+     4.5.1. 1. Logrank test
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion">
-   4.5. Conclusion
+   4.6. Conclusion
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cox-proportional-hazards-model-project">
-   4.6. Cox proportional hazards model [Project]
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task">
-     4.6.1. Task
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learn-more">
@@ -624,22 +662,43 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="survival-analysis">
 <h1><span class="section-number">4. </span>Survival analysis<a class="headerlink" href="#survival-analysis" title="Permalink to this headline">#</a></h1>
 <p><strong>Aging</strong> - increased chance of death with age.</p>
-<p>You have seen this picture previously <span id="id1">[]</span>.</p>
+<p>You have seen this picture previously</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/gompertz.png"><img alt="../_images/gompertz.png" src="../_images/gompertz.png" style="width: 500px;" /></a>
+<img alt="../_images/01.PNG" src="../_images/01.PNG" />
 </figure>
-<p>At this lesson, we learn how to understand such mortality risk and survival curves. We will learn Gompertz model - the seminal concept in aging research. We learn how to analyze real survival data, fit survival models, compare survival curves, and make conclusions about your survival experiment.</p>
+<p>At this lesson, we will study survival analysis, learn how to understand mortality risk and survival curves. We will talk about Gompertz model - the seminal concept in aging research as well as learn how to analyze real survival data, fit survival models, compare survival curves, and make conclusions about survival experiment.</p>
+<p>Survival analysis is a set of statistical methods for data analysis where the outcome variable of interest is time until an event occurs. For instance, in biological and medical sciences commonly studied events are diseases, relapse, recovery and death. Survival analysis is especially important in clinical research, where it is widely used to estimate the probabilities of patients’ survival under different treatments taking into account various risk factors (covariates)</p>
+<section id="main-concepts">
+<h2><span class="section-number">4.1. </span>Main concepts<a class="headerlink" href="#main-concepts" title="Permalink to this headline">#</a></h2>
+<section id="cdf-and-pdf">
+<h3><span class="section-number">4.1.1. </span>CDF and PDF<a class="headerlink" href="#cdf-and-pdf" title="Permalink to this headline">#</a></h3>
+<p>In probability theory and statistics, the cumulative distribution function (CDF) of a real-valued random variable X, or just distribution function of X, evaluated at x, is the probability that X will take a value less than or equal to x</p>
+<div class="math notranslate nohighlight">
+\[F(x) = P(X\leq x) = \int_{-∞}^{x}f_X(u)du \]</div>
+<p>Probability that random variable is between x1 and x2:
+$<span class="math notranslate nohighlight">\(P(x1\leq x\leq x2) = F(x2) - F(x1) \)</span>$</p>
+<p>The probability density function (PDF) is the probability that a random variable X, will take a value exactly equal to <a class="reference external" href="http://x.It">x.It</a> is equal to the derivative of CDF:
+$<span class="math notranslate nohighlight">\(f(x) = \frac {dF(x)} {dx}\)</span>$</p>
+<p>Now lets find CDF and PDF in survival analysis. For that at first we will talk about the survival curve:</p>
+</section>
 <section id="survival-curve">
-<h2><span class="section-number">4.1. </span>Survival curve<a class="headerlink" href="#survival-curve" title="Permalink to this headline">#</a></h2>
+<h3><span class="section-number">4.1.2. </span>Survival curve<a class="headerlink" href="#survival-curve" title="Permalink to this headline">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(T\)</span> is a non-negative random variable with a corresponding distribution function:</p>
 <div class="math notranslate nohighlight">
 \[F(t) = P(T\leq t)\]</div>
 <p>We call <span class="math notranslate nohighlight">\(T\)</span> - <em>survival time</em> or time before death of some object (e.g. human). For example, <span class="math notranslate nohighlight">\(T\)</span> can have an exponential distribution:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">expon</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;16&#39;</span> <span class="c1"># increase font size</span>
 
 <span class="n">rv</span> <span class="o">=</span> <span class="n">expon</span><span class="p">()</span>
@@ -652,7 +711,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_2_0.png" src="../_images/survival_analysis_2_0.png" />
+<img alt="../_images/survival_analysis_8_0.png" src="../_images/survival_analysis_8_0.png" />
 </div>
 </div>
 <p>If <span class="math notranslate nohighlight">\(F(t)\)</span> is a probability to die before time moment <span class="math notranslate nohighlight">\(T\)</span> we can introduce a probability to survive before this moment <span class="math notranslate nohighlight">\(S\)</span> as just a complement to <span class="math notranslate nohighlight">\(F\)</span>:</p>
@@ -671,13 +730,20 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_4_0.png" src="../_images/survival_analysis_4_0.png" />
+<img alt="../_images/survival_analysis_10_0.png" src="../_images/survival_analysis_10_0.png" />
 </div>
 </div>
-<p>This plot is what we actually call <em>survival curve</em>. The intuition behind this is rather straightforward - it shows how many of experimental objects survived before a partucular moment of time. You can see a lot of empirical versions of such curves in articles. Rigorous analysis of this curves helps to avoid a misinterpretation of typical drug-testing experiment or other. And it’s what we are going to do in further.</p>
+<p>This plot is what we actually call <em>survival curve</em></p>
+<p>So, in survival analysis death density is probability density function PDF, while death probability is cumulative density function CDF</p>
+<p>Therefore the intuition behind death curve and survival curve is rather straightforward - it shows how many of experimental objects died / survived before a partucular moment of time.</p>
+<figure class="align-default">
+<img alt="../_images/31.PNG" src="../_images/31.PNG" />
+</figure>
+<p>You can see a lot of empirical versions of survival curves in articles. Rigorous analysis of this curves helps to avoid a misinterpretation of typical drug-testing experiment or other. And it’s what we are going to do in further.
+But firstly we will talk about mortality risk</p>
 </section>
 <section id="mortality-risk">
-<h2><span class="section-number">4.2. </span>Mortality risk<a class="headerlink" href="#mortality-risk" title="Permalink to this headline">#</a></h2>
+<h3><span class="section-number">4.1.3. </span>Mortality risk<a class="headerlink" href="#mortality-risk" title="Permalink to this headline">#</a></h3>
 <p>You could have heard that mortality risk increases exponentially with aging. But what does this actually mean?</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
@@ -712,234 +778,35 @@ title="Print to PDF"
 <p class="admonition-title">Exercise 1</p>
 <p>Show that <span class="math notranslate nohighlight">\(f(t) = -S'(t)\)</span>.</p>
 </div>
-<p>This is actually the thing that increases exponentially as we age and have a name of Gompertz law (quite more complex than just a probability, isn’t it?). Now let’s consider different kinds of such functions.</p>
-</section>
-<section id="gompertz-law-and-other-kinds-of-mortality-functions">
-<h2><span class="section-number">4.3. </span>Gompertz law and other kinds of mortality functions<a class="headerlink" href="#gompertz-law-and-other-kinds-of-mortality-functions" title="Permalink to this headline">#</a></h2>
-<section id="constant-risk-model">
-<h3><span class="section-number">4.3.1. </span>Constant risk model<a class="headerlink" href="#constant-risk-model" title="Permalink to this headline">#</a></h3>
-<p>We start with the simplest case of a constant mortality function.</p>
-<div class="math notranslate nohighlight">
-\[
-    m(t) = m_0
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-    S(t) = \exp(-m_0t)
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-    f(t) = m_0\cdot \exp(-m_0t)
-\]</div>
-<div class="dropdown admonition">
-<p class="admonition-title">Exercise 2</p>
-<p>Derive an expression for <span class="math notranslate nohighlight">\(S(t)\)</span> at constant risk. <strong>Hint:</strong> use the result from the previous exercise.</p>
-</div>
-<p>Let’s draw plots for <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(S\)</span>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-
-<span class="n">m0</span> <span class="o">=</span> <span class="mf">0.1</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">*</span> <span class="n">m0</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk&#39;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m0</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of survival&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_10_0.png" src="../_images/survival_analysis_10_0.png" />
-</div>
-</div>
-<p>The corresponding survival curve resembles a <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_distribution">distribution</a> of time until radioactive particle decay or so called <em>“law of rare events”</em> where events independently occur with a rate <span class="math notranslate nohighlight">\(m_0\)</span>. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging! Then, <span class="math notranslate nohighlight">\(m_0\)</span> actually describes average number of failures per unit of time and, correspondingly, <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a <strong>mean survival time</strong>.</p>
-<div class="dropdown admonition">
-<p class="admonition-title">Exercise 3</p>
-<p>Prove that <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a mean survival time using a definition of expectation.</p>
-</div>
-<p>We obtained an object, or system, with survivability depending on one critical subsystem what is not reliable. Can we do better? Sure, we can add an additional critical sustystem reserving the original. As a naive example, just imagine an organism’s life depends only of two kidney functioning. If one fails the other can work for two. This (of course) oversimplified system can be represented with the following diagram of parallel connection,</p>
-<p><img src="https://drive.google.com/uc?id=1eY5Nz_I4eI-YUqU_5RkWuzVeeHfxoelH" 
-     alt="parallel" 
-     width="180"/></p>
-<p>where <span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(m_2\)</span> are failure risks, which we assume constant and not equal in general. How to derive a survival curve for such a system? First, let’s assume that both critical subsystems, let’s call them <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, are independent what means that the failure of one does not affect the failure rate of the other. Then, we may consider joint probability distribution that the whole system fails:</p>
-<div class="math notranslate nohighlight">
-\[ F_{X,Y}(t) = F_X(t)\cdot F_Y(t) \]</div>
-<p>Recall that <span class="math notranslate nohighlight">\(F(t) = 1-S(t)\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[ F_{X,Y}(t) = (1-S_X(t))\cdot (1-S_Y(t)) = (1 - e^{-m_1t})(1 - e^{-m_2t}) = 1 - e^{-m_1t} -  e^{-m_2t} +  e^{-(m_1+m_2)t}\]</div>
-<p>And now we return to survival curve:</p>
-<div class="math notranslate nohighlight">
-\[ S_{X,Y}(t) = e^{-m_1t} +  e^{-m_2t} -  e^{-(m_1+m_2)t}\]</div>
-<div class="math notranslate nohighlight">
-\[ m_{X,Y}(t) = \frac{-S_{X,Y}'(t)}{S_{X,Y}(t)} = \frac{m_1e^{-m_1t} +  m_2e^{-m_2t} -  (m_1 + m_2)e^{-(m_1+m_2)t}}{e^{-m_1t} +  e^{-m_2t} -  e^{-(m_1+m_2)t}}\]</div>
-<p>Let’s draw it!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">m1</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">m2</span> <span class="o">=</span> <span class="mf">0.2</span>
-
-<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">SX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m1</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
-<span class="n">SY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
-<span class="n">SXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m1</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> 
-<span class="n">mXY</span> <span class="o">=</span> <span class="p">(</span><span class="n">m1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m1</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">))</span> <span class="o">/</span>\
-      <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m1</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">m1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;X only, m1=</span><span class="si">{</span><span class="n">m1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">m2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Y only, m2=</span><span class="si">{</span><span class="n">m2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mXY</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;X or Y&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk&#39;</span><span class="p">);</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SX</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;X only, m1=</span><span class="si">{</span><span class="n">m1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SY</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Y only, m2=</span><span class="si">{</span><span class="n">m2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SXY</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;X or Y&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of survival&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_13_0.png" src="../_images/survival_analysis_13_0.png" />
-</div>
-</div>
-<p>We see the lower value of mortality risk the higher survival curve lies if we consider our kidneys (critical subsystems) separately. Combining them into one system leads to the highest survival curve (green curve on the plot). Thus we see a quite obvious corollary: the higher number of reserved subsystems object have the more survival it becomes… But wait a second! What’s wrong with the mortality curve for two kindeys system? It is not constant now. We started with two kidneys each having its own constant failure risk and ended with a system where mortality risk is now a function of time - <strong>aging system</strong> actually! It is quite reasonable if we treat aging as a process of critical subsystem failures culminating with system “death”.</p>
-<p>In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example <span id="id2">[<a class="reference internal" href="../dyn/complex_systems.html#id40" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.</p>
-<img src="https://nanohub.org/app/site/resources/2013/01/16583/slides/016.03.jpg" alt="connections" width="600"/>
-<div class="dropdown admonition">
-<p class="admonition-title">Exercise 4</p>
-<p>Compute an expression for mortality risk of sequential subsystems connection.</p>
-</div>
-</section>
-<section id="weibull-risk-model">
-<h3><span class="section-number">4.3.2. </span>Weibull risk model<a class="headerlink" href="#weibull-risk-model" title="Permalink to this headline">#</a></h3>
-<p>Let’s proceed with our example of aging system consisted from “unaging” or fragile elements. Now let’s assume that we have <span class="math notranslate nohighlight">\(n\)</span> independent subsystems having the same constant mortality rate <span class="math notranslate nohighlight">\(m\)</span> and connected in parrallel within a system <span class="math notranslate nohighlight">\(Z\)</span>. Using the formula above we have:</p>
-<div class="math notranslate nohighlight">
-\[ S_Z(t) =  1 - (1 - S(t))^n = 1 - (1 - e^{-mt})^n\]</div>
-<p>Now let’s derive a mortality risk:</p>
-<div class="math notranslate nohighlight">
-\[ m_{Z}(t) = \frac{-S'(t)}{S(t)} = \frac{nme^{-mt}(1 - e^{-mt})^{n-1}}{1 - (1 - e^{-mt})^{n}}\]</div>
-<p>And draw it:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">m</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">n1</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">n2</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">n3</span> <span class="o">=</span> <span class="mi">1000</span>
-
-<span class="n">SZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span><span class="o">**</span><span class="n">n</span>
-<span class="n">mZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;m=</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">n1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">n2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">n3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk&#39;</span><span class="p">);</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">n1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">n2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">n3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of survival&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_16_0.png" src="../_images/survival_analysis_16_0.png" />
-</div>
-</div>
-<p>The immediate conclusion follows from this plot: the mortality risk of the system at later stages of life doesn’t depend on the number of reserve elements in the system and only on failure rates of particular elements. Having a large number of reserve element a survivability of an object can be high for quite long time.</p>
-<p>You may note that an expression for mortality risk is quite cumbersome for general <span class="math notranslate nohighlight">\(n\)</span> elements case. At the same time we see that all the mortality curves on the plot above approaches to the constant mortality risk <span class="math notranslate nohighlight">\(m\)</span> as <span class="math notranslate nohighlight">\(t \to \infty\)</span>. It turns out that at early stages of the life, more precisely when <span class="math notranslate nohighlight">\(t \ll 1/m\)</span>, we obtain a nice approximation of the original formula, namely:</p>
-<div class="math notranslate nohighlight">
-\[ m_Z(t) \approx nm^nt^{n-1} = nat^{n-1} \]</div>
-<p>this is exactly a <strong>Weibull risk</strong> model with a scale parameter <span class="math notranslate nohighlight">\(a=m^n\)</span> linked with the pace of aging. The corresponding survival and probability density functions will be:</p>
-<div class="math notranslate nohighlight">
-\[ S(t) = e^{-at^n} \]</div>
-<div class="math notranslate nohighlight">
-\[ f(t) = nat^{n-1}e^{-at^n} \]</div>
-<p>The latter expression is a <a class="reference external" href="https://en.wikipedia.org/wiki/Weibull_distribution">Weibull distribution</a> density function known for its high flexibility for modelling a lot of biological and technical phenomena. Interestingly, the mortality risk for our system of <span class="math notranslate nohighlight">\(n\)</span> elements growths as a power function of time - the higher number of parallel fragile elements we have the faster the function growths! This implies one important corollary for us: it is not a good strategy to have an infinite number of low-reliable critical elements in our system, instead, it is better to have a number of highly-reliable elements (with low mortality risk) confering us a great lifespan.</p>
-</section>
-<section id="gompertz-risk-model">
-<h3><span class="section-number">4.3.3. </span>Gompertz risk model<a class="headerlink" href="#gompertz-risk-model" title="Permalink to this headline">#</a></h3>
-<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="../dyn/complex_systems.html#id40" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>. Mathematically, it can be formulated as follows:</p>
-<div class="math notranslate nohighlight">
-\[ m(t) = Ae^{bt} \]</div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span> - Initial Mortality Rate (IMR), this parameter characterizes the initial mortality, that is, the mortality that would be in the population without aging, and does not depend on age; <span class="math notranslate nohighlight">\(b\)</span> - characterizes the rate of aging. To clarify the previous observation about Mortality Rate Doubling Time (MRDT) is 8 years, we can use the following simple quotient:</p>
-<div class="math notranslate nohighlight">
-\[2 = \frac{Ae^{bt_2}}{Ae^{bt_1}} = \frac{e^{bt_2}}{e^{bt_1}}=e^{b(t_2-t_1)}=e^{b*MRDT} \rightarrow\]</div>
-<div class="math notranslate nohighlight">
-\[ \ln{2} = b*MRDT \rightarrow MRDT = \frac{\ln{2}}{b} \]</div>
-<p>from where we get the value of <span class="math notranslate nohighlight">\(b = \ln{2} / MRDT = 0.087\)</span> for humans. Those who did the previous exercises could note that the survival function can be elegantly written as:</p>
-<div class="math notranslate nohighlight">
-\[ S(t) = \exp{\left(-\int_0^{t}m(x)dx\right)} \]</div>
-<p>Putting Gompertz risk to the intergral yields the following expression for the survival curve:</p>
-<div class="math notranslate nohighlight">
-\[S(t) = e^{-\frac{A}{b}(e^{bt} - 1)}\]</div>
-<div class="dropdown admonition">
-<p class="admonition-title">Exercise 5</p>
-<p>Derive the formula for the Gompertz survival curve from scratch.</p>
-</div>
-<p>It’s time to draw!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">A1</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.087</span><span class="p">)</span>
-<span class="n">A2</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.087</span><span class="p">)</span>
-<span class="n">A3</span><span class="p">,</span> <span class="n">b3</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0087</span><span class="p">)</span>
-<span class="n">A4</span><span class="p">,</span> <span class="n">b4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.174</span><span class="p">)</span>
-
-<span class="n">SZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">A</span> <span class="o">/</span> <span class="n">b</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">mZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">b1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A1</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A2</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A3</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A4</span><span class="p">,</span> <span class="n">b4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A4</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b4</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time, years&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk, log&#39;</span><span class="p">);</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">b1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A1</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A2</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A3</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A4</span><span class="p">,</span> <span class="n">b4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A4</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b4</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time, years&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of survival&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_19_0.png" src="../_images/survival_analysis_19_0.png" />
-</div>
-</div>
-<p>We used basic parameters <span class="math notranslate nohighlight">\(A=0.005\)</span> and <span class="math notranslate nohighlight">\(b=0.087\)</span> for human mortality risk according to <span id="id5">[]</span> (see Fig.3). Such parameters yield blue curves of survival and mortality. Since we have more or less realistic parameters inferred from real data, now time have units of years. Now we introduce three modifications of Gompertz parameters. First, we decrease IMR (<span class="math notranslate nohighlight">\(A\)</span>) by 10 times holding <span class="math notranslate nohighlight">\(b\)</span> the same. The result is the orange curve demonstrating moving to right from the initial curve. This increases the maximum human lifespan of the population. Second, we decrease rate of aging (<span class="math notranslate nohighlight">\(b\)</span>) by 10 times preserving IMR the same and the result is a much greater (green curves) increase in maximum lifespan by comparing with modification of IMR. This hints us that it is more promising strategy to <strong>improve the rate of aging than IMR</strong>. Moreover, if we improve IMR by 10 times but deteriorate rate of aging by only 2 times (red curve) we obtain the population that ages very quickly after some time - exactly what we see in countries with advanced medicine.</p>
+<p>This is actually the thing that increases exponentially as we age and have a name of Gompertz law (quite more complex than just a probability, isn’t it?)</p>
 </section>
 </section>
-<section id="estimation-and-comparison-of-survival-curves">
-<h2><span class="section-number">4.4. </span>Estimation and comparison of survival curves<a class="headerlink" href="#estimation-and-comparison-of-survival-curves" title="Permalink to this headline">#</a></h2>
-<p>The time has come to consider real data and understand how to estimate survival curves from them, and, what is more important, how to compare them. For these purposes we use a <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> that is a nice library survival analysis. First, let’s look at the toy dataset of <em>miR-137</em> gene knock-out in fruit flies.</p>
+<section id="survival-analysis-methods-and-challenges">
+<h2><span class="section-number">4.2. </span>Survival analysis methods and challenges<a class="headerlink" href="#survival-analysis-methods-and-challenges" title="Permalink to this headline">#</a></h2>
+<p>The survival analysis methods can be classified into two main categories: statistical methods and machine learning based methods. Both methods have the common goal to make predictions of the
+survival time and estimate the survival probability.
+However, statistical methods focus more on characterizing the distributions of the event times
+and the statistical properties of the parameter estimation, while machine learning methods focus more on the prediction of event occurrence.</p>
+<p>Based on the assumptions and the usage of the parameters
+the traditional statistical methods can be subdivided into three categories: 1) nonparametric models, 2) parametric models  and 3) semi-parametric models.</p>
+<p>Non-parametric methods are more efficient when there is no underlying distribution for the event time (or the proportional hazard assumption is not hold). Parametric methods are more efficient when the time to event of interest follows a particular distribution specified in certain parameters. Semi-parametric models - hybrid of the parametric and non-parametric approaches - is more consistent under a broader range of conditions compared to the parametric models, and more precise than the non-parametric methods</p>
+<figure class="align-default">
+<img alt="../_images/1.PNG" src="../_images/1.PNG" />
+</figure>
+<p>There are several challenges in survival analysis such as censoring, high dimensionality of data and violation of assumption about linear relationship between covariates and mortality risk. Additional challenge is associated with time-varying covariates which are difficult to be accounted for in survival models.</p>
+<p>The most specific challenge is censoring - imperfect observation of time-to-event. The events of interest are abscent for some instances because of two main reasons: 1) limited time window of research, 2) missing traces.
+The most common is limited time window problem which leads to censoring named “right-censoring”. Despite we do not know  the actual survival time for censored instance i, we still should consider it in alalysis as we can conclude that at least the instance i did not experience the event of interest before the censoring time Ci and this is valuable information we do not want to loose. All survival methods are designed to handle censoring!</p>
+<p>The picture below illustrates censoring:</p>
+<figure class="align-default">
+<img alt="../_images/21.PNG" src="../_images/21.PNG" />
+</figure>
+<p>Machine learning and neural network approaches are believed to have better predictive performance in case of high data dimensionality and nonlinear covariate relationships.</p>
+<section id="real-data">
+<h3><span class="section-number">4.2.1. </span>Real data<a class="headerlink" href="#real-data" title="Permalink to this headline">#</a></h3>
+<p>We will consider real data and understand how to estimate survival curves. For these purposes we use a <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> that is a nice library survival analysis. First, let’s look at the toy dataset of <em>miR-137</em> gene knock-out in fruit flies.</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
-<p>We didn’t find any references to “waltons” dataset but there is some study showing that <em>miR-137</em> gene knock-out (apparently) affects lifespan <span id="id6">[]</span>.</p>
+<p>We didn’t find any references to “waltons” dataset but there is some study showing that <em>miR-137</em> gene knock-out (apparently) affects lifespan <span id="id1">[]</span>.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1026,7 +893,8 @@ Name: E, dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>We see a standard survival analysis data where columns <strong>T</strong> contains life durations or particular individuals (flies); <strong>group</strong> contains information about whether an individual was case (34 entries with knock-outed gene) or control (129 entries). The column <strong>E</strong> is something new and inavoidable in real data analysis. This is a <strong>censoring</strong> variable showing either event (death in our case) happened or we have lost the ability to observe the event (e.g. some issues with accidentally killing flies or if some escape). (More information about censoring you can find here <a class="reference external" href="https://tinyheero.github.io/2016/05/12/survival-analysis.html#censoring">censoring</a>) Censoring is especially prevalent in survival analysis of human data (survivability after treatment, surgery, etc.) but in experiments with animals we can overcome some troubles with censoring by just excluding bad data entries. In our case it is not a big problem to exclude 7 of 163 samples - let’s do it and consider purified dataframe in a more human-readable format.</p>
+<p>We see a standard survival analysis data where columns <strong>T</strong> contains life durations or particular individuals (flies); <strong>group</strong> contains information about whether an individual was case (34 entries with knock-outed gene) or control (129 entries). The column <strong>E</strong> is event column with 1 representing the occured event and 0 representing censoring. (More information about censoring you can find here <a class="reference external" href="https://tinyheero.github.io/2016/05/12/survival-analysis.html#censoring">censoring</a>)</p>
+<p>Censoring is especially prevalent in survival analysis of human data (survivability after treatment, surgery, etc.) but in experiments with animals we can overcome some troubles with censoring by just excluding bad data entries. In our case it is not a big problem to exclude 7 of 163 samples - let’s do it and consider purified dataframe in a more human-readable format.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">E</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
@@ -1035,13 +903,17 @@ Name: E, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_24_0.png" src="../_images/survival_analysis_24_0.png" />
+<img alt="../_images/survival_analysis_25_0.png" src="../_images/survival_analysis_25_0.png" />
 </div>
 </div>
 <p>Things are getting clear! We apparently see quite strong an effect of decreasing of average lifespan in knock-outed flies. However, we do not see a dynamics: what about maximum lifespan and concaveness of survival curve? The whole picture is available only after estimation of survival curve from data.</p>
+</section>
+</section>
+<section id="nonparametric-methods">
+<h2><span class="section-number">4.3. </span>Nonparametric methods<a class="headerlink" href="#nonparametric-methods" title="Permalink to this headline">#</a></h2>
 <section id="kaplan-meier-estimator">
-<h3><span class="section-number">4.4.1. </span>Kaplan-Meier estimator<a class="headerlink" href="#kaplan-meier-estimator" title="Permalink to this headline">#</a></h3>
-<p>There are a plenty approaches to estimate survival curve or mortality risk from data. Most of them could be splitted into two big classes: parametric and non-parametric. The first class includes Gompertz or Weibull estimators mentioned above. They have a lot of nice properties which we discuss in the next session but also one disadvantage - they assume some model behind. In most cases we do not know the true model generating our observations. So, we may use non-parametric estimators which are free from model assumptions. The most frequently used is a <a class="reference external" href="https://en.wikipedia.org/wiki/Kaplan%E2%80%93Meier_estimator">Kaplan-Meier estimator</a> having a nice property to be <strong>unbiased estimate</strong> of <span class="math notranslate nohighlight">\(S(t)\)</span> when censoring excluded:</p>
+<h3><span class="section-number">4.3.1. </span>1. Kaplan-Meier estimator<a class="headerlink" href="#kaplan-meier-estimator" title="Permalink to this headline">#</a></h3>
+<p>In real life we often do not know the true model generating our observations.Therefore it is reasonable to use non-parametric estimators which are free from model assumptions. The most frequently used is a <a class="reference external" href="https://en.wikipedia.org/wiki/Kaplan%E2%80%93Meier_estimator">Kaplan-Meier estimator</a> having a nice property to be <strong>unbiased estimate</strong> of <span class="math notranslate nohighlight">\(S(t)\)</span> when censoring excluded:</p>
 <div class="math notranslate nohighlight">
 \[ {\widehat {S}}(t)=\prod \limits _{i:\ t_{i}\leq t}\left(1-{\frac {d_{i}}{n_{i}}}\right) \]</div>
 <p>where <span class="math notranslate nohighlight">\(t_{i}\)</span> a time when <strong>at least</strong> one event happened, <span class="math notranslate nohighlight">\(d_i\)</span> the number of deaths (events) that happened at time <span class="math notranslate nohighlight">\(t_{i}\)</span>, and <span class="math notranslate nohighlight">\(n_{i}\)</span> the individuals known to have survived (have not yet had an event or been censored) up to time <span class="math notranslate nohighlight">\(t_{i}\)</span>.   Let’s learn how to use this formula step by step.</p>
@@ -1152,7 +1024,8 @@ Name: E, dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>Yes, we call model class and fit it, but don’t worry it is just for convenience and brevity of an explanation. The event table above contains 5 columns and time steps as indexes. You see that indexes are grouped by the same time steps in such way that several events could happen within one time step. Note, there are no time steps without events (with exception of zero time step)! Now columns, you see that column <strong>censored</strong> contains zeros because we excluded censored observations. This means that the column <strong>observed</strong>, containing death events, and the column <strong>removed</strong> will be the same (however, different models can treat these columns differently) and corresponding the term <span class="math notranslate nohighlight">\(d_i\)</span> in the formula above. Column <strong>entrance</strong> is redundant and needed just for convenience of probability computation (see below). The last column <strong>at_risk</strong> corresponds to the term <span class="math notranslate nohighlight">\(n_i\)</span> - the number of individuals known to have survived up to time <span class="math notranslate nohighlight">\(t_{i}\)</span> (we assume that all the individuals dies in the end of a time step). Some code now:</p>
+<p>Yes, we call model class and fit it, but don’t worry it is just for convenience and brevity of an explanation. The event table above contains 5 columns and time steps as indexes. You see that indexes are grouped by the same time steps in such way that several events could happen within one time step. Note, there are no time steps without events (with exception of zero time step)!</p>
+<p>The column <strong>censored</strong> contains zeros because we excluded censored observations. This means that the column <strong>observed</strong>, containing death events, and the column <strong>removed</strong> will be the same (however, different models can treat these columns differently) and corresponding the term <span class="math notranslate nohighlight">\(d_i\)</span> in the formula above. Column <strong>entrance</strong> is redundant and needed just for convenience of probability computation (see below). The last column <strong>at_risk</strong> corresponds to the term <span class="math notranslate nohighlight">\(n_i\)</span> - the number of individuals known to have survived up to time <span class="math notranslate nohighlight">\(t_{i}\)</span> (we assume that all the individuals dies in the end of a time step). Some code now:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">event_table</span>
@@ -1286,7 +1159,7 @@ Name: E, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_31_0.png" src="../_images/survival_analysis_31_0.png" />
+<img alt="../_images/survival_analysis_32_0.png" src="../_images/survival_analysis_32_0.png" />
 </div>
 </div>
 <p>Exactly what we wanted!</p>
@@ -1304,7 +1177,7 @@ Name: E, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_33_0.png" src="../_images/survival_analysis_33_0.png" />
+<img alt="../_images/survival_analysis_34_0.png" src="../_images/survival_analysis_34_0.png" />
 </div>
 </div>
 <p>We have much to say now. Apparently, <em>miR-137</em> knock-out is not just a shifting survival curve to the left (see Gompertz section) but this intervention makes the organism fragile - orange curve is similar to an exponential survival curve (constant mortality risk). In turn, blue curve demonstrates clear Gompertz pattern of normal aging, doesn’t it? At the same time, maximal lifespan seems to be not affected much, isn’t it? Both curves are shown with their 95% confidence interval (CI). It’s wider for <em>miR-137</em> curve due to the higher variance. By the way, the variance of our estimate can be computed by Greenwood formula as follows:</p>
@@ -1318,7 +1191,7 @@ Name: E, dtype: int64
 <div class="math notranslate nohighlight">
 \[ \widehat{\mu}(t) = \int_0^t S(x)dx \]</div>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise 6</p>
+<p class="admonition-title">Exercise 2</p>
 <p>Prove that <span class="math notranslate nohighlight">\(\int_0^t S(x)dx = \int_0^t xf(x)dx\)</span> if <span class="math notranslate nohighlight">\(t \to \infty\)</span></p>
 </div>
 <p>Of course we have a function for this:</p>
@@ -1342,151 +1215,279 @@ miR-137 25.71
 </div>
 </div>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise 7</p>
+<p class="admonition-title">Exercise 3</p>
 <p>Explore <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> documentation, write code for median survival time computation. Compare and explain results.</p>
 </div>
-<p>Comparing means is a nice first shot to say that something is different. But in aging domain there are a lot of situations when means are very close to each other (especially when you test some new drug in mice). How to conduct more rigorous analysis? Wouldn’t it be better to compare the survival curves themselves?</p>
+<p>Comparing means is a nice first shot to say that something is different. But in aging domain there are a lot of situations when means are very close to each other (especially when you test some new drug in mice). How to conduct more rigorous analysis? Wouldn’t it be better to compare the survival curves themselves? We will talk about it later in logrank test</p>
 </section>
-<section id="logrank-test">
-<h3><span class="section-number">4.4.2. </span>Logrank test<a class="headerlink" href="#logrank-test" title="Permalink to this headline">#</a></h3>
-<p>Okay, we need to compare two survival curves. <a class="reference external" href="https://web.stanford.edu/~lutian/coursepdf/survweek3.pdf">Logrank</a> is probably the most popular nonparametric test doing that. Let’s designate <span class="math notranslate nohighlight">\(S_0(t)\)</span> and <span class="math notranslate nohighlight">\(S_1(t)\)</span> as control and case survival curves (control and <em>mir-137</em> in our case). Formulate null hypothesis:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(S_0(t) = S_1(t)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(H_A\)</span>: <span class="math notranslate nohighlight">\(S_0(t) \neq S_1(t)\)</span></p></li>
-</ul>
-<p>Essentially, to conduct logrank we need to construct contingency table for each time step at which an event happened and compute chi-squared statistics. Once statistics computed it’s easy to calculate p-value and address to null hypothesis. Do it in a few steps:</p>
-<ol class="simple">
-<li><p>Compute the contingency table for each time step with event in <strong>at least</strong> one group as follows:</p></li>
-</ol>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:right head"><p></p></th>
-<th class="text-align:center head"><p>died at <span class="math notranslate nohighlight">\(t_i\)</span></p></th>
-<th class="text-align:center head"><p>at risk at <span class="math notranslate nohighlight">\(t_i\)</span></p></th>
-<th class="head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:right"><p>control (0)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(d_{0i}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(n_{0i} - d_{0i}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(n_{0i}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:right"><p>case (1)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(d_{1i}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(n_{1i} - d_{1i}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(n_{1i}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:right"><p></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(d_{i}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(n_{i} - d_{i}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(n_{i} \)</span></p></td>
-</tr>
-</tbody>
-</table>
-<ol class="simple">
-<li><p>Prepare all important terms for summation:</p></li>
-</ol>
-<p><span class="math notranslate nohighlight">\(O_i = d_{1i}\)</span> - observed number of deaths;</p>
-<p><span class="math notranslate nohighlight">\(E_i = d_{i}\frac{n_{1i}}{n_i}\)</span> - expected number of deaths;</p>
-<p><span class="math notranslate nohighlight">\(V_i = \frac{n_{1i}n_{0i}d_i(n_{i}-d_i)}{n_{i}^2(n_{i}-1)}\)</span> - variance of the observed number of deaths;</p>
-<ol class="simple">
-<li><p>Compute logrank test statistics:</p></li>
-</ol>
+</section>
+<section id="parametric-methods">
+<h2><span class="section-number">4.4. </span>Parametric methods<a class="headerlink" href="#parametric-methods" title="Permalink to this headline">#</a></h2>
+<p>Parametric methods are very efficient when the time to event of interest follows a particular distribution specified in certain parameters. We will speak about three parametric models with different defined distributions</p>
+<section id="exponential-model-constant-risk-model">
+<h3><span class="section-number">4.4.1. </span>1. Exponential model (constant risk model)<a class="headerlink" href="#exponential-model-constant-risk-model" title="Permalink to this headline">#</a></h3>
+<p>We start with the simplest case of a constant mortality function.</p>
 <div class="math notranslate nohighlight">
-\[\chi^2_{logrank} = \frac{\sum_{i}(O_i - E_i)^2}{\sum_{i}V_i} \sim \chi^2(1)\ \text{under}\ H_0\]</div>
-<p>This can be quite cumbersome for calculating from scratch, happily, everything already done for us in lifelines.</p>
+\[
+    m(t) = m_0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    S(t) = \exp(-m_0t)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    f(t) = m_0\cdot \exp(-m_0t)
+\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 4</p>
+<p>Derive an expression for <span class="math notranslate nohighlight">\(S(t)\)</span> at constant risk. <strong>Hint:</strong> use the result from the exercise 1.</p>
+</div>
+<p>Let’s draw plots for <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(S\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.statistics</span> <span class="kn">import</span> <span class="n">logrank_test</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-<span class="c1">#split our groups</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
-<span class="n">df0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
-<span class="n">T1</span><span class="p">,</span> <span class="n">G1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
-<span class="n">T0</span><span class="p">,</span> <span class="n">G0</span> <span class="o">=</span> <span class="n">df0</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">df0</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
-<span class="c1"># and apply test directly to durations</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">logrank_test</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">T0</span><span class="p">)</span>
-<span class="n">results</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
+<span class="n">m0</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">*</span> <span class="n">m0</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m0</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of survival&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <tbody>
-    <tr>
-      <th>t_0</th>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <th>null_distribution</th>
-      <td>chi squared</td>
-    </tr>
-    <tr>
-      <th>degrees_of_freedom</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>test_name</th>
-      <td>logrank_test</td>
-    </tr>
-  </tbody>
-</table>
-</div><table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>test_statistic</th>
-      <th>p</th>
-      <th>-log2(p)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>114.43</td>
-      <td>&lt;0.005</td>
-      <td>86.30</td>
-    </tr>
-  </tbody>
-</table></div></div>
+<img alt="../_images/survival_analysis_40_0.png" src="../_images/survival_analysis_40_0.png" />
 </div>
-<p>The result is here and we can surely <em>reject null hypothesis about equality of survival curves at the 0.005 level of significance</em>. It worth to repeat that using statistical tests is really important in survival analysis, especially in aging domain where you can see as tiny results can be presented as a big advance in science, frequently without rigorous statistical comparison of case-control curves.</p>
-<p>There are some important facts you should know about logrank test:</p>
-<ul class="simple">
-<li><p>logrank test has maximum power when hazard functions are proportional, with coefficient <span class="math notranslate nohighlight">\(k&gt;1\)</span>: <span class="math notranslate nohighlight">\(h_1(t) = kh_2(t)\)</span>;</p></li>
-<li><p>logrank test is sensitive to differences in tails of distributions;</p></li>
-<li><p>logrank test has low power if two curves intersect.</p></li>
-</ul>
+</div>
+<p>The corresponding survival curve resembles a <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_distribution">distribution</a> of time until radioactive particle decay or so called <em>“law of rare events”</em> where events independently occur with a rate <span class="math notranslate nohighlight">\(m_0\)</span>. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging! Then, <span class="math notranslate nohighlight">\(m_0\)</span> actually describes average number of failures per unit of time and, correspondingly, <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a <strong>mean survival time</strong>.</p>
 <div class="dropdown admonition">
-<p class="admonition-title">Exercise 8</p>
-<p>Choose and download two mice survival datasets from <a class="reference external" href="https://www.lifespan.io/animal-life-expectancy-comparisons/">ALEC</a> by applying different strain/sex/intervention filters. Complete the following tasks:</p>
-<ul class="simple">
-<li><p>Estimate datasets with Kaplan-Meier and Weibull estimators;</p></li>
-<li><p>Plot their survival plots (in one axes);</p></li>
-<li><p>Plot their hazard plots (in one axes);</p></li>
-<li><p>Compare datasets with Logrank test;</p></li>
-<li><p>Answer the question: is the Logrank appropriate for your choice of datasets? Explain why?</p></li>
-<li><p>Explore <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> documentation, write code for median survival time calculation for your datasets. Compare and explain results.</p></li>
-</ul>
+<p class="admonition-title">Exercise 5</p>
+<p>Prove that <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a mean survival time using a definition of expectation.</p>
+</div>
+<p>We obtained an object, or system, with survivability depending on one critical subsystem what is not reliable. Can we do better? Sure, we can add an additional critical sustystem reserving the original. As a naive example, just imagine an organism’s life depends only of two kidney functioning. If one fails the other can work for two. This (of course) oversimplified system can be represented with the following diagram of parallel connection,</p>
+<p><img src="https://drive.google.com/uc?id=1eY5Nz_I4eI-YUqU_5RkWuzVeeHfxoelH" 
+     alt="parallel" 
+     width="180"/></p>
+<p>where <span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(m_2\)</span> are failure risks, which we assume constant and not equal in general. How to derive a survival curve for such a system? First, let’s assume that both critical subsystems, let’s call them <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, are independent what means that the failure of one does not affect the failure rate of the other. Then, we may consider joint probability distribution that the whole system fails:</p>
+<div class="math notranslate nohighlight">
+\[ F_{X,Y}(t) = F_X(t)\cdot F_Y(t) \]</div>
+<p>Recall that <span class="math notranslate nohighlight">\(F(t) = 1-S(t)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[ F_{X,Y}(t) = (1-S_X(t))\cdot (1-S_Y(t)) = (1 - e^{-m_1t})(1 - e^{-m_2t}) = 1 - e^{-m_1t} -  e^{-m_2t} +  e^{-(m_1+m_2)t}\]</div>
+<p>And now we return to survival curve:</p>
+<div class="math notranslate nohighlight">
+\[ S_{X,Y}(t) = e^{-m_1t} +  e^{-m_2t} -  e^{-(m_1+m_2)t}\]</div>
+<div class="math notranslate nohighlight">
+\[ m_{X,Y}(t) = \frac{-S_{X,Y}'(t)}{S_{X,Y}(t)} = \frac{m_1e^{-m_1t} +  m_2e^{-m_2t} -  (m_1 + m_2)e^{-(m_1+m_2)t}}{e^{-m_1t} +  e^{-m_2t} -  e^{-(m_1+m_2)t}}\]</div>
+<p>Let’s draw it!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">SX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m1</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">SY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">SXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m1</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> 
+<span class="n">mXY</span> <span class="o">=</span> <span class="p">(</span><span class="n">m1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m1</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">))</span> <span class="o">/</span>\
+      <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m1</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">m1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;X only, m1=</span><span class="si">{</span><span class="n">m1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">m2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Y only, m2=</span><span class="si">{</span><span class="n">m2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mXY</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;X or Y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk&#39;</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SX</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;X only, m1=</span><span class="si">{</span><span class="n">m1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SY</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Y only, m2=</span><span class="si">{</span><span class="n">m2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SXY</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;X or Y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of survival&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/survival_analysis_43_0.png" src="../_images/survival_analysis_43_0.png" />
+</div>
+</div>
+<p>We see the lower value of mortality risk the higher survival curve lies if we consider our kidneys (critical subsystems) separately. Combining them into one system leads to the highest survival curve (green curve on the plot). Thus we see a quite obvious corollary: the higher number of reserved subsystems object have the more survival it becomes… But wait a second! What’s wrong with the mortality curve for two kindeys system? It is not constant now. We started with two kidneys each having its own constant failure risk and ended with a system where mortality risk is now a function of time - <strong>aging system</strong> actually! It is quite reasonable if we treat aging as a process of critical subsystem failures culminating with system “death”.</p>
+<p>In fact, you may consider human organism as a just a combination of parallel and sequential connections of such critical subsystems (organs) - not bad model for a start (see, for example <span id="id2">[<a class="reference internal" href="../dyn/complex_systems.html#id40" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>). To calculate a survival curve of a particular complex model, you may just use the following formulas considering your system as a set of sequential and parallel block connections.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 6</p>
+<p>Compute an expression for mortality risk of sequential subsystems connection.</p>
+</div>
+<figure class="align-default">
+<img alt="../_images/41.PNG" src="../_images/41.PNG" />
+</figure>
+<p>Reliability <span class="math notranslate nohighlight">\( R \)</span></p>
+<p>Failure probability <span class="math notranslate nohighlight">\( F \)</span>
+$<span class="math notranslate nohighlight">\( R = 1 - F \)</span>$</p>
+<p>For series:
+$<span class="math notranslate nohighlight">\( R_{12} = R_1*R_2 \)</span>$</p>
+<p>For parallel:
+$<span class="math notranslate nohighlight">\( R_{12} = 1 - (1-R_1)(1-R_2) \)</span>$</p>
+<p><a class="reference external" href="https://youtu.be/k74WXpGqPhg?si=g74ORm-dAoOnQ9Yr">https://youtu.be/k74WXpGqPhg?si=g74ORm-dAoOnQ9Yr</a></p>
+</section>
+<section id="weibull-model">
+<h3><span class="section-number">4.4.2. </span>2. Weibull  model<a class="headerlink" href="#weibull-model" title="Permalink to this headline">#</a></h3>
+<p>Let’s proceed with our example of aging system consisted from “unaging” or fragile elements. Now let’s assume that we have <span class="math notranslate nohighlight">\(n\)</span> independent subsystems having the same constant mortality rate <span class="math notranslate nohighlight">\(m\)</span> and connected in parrallel within a system <span class="math notranslate nohighlight">\(Z\)</span>. Using the formula above we have:</p>
+<div class="math notranslate nohighlight">
+\[ S_Z(t) =  1 - (1 - S(t))^n = 1 - (1 - e^{-mt})^n\]</div>
+<p>Now let’s derive a mortality risk:</p>
+<div class="math notranslate nohighlight">
+\[ m_{Z}(t) = \frac{-S'(t)}{S(t)} = \frac{nme^{-mt}(1 - e^{-mt})^{n-1}}{1 - (1 - e^{-mt})^{n}}\]</div>
+<p>And draw it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">n1</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n3</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">SZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span><span class="o">**</span><span class="n">n</span>
+<span class="n">mZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;m=</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">n1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">n2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">n3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk&#39;</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">n1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">n2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">n3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of survival&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/survival_analysis_48_0.png" src="../_images/survival_analysis_48_0.png" />
+</div>
+</div>
+<p>The immediate conclusion follows from this plot: the mortality risk of the system at later stages of life doesn’t depend on the number of reserve elements in the system and only on failure rates of particular elements. Having a large number of reserve element a survivability of an object can be high for quite long time.</p>
+<p>You may note that an expression for mortality risk is quite cumbersome for general <span class="math notranslate nohighlight">\(n\)</span> elements case. At the same time we see that all the mortality curves on the plot above approaches to the constant mortality risk <span class="math notranslate nohighlight">\(m\)</span> as <span class="math notranslate nohighlight">\(t \to \infty\)</span>. It turns out that at early stages of the life, more precisely when <span class="math notranslate nohighlight">\(t \ll 1/m\)</span>, we obtain a nice approximation of the original formula, namely:</p>
+<div class="math notranslate nohighlight">
+\[ m_Z(t) \approx nm^nt^{n-1} = nat^{n-1} \]</div>
+<p>this is exactly a <strong>Weibull risk</strong> model with a scale parameter <span class="math notranslate nohighlight">\(a=m^n\)</span> linked with the pace of aging. The corresponding survival and probability density functions will be:</p>
+<div class="math notranslate nohighlight">
+\[ S(t) = e^{-at^n} \]</div>
+<div class="math notranslate nohighlight">
+\[ f(t) = nat^{n-1}e^{-at^n} \]</div>
+<p>The latter expression is a <a class="reference external" href="https://en.wikipedia.org/wiki/Weibull_distribution">Weibull distribution</a> density function known for its high flexibility for modelling a lot of biological and technical phenomena. It is not a good strategy to have an infinite number of low-reliable critical elements in our system, instead, it is better to have highly-reliable elements (with low mortality risk) confering us a great lifespan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">n1</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n3</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">mZ1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="p">((</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">mZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;m=</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">n1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">n2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">n3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk&#39;</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;m=</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ1</span><span class="p">(</span><span class="n">n1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ1</span><span class="p">(</span><span class="n">n2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ1</span><span class="p">(</span><span class="n">n3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/survival_analysis_50_0.png" src="../_images/survival_analysis_50_0.png" />
+</div>
 </div>
 </section>
-<section id="gompertz-estimator">
-<h3><span class="section-number">4.4.3. </span>Gompertz estimator*<a class="headerlink" href="#gompertz-estimator" title="Permalink to this headline">#</a></h3>
+<section id="gompertz-model">
+<h3><span class="section-number">4.4.3. </span>3. Gompertz  model<a class="headerlink" href="#gompertz-model" title="Permalink to this headline">#</a></h3>
+<p>Weibull model provides a nice explanation of aging phenomena in terms of elements reliability. Unfortunately, the reality is harder. It turns out that weibull risk model has “too slow” speed of growth. The actual observable mortality of different species obeys exponential law. This is the place where Benjamin Gompertz appears. He found that the force of mortality increases in geometrical progression with the age of adult humans. According to the Gompertz law, human mortality risk <strong>doubles about every 8 years</strong> of adult age <span id="id3">[]</span>. Moreover, an exponential mortality behaviour is observed for many biological species, including fruit flies, nematodes, flour beetles, mice, dogs, and baboons <span id="id4">[<a class="reference internal" href="../dyn/complex_systems.html#id40" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>. Mathematically, it can be formulated as follows:</p>
+<div class="math notranslate nohighlight">
+\[ m(t) = Ae^{bt} \]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> - Initial Mortality Rate (IMR), this parameter characterizes the initial mortality, that is, the mortality that would be in the population without aging, and does not depend on age; <span class="math notranslate nohighlight">\(b\)</span> - characterizes the rate of aging. To clarify the previous observation about Mortality Rate Doubling Time (MRDT) is 8 years, we can use the following simple quotient:</p>
+<div class="math notranslate nohighlight">
+\[2 = \frac{Ae^{bt_2}}{Ae^{bt_1}} = \frac{e^{bt_2}}{e^{bt_1}}=e^{b(t_2-t_1)}=e^{b*MRDT} \rightarrow\]</div>
+<div class="math notranslate nohighlight">
+\[ \ln{2} = b*MRDT \rightarrow MRDT = \frac{\ln{2}}{b} \]</div>
+<p>from where we get the value of <span class="math notranslate nohighlight">\(b = \ln{2} / MRDT = 0.087\)</span> for humans. Those who did the exercises could note that the survival function can be elegantly written as:</p>
+<div class="math notranslate nohighlight">
+\[ S(t) = \exp{\left(-\int_0^{t}m(x)dx\right)} \]</div>
+<p>Putting Gompertz risk to the intergral yields the following expression for the survival curve:</p>
+<div class="math notranslate nohighlight">
+\[S(t) = e^{-\frac{A}{b}(e^{bt} - 1)}\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 7</p>
+<p>Derive the formula for the Gompertz survival curve from scratch.</p>
+</div>
+<p>It’s time to draw!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">A1</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.087</span><span class="p">)</span>
+<span class="n">A2</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.087</span><span class="p">)</span>
+<span class="n">A3</span><span class="p">,</span> <span class="n">b3</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0087</span><span class="p">)</span>
+<span class="n">A4</span><span class="p">,</span> <span class="n">b4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.174</span><span class="p">)</span>
+
+<span class="n">SZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">A</span> <span class="o">/</span> <span class="n">b</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">mZ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">b1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A1</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A2</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A3</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mZ</span><span class="p">(</span><span class="n">A4</span><span class="p">,</span> <span class="n">b4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A4</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b4</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time, years&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mortality risk, log&#39;</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">b1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A1</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A2</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A3</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SZ</span><span class="p">(</span><span class="n">A4</span><span class="p">,</span> <span class="n">b4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A=</span><span class="si">{</span><span class="n">A4</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b4</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time, years&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of survival&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/survival_analysis_52_0.png" src="../_images/survival_analysis_52_0.png" />
+</div>
+</div>
+<p>We used basic parameters <span class="math notranslate nohighlight">\(A=0.005\)</span> and <span class="math notranslate nohighlight">\(b=0.087\)</span> for human mortality risk according to <span id="id5">[]</span> (see Fig.3). Such parameters yield blue curves of survival and mortality. Since we have more or less realistic parameters inferred from real data, now time have units of years. Now we introduce three modifications of Gompertz parameters. First, we decrease IMR (<span class="math notranslate nohighlight">\(A\)</span>) by 10 times holding <span class="math notranslate nohighlight">\(b\)</span> the same. The result is the orange curve demonstrating moving to right from the initial curve. This increases the maximum human lifespan of the population. Second, we decrease rate of aging (<span class="math notranslate nohighlight">\(b\)</span>) by 10 times preserving IMR the same and the result is a much greater (green curves) increase in maximum lifespan by comparing with modification of IMR. This hints us that it is more promising strategy to <strong>improve the rate of aging than IMR</strong>. Moreover, if we improve IMR by 10 times but deteriorate rate of aging by only 2 times (red curve) we obtain the population that ages very quickly after some time - exactly what we see in countries with advanced medicine.</p>
+</section>
+<section id="fittting-gompertz-model">
+<h3><span class="section-number">4.4.4. </span>Fittting Gompertz model<a class="headerlink" href="#fittting-gompertz-model" title="Permalink to this headline">#</a></h3>
 <p>This is an additional subsection developing an intuition about fitting custom parametric estimators by power of <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/jupyter_notebooks/Piecewise%20Exponential%20Models%20and%20Creating%20Custom%20Models.html?highlight=Gompertz#Univarite-models-in-lifelines">lifelines</a>. We spend a lot of time discussing Gompertz risk model, so it would be inexcusably not to fit Gompertz model on our pretty flies data. Do it!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1616,14 +1617,136 @@ miR-137 25.71
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../_images/survival_analysis_41_1.png" src="../_images/survival_analysis_41_1.png" />
+</div></div><img alt="../_images/survival_analysis_55_1.png" src="../_images/survival_analysis_55_1.png" />
 </div>
 </div>
 <p>Yeah, it is really a good fit. We used only data from naturally aging flies and obtained nice estimation of Gompertz rate of aging <span class="math notranslate nohighlight">\(b=0.08\)</span> (please, ignore the coefficient in the table - it should be rescaled due to the presense of normalization constant <code class="docutils literal notranslate"><span class="pre">Tmax</span></code>) and <span class="math notranslate nohighlight">\(A=0.01\)</span> which are quite close to what we have seen for humans. The summary table has many interesting things like Akaike information criterion (AIC) useful for comparison of different models, log-likelihood and important statistics about coefficients. For now, we can definitely say, Gompertz model is a good model of aging flies!</p>
 </section>
 </section>
+<section id="comparison-of-survival-curves">
+<h2><span class="section-number">4.5. </span>Comparison of survival curves<a class="headerlink" href="#comparison-of-survival-curves" title="Permalink to this headline">#</a></h2>
+<section id="logrank-test">
+<h3><span class="section-number">4.5.1. </span>1. Logrank test<a class="headerlink" href="#logrank-test" title="Permalink to this headline">#</a></h3>
+<p>Okay, we need to compare two survival curves. <a class="reference external" href="https://web.stanford.edu/~lutian/coursepdf/survweek3.pdf">Logrank</a> is probably the most popular nonparametric test doing that. Let’s designate <span class="math notranslate nohighlight">\(S_0(t)\)</span> and <span class="math notranslate nohighlight">\(S_1(t)\)</span> as control and case survival curves (control and <em>mir-137</em> in our case). The logrank test is used to test the null hypothesis that there is no difference between the populations in the probability of an event (here a death) at any time point. Formulate null hypothesis:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(S_0(t) = S_1(t)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H_A\)</span>: <span class="math notranslate nohighlight">\(S_0(t) \neq S_1(t)\)</span></p></li>
+</ul>
+<p>The logrank analysis is based on the times of events. For each such time we calculate the observed number of deaths in each group and the number expected if there were in reality no difference between the groups.</p>
+<p>To conduct logrank we need to construct contingency table for each time step at which an event happened and compute chi-squared statistics. Once statistics computed it’s easy to calculate p-value and address to null hypothesis. Do it in a few steps:</p>
+<ol class="simple">
+<li><p>Compute the contingency table for each time step with event in <strong>at least</strong> one group as follows:</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../_images/51.PNG" src="../_images/51.PNG" />
+</figure>
+<ol class="simple">
+<li><p>Prepare all important terms for summation:</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(O_i = d_{1i}\)</span> - observed number of deaths;</p>
+<p>Under hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> for each group O follows a hypergeometric distribution with expected value and varience computed by the formulas below:</p>
+<p><span class="math notranslate nohighlight">\(E_i = d_{i}\frac{n_{1i}}{n_i}\)</span> - expected number of deaths;</p>
+<p><span class="math notranslate nohighlight">\(V_i = \frac{n_{1i}n_{0i}d_i(n_{i}-d_i)}{n_{i}^2(n_{i}-1)}\)</span> - variance of the observed number of deaths;</p>
+<ol class="simple">
+<li><p>Compute logrank test statistics:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\chi^2_{logrank} = \frac{\sum_{i}(O_i - E_i)^2}{\sum_{i}V_i} \sim \chi^2(1)\ \text{under}\ H_0\]</div>
+<p>This can be quite cumbersome for calculating from scratch, happily, everything already done for us in lifelines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lifelines.statistics</span> <span class="kn">import</span> <span class="n">logrank_test</span>
+
+<span class="c1">#split our groups</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
+<span class="n">df0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
+<span class="n">T1</span><span class="p">,</span> <span class="n">G1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
+<span class="n">T0</span><span class="p">,</span> <span class="n">G0</span> <span class="o">=</span> <span class="n">df0</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">df0</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
+<span class="c1"># and apply test directly to durations</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">logrank_test</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">T0</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">print_summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <tbody>
+    <tr>
+      <th>t_0</th>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>null_distribution</th>
+      <td>chi squared</td>
+    </tr>
+    <tr>
+      <th>degrees_of_freedom</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>test_name</th>
+      <td>logrank_test</td>
+    </tr>
+  </tbody>
+</table>
+</div><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test_statistic</th>
+      <th>p</th>
+      <th>-log2(p)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>114.43</td>
+      <td>&lt;0.005</td>
+      <td>86.30</td>
+    </tr>
+  </tbody>
+</table></div></div>
+</div>
+<p>Interpretation of longrank test: if the calculated p-value is greater than 0.05, the null hypothesis is not rejected. The logrank test is purely a test of significance it cannot provide an estimate of the size of the difference between the groups or a confidence interval.</p>
+<p>The result is here and we can surely <em>reject null hypothesis about equality of survival curves at the 0.005 level of significance</em>. It worth to repeat that using statistical tests is really important in survival analysis, especially in aging domain where you can see as tiny results can be presented as a big advance in science, frequently without rigorous statistical comparison of case-control curves.</p>
+<p>There are some important facts you should know about logrank test:</p>
+<ul class="simple">
+<li><p>logrank test has maximum power when hazard functions are proportional, with coefficient <span class="math notranslate nohighlight">\(k&gt;1\)</span>: <span class="math notranslate nohighlight">\(h_1(t) = kh_2(t)\)</span>;</p></li>
+<li><p>logrank test is sensitive to differences in tails of distributions;</p></li>
+<li><p>logrank test has low power if two curves intersect.</p></li>
+</ul>
+<p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC403858/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC403858/</a></p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise 8</p>
+<p>Choose and download two mice survival datasets from <a class="reference external" href="https://www.lifespan.io/animal-life-expectancy-comparisons/">ALEC</a> by applying different strain/sex/intervention filters. Complete the following tasks:</p>
+<ul class="simple">
+<li><p>Estimate datasets with Kaplan-Meier and Weibull estimators;</p></li>
+<li><p>Plot their survival plots (in one axes);</p></li>
+<li><p>Plot their hazard plots (in one axes);</p></li>
+<li><p>Compare datasets with Logrank test;</p></li>
+<li><p>Answer the question: is the Logrank appropriate for your choice of datasets? Explain why?</p></li>
+<li><p>Explore <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> documentation, write code for median survival time calculation for your datasets. Compare and explain results.</p></li>
+</ul>
+</div>
+</section>
+</section>
 <section id="conclusion">
-<h2><span class="section-number">4.5. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Mortality curves  can have different shapes (increasing, decreasing, u-shape, const) which say us a lot about aging of a particular organism.</p></li>
 <li><p>Constant mortality function models “non-aging” organism which has only one critical subsystem and therefore is fragile.</p></li>
@@ -1635,27 +1758,6 @@ miR-137 25.71
 <li><p>Nice cheatsheet for transformation rules here:</p></li>
 </ul>
 <img src="https://lifelines.readthedocs.io/en/latest/_images/map.png" alt="connections" width="500"/></section>
-<section id="cox-proportional-hazards-model-project">
-<h2><span class="section-number">4.6. </span>Cox proportional hazards model [Project]<a class="headerlink" href="#cox-proportional-hazards-model-project" title="Permalink to this headline">#</a></h2>
-<p><strong>Disclaimer</strong>: within this project section we will use “mortality risk” and “hazard” as synonyms (i.e. <span class="math notranslate nohighlight">\(m(t)=h(t)\)</span>) in the sense we discussed them in the previous sections.</p>
-<p><strong>Learn <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/Survival%20Regression.html#cox-s-proportional-hazard-model">the documentation</a> about Cox proportional hazards models.</strong></p>
-<p>Now is the time of advanced topics! The idea behind <a class="reference external" href="https://en.wikipedia.org/wiki/Proportional_hazards_model#The_Cox_model">Cox’s proportional hazard model</a> is that the log-hazard of an individual is a linear function of their covariates (independent of time) and a population-level baseline hazard that changes over time. Mathematically:</p>
-<div class="math notranslate nohighlight">
-\[\underbrace{h(t | x)}_{\text{hazard}} = \overbrace{b_0(t)}^{\text{baseline hazard}} \underbrace{\exp \overbrace{\left(\sum_{i=1}^n b_i (x_i - \overline{x_i})\right)}^{\text{log-partial hazard}}}_ {\text{partial hazard}}\]</div>
-<p>Note a few behaviors about this model: the only time component is in the baseline hazard, <span class="math notranslate nohighlight">\(b_0(t)\)</span>. In the above equation, the partial hazard is a time-invariant scalar factor that only increases or decreases the baseline hazard. Thus changes in covariates will only inflate or deflate the baseline hazard</p>
-<section id="task">
-<h3><span class="section-number">4.6.1. </span>Task<a class="headerlink" href="#task" title="Permalink to this headline">#</a></h3>
-<p>Reproduce the Cox proportional hazards analysis from <a class="reference external" href="https://www.nature.com/articles/s41467-021-23014-1?ref=upstract.com&amp;curator=upstract.com">this paper</a> on NHANES dataset. Critically consider the paper and answer the following questions:</p>
-<ul class="simple">
-<li><p>What the main idea of using Cox analysis in the paper?</p></li>
-<li><p>What is the Gompertz mortality doubling rate from NHANES cohort?</p></li>
-<li><p>What are the main achievements of the paper?</p></li>
-<li><p>What pitfalls the paper has?</p></li>
-<li><p>What can you propose to improve the paper?</p></li>
-</ul>
-<p>Write report and prepare a presentation.</p>
-</section>
-</section>
 <section id="learn-more">
 <h2><span class="section-number">4.7. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -1669,7 +1771,7 @@ with your book. For more information about this, see <a class="reference externa
 </section>
 <section id="credits">
 <h2><span class="section-number">4.8. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
-<p>This notebook was prepared by <a class="reference external" href="https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&amp;hl=ru">Dmitrii Kriukov</a>.</p>
+<p>This notebook was prepared by <a class="reference external" href="https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&amp;hl=ru">Dmitrii Kriukov</a> and edited by Margarita Sidorova</p>
 </section>
 <section id="acknowledgements">
 <h2><span class="section-number">4.9. </span>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
