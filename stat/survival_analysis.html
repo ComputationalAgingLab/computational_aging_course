@@ -678,7 +678,7 @@ title="Print to PDF"
 \[F(x) = P(X\leq x) = \int_{-∞}^{x}f_X(u)du \]</div>
 <p>Probability that random variable is between x1 and x2:
 $<span class="math notranslate nohighlight">\(P(x1\leq x\leq x2) = F(x2) - F(x1) \)</span>$</p>
-<p>The probability density function (PDF) is the probability that a random variable X, will take a value exactly equal to <a class="reference external" href="http://x.It">x.It</a> is equal to the derivative of CDF:
+<p>The probability density function (PDF) can be interpreted as providing a relative likelihood that a random variable X, will take a value exactly equal to <a class="reference external" href="http://x.It">x.It</a> is equal to the derivative of CDF:
 $<span class="math notranslate nohighlight">\(f(x) = \frac {dF(x)} {dx}\)</span>$</p>
 <p>Now lets find CDF and PDF in survival analysis. For that at first we will talk about the survival curve:</p>
 </section>
@@ -773,12 +773,12 @@ But firstly we will talk about mortality risk</p>
 <div class="math notranslate nohighlight">
 \[\lim_{dt \to 0}\frac{P(t &lt; T ≤ t + dt | T &gt; t)}{dt} = \lim_{dt \to 0}\frac{F(t+dt) - F(t)}{dt}\frac{1}{S(t)} = \frac{f(t)}{S(t)}\]</div>
 <p>Yes, we obtained a ratio of probability density function of death and probability of survival. And this is what we call <strong>mortality risk function</strong> or <strong>hazard function</strong>.</p>
-<div class="math notranslate nohighlight">
-\[m(t) = \frac{f(t)}{S(t)} = -\frac{S'(t)}{S(t)}\]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise 1</p>
-<p>Show that <span class="math notranslate nohighlight">\(f(t) = -S'(t)\)</span>.</p>
+<p>Show that <span class="math notranslate nohighlight">\(f(t) = -S'(t)\)</span> so that we can conclude that the equation below is correct:.</p>
 </div>
+<div class="math notranslate nohighlight">
+\[m(t) = \frac{f(t)}{S(t)} = -\frac{S'(t)}{S(t)}\]</div>
 <p>This is actually the thing that increases exponentially as we age and have a name of Gompertz law (quite more complex than just a probability, isn’t it?)</p>
 </section>
 </section>
@@ -1242,7 +1242,7 @@ miR-137 25.71
 \]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise 4</p>
-<p>Derive an expression for <span class="math notranslate nohighlight">\(S(t)\)</span> at constant risk. <strong>Hint:</strong> use the result from the exercise 1.</p>
+<p>Prove that the formula above for <span class="math notranslate nohighlight">\(S(t)\)</span> at constant risk is correct. <strong>Hint:</strong> use the result from the exercise 1.</p>
 </div>
 <p>Let’s draw plots for <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(S\)</span>:</p>
 <div class="cell docutils container">
@@ -1263,7 +1263,7 @@ miR-137 25.71
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_40_0.png" src="../_images/survival_analysis_40_0.png" />
+<img alt="../_images/survival_analysis_41_0.png" src="../_images/survival_analysis_41_0.png" />
 </div>
 </div>
 <p>The corresponding survival curve resembles a <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_distribution">distribution</a> of time until radioactive particle decay or so called <em>“law of rare events”</em> where events independently occur with a rate <span class="math notranslate nohighlight">\(m_0\)</span>. Intuitively, we can treat this survival curve describing survivability of an extremely fragile organism, which dies from a single failure - technically speaking, such organism is unaging! Then, <span class="math notranslate nohighlight">\(m_0\)</span> actually describes average number of failures per unit of time and, correspondingly, <span class="math notranslate nohighlight">\(1/m_0\)</span> - is a <strong>mean survival time</strong>.</p>
@@ -1319,7 +1319,7 @@ miR-137 25.71
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_43_0.png" src="../_images/survival_analysis_43_0.png" />
+<img alt="../_images/survival_analysis_44_0.png" src="../_images/survival_analysis_44_0.png" />
 </div>
 </div>
 <p>We see the lower value of mortality risk the higher survival curve lies if we consider our kidneys (critical subsystems) separately. Combining them into one system leads to the highest survival curve (green curve on the plot). Thus we see a quite obvious corollary: the higher number of reserved subsystems object have the more survival it becomes… But wait a second! What’s wrong with the mortality curve for two kindeys system? It is not constant now. We started with two kidneys each having its own constant failure risk and ended with a system where mortality risk is now a function of time - <strong>aging system</strong> actually! It is quite reasonable if we treat aging as a process of critical subsystem failures culminating with system “death”.</p>
@@ -1380,7 +1380,7 @@ $<span class="math notranslate nohighlight">\( R_{12} = 1 - (1-R_1)(1-R_2) \)</s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_48_0.png" src="../_images/survival_analysis_48_0.png" />
+<img alt="../_images/survival_analysis_49_0.png" src="../_images/survival_analysis_49_0.png" />
 </div>
 </div>
 <p>The immediate conclusion follows from this plot: the mortality risk of the system at later stages of life doesn’t depend on the number of reserve elements in the system and only on failure rates of particular elements. Having a large number of reserve element a survivability of an object can be high for quite long time.</p>
@@ -1425,7 +1425,7 @@ $<span class="math notranslate nohighlight">\( R_{12} = 1 - (1-R_1)(1-R_2) \)</s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_50_0.png" src="../_images/survival_analysis_50_0.png" />
+<img alt="../_images/survival_analysis_51_0.png" src="../_images/survival_analysis_51_0.png" />
 </div>
 </div>
 </section>
@@ -1482,7 +1482,7 @@ $<span class="math notranslate nohighlight">\( R_{12} = 1 - (1-R_1)(1-R_2) \)</s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/survival_analysis_52_0.png" src="../_images/survival_analysis_52_0.png" />
+<img alt="../_images/survival_analysis_53_0.png" src="../_images/survival_analysis_53_0.png" />
 </div>
 </div>
 <p>We used basic parameters <span class="math notranslate nohighlight">\(A=0.005\)</span> and <span class="math notranslate nohighlight">\(b=0.087\)</span> for human mortality risk according to <span id="id5">[]</span> (see Fig.3). Such parameters yield blue curves of survival and mortality. Since we have more or less realistic parameters inferred from real data, now time have units of years. Now we introduce three modifications of Gompertz parameters. First, we decrease IMR (<span class="math notranslate nohighlight">\(A\)</span>) by 10 times holding <span class="math notranslate nohighlight">\(b\)</span> the same. The result is the orange curve demonstrating moving to right from the initial curve. This increases the maximum human lifespan of the population. Second, we decrease rate of aging (<span class="math notranslate nohighlight">\(b\)</span>) by 10 times preserving IMR the same and the result is a much greater (green curves) increase in maximum lifespan by comparing with modification of IMR. This hints us that it is more promising strategy to <strong>improve the rate of aging than IMR</strong>. Moreover, if we improve IMR by 10 times but deteriorate rate of aging by only 2 times (red curve) we obtain the population that ages very quickly after some time - exactly what we see in countries with advanced medicine.</p>
@@ -1618,7 +1618,7 @@ $<span class="math notranslate nohighlight">\( R_{12} = 1 - (1-R_1)(1-R_2) \)</s
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../_images/survival_analysis_55_1.png" src="../_images/survival_analysis_55_1.png" />
+</div></div><img alt="../_images/survival_analysis_56_1.png" src="../_images/survival_analysis_56_1.png" />
 </div>
 </div>
 <p>Yeah, it is really a good fit. We used only data from naturally aging flies and obtained nice estimation of Gompertz rate of aging <span class="math notranslate nohighlight">\(b=0.08\)</span> (please, ignore the coefficient in the table - it should be rescaled due to the presense of normalization constant <code class="docutils literal notranslate"><span class="pre">Tmax</span></code>) and <span class="math notranslate nohighlight">\(A=0.01\)</span> which are quite close to what we have seen for humans. The summary table has many interesting things like Akaike information criterion (AIC) useful for comparison of different models, log-likelihood and important statistics about coefficients. For now, we can definitely say, Gompertz model is a good model of aging flies!</p>
@@ -1738,7 +1738,8 @@ $<span class="math notranslate nohighlight">\( R_{12} = 1 - (1-R_1)(1-R_2) \)</s
 <ul class="simple">
 <li><p>Estimate datasets with Kaplan-Meier and Weibull estimators;</p></li>
 <li><p>Plot their survival plots (in one axes);</p></li>
-<li><p>Plot their hazard plots (in one axes);</p></li>
+<li><p>Plot hazard plots for Weibull. If you also want to plot hazard for nonparametric method you can do it for
+NelsonAalenFitter using lifelines</p></li>
 <li><p>Compare datasets with Logrank test;</p></li>
 <li><p>Answer the question: is the Logrank appropriate for your choice of datasets? Explain why?</p></li>
 <li><p>Explore <a class="reference external" href="https://lifelines.readthedocs.io/en/latest/index.html">lifelines</a> documentation, write code for median survival time calculation for your datasets. Compare and explain results.</p></li>
