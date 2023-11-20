@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/symbol.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Aging Clocks" href="../ml/aging_clocks.html" />
+    <link rel="next" title="11. Aging Clocks" href="../ml/aging_clocks.html" />
     <link rel="prev" title="4. Survival analysis" href="survival_analysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -168,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ml/aging_clocks.html">
-   10. Aging Clocks
+   11. Aging Clocks
   </a>
  </li>
  <li class="toctree-l1">
@@ -185,12 +185,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/complex_systems.html">
-   11. Complex systems approach
+   12. Complex systems approach
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/system_resilience.html">
-   12. System resilience
+   13. System resilience
   </a>
  </li>
 </ul>
@@ -626,6 +626,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   10. Credits
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -844,6 +849,11 @@ title="Print to PDF"
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   10. Credits
+  </a>
  </li>
 </ul>
 
@@ -1118,13 +1128,13 @@ The objective is to maximize the log partial likelihood function, but replacing 
 <img alt="../_images/24.PNG" src="../_images/24.PNG" />
 </figure>
 <figure class="align-default">
-<img alt="stat/figs/25.PNG" src="stat/figs/25.PNG" />
+<img alt="../_images/25.PNG" src="../_images/25.PNG" />
 </figure>
 <p>To adjust weights properly, one applies a general method for non-linear optimization that is called gradient descent.</p>
 <p>Gradient descent is a  iterative optimization algorithm for finding a local minimum of a differentiable function. The idea is to take repeated steps in the opposite direction of the gradient (derivative) of the function at the current point, because this is the direction of steepest descent.</p>
 <p>In this picture you can see the process of searching for the local minimum:</p>
 <figure class="align-default">
-<img alt="stat/figs/26.PNG" src="stat/figs/26.PNG" />
+<img alt="../_images/26.PNG" src="../_images/26.PNG" />
 </figure>
 <p>So, we need to find the local minimum of the loss function.</p>
 <p>We should recall that the loss function is the function of weights: <span class="math notranslate nohighlight">\(Loss(y_{true}, y_{pred}) = Loss(y_{true}, f(X, W)) \)</span>, where <span class="math notranslate nohighlight">\(X = (x_{1}, x_{2}, · · · , x_{m} )\)</span> - all inputs, <span class="math notranslate nohighlight">\(W = (w_{1}, w_{2}, · · · , w_{n} )\)</span> - weights of all connections.
@@ -1138,11 +1148,11 @@ Each derivative <span class="math notranslate nohighlight">\(\frac{dLoss}{dw}\)<
 <p>Here in the picture below you can see the process of updating weights by little steps (black arrows) in the opposite direction of gradient to reach the glomal minimum of loss function.</p>
 <p>These steps correspond to learning rate</p>
 <figure class="align-default">
-<img alt="stat/figs/27.PNG" src="stat/figs/27.PNG" />
+<img alt="../_images/27.PNG" src="../_images/27.PNG" />
 </figure>
 <p>One should choose learning rate reasonably as high learning rate may lead to overjumping the local minimum. In some situations you may use high learning rate - if you want to search for another local minimum.</p>
 <figure class="align-default">
-<img alt="stat/figs/28.PNG" src="stat/figs/28.PNG" />
+<img alt="../_images/28.PNG" src="../_images/28.PNG" />
 </figure>
 <p>So, we studied back propagation and gradient descent - processes which helps the neural network to adjust weights of connections in order to minimise loss function which in fact means more giving more precise output. In other words, this are the key processes in neural networks training!</p>
 <p>Logically, back-propagation can only be applied on networks with differentiable activation functions.</p>
@@ -1204,6 +1214,10 @@ The model is trained with the maximum likelihood method using mini-batch stochas
 </section>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="credits">
+<h1><span class="section-number">10. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h1>
+<p>This notebook was prepared by Margarita Sidorova</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1242,7 +1256,7 @@ The model is trained with the maximum likelihood method using mini-batch stochas
     <a class='right-next' id="next-link" href="../ml/aging_clocks.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Aging Clocks</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Aging Clocks</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
