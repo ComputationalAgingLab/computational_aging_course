@@ -1,0 +1,1274 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Survival analysis. Advanced methods. &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/symbol.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Aging Clocks" href="../ml/aging_clocks.html" />
+    <link rel="prev" title="4. Survival analysis" href="survival_analysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to the Computational Biology of Aging coursebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical view
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="differential_analysis_practice.html">
+   2. Differential expression analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../meth/meth.html">
+   3. Omics Data Analysis in Aging: Methylomics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
+   Practice - WGCNA for Methylomics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="survival_analysis.html">
+   4. Survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Survival analysis. Advanced methods.
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine learning view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/aging_clocks.html">
+   10. Aging Clocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">
+   Practice - DIY Aging Clocks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dynamic system view
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dyn/complex_systems.html">
+   11. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dyn/system_resilience.html">
+   12. System resilience
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/dosi/report.html">
+   Dynamic Organism State Indicator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/meta/report.html">
+   Meta-analysis of aging transcriptomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/parkinson/report.html">
+   Computational Model of Parkinson’s Disease
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/2023/unsupervized/report.html">
+   Unsupervised aging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ComputationalAgingLab/computational_aging_course/master?urlpath=tree/stat/survival_analysis_part2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fstat/survival_analysis_part2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/stat/survival_analysis_part2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   5. Survival analysis. Advanced methods.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-theory-on-linear-regression">
+     5.1. Some theory on linear regression
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#likelihood">
+       5.1.1. Likelihood
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#probability-vs-likelihood">
+         5.1.1.1. Probability VS Likelihood
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#semi-parametric-models">
+     5.2. Semi-parametric models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cox-proportional-hazards-model">
+       5.2.1. 1. Cox Proportional Hazards model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cox-ph-output">
+       5.2.2. COX PH output
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classical-machine-learning-methods">
+   6. Classical machine learning methods
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-tree">
+     6.1. Decision tree
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#classification-decision-tree">
+       6.1.1. Classification decision tree
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#probabilities">
+         6.1.1.1. Probabilities
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#entropy">
+         6.1.1.2. Entropy:
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#information-gain">
+         6.1.1.3. Information Gain:
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#regression-decision-tree">
+       6.1.2. Regression decision tree
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ensembling">
+     6.2. Ensembling
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#random-forest">
+       6.2.1. Random forest
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gradient-boosting">
+       6.2.2. Gradient boosting
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#survival-machine-learning">
+   7. Survival machine learning
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#survival-random-forest">
+     7.1. 1. Survival random forest
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#splitting-criterion">
+       7.1.1. Splitting criterion
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#prediction">
+       7.1.2. Prediction
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#survival-gradient-boosting">
+     7.2. 2. Survival Gradient boosting
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coxs-partial-likelihood-loss">
+       7.2.1. Cox’s Partial Likelihood Loss
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-networks-multi-layer-perceptron-network">
+   8. Neural networks - Multi-Layer Perceptron Network
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mlp-training">
+     8.1. MLP training
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#survival-neural-networks">
+   9. Survival neural networks
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deepsurv-coxph-nn">
+     9.1. DeepSurv (CoxPH NN)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nnet-survival-logistic-hazard-nn">
+     9.2. Nnet-survival (Logistic hazard NN)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance-metrics">
+     9.3. Performance metrics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#harrells-concordance-index">
+       9.3.1. 1. Harrell’s concordance index
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#time-dependent-roc-auc">
+       9.3.2. 2. Time-dependent ROC AUC
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#time-dependent-brier-score">
+       9.3.3. 3. TIme-dependent Brier score
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#features-selection">
+     9.4. Features selection
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#permutation-feature-importance">
+       9.4.1. 1. Permutation feature importance
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Survival analysis. Advanced methods.</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   5. Survival analysis. Advanced methods.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-theory-on-linear-regression">
+     5.1. Some theory on linear regression
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#likelihood">
+       5.1.1. Likelihood
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#probability-vs-likelihood">
+         5.1.1.1. Probability VS Likelihood
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#semi-parametric-models">
+     5.2. Semi-parametric models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cox-proportional-hazards-model">
+       5.2.1. 1. Cox Proportional Hazards model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cox-ph-output">
+       5.2.2. COX PH output
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classical-machine-learning-methods">
+   6. Classical machine learning methods
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-tree">
+     6.1. Decision tree
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#classification-decision-tree">
+       6.1.1. Classification decision tree
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#probabilities">
+         6.1.1.1. Probabilities
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#entropy">
+         6.1.1.2. Entropy:
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#information-gain">
+         6.1.1.3. Information Gain:
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#regression-decision-tree">
+       6.1.2. Regression decision tree
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ensembling">
+     6.2. Ensembling
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#random-forest">
+       6.2.1. Random forest
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gradient-boosting">
+       6.2.2. Gradient boosting
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#survival-machine-learning">
+   7. Survival machine learning
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#survival-random-forest">
+     7.1. 1. Survival random forest
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#splitting-criterion">
+       7.1.1. Splitting criterion
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#prediction">
+       7.1.2. Prediction
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#survival-gradient-boosting">
+     7.2. 2. Survival Gradient boosting
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coxs-partial-likelihood-loss">
+       7.2.1. Cox’s Partial Likelihood Loss
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-networks-multi-layer-perceptron-network">
+   8. Neural networks - Multi-Layer Perceptron Network
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mlp-training">
+     8.1. MLP training
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#survival-neural-networks">
+   9. Survival neural networks
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deepsurv-coxph-nn">
+     9.1. DeepSurv (CoxPH NN)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nnet-survival-logistic-hazard-nn">
+     9.2. Nnet-survival (Logistic hazard NN)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance-metrics">
+     9.3. Performance metrics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#harrells-concordance-index">
+       9.3.1. 1. Harrell’s concordance index
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#time-dependent-roc-auc">
+       9.3.2. 2. Time-dependent ROC AUC
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#time-dependent-brier-score">
+       9.3.3. 3. TIme-dependent Brier score
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#features-selection">
+     9.4. Features selection
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#permutation-feature-importance">
+       9.4.1. 1. Permutation feature importance
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="survival-analysis-advanced-methods">
+<h1><span class="section-number">5. </span>Survival analysis. Advanced methods.<a class="headerlink" href="#survival-analysis-advanced-methods" title="Permalink to this headline">#</a></h1>
+<section id="some-theory-on-linear-regression">
+<h2><span class="section-number">5.1. </span>Some theory on linear regression<a class="headerlink" href="#some-theory-on-linear-regression" title="Permalink to this headline">#</a></h2>
+<p>Linear regression is a standard modeling method from statistics and machine learning</p>
+<div class="math notranslate nohighlight">
+\[ y = β*X\]</div>
+<p>where <span class="math notranslate nohighlight">\(y\)</span> is output, <span class="math notranslate nohighlight">\(X\)</span> is matrix of input data and <span class="math notranslate nohighlight">\(β\)</span> is vector of coefficients</p>
+<p>Prediction of the model:</p>
+<div class="math notranslate nohighlight">
+\[ŷ = model(X)\]</div>
+<div class="math notranslate nohighlight">
+\[ŷ = β_0 + β_1*x_1 +...+β_n*x_n\]</div>
+<p>The parameters of the model (β) must be estimated. There are two main frameworks: Least Squares Optimization and Maximum Likelihood Estimation</p>
+<p>Least squares optimization is an approach to estimating the parameters of a model by seeking a set of parameters that results in the smallest squared error between the predictions of the model (ŷ) and the actual outputs (y), averaged over all examples in the dataset, so-called mean squared error</p>
+<p>Maximum Likelihood Estimation is a frequentist probabilistic framework that seeks a set of parameters for the model that maximize a likelihood function</p>
+<section id="likelihood">
+<h3><span class="section-number">5.1.1. </span>Likelihood<a class="headerlink" href="#likelihood" title="Permalink to this headline">#</a></h3>
+<p>The likelihood function is probability density of observed data viewed as a function of the parameters of a statistical model.
+The arg max of the likelihood function over the parameter Q serves as a point estimate for Q</p>
+<p>In Maximum Likelihood Estimation, we wish to maximize the conditional probability of observing the data (X) given a specific probability distribution and its parameters (Q)</p>
+<div class="math notranslate nohighlight">
+\[P(X|Q)\]</div>
+<p>As you recall, joint probability is the probability of event X1 occurring at the same time that event X2 occurs. So, X is, in fact, the joint probability distribution of all observations</p>
+<div class="math notranslate nohighlight">
+\[P(x_1,x_2,...,x_n|Q)\]</div>
+<section id="probability-vs-likelihood">
+<h4><span class="section-number">5.1.1.1. </span>Probability VS Likelihood<a class="headerlink" href="#probability-vs-likelihood" title="Permalink to this headline">#</a></h4>
+<p>The term “probability” refers to finding the chance of observing some data given a sample distribution of the data. The term Likelihood refers to the process of determining the best data distribution given a specific situation in the data</p>
+<p>Here is a simple example:</p>
+<figure class="align-default">
+<img alt="../_images/17.PNG" src="../_images/17.PNG" />
+</figure>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=pYxNSUDSFH4">https://www.youtube.com/watch?v=pYxNSUDSFH4</a></p>
+</section>
+</section>
+</section>
+<section id="semi-parametric-models">
+<h2><span class="section-number">5.2. </span>Semi-parametric models<a class="headerlink" href="#semi-parametric-models" title="Permalink to this headline">#</a></h2>
+<section id="cox-proportional-hazards-model">
+<h3><span class="section-number">5.2.1. </span>1. Cox Proportional Hazards model<a class="headerlink" href="#cox-proportional-hazards-model" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://arxiv.org/pdf/1708.04649.pdf">https://arxiv.org/pdf/1708.04649.pdf</a></p>
+<p>CoxPH is a hybrid of the parametric and non-parametric approaches, in other words, semi-parametric model, which can obtain a more consistent estimator under a broader range of conditions compared to the parametric models, and a more precise estimator than the non-parametric methods.</p>
+<p>Unlike parametric methods, the knowledge of the
+underlying distribution of time to event of interest is not required, but the attributes
+are assumed to have an exponential influence on the outcome.</p>
+<p>The Basic Cox Model formula for patient i is the folowing:</p>
+<figure class="align-default">
+<img alt="../_images/30.PNG" src="../_images/30.PNG" />
+</figure>
+<p>Formula consisits of the baseline hazard function, <span class="math notranslate nohighlight">\(h_0(t)\)</span> and the partial hazard <span class="math notranslate nohighlight">\(exp(X_i β)\)</span>. The baseline hazard is population-level. The bazeline hazard changes over time, can be an arbitrary nonnegative function of time, while the partial hazard is a time-invariant scalar factor that only inflate or deflate the hazard.
+<span class="math notranslate nohighlight">\(X_i = (x_{i1}, x_{i2}, · · · , x_{iP} )\)</span> is the covariate vector for instance i, and <span class="math notranslate nohighlight">\(β^T = (β_1, β_2, · · · , β_P )\)</span> is the coefficient vector.</p>
+<p>So, changes in covariates only inflate or deflate the  hazard.</p>
+<p><span class="math notranslate nohighlight">\(X_i\)</span> is a covariate vector for time-invarient covariates, however, there is a need to use Cox with time-varying covariates, one could try extended Cox model by adding the vector of  time-varying covariates multiplied by vector of their coefficients.</p>
+<ul class="simple">
+<li><p>The Cox model is a semi-parametric algorithm since the baseline hazard function, <span class="math notranslate nohighlight">\(h_0(t)\)</span>, is unspecified and the outcome distribution is unknown.</p></li>
+<li><p>Cox model is a proportional hazards model since the hazard ratio is a constant independent of the baseline hazard function and time because all the subjects share the same baseline hazard function.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/311.PNG" src="../_images/311.PNG" />
+</figure>
+<p>Cox PH is regression model, however, as the baseline hazard function <span class="math notranslate nohighlight">\(h_0(t)\)</span> is not specified, it is not possible to fit the model using the standard likelihood function. Hazard function <span class="math notranslate nohighlight">\(h_0(t)\)</span>  is a nuisance function, while the coefficients β are the parameters of interest in the model. To estimate the coefficients, Cox proposed a partial likelihood which depends only on the parameter of interest β
+and is free of the nuisance parameters.</p>
+<p>The hazard function refers to the probability that an instance with covariate X fails at time t on the condition that it survives until time t can be expressed by <span class="math notranslate nohighlight">\(h(t, X)dt\)</span> with <span class="math notranslate nohighlight">\(dt → 0\)</span>. Let <span class="math notranslate nohighlight">\(J (J ≤ N)\)</span> be the total number of events of interest that occurred during the observation period for N instances, and <span class="math notranslate nohighlight">\(T_1 &lt; T_2 &lt; · · · &lt; T_J\)</span> is the distinct ordered time to event of interest. Let <span class="math notranslate nohighlight">\(X_j\)</span> be the corresponding covariate vector for the subject who fails at <span class="math notranslate nohighlight">\(T_j\)</span> , and
+<span class="math notranslate nohighlight">\(R_j\)</span> be the set of risk subjects at <span class="math notranslate nohighlight">\(T_j\)</span> . Thus, conditional on the fact that the event occurs
+at <span class="math notranslate nohighlight">\(T_j\)</span>, the individual probability corresponding to covariate <span class="math notranslate nohighlight">\(X_j\)</span> can be formulated as
+follows:</p>
+<figure class="align-default">
+<img alt="../_images/32.PNG" src="../_images/32.PNG" />
+</figure>
+<p>The partial likelihood is the product of the probability of each subject. Referring to
+the Cox assumption and the presence of the censoring, the partial likelihood is defined
+as follows:</p>
+<figure class="align-default">
+<img alt="../_images/33.PNG" src="../_images/33.PNG" />
+</figure>
+<p>Here <span class="math notranslate nohighlight">\(j = 1, 2, · · · , N\)</span>. Censoring is accounted by <span class="math notranslate nohighlight">\(δ_j\)</span>, if <span class="math notranslate nohighlight">\(δ_j = 1\)</span>, the <span class="math notranslate nohighlight">\(j_{th}\)</span> term in the product is the conditional probability, otherwise, when <span class="math notranslate nohighlight">\(δ_j = 0\)</span>, the corresponding term is 1, which means that the term will not have any effect on the final product.</p>
+<p>The coefficient vector <span class="math notranslate nohighlight">\(β\)</span> is estimated by maximizing this partial likelihood, or equivalently, minimizing the negative log-partial likelihood.</p>
+<figure class="align-default">
+<img alt="../_images/18.PNG" src="../_images/18.PNG" />
+</figure>
+</section>
+<section id="cox-ph-output">
+<h3><span class="section-number">5.2.2. </span>COX PH output<a class="headerlink" href="#cox-ph-output" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival6.html">https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival6.html</a></p>
+<p>The main output of Cox PH model are estimated <span class="math notranslate nohighlight">\(β\)</span> coefficients in a form of loghazard ratios or hazard ratios. The loghazard ratio represents the increase in the expected log of the relative hazard for each one unit increase in the predictor covariate, holding other covariates constant. The hazard ratios are computed by exponentiating loghazard ratios for more interpretability and can show the increase in the expected hazard in percents.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="classical-machine-learning-methods">
+<h1><span class="section-number">6. </span>Classical machine learning methods<a class="headerlink" href="#classical-machine-learning-methods" title="Permalink to this headline">#</a></h1>
+<p>The main advantage - ability to model the non-linear relationships and work with high dimensional data</p>
+<section id="decision-tree">
+<h2><span class="section-number">6.1. </span>Decision tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">#</a></h2>
+<p>The basic intuition behind the tree models is to recursively partition the data based on a particular splitting criterion, so that the objects that are similar to each other based on the value of interest will be placed in the same node.</p>
+<p>We will start with the simplest case - decision tree for classification:</p>
+<section id="classification-decision-tree">
+<h3><span class="section-number">6.1.1. </span>Classification decision tree<a class="headerlink" href="#classification-decision-tree" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<img alt="../_images/9.PNG" src="../_images/9.PNG" />
+</figure>
+<section id="probabilities">
+<h4><span class="section-number">6.1.1.1. </span>Probabilities<a class="headerlink" href="#probabilities" title="Permalink to this headline">#</a></h4>
+<p>Before the first split:</p>
+<div class="math notranslate nohighlight">
+\[P(y=\text{BLUE}) = \frac{9}{20} = 0.45\]</div>
+<div class="math notranslate nohighlight">
+\[P(y=\text{YELLOW}) = \frac{11}{20} = 0.55\]</div>
+<p>After the first split:</p>
+<div class="math notranslate nohighlight">
+\[P(y=\text{BLUE}|X\leq 12) = \frac{8}{13} \approx 0.62\]</div>
+<div class="math notranslate nohighlight">
+\[P(y=\text{BLUE}|X&gt; 12) = \frac{1}{7} \approx 0.14\]</div>
+<div class="math notranslate nohighlight">
+\[P(y=\text{YELLOW}|X\leq 12) = \frac{5}{13} \approx 0.38\]</div>
+<div class="math notranslate nohighlight">
+\[P(y=\text{YELLOW}|X &gt; 12) = \frac{6}{7} \approx 0.86\]</div>
+</section>
+<section id="entropy">
+<h4><span class="section-number">6.1.1.2. </span>Entropy:<a class="headerlink" href="#entropy" title="Permalink to this headline">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+H(p) = - \sum_i^K p_i\log(p_i)
+\]</div>
+<p>Before the first split</p>
+<div class="math notranslate nohighlight">
+\[H = - 0.45 \log_2 0.45 - 0.55 \log_2 0.55 \approx 0.99 \]</div>
+<p>After the first split</p>
+<div class="math notranslate nohighlight">
+\[H_{\text{left}} = - 0.62 \log_2 0.62 - 0.38 \log_2 0.38 \approx 0.96\]</div>
+<div class="math notranslate nohighlight">
+\[H_{\text{right}} = - 0.14 \log_2 0.14 - 0.86 \log_2 0.86 \approx 0.58\]</div>
+<div class="math notranslate nohighlight">
+\[H_{\text{total}} =  - \frac{13}{20} 0.96 - \frac{7}{20} 0.58 \approx 0.83\]</div>
+</section>
+<section id="information-gain">
+<h4><span class="section-number">6.1.1.3. </span>Information Gain:<a class="headerlink" href="#information-gain" title="Permalink to this headline">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+IG = H(\text{parent}) - H(\text{child})
+\]</div>
+<div class="math notranslate nohighlight">
+\[IG = 0.99 - 0.83 = 0.16\]</div>
+<p>The best split - the one with highest information gain!</p>
+</section>
+</section>
+<section id="regression-decision-tree">
+<h3><span class="section-number">6.1.2. </span>Regression decision tree<a class="headerlink" href="#regression-decision-tree" title="Permalink to this headline">#</a></h3>
+<p>Is a step-wise constant predictor</p>
+<p>Lets look at this example:</p>
+<figure class="align-default">
+<img alt="../_images/10.PNG" src="../_images/10.PNG" />
+</figure>
+<p>The prediction are steep-wise:</p>
+<figure class="align-default">
+<img alt="../_images/11.PNG" src="../_images/11.PNG" />
+</figure>
+</section>
+</section>
+<section id="ensembling">
+<h2><span class="section-number">6.2. </span>Ensembling<a class="headerlink" href="#ensembling" title="Permalink to this headline">#</a></h2>
+<p>Ensembling - combining the predictions of multiple base learners to obtain a powerful overall model. The base learners are often very simple models also referred as weak learners.
+Multiple diverse models are created to predict an outcome, either by using many different modeling algorithms or using different training data sets.</p>
+<p>The main ensembling algorithms:</p>
+<ol class="simple">
+<li><p>Bagging - fit many large trees to bootstrap-resampled versions of the training data, and classify by majority vote. (Bootstrapping is a resampling technique with replacement - the same data point may be chosen more than once)</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(C(S)\)</span> is a classifier, based on training data <span class="math notranslate nohighlight">\(S\)</span>. We draw bootstrap samples <span class="math notranslate nohighlight">\(S_1, \dots, S_B\)</span> each of size <span class="math notranslate nohighlight">\(N\)</span> with replacement from the training data.
+Then $<span class="math notranslate nohighlight">\({C}_{bag} = Majority Vote \{C(S_b)\}_{b = 1}^B\)</span>$</p>
+<ol class="simple">
+<li><p>Random Forests - fancy version of bagging, tries to improve on bagging by “de-correlating” the trees</p></li>
+<li><p>Boosting - fit many large or small trees to reweighted versions of the training data. Classify by weighted majority vote.</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\({C}_{boost} = \sum_{m=1}^M \alpha_m C_m\)</span>.</p>
+<p>where M &gt; 0 denotes the number of base learners <span class="math notranslate nohighlight">\(C_m\)</span>, and <span class="math notranslate nohighlight">\(α_m\)</span> is a weighting term.</p>
+<section id="random-forest">
+<h3><span class="section-number">6.2.1. </span>Random forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">#</a></h3>
+<p>Random Forest fits a set of Trees independently and then averages their predictions</p>
+<p>The general principles as RF: (a) Trees are grown using bootstrapped data; (b) Random feature selection is used when splitting tree nodes; (c) Trees are generally grown deeply (d) Forest ensemble is calculated by averaging terminal node statistics</p>
+<p>Importantly, the high number of base learners do not lead to overfitting.</p>
+</section>
+<section id="gradient-boosting">
+<h3><span class="section-number">6.2.2. </span>Gradient boosting<a class="headerlink" href="#gradient-boosting" title="Permalink to this headline">#</a></h3>
+<p>In contrast to random forest gradient boosted model is constructed sequentially in a greedy stagewise fashion</p>
+<p>After training decision tree the errors of prediction are obtained and the next decision tree is trained on this prediction errors</p>
+<figure class="align-default">
+<img alt="../_images/14.PNG" src="../_images/14.PNG" />
+</figure>
+<p>The most important parameter in gradient boosting is the number of base learner to use. A higher number will lead to a more complex model. However, this can easily lead to overfitting on the training data.</p>
+<p>If we want to include high number of base learners we should use very low learning rate to restrict the influence of individual base learners - similar to regularization</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="survival-machine-learning">
+<h1><span class="section-number">7. </span>Survival machine learning<a class="headerlink" href="#survival-machine-learning" title="Permalink to this headline">#</a></h1>
+<p>Survival analysis is a type of regression problem as we want to predict a continuous value, but with a twist. It differs from traditional regression by the fact that parts of the data can only be partially observed – they are censored</p>
+<p>Rather than focusing on predicting a single point in time of an event, the prediction step in survival analysis often focuses on predicting a function: the survival or hazard function.
+However for the survival models that do not rely on the proportional hazards assumption, it is impossible to estimate survival or cumulative hazard function. Their predictions are risk scores. If samples are ordered according to their predicted risk score (in ascending order), one obtains the sequence of events, as predicted by the model.</p>
+<p>Survival machine learning - machine learning methods adapted to work with survival data and censoring!</p>
+<section id="survival-random-forest">
+<h2><span class="section-number">7.1. </span>1. Survival random forest<a class="headerlink" href="#survival-random-forest" title="Permalink to this headline">#</a></h2>
+<p>Survival trees are one form of decision trees which are tailored
+to handle censored data. The goal is to split the tree node into left and right daughters with dissimilar event history (survival) behavior.</p>
+<section id="splitting-criterion">
+<h3><span class="section-number">7.1.1. </span>Splitting criterion<a class="headerlink" href="#splitting-criterion" title="Permalink to this headline">#</a></h3>
+<p>The primary difference between a survival tree and the standard decision tree is
+in the choice of splitting criterion - the log-rank test. The log-rank test has traditionally been used for two-sample testing of survival data, but it can be used for survival splitting as a means for maximizing between-node survival differences.</p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> denote a specific variable. A proposed split using <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(X≤a\)</span>
+and <span class="math notranslate nohighlight">\(X&gt;a\)</span> which splits the node into left and right daughters: $<span class="math notranslate nohighlight">\(L={Xi≤a}\)</span><span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(R={Xi&gt;a}\)</span>$</p>
+<p>Let <span class="math notranslate nohighlight">\(t\)</span> be the distinct death times and let <span class="math notranslate nohighlight">\(d_{j,L},d_{j,R}\)</span> and <span class="math notranslate nohighlight">\(Y_{j,L}, Y_{j,R}\)</span> be the number of deaths and number of individuals at risk at time <span class="math notranslate nohighlight">\(t_j\)</span> in daughter nodes <span class="math notranslate nohighlight">\(L, R\)</span>
+The overall number of deaths and number of individuals at risk at time <span class="math notranslate nohighlight">\(t_j\)</span> can be defined as follows: <span class="math notranslate nohighlight">\(d_j = d_{j,L} + d_{j,R}\)</span> ,
+<span class="math notranslate nohighlight">\(Y_j = Y_{j,L} + Y_{j,R}\)</span>.</p>
+<p>With this values the logrank test for data split in L and R nodes can be computed as follows:</p>
+<figure class="align-default">
+<img alt="../_images/6.PNG" src="../_images/6.PNG" />
+</figure>
+<p>The obtained value is a measure of node separation. The larger the value, the greater the survival difference between L and R, and the better the split is.</p>
+<p>The best split is determined by finding the feature X and split-value a for which the logrank value will be the highest</p>
+</section>
+<section id="prediction">
+<h3><span class="section-number">7.1.2. </span>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">#</a></h3>
+<p>For prediction, a sample is dropped down each tree in the forest until it reaches a terminal node.</p>
+<p>Data in each terminal is used to non-parametrically estimate the cumulative hazard function and survival using the Nelson-Aalen estimator and Kaplan-Meier, respectively.</p>
+<figure class="align-default">
+<img alt="../_images/7.PNG" src="../_images/7.PNG" />
+</figure>
+<p>Where h is a terminal node of the tree,  <span class="math notranslate nohighlight">\(t_h\)</span> are the unique death times in h, while <span class="math notranslate nohighlight">\(d_{j,h}\)</span>
+and <span class="math notranslate nohighlight">\(Y_{j,h}\)</span> are the number of deaths and number of individuals at risk at time <span class="math notranslate nohighlight">\(t_{j,h}\)</span></p>
+<p>All cases within h are assigned the same CHF and survival estimate as the purpose of the survival tree is to partition the data into homogeneous groups (i.e., terminal nodes) of individuals with similar survival behavior. In addition, a mortality risk score can be computed for each terminal node.</p>
+<p>The ensemble prediction is simply the average across all trees in the forest.</p>
+<p><a class="reference external" href="https://www.randomforestsrc.org/articles/survival.html">https://www.randomforestsrc.org/articles/survival.html</a></p>
+</section>
+</section>
+<section id="survival-gradient-boosting">
+<h2><span class="section-number">7.2. </span>2. Survival Gradient boosting<a class="headerlink" href="#survival-gradient-boosting" title="Permalink to this headline">#</a></h2>
+<p>Gradient Boosting does not refer to one particular model, but a framework to optimize loss functions.</p>
+<section id="coxs-partial-likelihood-loss">
+<h3><span class="section-number">7.2.1. </span>Cox’s Partial Likelihood Loss<a class="headerlink" href="#coxs-partial-likelihood-loss" title="Permalink to this headline">#</a></h3>
+<p>The default loss function is the partial likelihood loss of Cox’s proportional hazards model.
+The objective is to maximize the log partial likelihood function, but replacing the traditional linear model with the additive model</p>
+<figure class="align-default">
+<img alt="../_images/19.PNG" src="../_images/19.PNG" />
+</figure>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="neural-networks-multi-layer-perceptron-network">
+<h1><span class="section-number">8. </span>Neural networks - Multi-Layer Perceptron Network<a class="headerlink" href="#neural-networks-multi-layer-perceptron-network" title="Permalink to this headline">#</a></h1>
+<p>Here is the model of artificial neuron - base element of artificial neural network. The output is computed using activation function on the summation of inputs multiplied by weights and the bias value</p>
+<figure class="align-default">
+<img alt="../_images/22.PNG" src="../_images/22.PNG" />
+</figure>
+<p>The multilayer perceptron (MLP) - one of the most popular neural network architectures consists of fully-connected neural layers. Here you can see the example for two hidden layers</p>
+<figure class="align-default">
+<img alt="../_images/23.PNG" src="../_images/23.PNG" />
+</figure>
+<section id="mlp-training">
+<h2><span class="section-number">8.1. </span>MLP training<a class="headerlink" href="#mlp-training" title="Permalink to this headline">#</a></h2>
+<p>The most popular method for training MLPs is back-propagation. During backpropagation, the output values are compared with the correct answer to compute the value of some predefined error-function. The error is then fed back through the network. Using this information, the algorithm adjusts the weights of each connection in order to reduce the value of the error function by some small amount. After repeating this process for a sufficiently large number of training cycles, the network will usually converge to some state where the error of the calculations is small. In this case, one would say that the network has learned a certain target function.</p>
+<figure class="align-default">
+<img alt="../_images/24.PNG" src="../_images/24.PNG" />
+</figure>
+<figure class="align-default">
+<img alt="stat/figs/25.PNG" src="stat/figs/25.PNG" />
+</figure>
+<p>To adjust weights properly, one applies a general method for non-linear optimization that is called gradient descent.</p>
+<p>Gradient descent is a  iterative optimization algorithm for finding a local minimum of a differentiable function. The idea is to take repeated steps in the opposite direction of the gradient (derivative) of the function at the current point, because this is the direction of steepest descent.</p>
+<p>In this picture you can see the process of searching for the local minimum:</p>
+<figure class="align-default">
+<img alt="stat/figs/26.PNG" src="stat/figs/26.PNG" />
+</figure>
+<p>So, we need to find the local minimum of the loss function.</p>
+<p>We should recall that the loss function is the function of weights: <span class="math notranslate nohighlight">\(Loss(y_{true}, y_{pred}) = Loss(y_{true}, f(X, W)) \)</span>, where <span class="math notranslate nohighlight">\(X = (x_{1}, x_{2}, · · · , x_{m} )\)</span> - all inputs, <span class="math notranslate nohighlight">\(W = (w_{1}, w_{2}, · · · , w_{n} )\)</span> - weights of all connections.
+We want to adjust weights, so the derivative of the loss function with respect to each weight is computed.<br />
+Each derivative <span class="math notranslate nohighlight">\(\frac{dLoss}{dw}\)</span> is calculated using the chain rule as loss function is composition of functions.</p>
+<p>Here you can see the chain rule for example composition of functions:</p>
+<figure class="align-default">
+<img alt="../_images/29.PNG" src="../_images/29.PNG" />
+</figure>
+<p>As the derivatives are calculated the weights are changed in the opposite direction of the gradient by some tiny steps - learning rate. Thus the loss function decreases.</p>
+<p>Here in the picture below you can see the process of updating weights by little steps (black arrows) in the opposite direction of gradient to reach the glomal minimum of loss function.</p>
+<p>These steps correspond to learning rate</p>
+<figure class="align-default">
+<img alt="stat/figs/27.PNG" src="stat/figs/27.PNG" />
+</figure>
+<p>One should choose learning rate reasonably as high learning rate may lead to overjumping the local minimum. In some situations you may use high learning rate - if you want to search for another local minimum.</p>
+<figure class="align-default">
+<img alt="stat/figs/28.PNG" src="stat/figs/28.PNG" />
+</figure>
+<p>So, we studied back propagation and gradient descent - processes which helps the neural network to adjust weights of connections in order to minimise loss function which in fact means more giving more precise output. In other words, this are the key processes in neural networks training!</p>
+<p>Logically, back-propagation can only be applied on networks with differentiable activation functions.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="survival-neural-networks">
+<h1><span class="section-number">9. </span>Survival neural networks<a class="headerlink" href="#survival-neural-networks" title="Permalink to this headline">#</a></h1>
+<p>Neural networks methods adapted to work with survival data and censoring!
+Pycox - python package for survival analysis and time-to-event prediction with PyTorch, built on the torchtuples package for training PyTorch models.</p>
+<section id="deepsurv-coxph-nn">
+<h2><span class="section-number">9.1. </span>DeepSurv (CoxPH NN)<a class="headerlink" href="#deepsurv-coxph-nn" title="Permalink to this headline">#</a></h2>
+<p>Continious-time model.</p>
+<p>Nonlinear Cox proportional hazards network. Deep feed-forward neural network with Cox proportional hazards loss function. Can be considered as nonlinear extension of the Cox proportional hazards: can deal with both linear and nonlinear effects from covariates.</p>
+<p>The network propagates the inputs through a number of hidden layers with weights θ. The hidden layers of the network consist of a fully-connected layer of nodes, followed by a dropout layer. The output of the network is a single node with a linear activation which estimates the log-risk function <span class="math notranslate nohighlight">\(h(X)\)</span> in the Cox model
+<span class="math notranslate nohighlight">\( h(t,X) = h_0(t)*exp(h(X))\)</span></p>
+<figure class="align-default">
+<img alt="../_images/20.PNG" src="../_images/20.PNG" />
+</figure>
+<p><a class="reference external" href="https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-018-0482-1#Equ2">https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-018-0482-1#Equ2</a></p>
+</section>
+<section id="nnet-survival-logistic-hazard-nn">
+<h2><span class="section-number">9.2. </span>Nnet-survival (Logistic hazard NN)<a class="headerlink" href="#nnet-survival-logistic-hazard-nn" title="Permalink to this headline">#</a></h2>
+<p>Discrete-time model, fully parametric survival model</p>
+<p>The Logistic-Hazard method parametrize the discrete hazards and optimize the survival likelihood.
+The model is trained with the maximum likelihood method using mini-batch stochastic gradient descent. The model incorporates time-varying baseline hazard rate and non-proportional hazards</p>
+<p>Model likelihood:</p>
+<figure class="align-default">
+<img alt="../_images/211.PNG" src="../_images/211.PNG" />
+</figure>
+</section>
+<section id="performance-metrics">
+<h2><span class="section-number">9.3. </span>Performance metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this headline">#</a></h2>
+<p>Our test data is usually subject to censoring too, therefore common metrics like root mean squared error or correlation are unsuitable. Instead, we use specific metrics for survival analysis</p>
+<section id="harrells-concordance-index">
+<h3><span class="section-number">9.3.1. </span>1. Harrell’s concordance index<a class="headerlink" href="#harrells-concordance-index" title="Permalink to this headline">#</a></h3>
+<p>Predictions are often evaluated by a measure of rank correlation between predicted risk scores and observed time points in the test data. Harrell’s concordance index or c-index computes the ratio of correctly ordered (concordant) pairs to comparable pairs</p>
+<p>The higher the C-index is - the better model performance is</p>
+</section>
+<section id="time-dependent-roc-auc">
+<h3><span class="section-number">9.3.2. </span>2. Time-dependent ROC AUC<a class="headerlink" href="#time-dependent-roc-auc" title="Permalink to this headline">#</a></h3>
+<p>Extention of the well known receiver operating characteristic curve (ROC curve) to possibly censored survival times. Given a time point, we can estimate how well a predictive model can distinguishing subjects who will experience an event by time
+(sensitivity) from those who will not (specificity).</p>
+<p>The higher the ROC AUC is - the better model performance is</p>
+</section>
+<section id="time-dependent-brier-score">
+<h3><span class="section-number">9.3.3. </span>3. TIme-dependent Brier score<a class="headerlink" href="#time-dependent-brier-score" title="Permalink to this headline">#</a></h3>
+<p>The time-dependent Brier score is an extension of the mean squared error to right censored data.</p>
+<p>The lower the Brier score is - the better model performance is</p>
+</section>
+</section>
+<section id="features-selection">
+<h2><span class="section-number">9.4. </span>Features selection<a class="headerlink" href="#features-selection" title="Permalink to this headline">#</a></h2>
+<p>Which variable is most predictive?</p>
+<p>Different methodologies exist, however we will only talk about one simple but valuable method - permutation importance</p>
+<section id="permutation-feature-importance">
+<h3><span class="section-number">9.4.1. </span>1. Permutation feature importance<a class="headerlink" href="#permutation-feature-importance" title="Permalink to this headline">#</a></h3>
+<p>Permutation feature importance is a model inspection technique which can be used for any fitted estimator with tabular data. This is especially useful for non-linear estimators.</p>
+<p>The permutation feature importance is a decrease in a model score when a single feature value is randomly shuffled. This procedure breaks the relationship between the feature and the target, thus the drop in the model score is indicative of how much the model depends on the feature.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./stat"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="survival_analysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Survival analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ml/aging_clocks.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Aging Clocks</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
