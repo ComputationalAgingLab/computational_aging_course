@@ -18,6 +18,8 @@ parts:
   - url: https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing
     title: Practice - WGCNA for Methylomics
   - file: stat/survival_analysis
+  - file: stat/survival_analysis_part2
+    title: Advanced survival analysis
 - caption: Machine learning view
   numbered: true
   chapters:
