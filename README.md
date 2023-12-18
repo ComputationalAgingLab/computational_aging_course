@@ -1,3 +1,6 @@
+[![DOI](https://zenodo.org/badge/519051051.svg)](https://zenodo.org/doi/10.5281/zenodo.10400595)
+![made with love](https://img.shields.io/badge/made%20with%20%E2%9D%A4%EF%B8%8F-8A2BE2)
+
 # Computational Biology of Aging book
 
 This free open-access book is devoted to the best practices in the computational system biology of aging. If you are interested in reading please proceed to the [Book page](https://computationalaginglab.github.io/computational_aging_course/intro.html). Now this book is under development. If you want to contribute to this project, please read our short contribution remark below. If you have some questions feel free to write to this e-mail: <dmitrii.kriukov@skoltech.ru>.
