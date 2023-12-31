@@ -1,0 +1,848 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Modeling Rate Of Senescence &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../../../_static/symbol.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AutoInsight: AI-Powered Article Analysis Project" href="../autogpt/report.html" />
+    <link rel="prev" title="Senescent cell turnover slowdown with age providing an explanation for the Gompertz law" href="../gompertz/report.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Welcome to the Computational Biology of Aging coursebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/differential_analysis_practice.html">
+   2. Differential expression analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../meth/meth.html">
+   3. Omics Data Analysis in Aging: Methylomics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
+   Practice - WGCNA for Methylomics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biomarkers of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/survival_analysis.html">
+   4. Survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">
+   Practice - Survival analysis with ML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/survival_analysis_part2.html">
+   5. Advanced survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">
+   Practice - Deep survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../ml/aging_clocks.html">
+   6. Aging Clocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">
+   Practice - DIY Aging Clocks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Models of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/complex_systems.html">
+   7. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/system_resilience.html">
+   8. System resilience
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student projects 2023
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../2023_1.html">
+   Projects 2023 (1-st wave)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dosi/report.html">
+     Dynamic Organism State Indicator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../meta/report.html">
+     Meta-analysis of aging transcriptomes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../parkinson/report.html">
+     Computational Model of Parkinson’s Disease
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervized/report.html">
+     Unsupervised aging
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../2023_2.html">
+   Projects 2023 (2-nd wave)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../drugdiscovery/report.html">
+     Transcriptomics-based longevity drug discovery
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gompertz/report.html">
+     Senescent cell turnover slowdown with age providing an explanation for the Gompertz law
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Modeling Rate Of Senescence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../autogpt/report.html">
+     AutoInsight: AI-Powered Article Analysis Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fprojects/2023/levine2013/report.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/projects/2023/levine2013/report.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Modeling Rate Of Senescence
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sections-of-the-jupyter-notebook-modelingrateofsenescence-ipynb">
+   Sections of the Jupyter Notebook
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     ModelingRateOfSenescence.ipynb
+    </span>
+   </code>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-nhanes-iii-datafiles-lab-dat-exam-dat-adult-dat-cmv-xpt-nhanes-iii-mort-2019-public-dat">
+     1. Reading NHANES III datafiles (lab.dat, exam.dat, adult.dat, cmv.xpt, NHANES_III_MORT_2019_PUBLIC.dat)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-aggregation">
+     2. Data aggregation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis">
+     3. Analysis
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bilogical-age-estimates">
+     4. Bilogical Age estimates
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#principal-component-analysis-pca">
+       4.1 Principal component analysis (PCA)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multiple-linear-regression-mlr">
+       4.2 Multiple linear regression (MLR)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#klemera-and-doubals-method-kdm">
+       4.3 Klemera and Doubal’s method (KDM)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bilogical-age-estimates-and-mortality">
+     5.Bilogical Age estimates and mortality
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roc-auc-stratified-by-age-groups">
+     6. ROC-AUC stratified by age groups
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Modeling Rate Of Senescence</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Modeling Rate Of Senescence
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sections-of-the-jupyter-notebook-modelingrateofsenescence-ipynb">
+   Sections of the Jupyter Notebook
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     ModelingRateOfSenescence.ipynb
+    </span>
+   </code>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-nhanes-iii-datafiles-lab-dat-exam-dat-adult-dat-cmv-xpt-nhanes-iii-mort-2019-public-dat">
+     1. Reading NHANES III datafiles (lab.dat, exam.dat, adult.dat, cmv.xpt, NHANES_III_MORT_2019_PUBLIC.dat)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-aggregation">
+     2. Data aggregation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis">
+     3. Analysis
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bilogical-age-estimates">
+     4. Bilogical Age estimates
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#principal-component-analysis-pca">
+       4.1 Principal component analysis (PCA)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multiple-linear-regression-mlr">
+       4.2 Multiple linear regression (MLR)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#klemera-and-doubals-method-kdm">
+       4.3 Klemera and Doubal’s method (KDM)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bilogical-age-estimates-and-mortality">
+     5.Bilogical Age estimates and mortality
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roc-auc-stratified-by-age-groups">
+     6. ROC-AUC stratified by age groups
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="modeling-rate-of-senescence">
+<h1>Modeling Rate Of Senescence<a class="headerlink" href="#modeling-rate-of-senescence" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><p><strong>Disclaimer from a reviewer</strong>: This report is formatted as github <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file (not jupyter book), so I recommend to read it on github by the following <a class="reference external" href="https://github.com/MarkaMorozova/ModelingRateOfSenescence">link</a> to see a proper formatting.</p>
+</div></blockquote>
+<p>This <a class="reference external" href="https://github.com/MarkaMorozova/ModelingRateOfSenescence">repository</a> contains reproduction of the paper of Levine, M. E. (2012). <strong>Modeling the Rate of Senescence: Can Estimated Biological Age Predict Mortality More Accurately Than Chronological Age?</strong> The Journals of Gerontology Series A: Biological Sciences and Medical Sciences, 68(6), 667–674. <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/23213031/">doi:10.1093/gerona/gls233</a></p>
+<p>Notes and modifications:</p>
+<ul class="simple">
+<li><p>In the paper, NHANES III dataset (1988-1994) was used which is available by the <a class="reference external" href="https://wwwn.cdc.gov/nchs/nhanes/nhanes3/datafiles.aspx">link</a></p></li>
+<li><p>In the original paper, variable “Cytomegalovirus optical density” was used, and this variable is not available in current version of NHANES III for all people (only for women) so I replaced it with variable CVP_IGG from “Antibody to Cytomegalovirus IgG and IgM” surplus dataset</p></li>
+<li><p>In the original paper, 2006 Mortality Data was used which is archived and not available now so I used current version of <a class="reference external" href="https://www.cdc.gov/nchs/data-linkage/mortality-public.htm">2019 Linked Mortality Files</a></p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sections-of-the-jupyter-notebook-modelingrateofsenescence-ipynb">
+<h1>Sections of the Jupyter Notebook <code class="docutils literal notranslate"><span class="pre">ModelingRateOfSenescence.ipynb</span></code><a class="headerlink" href="#sections-of-the-jupyter-notebook-modelingrateofsenescence-ipynb" title="Permalink to this headline">#</a></h1>
+<section id="reading-nhanes-iii-datafiles-lab-dat-exam-dat-adult-dat-cmv-xpt-nhanes-iii-mort-2019-public-dat">
+<h2>1. Reading NHANES III datafiles (lab.dat, exam.dat, adult.dat, cmv.xpt, NHANES_III_MORT_2019_PUBLIC.dat)<a class="headerlink" href="#reading-nhanes-iii-datafiles-lab-dat-exam-dat-adult-dat-cmv-xpt-nhanes-iii-mort-2019-public-dat" title="Permalink to this headline">#</a></h2>
+<p>Datafiles have specific format - each line of <code class="docutils literal notranslate"><span class="pre">.dat</span></code> file correspond to a participant, and in each line there is some sequence of numbers, blanks or repeating 8, 9 etc. In corresponding <code class="docutils literal notranslate"><span class="pre">.sas</span></code> files, there is description which variables correspond to which indices in the line. I collected all the indices of variables used in the article in this notebook section.</p>
+</section>
+<section id="data-aggregation">
+<h2>2. Data aggregation<a class="headerlink" href="#data-aggregation" title="Permalink to this headline">#</a></h2>
+<p>In this section all dataframes from <code class="docutils literal notranslate"><span class="pre">.dat</span></code> and <code class="docutils literal notranslate"><span class="pre">.xpt</span></code> are merged by SEQN variable (participant’s ID). Resulting dataframe is filtered by Age (30-75 y.o.), Pearson’s correlations between Chronological age and variables are calculated, 10 best variables are chosen. Rows containing NaNs are dropped.</p>
+<p>Resulting dataframe was saved for reproducible results (<code class="docutils literal notranslate"><span class="pre">data/df.csv</span></code>).</p>
+<p>Columns in the <code class="docutils literal notranslate"><span class="pre">data/df.csv</span></code> are:</p>
+<p><strong>Age and Event:</strong>
+<br><strong>SEQN</strong>: participant’s ID
+<br><strong>HSAGEIR</strong>: Age
+<br><strong>HSSEX</strong>: Sex (1: Male, 2: Female)
+<br><strong>MORTSTAT</strong>: Final status (0: Alive or censored, 1: Died)
+<br><strong>PERMTH_EXM</strong>’: Time spent from examination to MORTSTAT Event</p>
+<p><strong>Biomarkers:</strong>
+<br><strong>CRP</strong>: Serum C-reactive protein (mg/dL)
+<br><strong>CEP</strong>: Serum creatinine (mg/dL)
+<br><strong>GHP</strong>: Glycated hemoglobin: (%)
+<br><strong>HAZMNK1R</strong>: Average K1 BP from household and MEC (systolic blood pressure)
+<br><strong>AMP</strong>: Serum albumin (g/dL)
+<br><strong>TCP</strong>: Serum cholesterol (mg/dL)
+<br><strong>CVP_IGG</strong>: Cytomegalovirus optical density
+<br><strong>APPSI</strong>: Serum alkaline phosphatase:  SI (U/L)
+<br><strong>SPPFEV05</strong>: Forced expiratory vol(FEV),.5 sec,max-ml
+<br><strong>BUP</strong>: Serum blood urea nitrogen (mg/dL)</p>
+</section>
+<section id="analysis">
+<h2>3. Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">#</a></h2>
+<p><strong>Tables 1, 2</strong> are reproduced. Note that I have got slighly different number of participants and Pearson’s R values - I suppose the dataset was slighly modified from the time when article was published.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Original Table 1</p></th>
+<th class="text-align:center head"><p>Reproduced Table 1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="../../../_images/table1_original.png" /></p></td>
+<td class="text-align:center"><p><img alt="" src="../../../_images/table1_reproduced.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Original Table 2</p></th>
+<th class="text-align:center head"><p>Reproduced Table 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="../../../_images/table2_original.png" /></p></td>
+<td class="text-align:center"><p><img alt="" src="../../../_images/table2_reproduced.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bilogical-age-estimates">
+<h2>4. Bilogical Age estimates<a class="headerlink" href="#bilogical-age-estimates" title="Permalink to this headline">#</a></h2>
+<section id="principal-component-analysis-pca">
+<h3>4.1 Principal component analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this headline">#</a></h3>
+<p>First PCA component was used as Biological Age estimator. Note that authors used some undefined method to investigate the significance of variable’s influence on the first principal component and chose 7 statistically significant variables based on that to test Biological Age models with limited number of Biomarkers. I tested variable’s influence on the first PCA by Pearson’s correlation - and all 10 biomarkers significantly correlated with the first PCA so I did not reproduce their limites models.</p>
+</section>
+<section id="multiple-linear-regression-mlr">
+<h3>4.2 Multiple linear regression (MLR)<a class="headerlink" href="#multiple-linear-regression-mlr" title="Permalink to this headline">#</a></h3>
+<p>MLR was used to predict Chronological Age from the 10 Biomarkers. Resulting MLR predictions are Biological Age estimations.</p>
+</section>
+<section id="klemera-and-doubals-method-kdm">
+<h3>4.3 Klemera and Doubal’s method (KDM)<a class="headerlink" href="#klemera-and-doubals-method-kdm" title="Permalink to this headline">#</a></h3>
+<p><img alt="" src="../../../_images/KDM_formulas.png" /></p>
+<p>The formulas (2), (3), (4) and (5) from the paper implemented. Note, that in formulas: <span class="math notranslate nohighlight">\(x_j\)</span> is a set of biomarker values, <span class="math notranslate nohighlight">\(k_j\)</span> is a slope, <span class="math notranslate nohighlight">\(q_j\)</span> is intercept, <span class="math notranslate nohighlight">\(s_j\)</span> i a root mean squared error of a biomarker regressed on chronological age, <span class="math notranslate nohighlight">\(m\)</span> is number of biomarkers used.</p>
+<p><strong>Table 3</strong> is reproduced.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Original Table 3</p></th>
+<th class="text-align:center head"><p>Reproduced Table 3 (only models with 10 biomarkers)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="../../../_images/table3_original.png" /></p></td>
+<td class="text-align:center"><p><img alt="" src="../../../_images/table3_reproduced.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="bilogical-age-estimates-and-mortality">
+<h2>5.Bilogical Age estimates and mortality<a class="headerlink" href="#bilogical-age-estimates-and-mortality" title="Permalink to this headline">#</a></h2>
+<p>Mortality risk is cumulative hazard function at the last timestamp (<code class="docutils literal notranslate"><span class="pre">cph.predict_cumulative_hazard(Cox_train)</span></code>) or inverse of survival function (<code class="docutils literal notranslate"><span class="pre">1-cph.predict_survival_function(Cox_train)</span></code>). These approaches to define mortality risk are identical and result in identical ROC-AUC curves and ROC-AUC scores.</p>
+</section>
+<section id="roc-auc-stratified-by-age-groups">
+<h2>6. ROC-AUC stratified by age groups<a class="headerlink" href="#roc-auc-stratified-by-age-groups" title="Permalink to this headline">#</a></h2>
+<p><strong>Tables 4, 5</strong> are reproduced.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Original Table 4</p></th>
+<th class="text-align:center head"><p>Reproduced Table 4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="../../../_images/table4_original.png" /></p></td>
+<td class="text-align:center"><p><img alt="" src="../../../_images/table4_reproduced.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Original Table 5</p></th>
+<th class="text-align:center head"><p>Reproduced Table 5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="../../../_images/table5_original.png" /></p></td>
+<td class="text-align:center"><p><img alt="" src="../../../_images/table5_reproduced.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="results">
+<h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h1>
+<ol class="simple">
+<li><p>I wasn’t able to create the same sample dataset from NHANES III as it was generated by authors. My dataset is a bit bigger than authors <strong>(Table 2, N=9717 VS N=9389)</strong> and I also suppose I may have used not the exact variables authors used because in the article they do not mention the exact variable names whereas in NHANES III some measurments (such as blood pressure) were taken several times and therefore have more than one corresponding variable.</p></li>
+<li><p>Due to slightly different samples, I have slightly different Pearson’s correlations between variables and chronological ages <strong>(Table 1)</strong>. Some of the correlations are not statistically significant in my sample but statistically significant in authors’ sample (although these are correlations with very small absolute values of Pearson’s R). The chosen authors’ top 10 biomarkers correlated with Chronological Age (CA) are almost fully intersect with mine top 10 biomarkers.</p></li>
+<li><p>I implemented Principal component analysis (PCA), Multiple linear regression (MLR) and Klemera and Doubal’s method (KDM) Biological Age (BA) models. I have got very similar ranges of predicted Biological Ages to the ones that authors obtained <strong>(Table 3)</strong> with the PCA predicting the largest range of BA values and KDM predicting the smallest range of BA values.</p></li>
+<li><p>I calculated ROC-AUC scores for the Cox proportional hazard models with PCA BA, MLP BA, KDM BA, CA, CA + PCA BA, CA + MLP BA, CA + KDM BA. Among the models based only on BA, ROC-AUC score varied significantly, from 0.796 (PCA BA), to 0.852 (MLP BA) and 0.861 (KDM BA) (for women). Among models based on CA (CA, CA + PCA BA, CA + MLP BA, CA + KDM BA), ROC-AUC scores didn’t vary significantly <strong>(Table 4)</strong>.</p></li>
+</ol>
+<p><img alt="" src="../../../_images/roc_auc.png" /></p>
+<ol class="simple">
+<li><p>The models trained separately for men and for women (or with additional Sex variable) perform better than models trained without gender stratification. Models trained on full sample preform better than models trained on subsamples stratified by Age groups <strong>(Table 4)</strong>.</p></li>
+<li><p>I calculated Hazard Ratios (HR) for CA and BA in CA + PCA BA, CA + MLP BA, CA + KDM BA Cox proportional hazard models <strong>(Table 5)</strong>. The more complex the model the less HR of CA and the greater the HR of BA.</p></li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusions">
+<h1>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h1>
+<p>The results of the paper are reproducible. I was able to get similar numbers and ROC-AUC scores although they are not exactly the same. I would like to see more precise description of the used variables in the paper, and ideally the final dataset should published by authors to increase reproducibility. Also, authors omit deatils abouth the preprocessing, statistical tests used and some details of implementation which should not have been taken so lightly by the publishers and reviewers.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./projects/2023/levine2013"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../gompertz/report.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Senescent cell turnover slowdown with age providing an explanation for the Gompertz law</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../autogpt/report.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AutoInsight: AI-Powered Article Analysis Project</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

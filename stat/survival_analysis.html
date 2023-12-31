@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/symbol.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Aging Clocks" href="../ml/aging_clocks.html" />
+    <link rel="next" title="5. Survival analysis. Advanced methods." href="survival_analysis_part2.html" />
     <link rel="prev" title="3. Omics Data Analysis in Aging: Methylomics" href="../meth/meth.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -130,10 +130,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Statistical view
+  Statistical analysis
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="differential_analysis_practice.html">
    2. Differential expression analysis
@@ -149,21 +149,36 @@ const thebe_selector_output = ".output, .cell_output"
    Practice - WGCNA for Methylomics
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biomarkers of Aging
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    4. Survival analysis
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Machine learning view
- </span>
-</p>
-<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">
+   Practice - Survival analysis with ML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="survival_analysis_part2.html">
+   5. Advanced survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">
+   Practice - Deep survival analysis
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ml/aging_clocks.html">
-   5. Aging Clocks
+   6. Aging Clocks
   </a>
  </li>
  <li class="toctree-l1">
@@ -174,46 +189,90 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Dynamic system view
+  Models of Aging
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/complex_systems.html">
-   6. Complex systems approach
+   7. Complex systems approach
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/system_resilience.html">
-   7. System resilience
+   8. System resilience
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Student projects
+  Student projects 2023
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../projects/2023/dosi/report.html">
-   Dynamic Organism State Indicator
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../projects/2023_1.html">
+   Projects 2023 (1-st wave)
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/dosi/report.html">
+     Dynamic Organism State Indicator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/meta/report.html">
+     Meta-analysis of aging transcriptomes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/parkinson/report.html">
+     Computational Model of Parkinson’s Disease
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/unsupervized/report.html">
+     Unsupervised aging
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../projects/2023/meta/report.html">
-   Meta-analysis of aging transcriptomes
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../projects/2023_2.html">
+   Projects 2023 (2-nd wave)
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../projects/2023/parkinson/report.html">
-   Computational Model of Parkinson’s Disease
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../projects/2023/unsupervized/report.html">
-   Unsupervised aging
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/drugdiscovery/report.html">
+     Transcriptomics-based longevity drug discovery
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/gompertz/report.html">
+     Senescent cell turnover slowdown with age providing an explanation for the Gompertz law
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/levine2013/report.html">
+     Modeling Rate Of Senescence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/autogpt/report.html">
+     AutoInsight: AI-Powered Article Analysis Project
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1815,10 +1874,10 @@ with your book. For more information about this, see <a class="reference externa
             <p class="prev-next-title"><span class="section-number">3. </span>Omics Data Analysis in Aging: Methylomics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../ml/aging_clocks.html" title="next page">
+    <a class='right-next' id="next-link" href="survival_analysis_part2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Aging Clocks</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Survival analysis. Advanced methods.</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

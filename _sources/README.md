@@ -1,3 +1,6 @@
+[![DOI](https://zenodo.org/badge/519051051.svg)](https://zenodo.org/doi/10.5281/zenodo.10400595)
+![made with love](https://img.shields.io/badge/made%20with%20%E2%9D%A4%EF%B8%8F-8A2BE2)
+
 # Computational Biology of Aging book
 
 This free open-access book is devoted to the best practices in the computational system biology of aging. If you are interested in reading please proceed to the [Book page](https://computationalaginglab.github.io/computational_aging_course/intro.html). Now this book is under development. If you want to contribute to this project, please read our short contribution remark below. If you have some questions feel free to write to this e-mail: <dmitrii.kriukov@skoltech.ru>.
@@ -42,7 +45,7 @@ We are trying to minimize dependencies, but if we need some, we just add them to
 ```
 @online{kriukov2023compagingbook,
   year={2023},
-  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov, Evgeniy Efimov, and Ekaterina Khrameeva},
+  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Evgeniy Efimov and Margarita Sidorova and Ekaterina Khrameeva},
   title={Computational Biology of Aging},
   url={https://computationalaginglab.github.io/computational_aging_course/intro.html},
 }

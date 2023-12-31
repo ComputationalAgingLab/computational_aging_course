@@ -1,0 +1,879 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Transcriptomics-based longevity drug discovery &#8212; Computational aging book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../../../_static/symbol.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Senescent cell turnover slowdown with age providing an explanation for the Gompertz law" href="../gompertz/report.html" />
+    <link rel="prev" title="Projects 2023 (2-nd wave)" href="../../2023_2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/symbol.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational aging book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Welcome to the Computational Biology of Aging coursebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biology of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../bio/intro_aging_biology.html">
+   1. Introduction to Aging Biology
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistical analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/differential_analysis_practice.html">
+   2. Differential expression analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../meth/meth.html">
+   3. Omics Data Analysis in Aging: Methylomics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
+   Practice - WGCNA for Methylomics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biomarkers of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/survival_analysis.html">
+   4. Survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">
+   Practice - Survival analysis with ML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../stat/survival_analysis_part2.html">
+   5. Advanced survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">
+   Practice - Deep survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../ml/aging_clocks.html">
+   6. Aging Clocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">
+   Practice - DIY Aging Clocks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Models of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/complex_systems.html">
+   7. Complex systems approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dyn/system_resilience.html">
+   8. System resilience
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student projects 2023
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../2023_1.html">
+   Projects 2023 (1-st wave)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dosi/report.html">
+     Dynamic Organism State Indicator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../meta/report.html">
+     Meta-analysis of aging transcriptomes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../parkinson/report.html">
+     Computational Model of Parkinson’s Disease
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervized/report.html">
+     Unsupervised aging
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../2023_2.html">
+   Projects 2023 (2-nd wave)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Transcriptomics-based longevity drug discovery
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gompertz/report.html">
+     Senescent cell turnover slowdown with age providing an explanation for the Gompertz law
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../levine2013/report.html">
+     Modeling Rate Of Senescence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../autogpt/report.html">
+     AutoInsight: AI-Powered Article Analysis Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fprojects/2023/drugdiscovery/report.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/projects/2023/drugdiscovery/report.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#materials-and-methods">
+   Materials and methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geroprotective-molecules-overview">
+     Geroprotective molecules overview
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#l-ergothioneine-anti-aging-treatment">
+     L-ergothioneine anti-aging treatment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clarification-of-discrepancies-with-the-findings-in-the-article">
+     Clarification of discrepancies with the findings in the article
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Transcriptomics-based longevity drug discovery</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#materials-and-methods">
+   Materials and methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geroprotective-molecules-overview">
+     Geroprotective molecules overview
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#l-ergothioneine-anti-aging-treatment">
+     L-ergothioneine anti-aging treatment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clarification-of-discrepancies-with-the-findings-in-the-article">
+     Clarification of discrepancies with the findings in the article
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="transcriptomics-based-longevity-drug-discovery">
+<h1>Transcriptomics-based longevity drug discovery<a class="headerlink" href="#transcriptomics-based-longevity-drug-discovery" title="Permalink to this headline">#</a></h1>
+<p>This project aims to reproduce treatment-screening procedure developed by Georges Janssens et al. <span id="id1">[<a class="reference internal" href="#id17" title="Georges E Janssens, Xin-Xuan Lin, Lluís Millan-Ariño, Alan Kavšek, Ilke Sen, Renée I Seinstra, Nicholas Stroustrup, Ellen AA Nollen, and Christian G Riedel. Transcriptomics-based screening identifies pharmacological inhibition of hsp90 as a means to defer aging. Cell reports, 27(2):467–480, 2019. URL: https://doi.org/10.1016/j.celrep.2019.03.044.">Janssens <em>et al.</em>, 2019</a>]</span>.</p>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<p>Aging is associated human morbidity and mortality and there are no way to revert it. However, scientists search for treatments that can slow down aging. One of the approaches was proposed by Georges Janssens et al. in 2019 <span id="id2">[<a class="reference internal" href="#id17" title="Georges E Janssens, Xin-Xuan Lin, Lluís Millan-Ariño, Alan Kavšek, Ilke Sen, Renée I Seinstra, Nicholas Stroustrup, Ellen AA Nollen, and Christian G Riedel. Transcriptomics-based screening identifies pharmacological inhibition of hsp90 as a means to defer aging. Cell reports, 27(2):467–480, 2019. URL: https://doi.org/10.1016/j.celrep.2019.03.044.">Janssens <em>et al.</em>, 2019</a>]</span>. Authors used two transcriptomics datasets:</p>
+<ol class="simple">
+<li><p>Their own age-stratified RNA-seq data <strong>(transcriptome ~ age)</strong></p></li>
+<li><p>Connectivity Map (CMap) public data <strong>(transcriptome ~ treatment)</strong></p></li>
+</ol>
+<p>The key idea is to find treatments that lead to a “younger” transcriptome.</p>
+<figure class="align-default" id="analysis-schema">
+<a class="reference internal image-reference" href="../../../_images/analysis_schema.png"><img alt="../../../_images/analysis_schema.png" src="../../../_images/analysis_schema.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">The overall schema of transcriptome-based treatments selections</span><a class="headerlink" href="#analysis-schema" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Authors found several candidate treatments and specifically discuss some of them. For instance, they hightlight tanespimycin and monodren involved in Hsp90 inhibition pathways. Hsp90 inhibition was discussed as a process that may be a potential target in developing anti-aging interventions. Janssens et al. also performend <em>in vivo</em> experiments in <em>C. elegans</em> that support their findings.</p>
+</section>
+<section id="materials-and-methods">
+<h2>Materials and methods<a class="headerlink" href="#materials-and-methods" title="Permalink to this headline">#</a></h2>
+<p>All data processing was performed using R v.4.2.3 with tidyverse v.2.0.0 and python v.3.11.6 with pandas v.2.1.2.</p>
+<p><strong>GTEx dataset preprocessing</strong></p>
+<p>Age-stratified RNA-seq data (GTEx dataset) was downloaded from the <a class="reference external" href="https://gtexportal.org/home/downloads/adult-gtex/overview">GTEx portal</a> (”<a class="reference external" href="https://gtexportal.org/home/downloads/adult-gtex/bulk_tissue_expression">Bulk tissue expression</a>” section). We used already preprocessed gene <a class="reference external" href="https://storage.cloud.google.com/adult-gtex/bulk-gex/v6p/rna-seq/GTEx_Analysis_v6p_RNA-seq_RNA-SeQCv1.1.8_gene_rpkm.gct.gz">RPKM data</a> from the  GTEx Analysis V6p release. We also obtained metadata description from the “<a class="reference external" href="https://gtexportal.org/home/downloads/adult-gtex/metadata">Metadata</a>” section (GTEx Analysis V6p Sample Attributes and Subject Phenotypes). Both annotation files were joined on sample IDs to get combined metadata. Samples were annotated as “young” for ages 20-59 years old and “old” for 60-69 years old.</p>
+<p>Based on the metadata, GTEx dataset was divided into several parts based on tissue, age and gender parameters. For the further analysis only brain, heart, kidney, liver and stomach data was selected in order to reduce computational time. Also, for all of the subsets, we retained only transcripts present in both GTEx and CMap datasets (based on the transcript IDs). We also revomed low abundant transcripts with RPKM values less than 0.1 in at least 80% of samples. Additional filtering was applied to keep transcripts with RNA integrity number greater or equal to 6. Resulting transcripts were added a pseudocount and log2-transformed. Then we performed differential expression analysis between “young” and “old” samples. Only differentialy expressed transcripts with <em>p-value</em> less then 0.01 were selected for the further analysis.</p>
+<p><strong>CMap dataset preprocessing</strong></p>
+<p>Connectivity (CMap) dataset was kindly provided by Dmitrii Kriukov. Control group of CMap dataset was aggregated by cell type to compute cell-wise means. After that we computed log2(Fold Change) values for each treatment with respect to the corresponding cell-wise control.</p>
+<p><strong>Transcriptom-based treatment selection</strong></p>
+<p>Transcriptom-based treatment selection using machine learning was performed in R v.4.2.3 with caret v.6.0-94, randomForest v.4.7-1.1, ROCR v.1.0-11, tidyverse v.2.0.0, matrixStats v.1.2.0.</p>
+<p>Firstly, we built RandomForest model to predict age category (“young” / “old”) based on the preprocessed GTEx transcriptomics data. We built different models for different tissues and selected those with AUC score greater then 0.75 (based on 10-fold cross-validation).</p>
+<p>Secondly, we used selected models to find geroproctive treatments. We obtained “middle-aged” transcriptome by averaging “young” and “old” GTEx data. Then we multiplied this “middle-aged” values by the corresping fold changes from the CMap dataset, wich resulted us “drug-induced” transcriptome. Then we made age predictions based on our drug-indiced transcriptome and selected those for which “young”-age probability was higher then for the “old”-ade. We also calculated geroprotective index (GI) by normalization and centering probabilities of “young” age class (PY):</p>
+<div class="math notranslate nohighlight">
+\[ GI = \frac{PY}{0.5} - \overline{\frac{PY}{0.5}} \]</div>
+<p>The results were visualised in python v.3.11.6 with pandas v.2.1.2, matplotlib v.3.8.0 and seaborn v.0.13.0.</p>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h2>
+<p>We built 5 transcriptome-based age prediction models for each of the selected organs (brain, heart, kidney, liver and stomach). They were applied to the 100 randomly selected treatments and only brain model resulted in one geroprotective compound - L-ergothioneine. Then we used brain model as a more promising one and applied it to all 3546 treatment in the CMap dataset.</p>
+<figure class="align-default" id="treatments-hist">
+<img alt="../../../_images/treatments_hist.png" src="../../../_images/treatments_hist.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Geroprotective index distributions of all treatments. <em>Black line</em> depicts selection threshold in the original paper (however authors also used some ranking procedure)), <em>red line</em> represents our threshold (probability of “young” age is equal to 0.5).</span><a class="headerlink" href="#treatments-hist" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Only 11 compounds were found to show geroprotective results: olanzapine, XL-888, ritonavir, thioguanine, L-ergothioneine, nafamostat , ochratoxin-a, etofylline-clofibrate, tebipenem , E-2012, EMF-sumo1-7. Among them, <strong>thioguanine showed the most geroprotective index (0.0815)</strong>, and the olanzapine, XL-888, ritonavir had the secong highest GI (0.0740). L-ergothioneine had the third highest GI (0.0670), but we see this molecule as the most promising as it was present in the results of several analyses.</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}he chemical struc
+.tg td{border-bottom-width:1px;border-color:black;border-style:solid;border-top-width:1px;border-width:0px;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-bottom-width:1px;border-color:black;border-style:solid;border-top-width:1px;border-width:0px;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-2dfk{background-color:#ecf4ff;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-ck6w{background-color:#ecf4ff;border-color:inherit;font-size:medium;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-o36v{background-color:#ecf4ff;border-color:inherit;font-size:medium;text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-ck6w" colspan="2">Probability</th>
+    <th class="tg-o36v" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">Treatment</span></th>
+    <th class="tg-o36v" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">Geroprotective Index</span></th>
+  </tr>
+  <tr>
+    <th class="tg-2dfk">"Old"</th>
+    <th class="tg-2dfk">"Young"</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.498</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.502</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">EMF-sumo1-7</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0656</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.496</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.504</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ochratoxin-a</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0670</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.498</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.502</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nafamostat</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0656</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:italic;text-decoration:none;color:#000;background-color:transparent">0.496</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:italic;text-decoration:none;color:#000;background-color:transparent">0.504</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:italic;text-decoration:none;color:#000;background-color:transparent">L-ergothioneine</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:italic;text-decoration:none;color:#000;background-color:transparent">0.0670</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.494</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.506</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">olanzapine</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0740</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.494</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.506</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">XL-888</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0740</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.498</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.502</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">E-2012</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0656</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.494</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.506</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ritonavir</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0740</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.49</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.51</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">thioguanine</span></td>
+    <td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0815</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.498</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.502</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">tebipenem</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0656</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.496</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.504</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">etofylline-clofibrate</span></td>
+    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0670</span></td>
+  </tr>
+</tbody>
+</table>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h2>
+<p>In this project, we built a Random Forest model for the age classification of transcriptomic data and applied it to find potential anti-ageing treatments. Our model identified 11 compounds that could potentially be geroprotective. However, high machine learning metrics are not a sufficient condition for the quality of the results. To validate the results, we additionally analysed candidate molecules. We selected the top 4 molecules according to the geroprotective index (thioguanine, olanzapine, XL-888, ritonavir), also L-ergothioneine, as it was supported by several runs of the analysis.</p>
+<figure class="align-default" id="treatments-top">
+<img alt="../../../_images/treatments_top.png" src="../../../_images/treatments_top.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Geroprotective index distributions of all treatments and description of top-4 treatments with respect to the geroprotective index (thioguanine, olanzapine, XL-888, ritonavir).</span><a class="headerlink" href="#treatments-top" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="geroprotective-molecules-overview">
+<h3>Geroprotective molecules overview<a class="headerlink" href="#geroprotective-molecules-overview" title="Permalink to this headline">#</a></h3>
+<p>Among the isolated molecules, most of them are already used drugs in one or another field.</p>
+<p><strong>Thioguanine</strong>, the top 1 molecule in the geroprotective index, is 2-aminopurine. Its key action is incorporation into DNA, resulting in inhibition of synthesis and replication. Therefore, it is actively used in the therapy of acute leukaemia. Most likely it is possible to find evidence for the geroprotective properties of thioguanine, nevertheless, its exact involvement in the mechanism of aging replacement seems a bit vague to us.</p>
+<p><strong>Olanzapine</strong> is a benzene molecule containing sulphur atoms and a nitrogen antagonist. It acts as a serotonin-dopamine receptor antagonist and is used as an antipsychotic medication (second-generation antipsychotic). It is used for disorders such as schizophrenia and bipolar disorder and is also known as Zyprexa. In this form, the relationship of olazapine to aging may not be completely clear, but in recent years there has been a growing body of work on the geroprotective properties of antipsychotics and antidepressants.</p>
+<p><strong>XL-888</strong> is a less studied molecule. The available data suggest that it is an ATP-competitive inhibitor of the chaperone Hsp90. This is an important remark regarding our work, because in the original article the authors elaborate on the mechanism of Hsp90 inhibition as an important target in anti-aging. They identified other inhibitors, but in any case this overlap is very valuable to us.</p>
+<p><strong>Ritonavir</strong>  is an L-valine derivative and also known under the name Norvir. It is an inhibitor of various proteases and in medicine is used as an HIV protease inhibitor to treat AIDS/HIV as well as various forms of hepatitis. In general, it can be a broad-spectrum antiviral drug, but it is often used to boost the effects of other drugs due to its ability to inhibit liver cytochrome P450-3A4.</p>
+</section>
+<section id="l-ergothioneine-anti-aging-treatment">
+<h3>L-ergothioneine anti-aging treatment<a class="headerlink" href="#l-ergothioneine-anti-aging-treatment" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="id173">
+<img alt="../../../_images/lergo_structure.png" src="../../../_images/lergo_structure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">The chemical structure of the L-ergothioneine, red oval higlights the functional group <span id="id3">[<a class="reference internal" href="#id170" title="Yasaaswini Apparoo, Chia Wei Phan, Umah Rani Kuppusamy, and Vikneswary Sabaratnam. Ergothioneine and its prospects as an anti-ageing compound. Experimental Gerontology, 170:111982, 2022.">Apparoo <em>et al.</em>, 2022</a>]</span>.</span><a class="headerlink" href="#id173" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>L-ergothioneine  is a histigine-derivative aminoacid with sulphur group on the imidazole ring. This sulphur can be found in the oxidised and reduced forms, which defines it’s function. L-ergothioneine was proposed to have protection function against reactive oxygen species <span id="id4">[<a class="reference internal" href="#id170" title="Yasaaswini Apparoo, Chia Wei Phan, Umah Rani Kuppusamy, and Vikneswary Sabaratnam. Ergothioneine and its prospects as an anti-ageing compound. Experimental Gerontology, 170:111982, 2022.">Apparoo <em>et al.</em>, 2022</a>, <a class="reference internal" href="#id168" title="Irwin K Cheah, Lei Feng, Richard MY Tang, Keith HC Lim, and Barry Halliwell. Ergothioneine levels in an elderly population decrease with age and incidence of cognitive decline; a risk factor for neurodegeneration? Biochemical and Biophysical Research Communications, 478(1):162–167, 2016.">Cheah <em>et al.</em>, 2016</a>, <a class="reference internal" href="#id169" title="Li Chen, Liping Zhang, Xujun Ye, Zixin Deng, and Changming Zhao. Ergothioneine and its congeners: anti-ageing mechanisms and pharmacophore biosynthesis. Protein &amp; Cell, pages pwad048, 2023.">Chen <em>et al.</em>, 2023</a>, <a class="reference internal" href="#id171" title="BD Paul and SH Snyder. The unusual amino acid l-ergothioneine is a physiologic cytoprotectant. Cell Death &amp; Differentiation, 17(7):1134–1140, 2010.">Paul and Snyder, 2010</a>]</span>. Paul et al. using HeLa cells lines showed that L-ergothioneine increases cells viability against <span class="math notranslate nohighlight">\(H_2O_2\)</span> <span id="id5">[<a class="reference internal" href="#id171" title="BD Paul and SH Snyder. The unusual amino acid l-ergothioneine is a physiologic cytoprotectant. Cell Death &amp; Differentiation, 17(7):1134–1140, 2010.">Paul and Snyder, 2010</a>]</span>. Therefore, it may be involved in responses to oxidative stress originating from mitochondrial activity, ultraviolet radiation, etc.</p>
+<figure class="align-default" id="lergo-aging-hallmarks">
+<a class="reference internal image-reference" href="../../../_images/lergo_aging_hallmarks.jpeg"><img alt="../../../_images/lergo_aging_hallmarks.jpeg" src="../../../_images/lergo_aging_hallmarks.jpeg" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">L-ergothioneine in the network of the hallmarks of aging <span id="id6">[<a class="reference internal" href="#id169" title="Li Chen, Liping Zhang, Xujun Ye, Zixin Deng, and Changming Zhao. Ergothioneine and its congeners: anti-ageing mechanisms and pharmacophore biosynthesis. Protein &amp; Cell, pages pwad048, 2023.">Chen <em>et al.</em>, 2023</a>]</span>.</span><a class="headerlink" href="#lergo-aging-hallmarks" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>These features of L-ergothioneine make it an interesting member of the aging hallmarks network <span id="id7">[<a class="reference internal" href="#id170" title="Yasaaswini Apparoo, Chia Wei Phan, Umah Rani Kuppusamy, and Vikneswary Sabaratnam. Ergothioneine and its prospects as an anti-ageing compound. Experimental Gerontology, 170:111982, 2022.">Apparoo <em>et al.</em>, 2022</a>, <a class="reference internal" href="#id169" title="Li Chen, Liping Zhang, Xujun Ye, Zixin Deng, and Changming Zhao. Ergothioneine and its congeners: anti-ageing mechanisms and pharmacophore biosynthesis. Protein &amp; Cell, pages pwad048, 2023.">Chen <em>et al.</em>, 2023</a>]</span>. First of all, it is an obvious element of the cell’s antioxidant system. Due to this, it has an immediate influence on the maintenance of genomic stability and mitochondrial functionality. However, there are some other interesting interconnections. For example, L-ergothioneine has been shown to be associated with sirtuin proteins that provide orchestration of the epigenetic landscape in the cell <span id="id8">[<a class="reference internal" href="#id169" title="Li Chen, Liping Zhang, Xujun Ye, Zixin Deng, and Changming Zhao. Ergothioneine and its congeners: anti-ageing mechanisms and pharmacophore biosynthesis. Protein &amp; Cell, pages pwad048, 2023.">Chen <em>et al.</em>, 2023</a>]</span>. Also an important observation is that L-ergothioneine is not synthesised in the human organism and therefore its maintenance is directly related to the operation of transport systems (in particular OCTN1 channels). Its involvement in various signalling cascades such as MAPK and KEAP1-NRF2 has also been shown.</p>
+<p>All this substantiates the role of L-ergothioneine as a geroprotector. Indeed, there is some medical research in this direction. Beelman et al. showed that the amount of L-ergothioneine in the diet is correlated with average mortality. Cheah et al. also reported that the amount of L-ergothioneine in the blood decreases with age. These data give us confidence in the adequacy of the model we have constructed.</p>
+</section>
+<section id="clarification-of-discrepancies-with-the-findings-in-the-article">
+<h3>Clarification of discrepancies with the findings in the article<a class="headerlink" href="#clarification-of-discrepancies-with-the-findings-in-the-article" title="Permalink to this headline">#</a></h3>
+<p>An important issue we would like to address in this discussion is to analyse possible differences with the results in the original paper (see figure below). The first important remark is that among the 11 compounds we found, there are no overlaps with the authors’ results. However, for example, we were able to find other Hsp90 inhibitors, and the mechanism of Hsp90 inhibition is one of the key topics of discussion of potential geroprotectors in the article. Although, the following reasons for the differences can be pointed out:</p>
+<figure class="align-default" id="orig-results">
+<a class="reference internal image-reference" href="../../../_images/orig_results.jpg"><img alt="../../../_images/orig_results.jpg" src="../../../_images/orig_results.jpg" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Anti-aging treatments identified by Janssens et al. (E). The picture is taken from the original paper <span id="id9">[<a class="reference internal" href="#id17" title="Georges E Janssens, Xin-Xuan Lin, Lluís Millan-Ariño, Alan Kavšek, Ilke Sen, Renée I Seinstra, Nicholas Stroustrup, Ellen AA Nollen, and Christian G Riedel. Transcriptomics-based screening identifies pharmacological inhibition of hsp90 as a means to defer aging. Cell reports, 27(2):467–480, 2019. URL: https://doi.org/10.1016/j.celrep.2019.03.044.">Janssens <em>et al.</em>, 2019</a>]</span>.</span><a class="headerlink" href="#orig-results" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>We used reduced data to save time. We selected some organs and ran a sample of 100 treatments (out of 3546 total) on them. We also ran our analysis for all treatments, but only for the brain.</p></li>
+<li><p>Our compounds-selectiong procedure differs from the paper due to lack of ran models (we did perform ranking)</p></li>
+<li><p>We suspect we used a slightly different version of CMap dataset. In our data we had 3546 treatments against 1309 in the paper.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<p>In this project we built transcriptomic age-classification model which was used to identify treatments that result in a “younger” transcriptomes. With this model we identified 11 potentially geroprotective compoings, The most promising of them are: L-ergothioneine, thioguanine,  olanzapine, ritonavir, XL-888. These molecules do not match those found by the authors of the original paper, but we discuss possible reasons for this. We also studied L-ergothioneine individually and associate our hopes for a future victory over aging with this very compound.</p>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<p>The project was done by:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://crei.skoltech.ru/cls/people/kseniakubenko">Ksenia Kubenko</a> preprocessed GTEx and CMap datasets</p></li>
+<li><p><a class="reference external" href="https://crei.skoltech.ru/cls/people/ekaterinakashuk">Ekaterina Kashuk</a> implemened Random Forest models and performed geroprotectors selection</p></li>
+<li><p><a class="reference external" href="https://www.linkedin.com/in/nvaulin/">Nikita Vaulin</a> visualised the results, reviewed the found geroprotectors and assisted in the preprocessing</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id10">
+<dl class="citation">
+<dt class="label" id="id170"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>,<a href="#id7">3</a>)</span></dt>
+<dd><p>Yasaaswini Apparoo, Chia Wei Phan, Umah Rani Kuppusamy, and Vikneswary Sabaratnam. Ergothioneine and its prospects as an anti-ageing compound. <em>Experimental Gerontology</em>, 170:111982, 2022.</p>
+</dd>
+<dt class="label" id="id168"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dd><p>Irwin K Cheah, Lei Feng, Richard MY Tang, Keith HC Lim, and Barry Halliwell. Ergothioneine levels in an elderly population decrease with age and incidence of cognitive decline; a risk factor for neurodegeneration? <em>Biochemical and Biophysical Research Communications</em>, 478(1):162–167, 2016.</p>
+</dd>
+<dt class="label" id="id169"><span class="brackets">3</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id6">2</a>,<a href="#id7">3</a>,<a href="#id8">4</a>)</span></dt>
+<dd><p>Li Chen, Liping Zhang, Xujun Ye, Zixin Deng, and Changming Zhao. Ergothioneine and its congeners: anti-ageing mechanisms and pharmacophore biosynthesis. <em>Protein &amp; Cell</em>, pages pwad048, 2023.</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets">4</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id9">3</a>)</span></dt>
+<dd><p>Georges E Janssens, Xin-Xuan Lin, Lluís Millan-Ariño, Alan Kavšek, Ilke Sen, Renée I Seinstra, Nicholas Stroustrup, Ellen AA Nollen, and Christian G Riedel. Transcriptomics-based screening identifies pharmacological inhibition of hsp90 as a means to defer aging. <em>Cell reports</em>, 27(2):467–480, 2019. URL: <a class="reference external" href="https://doi.org/10.1016/j.celrep.2019.03.044">https://doi.org/10.1016/j.celrep.2019.03.044</a>.</p>
+</dd>
+<dt class="label" id="id171"><span class="brackets">5</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id5">2</a>)</span></dt>
+<dd><p>BD Paul and SH Snyder. The unusual amino acid l-ergothioneine is a physiologic cytoprotectant. <em>Cell Death &amp; Differentiation</em>, 17(7):1134–1140, 2010.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./projects/2023/drugdiscovery"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../../2023_2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Projects 2023 (2-nd wave)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../gompertz/report.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Senescent cell turnover slowdown with age providing an explanation for the Gompertz law</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kriukov Dmitrii<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

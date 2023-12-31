@@ -128,7 +128,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Statistical view
+  Statistical analysis
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -147,21 +147,36 @@ const thebe_selector_output = ".output, .cell_output"
    Practice - WGCNA for Methylomics
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biomarkers of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../stat/survival_analysis.html">
    4. Survival analysis
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Machine learning view
- </span>
-</p>
-<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">
+   Practice - Survival analysis with ML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat/survival_analysis_part2.html">
+   5. Advanced survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">
+   Practice - Deep survival analysis
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ml/aging_clocks.html">
-   5. Aging Clocks
+   6. Aging Clocks
   </a>
  </li>
  <li class="toctree-l1">
@@ -172,46 +187,90 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Dynamic system view
+  Models of Aging
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/complex_systems.html">
-   6. Complex systems approach
+   7. Complex systems approach
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../dyn/system_resilience.html">
-   7. System resilience
+   8. System resilience
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Student projects
+  Student projects 2023
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../projects/2023/dosi/report.html">
-   Dynamic Organism State Indicator
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../projects/2023_1.html">
+   Projects 2023 (1-st wave)
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/dosi/report.html">
+     Dynamic Organism State Indicator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/meta/report.html">
+     Meta-analysis of aging transcriptomes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/parkinson/report.html">
+     Computational Model of Parkinson’s Disease
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/unsupervized/report.html">
+     Unsupervised aging
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../projects/2023/meta/report.html">
-   Meta-analysis of aging transcriptomes
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../projects/2023_2.html">
+   Projects 2023 (2-nd wave)
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../projects/2023/parkinson/report.html">
-   Computational Model of Parkinson’s Disease
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../projects/2023/unsupervized/report.html">
-   Unsupervised aging
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/drugdiscovery/report.html">
+     Transcriptomics-based longevity drug discovery
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/gompertz/report.html">
+     Senescent cell turnover slowdown with age providing an explanation for the Gompertz law
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/levine2013/report.html">
+     Modeling Rate Of Senescence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/2023/autogpt/report.html">
+     AutoInsight: AI-Powered Article Analysis Project
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -568,38 +627,38 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="omics-data-analysis-in-aging-methylomics">
-<h1><a class="toc-backref" href="#id218"><span class="section-number">3. </span>Omics Data Analysis in Aging: Methylomics</a><a class="headerlink" href="#omics-data-analysis-in-aging-methylomics" title="Permalink to this headline">#</a></h1>
+<h1><a class="toc-backref" href="#id223"><span class="section-number">3. </span>Omics Data Analysis in Aging: Methylomics</a><a class="headerlink" href="#omics-data-analysis-in-aging-methylomics" title="Permalink to this headline">#</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#omics-data-analysis-in-aging-methylomics" id="id218">Omics Data Analysis in Aging: Methylomics</a></p>
+<li><p><a class="reference internal" href="#omics-data-analysis-in-aging-methylomics" id="id223">Omics Data Analysis in Aging: Methylomics</a></p>
 <ul>
-<li><p><a class="reference internal" href="#what-is-dna-methylation" id="id219">What is DNA methylation?</a></p></li>
-<li><p><a class="reference internal" href="#why-dna-methylation" id="id220">Why DNA methylation?</a></p></li>
-<li><p><a class="reference internal" href="#how-to-measure-dna-methylation" id="id221">How to measure DNA methylation</a></p></li>
-<li><p><a class="reference internal" href="#how-to-analyze-dna-methylation" id="id222">How to analyze DNA methylation</a></p>
+<li><p><a class="reference internal" href="#what-is-dna-methylation" id="id224">What is DNA methylation?</a></p></li>
+<li><p><a class="reference internal" href="#why-dna-methylation" id="id225">Why DNA methylation?</a></p></li>
+<li><p><a class="reference internal" href="#how-to-measure-dna-methylation" id="id226">How to measure DNA methylation</a></p></li>
+<li><p><a class="reference internal" href="#how-to-analyze-dna-methylation" id="id227">How to analyze DNA methylation</a></p>
 <ul>
-<li><p><a class="reference internal" href="#data-processing-and-quality-control" id="id223">Data processing and quality control</a></p>
+<li><p><a class="reference internal" href="#data-processing-and-quality-control" id="id228">Data processing and quality control</a></p>
 <ul>
-<li><p><a class="reference internal" href="#processing-bisulfite-sequencing-data" id="id224">Processing bisulfite sequencing data</a></p></li>
-<li><p><a class="reference internal" href="#processing-microarray-data" id="id225">Processing microarray data</a></p></li>
-<li><p><a class="reference internal" href="#looking-at-the-data" id="id226">Looking at the data</a></p></li>
+<li><p><a class="reference internal" href="#processing-bisulfite-sequencing-data" id="id229">Processing bisulfite sequencing data</a></p></li>
+<li><p><a class="reference internal" href="#processing-microarray-data" id="id230">Processing microarray data</a></p></li>
+<li><p><a class="reference internal" href="#looking-at-the-data" id="id231">Looking at the data</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#visualisation-and-statistical-analysis" id="id227">Visualisation and statistical analysis</a></p></li>
-<li><p><a class="reference internal" href="#interpretation-and-validation-of-dnam-analysis" id="id228">Interpretation and validation of DNAm analysis</a></p></li>
+<li><p><a class="reference internal" href="#visualisation-and-statistical-analysis" id="id232">Visualisation and statistical analysis</a></p></li>
+<li><p><a class="reference internal" href="#interpretation-and-validation-of-dnam-analysis" id="id233">Interpretation and validation of DNAm analysis</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#conclusions" id="id229">Conclusions</a></p></li>
-<li><p><a class="reference internal" href="#practice" id="id230">Practice</a></p></li>
-<li><p><a class="reference internal" href="#credits" id="id231">Credits</a></p></li>
-<li><p><a class="reference internal" href="#references" id="id232">References</a></p></li>
+<li><p><a class="reference internal" href="#conclusions" id="id234">Conclusions</a></p></li>
+<li><p><a class="reference internal" href="#practice" id="id235">Practice</a></p></li>
+<li><p><a class="reference internal" href="#credits" id="id236">Credits</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id237">References</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <section id="what-is-dna-methylation">
-<h2><a class="toc-backref" href="#id219"><span class="section-number">3.1. </span>What is DNA methylation?</a><a class="headerlink" href="#what-is-dna-methylation" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id224"><span class="section-number">3.1. </span>What is DNA methylation?</a><a class="headerlink" href="#what-is-dna-methylation" title="Permalink to this headline">#</a></h2>
 <p>Considering the previous chapters, you must have already seen that <strong>epigenetics plays a huge role in our lives</strong>. And indeed, epigenetic mechanisms tightly control all the intricate behaviors of our cells. Which functions to provide, which range of proteins to produce, and how to react to external signals: all of this information is not encoded explicitly in the DNA sequence, and is regulated by the epigenome <span id="id1">[<a class="reference internal" href="#id180" title="CY Lim, BB Knowles, D Solter, and DM Messerschmidt. Epigenetic control of early mouse development. Current topics in developmental biology, 120:311–360, 2016.">Lim <em>et al.</em>, 2016</a>]</span>. There are a lot of various epigenetic mechanisms including histone modifications, nucleosome remodelling, noncoding RNAs, etc. <span id="id2">[<a class="reference internal" href="#id182" title="Dominik Saul and Robyn Laura Kosinsky. Epigenetics of aging and aging-associated diseases. International journal of molecular sciences, 22(1):401, 2021.">Saul and Kosinsky, 2021</a>]</span>, however, DNA methylation is one of the most investigated types of epigenetic modifications. As you can see from the <a class="reference internal" href="#epigenetics"><span class="std std-numref">Fig. 3.1</span></a> below, we’re descending to the very depths of gene regulation.</p>
 <figure class="align-default" id="epigenetics">
 <a class="reference internal image-reference" href="../_images/epigenetics.png"><img alt="../_images/epigenetics.png" src="../_images/epigenetics.png" style="width: 600px;" /></a>
@@ -631,7 +690,7 @@ DNA methylation biosynthesis from a chemistry viewpoint: (a) cytosine (de)methyl
 ``` -->
 </section>
 <section id="why-dna-methylation">
-<h2><a class="toc-backref" href="#id220"><span class="section-number">3.2. </span>Why DNA methylation?</a><a class="headerlink" href="#why-dna-methylation" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id225"><span class="section-number">3.2. </span>Why DNA methylation?</a><a class="headerlink" href="#why-dna-methylation" title="Permalink to this headline">#</a></h2>
 <p>Now that we know, what DNA methylation is, it’s about time to find out what it does.</p>
 <p>At some point, the “histone code” hypothesis was introduced in attempt to describe a certain pattern that governs which modification of which histone at which position serves a repressive or an activating function <span id="id13">[<a class="reference internal" href="#id189" title="Thomas Jenuwein and C David Allis. Translating the histone code. Science, 293(5532):1074–1080, 2001.">Jenuwein and Allis, 2001</a>]</span>. However tempting it could be to assign these labels, considering the vast complexity of histone modification combinations, such a code might prove difficult to establish. Albeit, some patterns have earned enough credibility to be called “canonical” (<a class="reference internal" href="#epigenetic-patterns"><span class="std std-numref">Fig. 3.4</span></a>).</p>
 <figure class="align-default" id="epigenetic-patterns">
@@ -645,7 +704,7 @@ DNA methylation biosynthesis from a chemistry viewpoint: (a) cytosine (de)methyl
 <p>— Work in progress —</p>
 </section>
 <section id="how-to-measure-dna-methylation">
-<h2><a class="toc-backref" href="#id221"><span class="section-number">3.3. </span>How to measure DNA methylation</a><a class="headerlink" href="#how-to-measure-dna-methylation" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id226"><span class="section-number">3.3. </span>How to measure DNA methylation</a><a class="headerlink" href="#how-to-measure-dna-methylation" title="Permalink to this headline">#</a></h2>
 <p>The history of measuring DNA methylation is quite long (<a class="reference internal" href="#dnam-profiling-timeline"><span class="std std-numref">Fig. 3.5</span></a>), and we’re not going to stop at every point of this timeline (if you’re eager to get the historical perspective, see <span id="id19">[<a class="reference internal" href="#id193" title="Shizhao Li and Trygve O Tollefsbol. Dna methylation methods: global dna methylation and methylomic analyses. Methods, 187:28–43, 2021.">Li and Tollefsbol, 2021</a>]</span>), because most of these methods have long sunk into history. For example, even though liquid chromatography and mass spectrometry (LC-MS) is perfectly capable of profiling both 5mC, 5hmC, and all other DNA modifications, is never used for this task today because of its exorbitant costs.</p>
 <figure class="align-default" id="dnam-profiling-timeline">
 <img alt="../_images/dnam_profiling_timeline.jpg" src="../_images/dnam_profiling_timeline.jpg" />
@@ -790,7 +849,7 @@ In microarrays, essentially, DNA fragments bind to the arrays of short nucleotid
 </table>
 </section>
 <section id="how-to-analyze-dna-methylation">
-<h2><a class="toc-backref" href="#id222"><span class="section-number">3.4. </span>How to analyze DNA methylation</a><a class="headerlink" href="#how-to-analyze-dna-methylation" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id227"><span class="section-number">3.4. </span>How to analyze DNA methylation</a><a class="headerlink" href="#how-to-analyze-dna-methylation" title="Permalink to this headline">#</a></h2>
 <p>Computational analysis of DNA methylation consists of three main steps <span id="id29">[<a class="reference internal" href="#id196" title="Christoph Bock. Analysing and interpreting dna methylation data. Nature Reviews Genetics, 13(10):705–719, 2012.">Bock, 2012</a>, <a class="reference internal" href="#id192" title="Ieva Rauluseviciute, Finn Drabløs, and Morten Beck Rye. Dna methylation data by sequencing: experimental approaches and recommendations for tools and pipelines for data analysis. Clinical epigenetics, 11(1):1–13, 2019.">Rauluseviciute <em>et al.</em>, 2019</a>]</span>:</p>
 <ol class="simple">
 <li><p><strong>Data processing and quality control</strong></p></li>
@@ -799,9 +858,9 @@ In microarrays, essentially, DNA fragments bind to the arrays of short nucleotid
 </ol>
 <p>We will briefly outline this workflow and discuss some important caveats that arise during each step. Bisulfite conversion-based approaches are of the most interest to the researchers nowadays, so we will omit the peculiarities of other approaches to DNAm profiling here (if you’re that interested, see <span id="id30">[<a class="reference internal" href="#id196" title="Christoph Bock. Analysing and interpreting dna methylation data. Nature Reviews Genetics, 13(10):705–719, 2012.">Bock, 2012</a>, <a class="reference internal" href="#id192" title="Ieva Rauluseviciute, Finn Drabløs, and Morten Beck Rye. Dna methylation data by sequencing: experimental approaches and recommendations for tools and pipelines for data analysis. Clinical epigenetics, 11(1):1–13, 2019.">Rauluseviciute <em>et al.</em>, 2019</a>]</span>).</p>
 <section id="data-processing-and-quality-control">
-<h3><a class="toc-backref" href="#id223"><span class="section-number">3.4.1. </span>Data processing and quality control</a><a class="headerlink" href="#data-processing-and-quality-control" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id228"><span class="section-number">3.4.1. </span>Data processing and quality control</a><a class="headerlink" href="#data-processing-and-quality-control" title="Permalink to this headline">#</a></h3>
 <section id="processing-bisulfite-sequencing-data">
-<h4><a class="toc-backref" href="#id224"><span class="section-number">3.4.1.1. </span>Processing bisulfite sequencing data</a><a class="headerlink" href="#processing-bisulfite-sequencing-data" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id229"><span class="section-number">3.4.1.1. </span>Processing bisulfite sequencing data</a><a class="headerlink" href="#processing-bisulfite-sequencing-data" title="Permalink to this headline">#</a></h4>
 <p>Processing raw bisulfite sequencing data must deal with the following tasks:</p>
 <ol class="simple">
 <li><p><strong>Trim</strong> sequencing adaptors from the ends of reads (adaptors are added to reads to improve capturing of the smaller-sized ones) and trim reads with low quality (e.g., incorrectly converted)</p></li>
@@ -824,7 +883,7 @@ In addition to all that, the <strong>success rate of bisulfite conversion</stron
 <p>As you can see, there are enough steps to be worried about if you want to process your data in the best way possible. Although multiple comparison reviews are out there, almost none of them attempts to provide actual guidelines on which tools would be better to use in which circumstances, and, since the techniques are updated and developed every year, even those reviews that do try to suggest such ‘gold standards’ <span id="id36">[<a class="reference internal" href="#id192" title="Ieva Rauluseviciute, Finn Drabløs, and Morten Beck Rye. Dna methylation data by sequencing: experimental approaches and recommendations for tools and pipelines for data analysis. Clinical epigenetics, 11(1):1–13, 2019.">Rauluseviciute <em>et al.</em>, 2019</a>]</span> are quite outdated, so the researchers have to choose on their own.</p>
 </section>
 <section id="processing-microarray-data">
-<h4><a class="toc-backref" href="#id225"><span class="section-number">3.4.1.2. </span>Processing microarray data</a><a class="headerlink" href="#processing-microarray-data" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id230"><span class="section-number">3.4.1.2. </span>Processing microarray data</a><a class="headerlink" href="#processing-microarray-data" title="Permalink to this headline">#</a></h4>
 <p>The Illumina microarrays are, on the one hand, easier to process than sequencing results (no alignment required, since probes contain pre-defined sequences), but, on the other hand, are far more laborious.</p>
 <p>Instead of sequencing reads, microarrays provide colour signals of different intensities across a time range. The coloured image processing is virtually always done with the vendor-supplied software, so you won’t have to bother about it. However, after the signals are counted, the bioinformatician’s work begins.</p>
 <p>First of all, just as with bulk BS-seq, bias may arise from <strong>sample DNA composition</strong> (polymorphisms or cell heterogeneity), but, more importantly for the microarray methodology, <strong>bias comes from the arrays themselves</strong>:</p>
@@ -839,7 +898,7 @@ In addition to all that, the <strong>success rate of bisulfite conversion</stron
 <p>In the end, even if you use only the best processing tools, microarrays are still notorious for their between-array batch effect. Wet lab researchers are highly advised to profile samples in mixed order so as to minimize the magnitude of potential confounders (for example, to process samples from different tissues or the case and control samples on the same day, and not on different weeks). However, you will unlikely get this information from the open-source databases, and you will certainly be unable to change the way the datasets are collected. Several batch correction techniques are implemented in the aforementioned approaches, and there are also specific tools (e.g., ComBat, surrogate variable analysis (SVA), RUVm, etc. <span id="id39">[<a class="reference internal" href="#id201" title="Kazuhiko Nakabayashi. Illumina HumanMethylation BeadChip for Genome-Wide DNA Methylation Profiling: Advantages and Limitations, pages 1–15. Springer International Publishing, Cham, 2017.">Nakabayashi, 2017</a>]</span>), but they still have quite a room for improvement <span id="id40">[<a class="reference internal" href="#id204" title="Jason P Ross, Susan van Dijk, Melinda Phang, Michael R Skilton, Peter L Molloy, and Yalchin Oytam. Batch-effect detection, correction and characterisation in illumina humanmethylation450 and methylationepic beadchip array data. Clinical Epigenetics, 14(1):1–28, 2022.">Ross <em>et al.</em>, 2022</a>, <a class="reference internal" href="#id203" title="Tristan Zindler, Helge Frieling, Alexandra Neyazi, Stefan Bleich, and Eva Friedel. Simulating combat: how batch correction can lead to the systematic introduction of false positive results in dna methylation microarray studies. BMC bioinformatics, 21:1–15, 2020.">Zindler <em>et al.</em>, 2020</a>]</span>.</p>
 </section>
 <section id="looking-at-the-data">
-<h4><a class="toc-backref" href="#id226"><span class="section-number">3.4.1.3. </span>Looking at the data</a><a class="headerlink" href="#looking-at-the-data" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id231"><span class="section-number">3.4.1.3. </span>Looking at the data</a><a class="headerlink" href="#looking-at-the-data" title="Permalink to this headline">#</a></h4>
 <p>Further in our course (and in a lot of research settings, really), you will be spared from processing the raw reads, so let’s briefly overview how the actual processed DNA methylation matrix looks like.</p>
 <p>For bisulfite sequencing, it comes in a variety of data formats. The major separation lies between the binary files (e.g., <em>.bigWig</em>) and the more familiar tab/comma-separated text files (e.g., Bismark <em>.cov</em> files, BS-Seeker <em>.CGmap</em> files, <em>.bed</em> and <em>.bedGraph</em> files, etc.). A lot of processing tools employ their own data format, so the format you get to work with depends on what you (or the authors of your dataset) have chosen to process your reads.</p>
 <p>The main information that is always present in these files is <strong>genomic position</strong> (chromosome and DNA base number) and <strong>methylation level</strong> (a.k.a. methylation fraction or beta value). Ideally, to perform quality control on your sites, you want to also know the coverage—<strong>total number of counts</strong> (methylated + unmethylated)—per site, which is not always readily available (in case of <em>.bigWig</em>, for example). As DNAm may occur on both strands, but the annotation is done against the positive (Watson) strand positions only, some formats also mention the <strong>strand directionality</strong> per DNAm site (+/- or F/R), but some do not, so you might want to look at the reference genome to infer this information. Other columns may include the information on methylated and unmethylated counts, on the <strong>genomic context</strong> around a DNAm site (CpG, CHG, CHH, where H stands for ‘not G’), or something else. A good example of how processed DNAm data looks like is displayed in the <a class="reference external" href="https://github.com/khuang28jhu/bs3">BS-Seeker3 manual</a> (<a class="reference internal" href="#processed-dnam-formatting"><span class="std std-numref">Fig. 3.9</span></a>), although most of these columns are usually absent in the outputs of common processing frameworks (e.g., Bismark <em>.cov</em>).</p>
@@ -862,7 +921,7 @@ In addition to all that, the <strong>success rate of bisulfite conversion</stron
 </section>
 </section>
 <section id="visualisation-and-statistical-analysis">
-<h3><a class="toc-backref" href="#id227"><span class="section-number">3.4.2. </span>Visualisation and statistical analysis</a><a class="headerlink" href="#visualisation-and-statistical-analysis" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id232"><span class="section-number">3.4.2. </span>Visualisation and statistical analysis</a><a class="headerlink" href="#visualisation-and-statistical-analysis" title="Permalink to this headline">#</a></h3>
 <p>Finally, after methylation percentages are calculated, we step into the realm of data analysis and interpretation. The amount of tools and approaches available for it is overwhelming, so we will only mention a few.</p>
 <p>One of the obvious direct approaches is to look at your data, which can be done via the good old UCSC Genome Browser, SeqMonk, the Integrative Genomics Viewer (IGV), or many other tools <span id="id41">[<a class="reference internal" href="#id196" title="Christoph Bock. Analysing and interpreting dna methylation data. Nature Reviews Genetics, 13(10):705–719, 2012.">Bock, 2012</a>]</span>. In addition to visualizing methylation profiles, it is also useful to perform some form of unsupervised dimensionality reduction, for example, by principal component analysis (PCA) or hierarchical clustering, to elucidate the major groups of samples in your data (and to detect some outliers).</p>
 <p>But of course, probably the most widely adopted approach is to find differentially methylated (DM) positions (a.k.a. DMPs, DMSs [sites], or DMCs [CpG sites]) or regions (DMRs) by comparing two or more studied groups, for example, to find differences between DNA methylation in a certain cancer type and healthy controls, or between cancer types. And, essentially, the main goal of DNAm profiling in the first place is to identify systematic differences between samples and sample groups, which is exactly the job for DM analysis.</p>
@@ -899,7 +958,7 @@ There are numerous statistical approaches to calculating differential methylatio
 <p>Such systemic approach allows uncovering less obvious interactions and changes than the trivial comparisons of average or variable methylation levels can provide.</p>
 </section>
 <section id="interpretation-and-validation-of-dnam-analysis">
-<h3><a class="toc-backref" href="#id228"><span class="section-number">3.4.3. </span>Interpretation and validation of DNAm analysis</a><a class="headerlink" href="#interpretation-and-validation-of-dnam-analysis" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id233"><span class="section-number">3.4.3. </span>Interpretation and validation of DNAm analysis</a><a class="headerlink" href="#interpretation-and-validation-of-dnam-analysis" title="Permalink to this headline">#</a></h3>
 <p>Nevertheless, making biological assumptions or, even better, theories based on DNAm analysis is still enormously challenging.</p>
 <p>The first step towards interpreting DNAm analysis is similar across many omics data analyses: <strong>functional enrichment</strong>, which is usually performed by identifying outstanding gene ontology (GO) terms, KEGG pathways, or REACTOME interactions for the DNAm sites, regions, or modules that were selected during the previously described analyses. It’s worth noting that, since covered DNAm sites may (and, in some methodologies, must) be distributed unequally across different genes, identified DMPs and VMPs should be adjusted so as not to over-represent some genes due to this technical variability alone. Alternatively, DNAm sites across certain regions can be combined: for example, assigned to gene promoters (if they fit within certain distance from the transcription start sites, TSS, of these genes) or enhancers, which are only then sent to the common <strong>gene set enrichment analysis</strong> (GSEA) tools <span id="id53">[<a class="reference internal" href="#id212" title="Andrew E Teschendorff and Caroline L Relton. Statistical and integrative system-level analysis of dna methylation data. Nature Reviews Genetics, 19(3):129–147, 2018.">Teschendorff and Relton, 2018</a>]</span>.</p>
 <p>Not without certain difficulties, DNAm data can be integrated with <strong>genotyping</strong> data (approximately 20% of inter-individual DNAm variation is explained by genetic variation, so it should be adjusted for this inheritance, especially in the non-inbred study organisms such as outbred mice or humans), <strong>gene expression</strong> data (in general, DNAm is a bad predictor for expression levels, significantly worse than histone modifications are, but some parts of gene’s DNAm sites may be more predictive than others, although the exact correlations are still being debated, and more consistency is required), and with other omics modalities.</p>
@@ -928,24 +987,24 @@ There are numerous statistical approaches to calculating differential methylatio
 </section>
 </section>
 <section id="conclusions">
-<h2><a class="toc-backref" href="#id229"><span class="section-number">3.5. </span>Conclusions</a><a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id234"><span class="section-number">3.5. </span>Conclusions</a><a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
 <p><strong>DNA methylation</strong> is a fascinating biological feature that interacts with so many other layers to regulate cellular functions. It finds its way in a lot of different <em>disease states, heritable traits, early-life-induced repercussions for mental and general health, and into aging</em>.</p>
 <p>Nevertheless, <strong>measuring and analysing it is still substantially challenging</strong>, both in regards to computational resources and skills, and in terms of theoretical foundations for inferring causal interactions rather than just associations.</p>
 <p>We are extremely delighted if you have managed to reach this point of our lengthy discussion, and if you find yourself in a more cognizant position than where you were when starting it. We hope that this chapter equipped you with enough knowledge to get the comprehensive outlook on DNA methylomics, and to carry out your own, scientifically strong research in the field, acknowledged for the many experimental and theoretical obstacles that may be meddling with it.</p>
 </section>
 <section id="practice">
-<h2><a class="toc-backref" href="#id230"><span class="section-number">3.6. </span>Practice</a><a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id235"><span class="section-number">3.6. </span>Practice</a><a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
 <p>Now, let’s get practical. Since we’ve already covered differential expression analysis in our previous lesson, let’s do something different this time with DNA methylation.</p>
 <p>As we’ve already mentioned in the part on statistical analysis, weighted gene-coexpression network analysis (WGCNA) has been used to elucidate lifespan-correlated DNAm modules. This time, let’s turn out head not towards the signatures of aging, but that of rejuvenation. Cellular reprogramming leverages certain transcriptions factors applied constantly or transiently (turned on and off using other activators) to convert somatic cells into a pluripotent state, either in culture (<em>in vitro</em>), or administered <em>in vivo</em>.</p>
 <p>The procedure is extremely dangerous for the cells, and most of them die, but the ones that survive appear rejuvenated. This rejuvenation has been shown for both the molecular level of epigenomic and transcriptomic profiles and up to cell motility, whole blood biomarkers, histology, etc. The paper we will be working with <span id="id59">[<a class="reference internal" href="#id217" title="Mari Ohnuki, Koji Tanabe, Kenta Sutou, Ito Teramoto, Yuka Sawamura, Megumi Narita, Michiko Nakamura, Yumie Tokunaga, Masahiro Nakamura, Akira Watanabe, and others. Dynamic regulation of human endogenous retroviruses mediates factor-induced reprogramming and differentiation potential. Proceedings of the National Academy of Sciences, 111(34):12426–12431, 2014.">Ohnuki <em>et al.</em>, 2014</a>]</span> reports performing in vitro reprogramming of human skin fibroblasts.</p>
 <p>The practice on WGCNA for DNA methylomics awaits you either at <code class="docutils literal notranslate"><span class="pre">./meth/meth_practice.ipynb</span></code> in this repository (if you cloned it), or at <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">Google Colab</a> (don’t forget to make your own copy). Happy hunting!</p>
 </section>
 <section id="credits">
-<h2><a class="toc-backref" href="#id231"><span class="section-number">3.7. </span>Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id236"><span class="section-number">3.7. </span>Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
 <p>This text was prepared by <a class="reference external" href="https://www.linkedin.com/in/evgeniy-efimov-84152725b">Evgeniy Efimov</a>.</p>
 </section>
 <section id="references">
-<h2><a class="toc-backref" href="#id232"><span class="section-number">3.8. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id237"><span class="section-number">3.8. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <div class="docutils container" id="id60">
 <dl class="citation">
 <dt class="label" id="id205"><span class="brackets"><a class="fn-backref" href="#id42">1</a></span></dt>

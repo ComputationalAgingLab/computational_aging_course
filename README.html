@@ -126,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Statistical view
+  Statistical analysis
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -145,21 +145,36 @@ const thebe_selector_output = ".output, .cell_output"
    Practice - WGCNA for Methylomics
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Biomarkers of Aging
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="stat/survival_analysis.html">
    4. Survival analysis
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Machine learning view
- </span>
-</p>
-<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">
+   Practice - Survival analysis with ML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stat/survival_analysis_part2.html">
+   5. Advanced survival analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">
+   Practice - Deep survival analysis
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ml/aging_clocks.html">
-   5. Aging Clocks
+   6. Aging Clocks
   </a>
  </li>
  <li class="toctree-l1">
@@ -170,46 +185,90 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Dynamic system view
+  Models of Aging
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dyn/complex_systems.html">
-   6. Complex systems approach
+   7. Complex systems approach
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="dyn/system_resilience.html">
-   7. System resilience
+   8. System resilience
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Student projects
+  Student projects 2023
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/2023/dosi/report.html">
-   Dynamic Organism State Indicator
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="projects/2023_1.html">
+   Projects 2023 (1-st wave)
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/2023/dosi/report.html">
+     Dynamic Organism State Indicator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/2023/meta/report.html">
+     Meta-analysis of aging transcriptomes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/2023/parkinson/report.html">
+     Computational Model of Parkinson’s Disease
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/2023/unsupervized/report.html">
+     Unsupervised aging
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/2023/meta/report.html">
-   Meta-analysis of aging transcriptomes
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="projects/2023_2.html">
+   Projects 2023 (2-nd wave)
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/2023/parkinson/report.html">
-   Computational Model of Parkinson’s Disease
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/2023/unsupervized/report.html">
-   Unsupervised aging
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/2023/drugdiscovery/report.html">
+     Transcriptomics-based longevity drug discovery
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/2023/gompertz/report.html">
+     Senescent cell turnover slowdown with age providing an explanation for the Gompertz law
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/2023/levine2013/report.html">
+     Modeling Rate Of Senescence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="projects/2023/autogpt/report.html">
+     AutoInsight: AI-Powered Article Analysis Project
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -475,7 +534,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="computational-biology-of-aging-book">
+  <p><a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.10400595"><img alt="DOI" src="https://zenodo.org/badge/519051051.svg" /></a>
+<img alt="made with love" src="https://img.shields.io/badge/made%20with%20%E2%9D%A4%EF%B8%8F-8A2BE2" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="computational-biology-of-aging-book">
 <h1>Computational Biology of Aging book<a class="headerlink" href="#computational-biology-of-aging-book" title="Permalink to this headline">#</a></h1>
 <p>This free open-access book is devoted to the best practices in the computational system biology of aging. If you are interested in reading please proceed to the <a class="reference external" href="https://computationalaginglab.github.io/computational_aging_course/intro.html">Book page</a>. Now this book is under development. If you want to contribute to this project, please read our short contribution remark below. If you have some questions feel free to write to this e-mail: <a class="reference external" href="mailto:dmitrii&#46;kriukov&#37;&#52;&#48;skoltech&#46;ru">mailto:dmitrii<span>&#46;</span>kriukov<span>&#64;</span>skoltech<span>&#46;</span>ru</a>.</p>
 <section id="abstract">
@@ -523,7 +584,7 @@ title="Print to PDF"
 <h2>Cite us<a class="headerlink" href="#cite-us" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@online</span><span class="p">{</span><span class="n">kriukov2023compagingbook</span><span class="p">,</span>
   <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">2023</span><span class="p">},</span>
-  <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Dmitrii</span> <span class="n">Kriukov</span> <span class="ow">and</span> <span class="n">Irina</span> <span class="n">Zhegalova</span> <span class="ow">and</span> <span class="n">Simon</span> <span class="n">Steshin</span> <span class="ow">and</span> <span class="n">Dmitrii</span> <span class="n">Smirnov</span><span class="p">,</span> <span class="n">Evgeniy</span> <span class="n">Efimov</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Ekaterina</span> <span class="n">Khrameeva</span><span class="p">},</span>
+  <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Dmitrii</span> <span class="n">Kriukov</span> <span class="ow">and</span> <span class="n">Irina</span> <span class="n">Zhegalova</span> <span class="ow">and</span> <span class="n">Simon</span> <span class="n">Steshin</span> <span class="ow">and</span> <span class="n">Dmitrii</span> <span class="n">Smirnov</span> <span class="ow">and</span> <span class="n">Evgeniy</span> <span class="n">Efimov</span> <span class="ow">and</span> <span class="n">Margarita</span> <span class="n">Sidorova</span> <span class="ow">and</span> <span class="n">Ekaterina</span> <span class="n">Khrameeva</span><span class="p">},</span>
   <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Computational</span> <span class="n">Biology</span> <span class="n">of</span> <span class="n">Aging</span><span class="p">},</span>
   <span class="n">url</span><span class="o">=</span><span class="p">{</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">computationalaginglab</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">computational_aging_course</span><span class="o">/</span><span class="n">intro</span><span class="o">.</span><span class="n">html</span><span class="p">},</span>
 <span class="p">}</span>
