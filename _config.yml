@@ -10,7 +10,7 @@ logo: symbol.png
 execute:
   execute_notebooks: force
   timeout: 300
-  exclude_patterns: ['projects/2023/parkinson/report.ipynb']
+  exclude_patterns: ['projects/2023/**/*.ipynb']
 
 # Define the name of the latex output file for PDF builds
 latex:

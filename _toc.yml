@@ -6,37 +6,56 @@ root: intro
 options:  # The options key will be applied to all chapters, but not sub-sections
   numbered: True
 parts:
+
 - caption: Biology of Aging
   numbered: true
   chapters:
   - file: bio/intro_aging_biology
-- caption: Statistical view
+
+- caption: Statistical analysis
   numbered: true
   chapters:
   - file: stat/differential_analysis_practice
   - file: meth/meth
   - url: https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing
     title: Practice - WGCNA for Methylomics
-  - file: stat/survival_analysis
-  - file: stat/survival_analysis_part2
-    title: Advanced survival analysis
-- caption: Machine learning view
+
+- caption: Biomarkers of Aging
   numbered: true
   chapters:
+  - file: stat/survival_analysis
+  - url: https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing
+    title: Practice - Survival analysis with ML
+  - file: stat/survival_analysis_part2
+    title: Advanced survival analysis
+  - url: https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing
+    title: Practice - Deep survival analysis
   - file: ml/aging_clocks
   - url: https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing
     title: Practice - DIY Aging Clocks
-- caption: Dynamic system view
+
+- caption: Models of Aging
   numbered: true
   chapters:
   - file: dyn/complex_systems
   - file: dyn/system_resilience
-- caption: Student projects
-  chapters:
-  - file: projects/2023/dosi/report
-  - file: projects/2023/meta/report
-  - file: projects/2023/parkinson/report
-  - file: projects/2023/unsupervized/report
-  
-  
 
+- caption: Student projects 2023
+  chapters:
+  - file: projects/2023_1
+    sections:
+    - file: projects/2023/dosi/report
+    - file: projects/2023/meta/report
+    - file: projects/2023/parkinson/report
+    - file: projects/2023/unsupervized/report
+  
+  - file: projects/2023_2
+    sections:
+    - file: projects/2023/drugdiscovery/report
+    - file: projects/2023/gompertz/report
+    - file: projects/2023/levine2013/report
+    - file: projects/2023/autogpt/report
+    # - file: projects/2023/stochclocks/report
+    #
+
+  
