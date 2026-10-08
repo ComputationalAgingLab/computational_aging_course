@@ -1,113 +1,219 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2. Differential expression analysis &#8212; Computational aging book</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="shortcut icon" href="../_static/symbol.png"/>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'stat/differential_analysis_practice';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../_static/symbol.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. Omics Data Analysis in Aging: Methylomics" href="../meth/meth.html" />
     <link rel="prev" title="1. Introduction to Aging Biology" href="../bio/intro_aging_biology.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
     
-
-    <!-- Google Analytics -->
-    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
 
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
     
-    <div class="container-fluid" id="banner"></div>
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
 
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
     
-
-    <div class="container-xl">
-      <div class="row">
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/symbol.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Computational aging book</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/symbol.png" class="logo__image only-light" alt="Computational aging book - Home"/>
+    <img src="../_static/symbol.png" class="logo__image only-dark pst-js-only" alt="Computational aging book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,543 +222,303 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Biology of Aging
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Biology of Aging</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../bio/intro_aging_biology.html">
-   1. Introduction to Aging Biology
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../bio/intro_aging_biology.html">1. Introduction to Aging Biology</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Statistical analysis
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistical analysis</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   2. Differential expression analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../meth/meth.html">
-   3. Omics Data Analysis in Aging: Methylomics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
-   Practice - WGCNA for Methylomics
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Differential expression analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../meth/meth.html">3. Omics Data Analysis in Aging: Methylomics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">Practice - WGCNA for Methylomics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Biomarkers of Aging
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="survival_analysis.html">
-   4. Survival analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">
-   Practice - Survival analysis with ML
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="survival_analysis_part2.html">
-   5. Advanced survival analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">
-   Practice - Deep survival analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ml/aging_clocks.html">
-   6. Aging Clocks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">
-   Practice - DIY Aging Clocks
-  </a>
- </li>
+</details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Models of Aging
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Biomarkers of Aging</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../dyn/complex_systems.html">
-   7. Complex systems approach
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../dyn/system_resilience.html">
-   8. System resilience
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="survival_analysis.html">4. Survival analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="survival_analysis_part2.html">5. Advanced survival analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">Practice - Survival analysis with ML</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">Practice - Deep survival analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Student projects 2023
- </span>
-</p>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/aging_clocks.html">6. Aging Clocks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">Practice - DIY Aging Clocks</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models of Aging</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../projects/2023_1.html">
-   Projects 2023 (1-st wave)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/dosi/report.html">
-     Dynamic Organism State Indicator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/meta/report.html">
-     Meta-analysis of aging transcriptomes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/parkinson/report.html">
-     Computational Model of Parkinson’s Disease
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/unsupervized/report.html">
-     Unsupervised aging
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../projects/2023_2.html">
-   Projects 2023 (2-nd wave)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/drugdiscovery/report.html">
-     Transcriptomics-based longevity drug discovery
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/gompertz/report.html">
-     Senescent cell turnover slowdown with age providing an explanation for the Gompertz law
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/levine2013/report.html">
-     Modeling Rate Of Senescence
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/autogpt/report.html">
-     AutoInsight: AI-Powered Article Analysis Project
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../dyn/complex_systems.html">7. Complex systems approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dyn/system_resilience.html">8. System resilience</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Student projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../projects/2023_1.html">Projects 2023 (1st wave)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/dosi/report.html">Dynamic Organism State Indicator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/meta/report.html">Meta-analysis of aging transcriptomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/parkinson/report.html">Computational Model of Parkinson’s Disease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/unsupervized/report.html">Unsupervised aging</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../projects/2023_2.html">Projects 2023 (2nd wave)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/drugdiscovery/report.html">Transcriptomics-based longevity drug discovery (2023)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/gompertz/report.html">Senescent cell turnover slowdown with age providing an explanation for the Gompertz law</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/levine2013/report.html">Modeling Rate Of Senescence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/autogpt/report.html">AutoInsight: AI-Powered Article Analysis Project</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../projects/2025.html">Projects 2025</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2025/drugdiscovery/report.html">Transcriptomics-based longevity drug discovery (2025)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2025/network/report.html">Aging in complex interdependency networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2025/tgbot/report.html">Aging Research Digest: A Daily AI-Powered Literature Alert for Geroscience</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/ComputationalAgingLab/computational_aging_course/master?urlpath=tree/stat/differential_analysis_practice.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ComputationalAgingLab/computational_aging_course" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fstat/differential_analysis_practice.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/stat/differential_analysis_practice.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fstat/differential_analysis_practice.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/stat/differential_analysis_practice.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button>
 
-      </li>
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preparing-the-data">
-   2.1. Preparing the data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-up-rpy2-functions">
-   2.2. Setting up rpy2 functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#normalization">
-   2.3. Normalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quality-control">
-   2.4. Quality control
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#principal-component-analysis">
-     2.4.1. Principal Component Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#statistical-testing">
-   2.5. Statistical testing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gene-clustering">
-   2.6. Gene clustering
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#go-analysis">
-   2.7. GO analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learn-more">
-   2.8. Learn more
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#credits">
-   2.9. Credits
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   2.10. References
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Differential expression analysis</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preparing-the-data">
-   2.1. Preparing the data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-up-rpy2-functions">
-   2.2. Setting up rpy2 functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#normalization">
-   2.3. Normalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quality-control">
-   2.4. Quality control
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#principal-component-analysis">
-     2.4.1. Principal Component Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#statistical-testing">
-   2.5. Statistical testing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gene-clustering">
-   2.6. Gene clustering
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#go-analysis">
-   2.7. GO analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learn-more">
-   2.8. Learn more
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#credits">
-   2.9. Credits
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   2.10. References
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Differential expression analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-data">2.1. Preparing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-deseq2">2.2. Setting up DESeq2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">2.3. Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-control">2.4. Quality control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis">2.4.1. Principal Component Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-testing">2.5. Statistical testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gene-clustering">2.6. Gene clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#go-analysis">2.7. GO analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more">2.8. Learn more</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">2.9. Credits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">2.10. References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="differential-expression-analysis">
-<h1><span class="section-number">2. </span>Differential expression analysis<a class="headerlink" href="#differential-expression-analysis" title="Permalink to this headline">#</a></h1>
-<p>Today we are going to learn how to perform differential expression analysis on aging bulk RNA-seq datasets. For this lesson we prepared longitudal RNA-seq data on aged human fibroblasts from Fleischer et al (2018). This data is already proccesed, therefore we can skip a large part devoted to raw read processing and mapping (Figure 1) and start with a table of counts.</p>
-<figure class="align-default" id="id1">
+<h1><span class="section-number">2. </span>Differential expression analysis<a class="headerlink" href="#differential-expression-analysis" title="Link to this heading">#</a></h1>
+<p>Today we are going to learn how to perform differential expression analysis on aging bulk RNA-seq datasets. For this lesson we prepared longitudinal RNA-seq data on aged human fibroblasts from <span class="bibtex-citation" id="id1">Fleischer <em>et al.</em> [<a class="reference internal" href="#id163" title="Jason G. Fleischer, Roberta Schulte, Hsiao H. Tsai, Swati Tyagi, Arkaitz Ibarra, Maxim N. Shokhirev, Ling Huang, Martin W. Hetzer, and Saket Navlakha. Predicting age from the transcriptome of human dermal fibroblasts. Genome Biology, 19(1):221, 2018. doi:10.1186/s13059-018-1599-6.">2018</a>]</span>. This data is already processed; therefore we can skip a large part devoted to raw read processing and mapping (<a class="reference internal" href="#de-workflow"><span class="std std-numref">Fig. 2.1</span></a>) and start with a table of counts.</p>
+<figure class="align-default" id="de-workflow">
 <img alt="../_images/TitleFigure.png" src="../_images/TitleFigure.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">A typical workflow for DE analysis.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">A typical workflow for DE analysis.</span><a class="headerlink" href="#de-workflow" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="preparing-the-data">
-<h2><span class="section-number">2.1. </span>Preparing the data<a class="headerlink" href="#preparing-the-data" title="Permalink to this headline">#</a></h2>
-<p>We will start with uploading expression data table together with meta file containing brief sample description (age, ethnicity). While original study include both male and females profiles, we selected only the male ones for the simplicity of the further analysis. Processed files (<em>data_fibroblasts.csv</em> and <em>meta_fibroblasts.csv</em>) are available here: <a class="reference external" href="http://arcuda.skoltech.ru/~d.smirnov/ComputationalAgingCourse/">http://arcuda.skoltech.ru/~d.smirnov/ComputationalAgingCourse/</a></p>
+<h2><span class="section-number">2.1. </span>Preparing the data<a class="headerlink" href="#preparing-the-data" title="Link to this heading">#</a></h2>
+<p>We will start with uploading the expression data table together with the meta file containing a brief sample description (age, ethnicity). While the original study includes both male and female profiles, we selected only the male ones for simplicity of further analysis. Processed files (<em>data_fibroblasts.csv</em> and <em>meta_fibroblasts.csv</em>) are available here: <a class="reference external" href="https://www.dropbox.com/scl/fo/ma7zolpu62s9lcybjlc4h/AFIw64bZXGLumx9QJCfzCD4?rlkey=3agxgg1g91ehqa3rpordereyl&amp;dl=0">https://www.dropbox.com/scl/fo/ma7zolpu62s9lcybjlc4h/AFIw64bZXGLumx9QJCfzCD4?rlkey=3agxgg1g91ehqa3rpordereyl&amp;dl=0</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
 
-<span class="n">path_data</span> <span class="o">=</span> <span class="s2">&quot;data/data_fibroblasts.csv&quot;</span> <span class="c1"># change this with your actual path to data file</span>
+<span class="n">path_data</span> <span class="o">=</span> <span class="s2">"data/data_fibroblasts.csv"</span> <span class="c1"># change this with your actual path to data file</span>
 <span class="n">raw_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_data</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Check the number of gene features and number of samples available in the dataset:</p>
+<p>Check the number of gene features and the number of samples available in the dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of genes:&quot;</span><span class="p">,</span> <span class="n">raw_counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of samples:&quot;</span><span class="p">,</span> <span class="n">raw_counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Number of genes:"</span><span class="p">,</span> <span class="n">raw_counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of samples:"</span><span class="p">,</span> <span class="n">raw_counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -663,7 +529,7 @@ Number of samples: 99
 </div>
 </div>
 </div>
-<p>This table includes expression profiles of 99 samples with 29744 genes detected. However, some of this genes can have zero expression values across samples. We will filter them out:</p>
+<p>This table includes expression profiles of 99 samples with 29744 genes detected. However, some of these genes can have zero expression values across samples. We will filter them out:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw_counts</span> <span class="o">=</span> <span class="n">raw_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">raw_counts</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
@@ -677,10 +543,10 @@ Number of samples: 99
 </div>
 </div>
 </div>
-<p>Then we will load meta file with sample descriptions:</p>
+<p>Then we will load the meta file with sample descriptions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_meta</span> <span class="o">=</span> <span class="s2">&quot;data/meta_fibroblasts.csv&quot;</span> <span class="c1"># change this with your actual path to meta file</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_meta</span> <span class="o">=</span> <span class="s2">"data/meta_fibroblasts.csv"</span> <span class="c1"># change this with your actual path to meta file</span>
 <span class="n">meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_meta</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">meta</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -764,11 +630,11 @@ Number of samples: 99
 </table>
 </div></div></div>
 </div>
-<p>Let’s check age range of our samples using the information from the first column of the <em>meta</em></p>
+<p>Let’s check the age range of our samples using the information from the first column of the <em>meta</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Minimal age:&quot;</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maximal age:&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Minimal age:"</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Maximal age:"</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -782,12 +648,9 @@ Maximal age: 96
 <p>To perform further analysis we will divide samples into age groups with a step = 10 years.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">right</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">ordered</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-<span class="n">meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">meta</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">meta</span><span class="p">[</span><span class="s1">&#39;AgeRanges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;AgeBins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">meta</span><span class="p">[</span><span class="s2">"Age"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">meta</span><span class="p">[</span><span class="s2">"AgeBins"</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span>  <span class="c1"># index of the age group: 0 for [0, 10), 1 for [10, 20), ...</span>
+<span class="n">meta</span><span class="p">[</span><span class="s2">"AgeRanges"</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <span class="n">meta</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -858,99 +721,178 @@ Maximal age: 96
 </div></div></div>
 </div>
 </section>
-<section id="setting-up-rpy2-functions">
-<h2><span class="section-number">2.2. </span>Setting up rpy2 functions<a class="headerlink" href="#setting-up-rpy2-functions" title="Permalink to this headline">#</a></h2>
+<section id="setting-up-deseq2">
+<h2><span class="section-number">2.2. </span>Setting up DESeq2<a class="headerlink" href="#setting-up-deseq2" title="Link to this heading">#</a></h2>
+<p>We will run DESeq2 with <a class="reference external" href="https://inmoose.readthedocs.io">InMoose</a>, a Python port of the DESeq2 R package. InMoose does not implement the likelihood ratio test (LRT) yet, so the hidden cell below adds a port of the corresponding DESeq2 function to it.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Likelihood ratio test for InMoose: a port of nbinomLRT() from the DESeq2 R package</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">chi2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inmoose.deseq2.core</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_core</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inmoose.deseq2.lrt</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_lrt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inmoose.deseq2.outliers</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_outliers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">inmoose.deseq2.fitNbinomGLMs</span><span class="w"> </span><span class="kn">import</span> <span class="n">fitNbinomGLMs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">inmoose.deseq2.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">buildDataFrameWithNACols</span><span class="p">,</span> <span class="n">buildMatrixWithNACols</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">inmoose.deseq2.wald</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculateCooksDistance</span><span class="p">,</span> <span class="n">recordMaxCooks</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nbinomLRT</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reduced</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">betaTol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">useOptim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">useQR</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">minmu</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">type_</span><span class="o">=</span><span class="s2">"DESeq2"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Likelihood ratio test for NB GLMs: port of DESeq2::nbinomLRT (type="DESeq2")."""</span>
+    <span class="k">if</span> <span class="n">type_</span> <span class="o">!=</span> <span class="s2">"DESeq2"</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"only type_='DESeq2' is supported"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">"dispersion"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"testing requires dispersion estimates, first call estimateDispersions()"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">reduced</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'provide a reduced design for the LRT, e.g. reduced="~1"'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">full</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">full</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">design</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">full</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">reduced</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">df</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"less than one degree of freedom, perhaps full and reduced models are not in the correct order"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">removeResults</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s2">"allZero"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="p">:</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">getBaseMeansAndVariances</span><span class="p">()</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">modelMatrixType</span> <span class="o">=</span> <span class="s2">"standard"</span>
+    <span class="n">hasIntercept</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">factors</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">design</span><span class="o">.</span><span class="n">design_info</span><span class="o">.</span><span class="n">terms</span><span class="p">]</span>
+    <span class="n">objNZ</span> <span class="o">=</span> <span class="n">obj</span><span class="p">[:,</span> <span class="o">~</span><span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s2">"allZero"</span><span class="p">]]</span>
+
+    <span class="n">fit_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">betaTol</span><span class="o">=</span><span class="n">betaTol</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="n">maxit</span><span class="p">,</span> <span class="n">useOptim</span><span class="o">=</span><span class="n">useOptim</span><span class="p">,</span> <span class="n">useQR</span><span class="o">=</span><span class="n">useQR</span><span class="p">,</span>
+                    <span class="n">warnNonposVar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">minmu</span><span class="o">=</span><span class="n">minmu</span><span class="p">)</span>
+    <span class="n">fullModel</span> <span class="o">=</span> <span class="n">fitNbinomGLMs</span><span class="p">(</span><span class="n">objNZ</span><span class="p">,</span> <span class="n">modelMatrix</span><span class="o">=</span><span class="n">full</span><span class="p">,</span> <span class="n">renameCols</span><span class="o">=</span><span class="n">hasIntercept</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_args</span><span class="p">)</span>
+    <span class="n">reducedModel</span> <span class="o">=</span> <span class="n">fitNbinomGLMs</span><span class="p">(</span><span class="n">objNZ</span><span class="p">,</span> <span class="n">modelMatrix</span><span class="o">=</span><span class="n">reduced</span><span class="p">,</span> <span class="n">modelFormula</span><span class="o">=</span><span class="n">reduced</span><span class="p">,</span>
+                                 <span class="n">renameCols</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_args</span><span class="p">)</span>
+
+    <span class="n">LRTStatistic</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fullModel</span><span class="p">[</span><span class="s2">"logLike"</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">reducedModel</span><span class="p">[</span><span class="s2">"logLike"</span><span class="p">]))</span>
+    <span class="n">LRTPvalue</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">LRTStatistic</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+    <span class="n">modelMatrix</span> <span class="o">=</span> <span class="n">fullModel</span><span class="p">[</span><span class="s2">"modelMatrix"</span><span class="p">]</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">fullModel</span><span class="p">[</span><span class="s2">"hat_diagonals"</span><span class="p">]</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">fullModel</span><span class="p">[</span><span class="s2">"mu"</span><span class="p">]</span>
+
+    <span class="n">objNZ</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">"mu"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mu</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">"mu"</span><span class="p">]</span> <span class="o">=</span> <span class="n">buildMatrixWithNACols</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s2">"allZero"</span><span class="p">])</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">"H"</span><span class="p">]</span> <span class="o">=</span> <span class="n">buildMatrixWithNACols</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s2">"allZero"</span><span class="p">])</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">dispModelMatrix</span> <span class="o">=</span> <span class="n">modelMatrix</span>
+    <span class="n">cooks</span> <span class="o">=</span> <span class="n">calculateCooksDistance</span><span class="p">(</span><span class="n">objNZ</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">modelMatrix</span><span class="p">)</span>
+    <span class="n">maxCooks</span> <span class="o">=</span> <span class="n">recordMaxCooks</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">design</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">obs</span><span class="p">,</span> <span class="n">modelMatrix</span><span class="p">,</span> <span class="n">cooks</span><span class="p">,</span> <span class="n">objNZ</span><span class="o">.</span><span class="n">n_vars</span><span class="p">)</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">"cooks"</span><span class="p">]</span> <span class="o">=</span> <span class="n">buildMatrixWithNACols</span><span class="p">(</span><span class="n">cooks</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s2">"allZero"</span><span class="p">])</span>
+
+    <span class="n">obj</span><span class="o">.</span><span class="n">betaPrior</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">betaPriorVar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">modelMatrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1e6</span><span class="p">)</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">modelMatrix</span> <span class="o">=</span> <span class="n">modelMatrix</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">reducedModelMatrix</span> <span class="o">=</span> <span class="n">reduced</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="s2">"LRT"</span>
+
+    <span class="n">names</span> <span class="o">=</span> <span class="n">modelMatrix</span><span class="o">.</span><span class="n">design_info</span><span class="o">.</span><span class="n">column_names</span>
+    <span class="n">betaMatrix</span> <span class="o">=</span> <span class="n">fullModel</span><span class="p">[</span><span class="s2">"betaMatrix"</span><span class="p">]</span>
+    <span class="n">betaMatrix</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">objNZ</span><span class="o">.</span><span class="n">var_names</span>
+    <span class="n">betaSE</span> <span class="o">=</span> <span class="n">fullModel</span><span class="p">[</span><span class="s2">"betaSE"</span><span class="p">]</span>
+    <span class="n">betaSE</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">objNZ</span><span class="o">.</span><span class="n">var_names</span>
+    <span class="n">betaSE</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"SE_</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+    <span class="n">resultsDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">betaMatrix</span><span class="p">,</span> <span class="n">betaSE</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">resultsDF</span><span class="p">[</span><span class="s2">"LRTStatistic"</span><span class="p">]</span> <span class="o">=</span> <span class="n">LRTStatistic</span>
+    <span class="n">resultsDF</span><span class="p">[</span><span class="s2">"LRTPvalue"</span><span class="p">]</span> <span class="o">=</span> <span class="n">LRTPvalue</span>
+    <span class="n">resultsDF</span><span class="p">[</span><span class="s2">"fullBetaConv"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fullModel</span><span class="p">[</span><span class="s2">"betaConv"</span><span class="p">]</span>
+    <span class="n">resultsDF</span><span class="p">[</span><span class="s2">"reducedBetaConv"</span><span class="p">]</span> <span class="o">=</span> <span class="n">reducedModel</span><span class="p">[</span><span class="s2">"betaConv"</span><span class="p">]</span>
+    <span class="n">resultsDF</span><span class="p">[</span><span class="s2">"betaIter"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fullModel</span><span class="p">[</span><span class="s2">"betaIter"</span><span class="p">]</span>
+    <span class="n">resultsDF</span><span class="p">[</span><span class="s2">"deviance"</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fullModel</span><span class="p">[</span><span class="s2">"logLike"</span><span class="p">])</span>
+    <span class="n">resultsDF</span><span class="p">[</span><span class="s2">"maxCooks"</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxCooks</span>
+    <span class="n">LRTResults</span> <span class="o">=</span> <span class="n">buildDataFrameWithNACols</span><span class="p">(</span><span class="n">resultsDF</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s2">"allZero"</span><span class="p">])</span>
+    <span class="n">LRTResults</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">var_names</span>
+
+    <span class="n">new_var</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="p">,</span> <span class="n">LRTResults</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">new_var</span><span class="o">.</span><span class="n">type</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">type</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+        <span class="n">new_var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">new_var</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">LRTResults</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">type</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"results"</span>
+    <span class="n">comparison</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"'</span><span class="si">{</span><span class="n">full</span><span class="o">.</span><span class="n">design_info</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="si">}</span><span class="s2">' vs '</span><span class="si">{</span><span class="n">reduced</span><span class="o">.</span><span class="n">design_info</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="si">}</span><span class="s2">'"</span>
+    <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">betaMatrix</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"log2 fold change (MLE): </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">betaSE</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"standard error: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="s2">"LRTStatistic"</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"LRT statistic: </span><span class="si">{</span><span class="n">comparison</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="s2">"LRTPvalue"</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"LRT p-value: </span><span class="si">{</span><span class="n">comparison</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="s2">"fullBetaConv"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"convergence of betas for full model"</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="s2">"reducedBetaConv"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"convergence of betas for reduced model"</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="s2">"betaIter"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"iterations for betas for full model"</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="s2">"deviance"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"deviance of the full model"</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="s2">"maxCooks"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"maximum Cook's distance for column"</span>
+    <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="c1"># plug the port into InMoose (DESeq() and the outlier-refitting step call nbinomLRT)</span>
+<span class="n">_lrt</span><span class="o">.</span><span class="n">nbinomLRT</span> <span class="o">=</span> <span class="n">_core</span><span class="o">.</span><span class="n">nbinomLRT</span> <span class="o">=</span> <span class="n">_outliers</span><span class="o">.</span><span class="n">nbinomLRT</span> <span class="o">=</span> <span class="n">nbinomLRT</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rpy2</span> <span class="kn">import</span> <span class="n">robjects</span>
-<span class="kn">from</span> <span class="nn">rpy2.robjects.packages</span> <span class="kn">import</span> <span class="n">importr</span>
-<span class="kn">from</span> <span class="nn">rpy2.robjects</span> <span class="kn">import</span> <span class="n">pandas2ri</span><span class="p">,</span> <span class="n">Formula</span>
-<span class="kn">import</span> <span class="nn">rpy2.robjects.numpy2ri</span>
-<span class="n">pandas2ri</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
-<span class="n">robjects</span><span class="o">.</span><span class="n">numpy2ri</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
-<span class="kn">from</span> <span class="nn">rpy2.robjects.conversion</span> <span class="kn">import</span> <span class="n">localconverter</span>
-<span class="kn">from</span> <span class="nn">rpy2.rinterface_lib.embedded</span> <span class="kn">import</span> <span class="n">RRuntimeError</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">inmoose.deseq2</span><span class="w"> </span><span class="kn">import</span> <span class="n">DESeqDataSet</span><span class="p">,</span> <span class="n">DESeq</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">inmoose.deseq2.vst</span><span class="w"> </span><span class="kn">import</span> <span class="n">varianceStabilizingTransformation</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deseq</span> <span class="o">=</span> <span class="n">importr</span><span class="p">(</span><span class="s1">&#39;DESeq2&#39;</span><span class="p">)</span>
-<span class="n">sumexp</span> <span class="o">=</span> <span class="n">importr</span><span class="p">(</span><span class="s1">&#39;SummarizedExperiment&#39;</span><span class="p">)</span>
-<span class="n">degreport</span> <span class="o">=</span> <span class="n">importr</span><span class="p">(</span><span class="s1">&#39;DEGreport&#39;</span><span class="p">)</span>
-<span class="n">to_dataframe</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="s2">&quot;function(x) data.frame(x)&quot;</span><span class="p">)</span>
-<span class="n">get_clusters</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="s2">&quot;function(x) x[[&#39;df&#39;]]&quot;</span><span class="p">)</span>
-<span class="n">get_cluster_data</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="s2">&quot;function(x) x[[&#39;normalized&#39;]]&quot;</span><span class="p">)</span>
-<span class="n">to_factors</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="s2">&quot;function(x) data.frame(lapply(x,factor))&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DESeq2</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">design</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">py2rpy</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">meta_chr</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">py2rpy</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="n">to_factors</span><span class="p">(</span><span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">py2rpy</span><span class="p">(</span><span class="n">meta</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DESeq2</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">design</span><span class="p">):</span>
+        <span class="c1"># InMoose expects samples in rows and genes in columns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta_raw</span> <span class="o">=</span> <span class="n">meta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">design</span> <span class="o">=</span> <span class="n">design</span>
-        
-    <span class="k">def</span> <span class="nf">create_deseq_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dds</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">DESeqDataSetFromMatrix</span><span class="p">(</span><span class="n">countData</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">,</span> <span class="n">colData</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">,</span> <span class="n">design</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">design</span><span class="p">)</span>
-        
-    <span class="k">def</span> <span class="nf">normalization</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dds</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">estimateSizeFactors_DESeqDataSet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">)</span>
-        <span class="n">norm_counts</span> <span class="o">=</span> <span class="n">to_dataframe</span><span class="p">(</span><span class="n">deseq</span><span class="o">.</span><span class="n">counts_DESeqDataSet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-        <span class="n">norm_counts</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">norm_counts</span><span class="p">)</span>
-        <span class="n">norm_counts</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
-        <span class="n">norm_counts</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
-        <span class="k">return</span> <span class="n">norm_counts</span>
-    
-    <span class="k">def</span> <span class="nf">transformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;vst&quot;</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;vst&quot;</span><span class="p">:</span>
-            <span class="n">mat</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">varianceStabilizingTransformation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">blind</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;rlog&quot;</span><span class="p">:</span>
-            <span class="n">mat</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">rlog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">blind</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-            
-        <span class="n">mat</span> <span class="o">=</span> <span class="n">to_dataframe</span><span class="p">(</span><span class="n">sumexp</span><span class="o">.</span><span class="n">assay</span><span class="p">(</span><span class="n">mat</span><span class="p">))</span>
-        <span class="n">mat</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-        <span class="n">mat</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
-        <span class="n">mat</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>   
-        <span class="k">return</span> <span class="n">mat</span>
-    
-    <span class="k">def</span> <span class="nf">LRT_testing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">dds_lrt</span> <span class="o">=</span> <span class="n">deseq</span><span class="o">.</span><span class="n">DESeq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s2">&quot;LRT&quot;</span><span class="p">,</span> <span class="n">reduced</span> <span class="o">=</span> <span class="n">Formula</span><span class="p">(</span><span class="s2">&quot;~1&quot;</span><span class="p">))</span>
-            <span class="n">res_LRT</span> <span class="o">=</span> <span class="n">to_dataframe</span><span class="p">(</span><span class="n">deseq</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">dds_lrt</span><span class="p">))</span>
-            <span class="n">res_LRT</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">res_LRT</span><span class="p">)</span>
-        <span class="k">except</span> <span class="n">rpy2</span><span class="o">.</span><span class="n">rinterface_lib</span><span class="o">.</span><span class="n">embedded</span><span class="o">.</span><span class="n">RRuntimeError</span><span class="p">:</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">res_LRT</span>
-    
-    <span class="k">def</span> <span class="nf">clustering</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster_mat</span><span class="p">):</span>
-        <span class="n">cluster_mat</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">py2rpy</span><span class="p">(</span><span class="n">cluster_mat</span><span class="p">)</span>
-        <span class="n">dp</span> <span class="o">=</span> <span class="n">degreport</span><span class="o">.</span><span class="n">degPatterns</span><span class="p">(</span><span class="n">cluster_mat</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_chr</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="s2">&quot;AgeBins&quot;</span><span class="p">)</span>
-        <span class="n">cluster_content</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">get_clusters</span><span class="p">(</span><span class="n">dp</span><span class="p">))</span>
-        <span class="n">cluster_data</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">rpy2py</span><span class="p">(</span><span class="n">get_cluster_data</span><span class="p">(</span><span class="n">dp</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">cluster_content</span><span class="p">,</span> <span class="n">cluster_data</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_deseq_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dds</span> <span class="o">=</span> <span class="n">DESeqDataSet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="p">,</span> <span class="n">clinicalData</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">,</span> <span class="n">design</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">design</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">normalization</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="o">.</span><span class="n">estimateSizeFactors</span><span class="p">()</span>
+        <span class="n">norm_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="o">.</span><span class="n">counts</span><span class="p">(</span><span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                                   <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">norm_counts</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">transformation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">varianceStabilizingTransformation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">blind</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_counts</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">LRT_testing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dds</span> <span class="o">=</span> <span class="n">DESeq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s2">"LRT"</span><span class="p">,</span> <span class="n">reduced</span><span class="o">=</span><span class="s2">"~1"</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dds</span><span class="o">.</span><span class="n">results</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"adj_pvalue"</span><span class="p">:</span> <span class="s2">"padj"</span><span class="p">})</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">clustering</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster_mat</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">degPatterns</span><span class="p">(</span><span class="n">cluster_mat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_raw</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">"AgeBins"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="normalization">
-<h2><span class="section-number">2.3. </span>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">#</a></h2>
-<p>Specify a design formula for statistical testing with DESeq2 (it is important to put the factor of interest in the end of the formula!):</p>
+<h2><span class="section-number">2.3. </span>Normalization<a class="headerlink" href="#normalization" title="Link to this heading">#</a></h2>
+<p>Specify a design formula for statistical testing with DESeq2 (it is important to put the factor of interest at the end of the formula!):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">design</span> <span class="o">=</span> <span class="n">Formula</span><span class="p">(</span><span class="s2">&quot;~AgeBins&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">design</span> <span class="o">=</span> <span class="s2">"~AgeBins"</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">DESeq2</span><span class="p">(</span><span class="n">raw_counts</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">design</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Initialize DESeq2 object with our data:</p>
+<p>Initialize a DESeq2 object with our data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">create_deseq_object</span><span class="p">()</span>
@@ -966,26 +908,26 @@ Maximal age: 96
 </div>
 </div>
 </div>
-<p>Then transform data using variance stabilizing transformation (VST) to get rid of heteroskedasticity:</p>
+<p>Then transform the data using the variance stabilizing transformation (VST) to get rid of heteroskedasticity:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vst_mat</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">transformation</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;vst&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vst_mat</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">transformation</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="quality-control">
-<h2><span class="section-number">2.4. </span>Quality control<a class="headerlink" href="#quality-control" title="Permalink to this headline">#</a></h2>
-<p>Before differential analysis we will explore a similarityof the samples in the age groups</p>
+<h2><span class="section-number">2.4. </span>Quality control<a class="headerlink" href="#quality-control" title="Link to this heading">#</a></h2>
+<p>Before differential analysis we will explore the similarity of the samples in the age groups.</p>
 <section id="principal-component-analysis">
-<h3><span class="section-number">2.4.1. </span>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.4.1. </span>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
 </pre></div>
 </div>
 </div>
@@ -1000,7 +942,7 @@ Maximal age: 96
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1014,7 +956,7 @@ Maximal age: 96
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">principalDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">principalComponents</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">principalDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">principalComponents</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'PC1'</span><span class="p">,</span> <span class="s1">'PC2'</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1029,26 +971,23 @@ Maximal age: 96
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pcdf</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;PC2&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;AgeRanges&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">"paper"</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">age_order</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"AgeBins"</span><span class="p">)[</span><span class="s2">"AgeRanges"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pcdf</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"PC1"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"PC2"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"AgeRanges"</span><span class="p">,</span> <span class="n">hue_order</span><span class="o">=</span><span class="n">age_order</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
 
 <span class="n">var_pc1</span> <span class="o">=</span> <span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">var_pc2</span> <span class="o">=</span> <span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PC1, (&#39;</span><span class="o">+</span> <span class="n">var_pc1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PC2, (&#39;</span><span class="o">+</span> <span class="n">var_pc2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'PC1, ('</span><span class="o">+</span> <span class="n">var_pc1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"%)"</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'PC2, ('</span><span class="o">+</span> <span class="n">var_pc2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"%)"</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
-
-<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">handles</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">order</span><span class="p">],[</span><span class="n">labels</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">order</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/differential_analysis_practice_36_0.png" src="../_images/differential_analysis_practice_36_0.png" />
+<img alt="../_images/2ce64b9e246ee78861e96665b48a8cdebb2158f555091e03a0626f3a6e7dcee4.png" src="../_images/2ce64b9e246ee78861e96665b48a8cdebb2158f555091e03a0626f3a6e7dcee4.png" />
 </div>
 </div>
 <div class="dropdown admonition">
@@ -1058,8 +997,8 @@ Maximal age: 96
 </section>
 </section>
 <section id="statistical-testing">
-<h2><span class="section-number">2.5. </span>Statistical testing<a class="headerlink" href="#statistical-testing" title="Permalink to this headline">#</a></h2>
-<p>Run Likelihood Ratio Test (LRT) available in DESeq2 package:</p>
+<h2><span class="section-number">2.5. </span>Statistical testing<a class="headerlink" href="#statistical-testing" title="Link to this heading">#</a></h2>
+<p>Run the Likelihood Ratio Test (LRT) available in the DESeq2 package:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
@@ -1071,15 +1010,15 @@ Maximal age: 96
 <p>Sort genes by the adjusted p-value:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;padj&#39;</span><span class="p">])</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">'padj'</span><span class="p">,</span> <span class="s1">'pvalue'</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">'stable'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Retrieve all the genes satisfying p-value cut-off criteria <span class="math notranslate nohighlight">\(P&lt;0.05\)</span>:</p>
+<p>Retrieve all the genes satisfying the p-value cut-off criterion <span class="math notranslate nohighlight">\(P&lt;0.05\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sig</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;padj&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sig</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="s1">'padj'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1087,24 +1026,24 @@ Maximal age: 96
 <p>Check the number of significant genes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of DE genes:&quot;</span><span class="p">,</span> <span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Number of DE genes:"</span><span class="p">,</span> <span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of DE genes: 8449
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of DE genes: 8447
 </pre></div>
 </div>
 </div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise 2</p>
-<p>Define the number of up- and down-regulated genes in the analysis (0.5 points). Investigate the top 10 DE genes from up and down lists. Do they have any established connection with aging? If yes, support your claim with some references and short description of their functions. (1.5 points).</p>
+<p>Determine the number of up- and down-regulated genes in the analysis (0.5 points). Investigate the top 10 DE genes from the up and down lists. Do they have any established connection with aging? If yes, support your claim with some references and a short description of their functions (1.5 points).</p>
 </div>
 </section>
 <section id="gene-clustering">
-<h2><span class="section-number">2.6. </span>Gene clustering<a class="headerlink" href="#gene-clustering" title="Permalink to this headline">#</a></h2>
-<p>To perform gene clustering we will select only a subset of significant genes, let’s say 1800 the most significant features</p>
+<h2><span class="section-number">2.6. </span>Gene clustering<a class="headerlink" href="#gene-clustering" title="Link to this heading">#</a></h2>
+<p>To perform gene clustering we will select only a subset of significant genes, let’s say the 1800 most significant features:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngenes</span> <span class="o">=</span> <span class="mi">1800</span>
@@ -1119,7 +1058,172 @@ Maximal age: 96
 </div>
 </div>
 </div>
-<p>Perform gene clustering by executing <em>degPatterns</em> functions from DEGreport R package:</p>
+<p>Perform gene clustering with <em>degPatterns</em>, a Python port of the function from the DEGreport R package (the code is hidden in the cell below):</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># degPatterns(): a port of the gene-pattern clustering from the DEGreport R package</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_kendall_dist</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""(1 - Kendall tau-b)^2 between rows of m, computed like R's cor(method="kendall")."""</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">signs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">m</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">signs</span> <span class="o">@</span> <span class="n">signs</span><span class="o">.</span><span class="n">T</span>                   <span class="c1"># sum over all ordered pairs, as in R</span>
+    <span class="n">sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">s</span> <span class="o">/</span> <span class="p">(</span><span class="n">sd</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">sd</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tau</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_diana_banner</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Divisive analysis (DIANA); port of splyt() from R's cluster package.</span>
+<span class="sd">    Returns the banner order (0-based object indices) and banner heights."""</span>
+    <span class="n">nn</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">kwan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">nn</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ban</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">nn</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ner</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">nn</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># 1-based positions -&gt; 1-based objects</span>
+    <span class="n">kwan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nn</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">ja</span><span class="p">,</span> <span class="n">nclu</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">block</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>  <span class="c1"># sequential row sums of d[a, b], summed in the same order as the C code</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">jb</span> <span class="o">=</span> <span class="n">ja</span> <span class="o">+</span> <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">jma</span> <span class="o">=</span> <span class="n">jb</span>
+        <span class="k">if</span> <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwan</span><span class="p">[</span><span class="n">jb</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">ban</span><span class="p">[</span><span class="n">jb</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ner</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ner</span><span class="p">[</span><span class="n">jb</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ner</span><span class="p">[</span><span class="n">ja</span><span class="p">:</span><span class="n">jb</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">lndsd</span> <span class="o">=</span> <span class="n">ja</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">block</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx</span><span class="p">)))</span>
+            <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">kwan</span><span class="p">[</span><span class="n">jb</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">jb</span> <span class="o">!=</span> <span class="n">lndsd</span><span class="p">:</span>
+                <span class="n">lchan</span> <span class="o">=</span> <span class="n">ner</span><span class="p">[</span><span class="n">lndsd</span><span class="p">]</span>
+                <span class="n">ner</span><span class="p">[</span><span class="n">lndsd</span><span class="p">:</span><span class="n">jb</span><span class="p">]</span> <span class="o">=</span> <span class="n">ner</span><span class="p">[</span><span class="n">lndsd</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">jb</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">ner</span><span class="p">[</span><span class="n">jb</span><span class="p">]</span> <span class="o">=</span> <span class="n">lchan</span>
+            <span class="n">splyn</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">jma</span> <span class="o">=</span> <span class="n">jb</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">splyn</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">rest</span> <span class="o">=</span> <span class="n">jma</span> <span class="o">-</span> <span class="n">ja</span>
+                <span class="n">rem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ner</span><span class="p">[</span><span class="n">ja</span><span class="p">:</span><span class="n">jma</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="n">spl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ner</span><span class="p">[</span><span class="n">jma</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">jb</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="n">dyff</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">rem</span><span class="p">,</span> <span class="n">rem</span><span class="p">)</span> <span class="o">/</span> <span class="n">rest</span> <span class="o">-</span> <span class="n">block</span><span class="p">(</span><span class="n">rem</span><span class="p">,</span> <span class="n">spl</span><span class="p">)</span> <span class="o">/</span> <span class="n">splyn</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dyff</span><span class="p">))</span>
+                <span class="n">jmb</span> <span class="o">=</span> <span class="n">jma</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">dyff</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">jaway</span> <span class="o">=</span> <span class="n">ja</span> <span class="o">+</span> <span class="n">k</span>
+                <span class="k">if</span> <span class="n">jma</span> <span class="o">!=</span> <span class="n">jaway</span><span class="p">:</span>
+                    <span class="n">lchan</span> <span class="o">=</span> <span class="n">ner</span><span class="p">[</span><span class="n">jaway</span><span class="p">]</span>
+                    <span class="n">ner</span><span class="p">[</span><span class="n">jaway</span><span class="p">:</span><span class="n">jma</span><span class="p">]</span> <span class="o">=</span> <span class="n">ner</span><span class="p">[</span><span class="n">jaway</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">jma</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                    <span class="n">ner</span><span class="p">[</span><span class="n">jma</span><span class="p">]</span> <span class="o">=</span> <span class="n">lchan</span>
+                <span class="k">for</span> <span class="n">lxx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">jmb</span><span class="p">,</span> <span class="n">jb</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">ner</span><span class="p">[</span><span class="n">lxx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">ner</span><span class="p">[</span><span class="n">lxx</span><span class="p">]:</span>
+                        <span class="k">break</span>
+                    <span class="n">ner</span><span class="p">[</span><span class="n">lxx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ner</span><span class="p">[</span><span class="n">lxx</span><span class="p">]</span> <span class="o">=</span> <span class="n">ner</span><span class="p">[</span><span class="n">lxx</span><span class="p">],</span> <span class="n">ner</span><span class="p">[</span><span class="n">lxx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">kwan</span><span class="p">[</span><span class="n">jma</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwan</span><span class="p">[</span><span class="n">jmb</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">kwan</span><span class="p">[</span><span class="n">jmb</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">jma</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">jmb</span> <span class="o">=</span> <span class="n">jma</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">jma</span> <span class="o">==</span> <span class="n">ja</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">ner</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">ner</span><span class="p">[</span><span class="n">jmb</span><span class="p">]:</span>  <span class="c1"># switch the two parts when necessary</span>
+                <span class="n">lxxa</span> <span class="o">=</span> <span class="n">ja</span>
+                <span class="k">for</span> <span class="n">lgrb</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">jmb</span><span class="p">,</span> <span class="n">jb</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="n">lxxa</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">lchan</span> <span class="o">=</span> <span class="n">ner</span><span class="p">[</span><span class="n">lgrb</span><span class="p">]</span>
+                    <span class="n">lxg</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+                    <span class="k">for</span> <span class="n">ll</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lxxa</span><span class="p">,</span> <span class="n">lgrb</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                        <span class="n">lxf</span> <span class="o">=</span> <span class="n">lgrb</span> <span class="o">-</span> <span class="n">ll</span> <span class="o">+</span> <span class="n">lxxa</span>
+                        <span class="n">lxg</span> <span class="o">=</span> <span class="n">lxf</span> <span class="o">-</span> <span class="mi">1</span>
+                        <span class="n">ner</span><span class="p">[</span><span class="n">lxf</span><span class="p">]</span> <span class="o">=</span> <span class="n">ner</span><span class="p">[</span><span class="n">lxg</span><span class="p">]</span>
+                    <span class="n">ner</span><span class="p">[</span><span class="n">lxg</span><span class="p">]</span> <span class="o">=</span> <span class="n">lchan</span>
+                <span class="n">llq</span> <span class="o">=</span> <span class="n">kwan</span><span class="p">[</span><span class="n">jmb</span><span class="p">]</span>
+                <span class="n">kwan</span><span class="p">[</span><span class="n">jmb</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">jma</span> <span class="o">=</span> <span class="n">ja</span> <span class="o">+</span> <span class="n">jb</span> <span class="o">-</span> <span class="n">jma</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="n">jmb</span> <span class="o">=</span> <span class="n">jma</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">kwan</span><span class="p">[</span><span class="n">jmb</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span>
+                <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">=</span> <span class="n">llq</span>
+            <span class="k">if</span> <span class="n">nclu</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">ban</span><span class="p">[</span><span class="n">jmb</span><span class="p">]</span> <span class="o">=</span> <span class="n">cs</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ner</span><span class="p">[</span><span class="n">ja</span><span class="p">:</span><span class="n">jb</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="n">ban</span><span class="p">[</span><span class="n">jmb</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx</span><span class="p">)]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">nclu</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">nclu</span> <span class="o">&gt;=</span> <span class="n">nn</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="c1"># move on to the next cluster that still has to be split</span>
+        <span class="k">if</span> <span class="n">jb</span> <span class="o">!=</span> <span class="n">nn</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">ja</span> <span class="o">+=</span> <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">ja</span> <span class="o">&gt;</span> <span class="n">nn</span> <span class="ow">or</span> <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">ja</span> <span class="o">&lt;=</span> <span class="n">nn</span><span class="p">:</span>
+                <span class="k">continue</span>
+        <span class="n">ja</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ja</span> <span class="o">+=</span> <span class="n">kwan</span><span class="p">[</span><span class="n">ja</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">ja</span> <span class="o">&gt;</span> <span class="n">nn</span><span class="p">:</span>
+                <span class="n">ja</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ner</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ban</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_divisive_coef</span><span class="p">(</span><span class="n">ban</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Port of bncoef() from R's cluster package."""</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ban</span><span class="p">)</span>
+    <span class="n">sup</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ban</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">cf</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">syze</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ban</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">ban</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)])</span>
+        <span class="n">cf</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">syze</span> <span class="o">/</span> <span class="n">sup</span>
+    <span class="k">return</span> <span class="n">cf</span> <span class="o">/</span> <span class="n">n</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">degPatterns</span><span class="p">(</span><span class="n">ma</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">minc</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Python port of DEGreport::degPatterns() with its default settings</span>
+<span class="sd">    (summarize="merge", col=NULL, scale=TRUE, reduce=FALSE, consensusCluster=FALSE)."""</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ma</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">time</span><span class="p">]</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">groups</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="c1"># mean expression of every gene within each group of samples</span>
+    <span class="n">counts_group</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">g</span><span class="p">:</span> <span class="n">ma</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">groups</span> <span class="o">==</span> <span class="n">g</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">levels</span><span class="p">})</span>
+    <span class="n">norm_sign</span> <span class="o">=</span> <span class="n">counts_group</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">counts_group</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">counts_group</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># divisive hierarchical clustering on the Kendall distance between group profiles</span>
+    <span class="n">order</span><span class="p">,</span> <span class="n">ban</span> <span class="o">=</span> <span class="n">_diana_banner</span><span class="p">(</span><span class="n">_kendall_dist</span><span class="p">(</span><span class="n">counts_group</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()))</span>
+    <span class="n">dc</span> <span class="o">=</span> <span class="n">_divisive_coef</span><span class="p">(</span><span class="n">ban</span><span class="p">)</span>
+    <span class="c1"># cut the tree at height = divisive coefficient: a new cluster starts wherever the banner exceeds dc</span>
+    <span class="n">run</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">ban</span> <span class="o">&gt;</span> <span class="n">dc</span><span class="p">)</span>
+    <span class="n">label_of</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">order</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">label_of</span><span class="p">[</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="n">run</span>
+    <span class="c1"># number clusters in order of the genes' appearance (as R's cutree does)</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">cluster</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ids</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">lab</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">label_of</span><span class="p">])</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+    <span class="n">keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">sizes</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">sizes</span> <span class="o">&gt;</span> <span class="n">minc</span><span class="p">])</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"genes"</span><span class="p">:</span> <span class="n">ma</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="s2">"cluster"</span><span class="p">:</span> <span class="n">cluster</span><span class="p">[</span><span class="n">keep</span><span class="p">]})</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ma</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">clust_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">norm_sign</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">content</span><span class="p">[</span><span class="s2">"genes"</span><span class="p">]]</span>
+                  <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">"genes"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">time</span><span class="p">)</span>
+                  <span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"value"</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+                  <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"genes"</span><span class="p">)</span>
+                  <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">time</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">content</span><span class="p">,</span> <span class="n">clust_data</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
@@ -1128,64 +1232,65 @@ Maximal age: 96
 </div>
 </div>
 </div>
-<p>The function above returned 15 clusters consisting of more than 16 genes that are simialar in thir expression patterns.</p>
+<p>The function above returned 15 clusters consisting of more than 15 genes that are similar in their expression patterns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({1: 248,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({4: 471,
          2: 415,
-         3: 110,
-         4: 471,
-         5: 36,
+         1: 248,
          6: 186,
+         3: 110,
          7: 56,
-         8: 20,
+         14: 42,
+         20: 40,
+         12: 37,
+         5: 36,
          9: 35,
+         8: 20,
          10: 18,
          11: 16,
-         12: 37,
-         14: 42,
-         17: 16,
-         20: 40})
+         17: 16})
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can use a content from <em>clust_data</em> dataframe to explore obtained expression patterns and plot them with seaborn library</p>
+<p>We can use the content of the <em>clust_data</em> dataframe to explore the obtained expression patterns and plot them with the seaborn library:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">clust_data</span><span class="p">,</span> 
-                <span class="n">x</span><span class="o">=</span><span class="s1">&#39;AgeRanges&#39;</span><span class="p">,</span> 
-                <span class="n">y</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> 
-                <span class="n">col</span><span class="o">=</span><span class="s1">&#39;cluster&#39;</span><span class="p">,</span> 
-                <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">,</span> 
+                <span class="n">x</span><span class="o">=</span><span class="s1">'AgeRanges'</span><span class="p">,</span> 
+                <span class="n">y</span><span class="o">=</span><span class="s1">'value'</span><span class="p">,</span> 
+                <span class="n">col</span><span class="o">=</span><span class="s1">'cluster'</span><span class="p">,</span> 
+                <span class="n">kind</span><span class="o">=</span><span class="s1">'box'</span><span class="p">,</span> 
                 <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
+                <span class="n">col_order</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span>
                 <span class="n">order</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">clust_data</span><span class="o">.</span><span class="n">AgeRanges</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
-<span class="n">g</span><span class="o">.</span><span class="n">set_axis_labels</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Z-score of gene abundance&quot;</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set_axis_labels</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"Z-score of gene abundance"</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 <span class="n">axes</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-<span class="n">gene_number</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">cluster_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">gene_number</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">gene_number</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">cluster_ids</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">gene_number</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axes</span><span class="p">)):</span>
-    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Cluster &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cluster_ids</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;, [&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">gene_number</span><span class="p">[</span><span class="n">cluster_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span> <span class="o">+</span> <span class="s2">&quot; genes]&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Cluster "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cluster_ids</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s2">", ["</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">gene_number</span><span class="p">[</span><span class="n">cluster_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span> <span class="o">+</span> <span class="s2">" genes]"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/differential_analysis_practice_57_0.png" src="../_images/differential_analysis_practice_57_0.png" />
+<img alt="../_images/efe49b2be0a7c505eb6d13e0383fee9949483c66db87998dcdfcf60b0f7b8eaf.png" src="../_images/efe49b2be0a7c505eb6d13e0383fee9949483c66db87998dcdfcf60b0f7b8eaf.png" />
 </div>
 </div>
 </section>
 <section id="go-analysis">
-<h2><span class="section-number">2.7. </span>GO analysis<a class="headerlink" href="#go-analysis" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.7. </span>GO analysis<a class="headerlink" href="#go-analysis" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gseapy</span>
-<span class="kn">from</span> <span class="nn">gseapy</span> <span class="kn">import</span> <span class="n">barplot</span><span class="p">,</span> <span class="n">dotplot</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gseapy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gseapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">dotplot</span>
 </pre></div>
 </div>
 </div>
@@ -1200,48 +1305,48 @@ Maximal age: 96
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enr</span> <span class="o">=</span> <span class="n">gseapy</span><span class="o">.</span><span class="n">enrichr</span><span class="p">(</span><span class="n">gene_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">content</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster_id</span><span class="p">]</span><span class="o">.</span><span class="n">genes</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enr</span> <span class="o">=</span> <span class="n">gseapy</span><span class="o">.</span><span class="n">enrichr</span><span class="p">(</span><span class="n">gene_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">content</span><span class="p">[</span><span class="s1">'cluster'</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster_id</span><span class="p">]</span><span class="o">.</span><span class="n">genes</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
                      <span class="n">background</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                     <span class="n">gene_sets</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GO_Biological_Process_2021&#39;</span><span class="p">,</span> 
-                                <span class="s1">&#39;GO_Cellular_Component_2021&#39;</span><span class="p">,</span> 
-                                <span class="s1">&#39;GO_Molecular_Function_2021&#39;</span><span class="p">],</span>
-                     <span class="n">organism</span><span class="o">=</span><span class="s1">&#39;human&#39;</span><span class="p">,</span>
+                     <span class="n">gene_sets</span><span class="o">=</span><span class="p">[</span><span class="s1">'GO_Biological_Process_2021'</span><span class="p">,</span> 
+                                <span class="s1">'GO_Cellular_Component_2021'</span><span class="p">,</span> 
+                                <span class="s1">'GO_Molecular_Function_2021'</span><span class="p">],</span>
+                     <span class="n">organism</span><span class="o">=</span><span class="s1">'human'</span><span class="p">,</span>
                      <span class="n">outdir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>For the simplicity we will drop non informative columns and keep the terms posessing ‘Adjusted P-value’ &lt; 0.05</p>
+<p>For simplicity, we will drop non-informative columns and keep the terms possessing ‘Adjusted P-value’ &lt; 0.05:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enr_res</span> <span class="o">=</span> <span class="n">enr</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span>
-<span class="n">enr_res</span> <span class="o">=</span> <span class="n">enr_res</span><span class="p">[</span><span class="n">enr_res</span><span class="p">[</span><span class="s1">&#39;Adjusted P-value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enr_res</span> <span class="o">=</span> <span class="n">enr</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Old P-value"</span><span class="p">,</span> <span class="s2">"Old adjusted P-value"</span><span class="p">,</span> <span class="s2">"Old Adjusted P-value"</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"ignore"</span><span class="p">)</span>
+<span class="n">enr_res</span> <span class="o">=</span> <span class="n">enr_res</span><span class="p">[</span><span class="n">enr_res</span><span class="p">[</span><span class="s1">'Adjusted P-value'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>To visualize top 5 enrichment terms from each set (Biological Process, Cellular_Component, Molecular Function) we can apply <em>dotplot</em> function from gseapy:</p>
+<p>To visualize the top 5 enrichment terms from each set (Biological Process, Cellular Component, Molecular Function), we can apply the <em>dotplot</em> function from gseapy:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dotplot</span><span class="p">(</span><span class="n">enr_res</span><span class="p">,</span>
-              <span class="n">column</span><span class="o">=</span><span class="s2">&quot;Adjusted P-value&quot;</span><span class="p">,</span>
-              <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Gene_set&#39;</span><span class="p">,</span>
+              <span class="n">column</span><span class="o">=</span><span class="s2">"Adjusted P-value"</span><span class="p">,</span>
+              <span class="n">x</span><span class="o">=</span><span class="s1">'Gene_set'</span><span class="p">,</span>
               <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
               <span class="n">top_term</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
               <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
-              <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;GO analysis&quot;</span><span class="p">,</span>
+              <span class="n">title</span> <span class="o">=</span> <span class="s2">"GO analysis"</span><span class="p">,</span>
               <span class="n">xticklabels_rot</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> 
               <span class="n">show_ring</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-              <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+              <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">,</span>
              <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;GO analysis&#39;}, xlabel=&#39;Gene_set&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={'center': 'GO analysis'}, xlabel='Gene_set'&gt;
 </pre></div>
 </div>
-<img alt="../_images/differential_analysis_practice_66_1.png" src="../_images/differential_analysis_practice_66_1.png" />
+<img alt="../_images/2a9f482e092c9e7c8739a25e5fb7ab68f9f4655ff575513d76860ae0792082b2.png" src="../_images/2a9f482e092c9e7c8739a25e5fb7ab68f9f4655ff575513d76860ae0792082b2.png" />
 </div>
 </div>
 <div class="dropdown admonition">
@@ -1250,11 +1355,11 @@ Maximal age: 96
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise 3</p>
-<p>Perform enrichment analysis on genes from cluster 1, 3, 4 using aging related databases: ‘Aging_Perturbations_from_GEO_down’, ‘Aging_Perturbations_from_GEO_up’ and ‘GTEx_Aging_Signatures_2021’ (1 point).</p>
+<p>Perform enrichment analysis on genes from clusters 1, 3, 4 using aging-related databases: ‘Aging_Perturbations_from_GEO_down’, ‘Aging_Perturbations_from_GEO_up’ and ‘GTEx_Aging_Signatures_2021’ (1 point).</p>
 </div>
 </section>
 <section id="learn-more">
-<h2><span class="section-number">2.8. </span>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.8. </span>Learn more<a class="headerlink" href="#learn-more" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Detailed <a class="reference external" href="https://hbctraining.github.io/DGE_workshop_salmon/schedule/">manual</a> on differential expression analysis with DESeq2 in R</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/RNAlysis/">RNA-seq analysis</a> with Python</p></li>
@@ -1262,12 +1367,19 @@ Maximal age: 96
 </ul>
 </section>
 <section id="credits">
-<h2><span class="section-number">2.9. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.9. </span>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook was prepared by <a class="reference external" href="https://crei.skoltech.ru/cls/people/dmitriismirnov">Dmitrii Smirnov</a>.</p>
 </section>
 <section id="references">
-<h2><span class="section-number">2.10. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
-<p>[1] Fleischer, J.G., Schulte, R., Tsai, H.H. et al. Predicting age from the transcriptome of human dermal fibroblasts. Genome Biol 19, 221 (2018). <a class="reference external" href="https://doi.org/10.1186/s13059-018-1599-6%E2%80%9D">https://doi.org/10.1186/s13059-018-1599-6”</a></p>
+<h2><span class="section-number">2.10. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id2">
+<div role="list" class="citation-list">
+<div class="citation" id="id163" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Jason G. Fleischer, Roberta Schulte, Hsiao H. Tsai, Swati Tyagi, Arkaitz Ibarra, Maxim N. Shokhirev, Ling Huang, Martin W. Hetzer, and Saket Navlakha. Predicting age from the transcriptome of human dermal fibroblasts. <em>Genome Biology</em>, 19(1):221, 2018. <a class="reference external" href="https://doi.org/10.1186/s13059-018-1599-6">doi:10.1186/s13059-018-1599-6</a>.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -1283,7 +1395,7 @@ Maximal age: 96
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./stat"
         },
         predefinedOutput: true
@@ -1291,50 +1403,117 @@ Maximal age: 96
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../bio/intro_aging_biology.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1. </span>Introduction to Aging Biology</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../bio/intro_aging_biology.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Introduction to Aging Biology</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../meth/meth.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../meth/meth.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">3. </span>Omics Data Analysis in Aging: Methylomics</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-data">2.1. Preparing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-deseq2">2.2. Setting up DESeq2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">2.3. Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-control">2.4. Quality control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis">2.4.1. Principal Component Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-testing">2.5. Statistical testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gene-clustering">2.6. Gene clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#go-analysis">2.7. GO analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more">2.8. Learn more</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">2.9. Credits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">2.10. References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Kriukov Dmitrii<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Kriukov Dmitrii
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

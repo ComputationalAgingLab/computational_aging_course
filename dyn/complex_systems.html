@@ -1,113 +1,219 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>7. Complex systems approach &#8212; Computational aging book</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="shortcut icon" href="../_static/symbol.png"/>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dyn/complex_systems';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../_static/symbol.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8. System resilience" href="system_resilience.html" />
     <link rel="prev" title="6. Aging Clocks" href="../ml/aging_clocks.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
     
-
-    <!-- Google Analytics -->
-    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
 
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
     
-    <div class="container-fluid" id="banner"></div>
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
 
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
     
-
-    <div class="container-xl">
-      <div class="row">
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/symbol.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Computational aging book</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/symbol.png" class="logo__image only-light" alt="Computational aging book - Home"/>
+    <img src="../_static/symbol.png" class="logo__image only-dark pst-js-only" alt="Computational aging book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,693 +222,551 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Biology of Aging
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Biology of Aging</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../bio/intro_aging_biology.html">
-   1. Introduction to Aging Biology
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../bio/intro_aging_biology.html">1. Introduction to Aging Biology</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Statistical analysis
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistical analysis</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../stat/differential_analysis_practice.html">
-   2. Differential expression analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../meth/meth.html">
-   3. Omics Data Analysis in Aging: Methylomics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">
-   Practice - WGCNA for Methylomics
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/differential_analysis_practice.html">2. Differential expression analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../meth/meth.html">3. Omics Data Analysis in Aging: Methylomics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">Practice - WGCNA for Methylomics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Biomarkers of Aging
- </span>
-</p>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Biomarkers of Aging</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../stat/survival_analysis.html">
-   4. Survival analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">
-   Practice - Survival analysis with ML
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../stat/survival_analysis_part2.html">
-   5. Advanced survival analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">
-   Practice - Deep survival analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ml/aging_clocks.html">
-   6. Aging Clocks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">
-   Practice - DIY Aging Clocks
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/survival_analysis.html">4. Survival analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/survival_analysis_part2.html">5. Advanced survival analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">Practice - Survival analysis with ML</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">Practice - Deep survival analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Models of Aging
- </span>
-</p>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/aging_clocks.html">6. Aging Clocks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">Practice - DIY Aging Clocks</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models of Aging</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   7. Complex systems approach
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="system_resilience.html">
-   8. System resilience
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Complex systems approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_resilience.html">8. System resilience</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Student projects 2023
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Student projects</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../projects/2023_1.html">
-   Projects 2023 (1-st wave)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/dosi/report.html">
-     Dynamic Organism State Indicator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/meta/report.html">
-     Meta-analysis of aging transcriptomes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/parkinson/report.html">
-     Computational Model of Parkinson’s Disease
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/unsupervized/report.html">
-     Unsupervised aging
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../projects/2023_2.html">
-   Projects 2023 (2-nd wave)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/drugdiscovery/report.html">
-     Transcriptomics-based longevity drug discovery
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/gompertz/report.html">
-     Senescent cell turnover slowdown with age providing an explanation for the Gompertz law
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/levine2013/report.html">
-     Modeling Rate Of Senescence
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../projects/2023/autogpt/report.html">
-     AutoInsight: AI-Powered Article Analysis Project
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../projects/2023_1.html">Projects 2023 (1st wave)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/dosi/report.html">Dynamic Organism State Indicator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/meta/report.html">Meta-analysis of aging transcriptomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/parkinson/report.html">Computational Model of Parkinson’s Disease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/unsupervized/report.html">Unsupervised aging</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../projects/2023_2.html">Projects 2023 (2nd wave)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/drugdiscovery/report.html">Transcriptomics-based longevity drug discovery (2023)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/gompertz/report.html">Senescent cell turnover slowdown with age providing an explanation for the Gompertz law</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/levine2013/report.html">Modeling Rate Of Senescence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2023/autogpt/report.html">AutoInsight: AI-Powered Article Analysis Project</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../projects/2025.html">Projects 2025</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2025/drugdiscovery/report.html">Transcriptomics-based longevity drug discovery (2025)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2025/network/report.html">Aging in complex interdependency networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/2025/tgbot/report.html">Aging Research Digest: A Daily AI-Powered Literature Alert for Geroscience</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ComputationalAgingLab/computational_aging_course" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fdyn/complex_systems.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/dyn/complex_systems.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/ComputationalAgingLab/computational_aging_course"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fdyn/complex_systems.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/dyn/complex_systems.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button>
 
-      </li>
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complex-systems-perspective-on-aging">
-   7.1. Complex systems perspective on aging
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aging-as-loss-of-complexity">
-   7.2. Aging as loss of Complexity
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#networks-and-biological-degeneracy">
-   7.3. Networks and Biological degeneracy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#emergence-and-canalization">
-   7.4. Emergence and Canalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resilience-and-critical-transitions">
-   7.5. Resilience and Critical transitions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-combining-the-learned-concepts">
-   7.6. Summary: combining the learned concepts
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#credits">
-   7.7. Credits
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   7.8. References
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Complex systems approach</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complex-systems-perspective-on-aging">
-   7.1. Complex systems perspective on aging
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aging-as-loss-of-complexity">
-   7.2. Aging as loss of Complexity
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#networks-and-biological-degeneracy">
-   7.3. Networks and Biological degeneracy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#emergence-and-canalization">
-   7.4. Emergence and Canalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resilience-and-critical-transitions">
-   7.5. Resilience and Critical transitions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-combining-the-learned-concepts">
-   7.6. Summary: combining the learned concepts
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#credits">
-   7.7. Credits
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   7.8. References
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complex systems approach</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-systems-perspective-on-aging">7.1. Complex systems perspective on aging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aging-as-loss-of-complexity">7.2. Aging as loss of Complexity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networks-and-biological-degeneracy">7.3. Networks and Biological degeneracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emergence-and-canalization">7.4. Emergence and Canalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resilience-and-critical-transitions">7.5. Resilience and Critical transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-combining-the-learned-concepts">7.6. Summary: combining the learned concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">7.7. Credits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.8. References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="complex-systems-approach">
-<h1><a class="toc-backref" href="#id201"><span class="section-number">7. </span>Complex systems approach</a><a class="headerlink" href="#complex-systems-approach" title="Permalink to this headline">#</a></h1>
+<h1><a class="toc-backref" href="#id200" role="doc-backlink"><span class="section-number">7. </span>Complex systems approach</a><a class="headerlink" href="#complex-systems-approach" title="Link to this heading">#</a></h1>
 <p><em>Nothing in aging biology makes sense except in the light of dynamic equilibrium.</em></p>
-<p>Aging biology today is not engineering but science at its early step. This expresses that we frequently cannot observe direct causal and numerically tractable relationships (as in physics) but we are doomed to see mostly <em>associations</em> and <em>patterns</em>. However, it may also be a good starting point for dynamic modeling. Large volumes of data and the absence of an organizing paradigm are major challenges of modern aging biology. Complex systems approaches provide some computational instruments and necessary vocabulary for simplification, understanding, and identification of the essential features of data. Throughout this chapter, you will come across many new words: <strong>system</strong>, <strong>complexity</strong>, <strong>networks</strong>, <strong>emergence</strong>, <strong>resilience</strong>, and <strong>critical transitions</strong>. They form an important minimal vocabulary necessary for developing complex systems intuition which (we believe) can be greatly useful for any researcher. We organize them into subsections and uncover them one by one. This chapter partly relies on the recent work of <span id="id1">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> where a corresponding philosophical framework, as well as important computational examples, were proposed.</p>
-<div class="contents topic" id="contents">
+<p>Aging biology today is not engineering but science at its early stage. This expresses that we frequently cannot observe direct causal and numerically tractable relationships (as in physics) but we are doomed to see mostly <em>associations</em> and <em>patterns</em>. However, it may also be a good starting point for dynamic modeling. Large volumes of data and the absence of an organizing paradigm are major challenges of modern aging biology. Complex systems approaches provide some computational instruments and necessary vocabulary for simplification, understanding, and identification of the essential features of data. Throughout this chapter, you will come across many new words: <strong>system</strong>, <strong>complexity</strong>, <strong>networks</strong>, <strong>emergence</strong>, <strong>resilience</strong>, and <strong>critical transitions</strong>. They form an important minimal vocabulary necessary for developing complex systems intuition which (we believe) can be greatly useful for any researcher. We organize them into subsections and uncover them one by one. This chapter partly relies on the recent work of <span class="bibtex-citation" id="id1">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> where a corresponding philosophical framework, as well as important computational examples, was proposed.</p>
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#complex-systems-approach" id="id201">Complex systems approach</a></p>
+<li><p><a class="reference internal" href="#complex-systems-approach" id="id200">Complex systems approach</a></p>
 <ul>
-<li><p><a class="reference internal" href="#complex-systems-perspective-on-aging" id="id202">Complex systems perspective on aging</a></p></li>
-<li><p><a class="reference internal" href="#aging-as-loss-of-complexity" id="id203">Aging as loss of Complexity</a></p></li>
-<li><p><a class="reference internal" href="#networks-and-biological-degeneracy" id="id204">Networks and Biological degeneracy</a></p></li>
-<li><p><a class="reference internal" href="#emergence-and-canalization" id="id205">Emergence and Canalization</a></p></li>
-<li><p><a class="reference internal" href="#resilience-and-critical-transitions" id="id206">Resilience and Critical transitions</a></p></li>
-<li><p><a class="reference internal" href="#summary-combining-the-learned-concepts" id="id207">Summary: combining the learned concepts</a></p></li>
-<li><p><a class="reference internal" href="#credits" id="id208">Credits</a></p></li>
-<li><p><a class="reference internal" href="#references" id="id209">References</a></p></li>
+<li><p><a class="reference internal" href="#complex-systems-perspective-on-aging" id="id201">Complex systems perspective on aging</a></p></li>
+<li><p><a class="reference internal" href="#aging-as-loss-of-complexity" id="id202">Aging as loss of Complexity</a></p></li>
+<li><p><a class="reference internal" href="#networks-and-biological-degeneracy" id="id203">Networks and Biological degeneracy</a></p></li>
+<li><p><a class="reference internal" href="#emergence-and-canalization" id="id204">Emergence and Canalization</a></p></li>
+<li><p><a class="reference internal" href="#resilience-and-critical-transitions" id="id205">Resilience and Critical transitions</a></p></li>
+<li><p><a class="reference internal" href="#summary-combining-the-learned-concepts" id="id206">Summary: combining the learned concepts</a></p></li>
+<li><p><a class="reference internal" href="#credits" id="id207">Credits</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id208">References</a></p></li>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="complex-systems-perspective-on-aging">
-<h2><a class="toc-backref" href="#id202"><span class="section-number">7.1. </span>Complex systems perspective on aging</a><a class="headerlink" href="#complex-systems-perspective-on-aging" title="Permalink to this headline">#</a></h2>
-<p>Before the consideration of complex systems, we should understand what we had before. Typical two common approaches in sciences are <strong>Top-Down</strong> and <strong>Bottom-Up</strong>. If the object of study is a human organism, then the Top-Down approach asks the question of which large-scale observations are associated with small scale. For example, a patient’s state change is associated with changing in a level of some protein. And vice versa, the Bottom-Up approach asks whether a large-scale patient’s state changes after perturbation of some protein level. Moving Bottom-Up generates something we call metabolic pathways, gene ontologies, etc. - i.e. combining small-scale entities into new higher-scale entities. In turn, moving Top-Down we can differentiate new entities such as organs, tissues, cells, organelles, and nuclei at a smaller scale (<a class="reference internal" href="#topdown"><span class="std std-numref">Fig. 7.1</span></a>). You might have noticed that science greatly advanced by applying only these two approaches. However, an encounter with living systems forces us to develop a new methodology. The problem with that two approaches is that they do not take into account interactions between feedback/feedforward loops at too different scales trying to provide a mechanistic explanation of processes in a level-by-level manner. They provide theories like <strong>A causes B</strong> and <strong>B causes C</strong> whilst in real complex systems we observe behaviors like <strong>A causes B</strong>, <strong>B causes A</strong>,  <strong>B causes C</strong> and <strong>C causes A and B</strong>. Do you agree that this no more presumes a one-dimensional schematic explanation of the mechanism of action? Such an abundance of causal relationships forces us to use the concept of <strong>networks</strong> for building a more correct body of knowledge.</p>
+<h2><a class="toc-backref" href="#id201" role="doc-backlink"><span class="section-number">7.1. </span>Complex systems perspective on aging</a><a class="headerlink" href="#complex-systems-perspective-on-aging" title="Link to this heading">#</a></h2>
+<p>Before the consideration of complex systems, we should understand what we had before. The two typical approaches in sciences are <strong>Top-Down</strong> and <strong>Bottom-Up</strong>. If the object of study is a human organism, then the Top-Down approach asks the question of which large-scale observations are associated with small-scale ones. For example, a patient’s state change is associated with a change in the level of some protein. And vice versa, the Bottom-Up approach asks whether a large-scale patient’s state changes after perturbation of some protein level. Moving Bottom-Up generates something we call metabolic pathways, gene ontologies, etc. - i.e. combining small-scale entities into new higher-scale entities. In turn, moving Top-Down we can differentiate new entities such as organs, tissues, cells, organelles, and nuclei at a smaller scale (<a class="reference internal" href="#topdown"><span class="std std-numref">Fig. 7.1</span></a>). You might have noticed that science greatly advanced by applying only these two approaches. However, an encounter with living systems forces us to develop a new methodology. The problem with these two approaches is that they do not take into account interactions between feedback/feedforward loops at too different scales trying to provide a mechanistic explanation of processes in a level-by-level manner. They provide theories like <strong>A causes B</strong> and <strong>B causes C</strong> whilst in real complex systems we observe behaviors like <strong>A causes B</strong>, <strong>B causes A</strong>,  <strong>B causes C</strong> and <strong>C causes A and B</strong>. Do you agree that this no longer presumes a one-dimensional schematic explanation of the mechanism of action? Such an abundance of causal relationships forces us to use the concept of <strong>networks</strong> for building a more correct body of knowledge.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For example, depending on their cellular context, <a class="reference external" href="https://en.wikipedia.org/wiki/Calpain">calpains</a> may either activate <a class="reference external" href="https://en.wikipedia.org/wiki/Caspase">caspase</a> 3, leading to apoptosis, or degrade caspase 3, preventing apoptosis <span id="id2">[<a class="reference internal" href="#id81" title="Paulina Łopatniuk and Jacek M Witkowski. Conventional calpains and programmed cell death. Acta Biochimica Polonica, 2011.">Łopatniuk and Witkowski, 2011</a>]</span>.</p>
+<p>For example, depending on their cellular context, <a class="reference external" href="https://en.wikipedia.org/wiki/Calpain">calpains</a> may either activate <a class="reference external" href="https://en.wikipedia.org/wiki/Caspase">caspase</a> 3, leading to apoptosis, or degrade caspase 3, preventing apoptosis <span class="bibtex-citation" id="id2">[<a class="reference internal" href="#id81" title="Paulina Łopatniuk and Jacek M Witkowski. Conventional calpains and programmed cell death. Acta Biochimica Polonica, 2011.">Łopatniuk and Witkowski, 2011</a>]</span>.</p>
 </div>
 <figure class="align-default" id="topdown">
-<a class="reference internal image-reference" href="../_images/topdown.png"><img alt="../_images/topdown.png" src="../_images/topdown.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/topdown.png"><img alt="../_images/topdown.png" src="../_images/topdown.png" style="width: 800px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Example of Top-Down and Bottom-Up organization of knowledge.</span><a class="headerlink" href="#topdown" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Example of Top-Down and Bottom-Up organization of knowledge.</span><a class="headerlink" href="#topdown" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Cohen and colleagues <span id="id3">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> provide a great example of such a <em>switch to the complexity</em> that happened in ecological sciences recently (<a class="reference internal" href="#complex"><span class="std std-numref">Fig. 7.2</span></a>). You can see that a previously popular <em>food chains</em> theory was changed by a system approach where interactions between species form a complex network where it is not obvious how the system will respond to removing a particular species. Currently, we observe a similar transformation in the aging domain. Two great examples (and already classical) of such a transformation are Hallmarks of aging <span id="id4">[<a class="reference internal" href="#id78" title="Carlos López-Otín, Maria A Blasco, Linda Partridge, Manuel Serrano, and Guido Kroemer. The hallmarks of aging. Cell, 153(6):1194–1217, 2013.">López-Otín <em>et al.</em>, 2013</a>]</span> and Pillars of aging <span id="id5">[<a class="reference internal" href="#id79" title="Brian K Kennedy, Shelley L Berger, Anne Brunet, Judith Campisi, Ana Maria Cuervo, Elissa S Epel, Claudio Franceschi, Gordon J Lithgow, Richard I Morimoto, Jeffrey E Pessin, and others. Geroscience: linking aging to chronic disease. Cell, 159(4):709–713, 2014.">Kennedy <em>et al.</em>, 2014</a>]</span> papers trying to highlight a set of key entities related to aging and connecting them into a network of interacting elements. Thinking in a complex systems paradigm challenges a traditional perspective that single-molecule interventions will be found that substantially slow aging (indeed many researchers are pursuing such approaches). Instead, we should focus on a combinatorial approach requiring, however, a robust model of the system under treatment.</p>
+<p>Cohen and colleagues <span class="bibtex-citation" id="id3">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> provide a great example of such a <em>switch to the complexity</em> that happened in ecological sciences recently (<a class="reference internal" href="#complex"><span class="std std-numref">Fig. 7.2</span></a>). You can see that a previously popular <em>food chains</em> theory was changed by a system approach where interactions between species form a complex network where it is not obvious how the system will respond to removing a particular species. Currently, we observe a similar transformation in the aging domain. Two great examples (and already classical) of such a transformation are the Hallmarks of aging <span class="bibtex-citation" id="id4">[<a class="reference internal" href="#id78" title="Carlos López-Otín, Maria A Blasco, Linda Partridge, Manuel Serrano, and Guido Kroemer. The hallmarks of aging. Cell, 153(6):1194–1217, 2013.">López-Otín <em>et al.</em>, 2013</a>]</span> and Pillars of aging <span class="bibtex-citation" id="id5">[<a class="reference internal" href="#id79" title="Brian K Kennedy, Shelley L Berger, Anne Brunet, Judith Campisi, Ana Maria Cuervo, Elissa S Epel, Claudio Franceschi, Gordon J Lithgow, Richard I Morimoto, Jeffrey E Pessin, and others. Geroscience: linking aging to chronic disease. Cell, 159(4):709–713, 2014.">Kennedy <em>et al.</em>, 2014</a>]</span> papers trying to highlight a set of key entities related to aging and connecting them into a network of interacting elements. Thinking in a complex systems paradigm challenges a traditional perspective that single-molecule interventions will be found that substantially slow aging (indeed many researchers are pursuing such approaches). Instead, we should focus on a combinatorial approach requiring, however, a robust model of the system under treatment.</p>
 <figure class="align-default" id="complex">
-<a class="reference internal image-reference" href="../_images/complex.png"><img alt="../_images/complex.png" src="../_images/complex.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/complex.png"><img alt="../_images/complex.png" src="../_images/complex.png" style="width: 800px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.2 </span><span class="caption-text">Shift to complex systems approaches in ecology and aging biology.</span><a class="headerlink" href="#complex" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.2 </span><span class="caption-text">Shift to complex systems approaches in ecology and aging biology.</span><a class="headerlink" href="#complex" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p><strong>Top-Down approach</strong> – methodology of connecting large-scale observations with smaller-scale ones by differentiation of a large object into smaller entities.</p></li>
-<li><p><strong>Bottom-Up approach</strong> – methodology of connecting smaller scale observations with larger scale ones by a combination of small objects into larger entities.</p></li>
+<li><p><strong>Bottom-Up approach</strong> – methodology of connecting smaller-scale observations with larger-scale ones by a combination of small objects into larger entities.</p></li>
 </ul>
 </div>
 <p>Examples of complex systems include ecosystems, economies, traffic systems, power systems, etc. It is a kind of magic that all of them, nevertheless, have common properties or hallmarks. Core hallmarks of complex systems include:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>networks of interacting elements (for example, interactions among molecules in key aging pathways such as AMP-activated protein kinase (AMPK), mechanistic target of rapamycin (mTOR), sirtuins, insulin-like growth factor);</p></li>
 <li><p>feedback/feedforward loops (for example, adaptive loops such as blood pressure regulation);</p></li>
-<li><p>multiscale or modular hierarchical structure (for example, organelles, nested in cells nested within tissues nested within organs);</p></li>
-<li><p>emergent properties, which are properties of a system that cannot be directly or additively inferred by examining its component parts (for example, cognitive decline cannot be understood simply as the sum of multiple aging cells;).</p></li>
+<li><p>multiscale or modular hierarchical structure (for example, organelles nested in cells nested within tissues nested within organs);</p></li>
+<li><p>emergent properties, which are properties of a system that cannot be directly or additively inferred by examining its component parts (for example, cognitive decline cannot be understood simply as the sum of multiple aging cells).</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Cohen et al. <span id="id6">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> also mention <em>nonlinear dynamics</em> as a hallmark of complex systems. But we do not see enough arguments to include this point as a hallmark. In our view, complex systems can also have linear dynamics describing a set of linear ordinary differential equations for instance.</p>
+<p>Cohen et al. <span class="bibtex-citation" id="id6">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> also mention <em>nonlinear dynamics</em> as a hallmark of complex systems. But we do not see enough arguments to include this point as a hallmark. In our view, complex systems can also have linear dynamics described by a set of linear ordinary differential equations for instance.</p>
 </div>
 <p>Before we proceed, let’s introduce one important rule which helps you to differentiate “bad” complex systems propositions from “good” ones. Any abstract philosophical concepts you will discover about complex systems (such as complexity or resilience) in the future <strong>must</strong> be reinforced with a concrete embodiment in mathematical or biological terms.</p>
 </section>
 <section id="aging-as-loss-of-complexity">
-<h2><a class="toc-backref" href="#id203"><span class="section-number">7.2. </span>Aging as loss of Complexity</a><a class="headerlink" href="#aging-as-loss-of-complexity" title="Permalink to this headline">#</a></h2>
-<p>What can be one of the most common characteristics of aging? Can we express the plethora of our observations of an aging organism by one cumulative term? It turns out, we can consider the topological characteristics of complex living systems comparing them at different time moments (at young and old ages). The <strong>complexity</strong> was proposed as such characteristic in <span id="id7">[<a class="reference internal" href="#id80" title="Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. Jama, 267(13):1806–1809, 1992.">Lipsitz and Goldberger, 1992</a>]</span> where authors suggested that aging is associated with “loss of complexity”. It is tough to define “complexity” explicitly and the authors do not give such a definition. Instead, they measure complexity with some mathematical instruments relying on an intuitive understanding of this concept. One example is depicted at <a class="reference internal" href="#dendridic"><span class="std std-numref">Fig. 7.3</span></a>, where you can see a comparison between young (left) and old (right) neurons. If we evaluate <a class="reference external" href="https://en.wikipedia.org/wiki/Fractal_dimension">fractal dimensions</a> of left and right structures we will spot a decrease in the measure. Intuitively it’s correct: the left structure looks more complex than the right counterpart, at least, because the left arbor has more branches.</p>
+<h2><a class="toc-backref" href="#id202" role="doc-backlink"><span class="section-number">7.2. </span>Aging as loss of Complexity</a><a class="headerlink" href="#aging-as-loss-of-complexity" title="Link to this heading">#</a></h2>
+<p>What can be one of the most common characteristics of aging? Can we express the plethora of our observations of an aging organism by one cumulative term? It turns out, we can consider the topological characteristics of complex living systems comparing them at different time moments (at young and old ages). The <strong>complexity</strong> was proposed as such a characteristic in <span class="bibtex-citation" id="id7">[<a class="reference internal" href="#id80" title="Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. Jama, 267(13):1806–1809, 1992.">Lipsitz and Goldberger, 1992</a>]</span> where the authors suggested that aging is associated with “loss of complexity”. It is tough to define “complexity” explicitly and the authors do not give such a definition. Instead, they measure complexity with some mathematical instruments relying on an intuitive understanding of this concept. One example is depicted in <a class="reference internal" href="#dendridic"><span class="std std-numref">Fig. 7.3</span></a>, where you can see a comparison between young (left) and old (right) neurons. If we evaluate <a class="reference external" href="https://en.wikipedia.org/wiki/Fractal_dimension">fractal dimensions</a> of the left and right structures we will spot a decrease in the measure. Intuitively it’s correct: the left structure looks more complex than the right counterpart, at least, because the left arbor has more branches.</p>
 <figure class="align-default" id="dendridic">
-<a class="reference internal image-reference" href="../_images/dendridic.png"><img alt="../_images/dendridic.png" src="../_images/dendridic.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/dendridic.png"><img alt="../_images/dendridic.png" src="../_images/dendridic.png" style="width: 600px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.3 </span><span class="caption-text">Age-related loss of fractal structure in the dendritic arbor of the giant pyramidal Betz cell of the motor cortex.</span><a class="headerlink" href="#dendridic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.3 </span><span class="caption-text">Age-related loss of fractal structure in the dendritic arbor of the giant pyramidal Betz cell of the motor cortex.</span><a class="headerlink" href="#dendridic" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>But maybe another example from the same paper will be more intelligible. Look at the <a class="reference internal" href="#ecg"><span class="std std-numref">Fig. 7.4</span></a>, where you can see the heart rate dynamics of young (top) and old (bottom) individuals. We see that the top and bottom signals are statistically different. From the spectral theory point of view, we could say that the top signal has more high frequencies in its spectrum. This means that the heart rate signal tends to lose high-frequency components as we age. Another way to express this behavior of signal is to measure its Shannon’s entropy <span id="id8">[<a class="reference internal" href="#id92" title="Claude Elwood Shannon. A mathematical theory of communication. The Bell system technical journal, 27(3):379–423, 1948.">Shannon, 1948</a>]</span>. Since entropy by definition is a <em>measure of the amount of information needed to predict the future state of the system</em>, the higher the entropy signal has, the higher its complexity is. The fact is that the top signal has higher entropy than the lower one, so, within the aforementioned terms, we again observe a loss of complexity with aging. The observation of complexity decreasing can inspire us to make the next step in studying the phenomenon. For example, in <span id="id9">[<a class="reference internal" href="#id80" title="Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. Jama, 267(13):1806–1809, 1992.">Lipsitz and Goldberger, 1992</a>]</span> mentioned that the age-related decline in heart rate variability is likely due to dropout of sinus node cells, altered <span class="math notranslate nohighlight">\(\beta\)</span>-adrenoceptor responsiveness, and reduction in parasympathetic tone.</p>
+<p>But maybe another example from the same paper will be more intelligible. Look at <a class="reference internal" href="#ecg"><span class="std std-numref">Fig. 7.4</span></a>, where you can see the heart rate dynamics of young (top) and old (bottom) individuals. We see that the top and bottom signals are statistically different. From the spectral theory point of view, we could say that the top signal has more high frequencies in its spectrum. This means that the heart rate signal tends to lose high-frequency components as we age. Another way to express this behavior of the signal is to measure its Shannon entropy <span class="bibtex-citation" id="id8">[<a class="reference internal" href="#id92" title="Claude Elwood Shannon. A mathematical theory of communication. The Bell system technical journal, 27(3):379–423, 1948.">Shannon, 1948</a>]</span>. Since entropy by definition is a <em>measure of the amount of information needed to predict the future state of the system</em>, the higher the entropy a signal has, the higher its complexity is. The fact is that the top signal has higher entropy than the lower one, so, within the aforementioned terms, we again observe a loss of complexity with aging. The observation of complexity decreasing can inspire us to take the next step in studying the phenomenon. For example, in <span class="bibtex-citation" id="id9">[<a class="reference internal" href="#id80" title="Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. Jama, 267(13):1806–1809, 1992.">Lipsitz and Goldberger, 1992</a>]</span> it was mentioned that the age-related decline in heart rate variability is likely due to dropout of sinus node cells, altered <span class="math notranslate nohighlight">\(\beta\)</span>-adrenoceptor responsiveness, and reduction in parasympathetic tone.</p>
 <figure class="align-default" id="ecg">
-<a class="reference internal image-reference" href="../_images/ecg.png"><img alt="../_images/ecg.png" src="../_images/ecg.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/ecg.png"><img alt="../_images/ecg.png" src="../_images/ecg.png" style="width: 600px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.4 </span><span class="caption-text">Heart rate time series for a 22-year-old female subject (top panel) and a 73-year-old male subject (bottom panel).</span><a class="headerlink" href="#ecg" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.4 </span><span class="caption-text">Heart rate time series for a 22-year-old female subject (top panel) and a 73-year-old male subject (bottom panel).</span><a class="headerlink" href="#ecg" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- entropy as a measure of aging??? --> 
-<p>It turns out, that the idea to use entropy as a measure of complexity creates a contradiction.  One of the hallmarks of aging, genomic instability, was shown to increase entropy with aging. Somatic mutations and spontaneous double-strand breaks (DSB) contribute to the general “loss of genomic information” (and, therefore, entropy increase) that is associated with aging. Moreover, the experiment with mice genetically modified for induction DSB show patterns of accelerated aging <span id="id10">[<a class="reference internal" href="#id82" title="Motoshi Hayano, Jae-Hyun Yang, Michael S Bonkowski, Joao A Amorim, Jaime M Ross, Giuseppe Coppotelli, Patrick T Griffin, Yap Ching Chew, Wei Guo, Xiaojing Yang, and others. Dna break-induced epigenetic drift as a cause of mammalian aging. BioRxiv, pages 808659, 2019.">Hayano <em>et al.</em>, 2019</a>]</span>, <span id="id11">[<a class="reference internal" href="#id83" title="Jae-Hyun Yang, Patrick T Griffin, Daniel L Vera, John K Apostolides, Motoshi Hayano, Margarita V Meer, Elias L Salfati, Qiao Su, Elizabeth M Munding, Marco Blanchette, and others. Erosion of the epigenetic landscape and loss of cellular identity as a cause of aging in mammals. BioRxiv, pages 808642, 2019.">Yang <em>et al.</em>, 2019</a>]</span>. Does it mean that aging is not coupled with a loss of complexity? Yes, and No, it is rather coupled with the poor mathematical counterpart of the complexity concept, namely entropy.</p>
+<p>It turns out that the idea to use entropy as a measure of complexity creates a contradiction.  One of the hallmarks of aging, genomic instability, was shown to increase entropy with aging. Somatic mutations and spontaneous double-strand breaks (DSB) contribute to the general “loss of genomic information” (and, therefore, entropy increase) that is associated with aging. Moreover, the experiments with mice genetically modified for induction of DSB show patterns of accelerated aging <span class="bibtex-citation" id="id10">[<a class="reference internal" href="#id82" title="Motoshi Hayano, Jae-Hyun Yang, Michael S Bonkowski, Joao A Amorim, Jaime M Ross, Giuseppe Coppotelli, Patrick T Griffin, Yap Ching Chew, Wei Guo, Xiaojing Yang, and others. Dna break-induced epigenetic drift as a cause of mammalian aging. BioRxiv, pages 808659, 2019.">Hayano <em>et al.</em>, 2019</a>]</span>, <span class="bibtex-citation" id="id11">[<a class="reference internal" href="#id83" title="Jae-Hyun Yang, Patrick T Griffin, Daniel L Vera, John K Apostolides, Motoshi Hayano, Margarita V Meer, Elias L Salfati, Qiao Su, Elizabeth M Munding, Marco Blanchette, and others. Erosion of the epigenetic landscape and loss of cellular identity as a cause of aging in mammals. BioRxiv, pages 808642, 2019.">Yang <em>et al.</em>, 2019</a>]</span>. Does it mean that aging is not coupled with a loss of complexity? Yes and no; it is rather coupled with the poor mathematical counterpart of the complexity concept, namely entropy.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>But we can also imagine another explanation. The loss of information - increase in complexity - on the level of genome leads to degradation in information transition to higher levels of system organization which manifests as loss of complexity. We could even speculate that aging is a loss of the ability to information transition - but we are not ready to provide enough arguments for this view.</p>
+<p>But we can also imagine another explanation. The loss of information - increase in complexity - on the level of the genome leads to degradation in information transition to higher levels of system organization which manifests as loss of complexity. We could even speculate that aging is a loss of the ability for information transition - but we are not ready to provide enough arguments for this view.</p>
 </div>
-<p>In total, complexity looks like a useful term to make things simpler. Its intuitive accessibility hints us mathematical frameworks for its measurement and highlights biological phenomena for its interpretation. Thinking about system complexity helps us to extract the most general properties of the object of study.</p>
+<p>Overall, complexity looks like a useful term to make things simpler. Its intuitive accessibility hints at mathematical frameworks for its measurement and highlights biological phenomena for its interpretation. Thinking about system complexity helps us to extract the most general properties of the object of study.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Some additional definitions of <a class="reference external" href="https://en.wikipedia.org/wiki/Complexity">complexity</a>:</p>
 <ul class="simple">
 <li><p>In general, the number of systems and links between them describes a model.</p></li>
-<li><p>In dynamic systems, statistical complexity measures the size of the minimum program able to statistically reproduce the patterns (configurations) contained in the data set (sequence) <span id="id12">[<a class="reference internal" href="#id84" title="James P Crutchfield and Karl Young. Inferring statistical complexity. Physical review letters, 63(2):105, 1989.">Crutchfield and Young, 1989</a>]</span>.</p></li>
+<li><p>In dynamic systems, statistical complexity measures the size of the minimum program able to statistically reproduce the patterns (configurations) contained in the data set (sequence) <span class="bibtex-citation" id="id12">[<a class="reference internal" href="#id84" title="James P Crutchfield and Karl Young. Inferring statistical complexity. Physical review letters, 63(2):105, 1989.">Crutchfield and Young, 1989</a>]</span>.</p></li>
 <li><p>In information processing, complexity is a measure of the total number of properties transmitted by an object and detected by an observer.</p></li>
 </ul>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Exercise 1</p>
-<p>Look through the table in <span id="id13">[<a class="reference internal" href="#id80" title="Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. Jama, 267(13):1806–1809, 1992.">Lipsitz and Goldberger, 1992</a>]</span>; <a class="reference external" href="https://www.researchgate.net/profile/Lewis-Lipsitz/publication/236319288_Loss_of_%27Complexity%27_and_AgingPotential_Applications_of_Fractals_and_Chaos_Theory_to_Senescence/links/00b4952c58b5b6bbf5000000/Loss-of-Complexity-and-AgingPotential-Applications-of-Fractals-and-Chaos-Theory-to-Senescence.pdf">link</a>. Choose one “loss of complexity” fact and corresponding measure from the table. Check out the original study where the loss of complexity was shown. Do you trust the approach suggested in this article? Explain your answer. Try to find more recent research on this topic. If you succeed, add a reference to the report.</p>
+<p>Look through the table in <span class="bibtex-citation" id="id13">[<a class="reference internal" href="#id80" title="Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. Jama, 267(13):1806–1809, 1992.">Lipsitz and Goldberger, 1992</a>]</span>; <a class="reference external" href="https://www.researchgate.net/profile/Lewis-Lipsitz/publication/236319288_Loss_of_'Complexity'_and_AgingPotential_Applications_of_Fractals_and_Chaos_Theory_to_Senescence/links/00b4952c58b5b6bbf5000000/Loss-of-Complexity-and-AgingPotential-Applications-of-Fractals-and-Chaos-Theory-to-Senescence.pdf">link</a>. Choose one “loss of complexity” fact and the corresponding measure from the table. Check out the original study where the loss of complexity was shown. Do you trust the approach suggested in this article? Explain your answer. Try to find more recent research on this topic. If you succeed, add a reference to the report.</p>
 </div>
 </section>
 <section id="networks-and-biological-degeneracy">
-<h2><a class="toc-backref" href="#id204"><span class="section-number">7.3. </span>Networks and Biological degeneracy</a><a class="headerlink" href="#networks-and-biological-degeneracy" title="Permalink to this headline">#</a></h2>
-<p>Biological systems can be viewed as complex networks of interacting components. This simple idea may seem quite naive until we start to consider the structural properties of these networks. <strong>Bow-tie</strong> or hourglass structure is a common structural feature found in many biological systems. A bow-tie means that a large number of inputs are converted to a small number of intermediates, which then fan out to generate a large number of outputs (<a class="reference internal" href="#bowtie"><span class="std std-numref">Fig. 7.5</span></a>) <span id="id14">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> (looks like autoencoder isn’t it?). The important principle lying behind bow-tie formation is called <strong>degeneracy</strong> <span id="id15">[<a class="reference internal" href="#id85" title="Gerald M Edelman and Joseph A Gally. Degeneracy and complexity in biological systems. Proceedings of the National Academy of Sciences, 98(24):13763–13768, 2001.">Edelman and Gally, 2001</a>]</span>. In a biological sense, this means the ability of structurally different biological elements (e.g. proteins or metabolites) to perform the same function. Two examples of bow-tie include metabolic networks, where the large range of nutrients consumed by the organism is decomposed into 12 universal precursors (including pyruvate, G6P, AKG, ACCOA) from which the organism builds all of its biomass including carbohydrates, nucleic acids and proteins; the human visual system having <span class="math notranslate nohighlight">\(\sim 10^8\)</span> input photoreceptors in the retina which fans into only about <span class="math notranslate nohighlight">\(\sim 10^6\)</span> ganglion cells whose axons form the optic nerve going to visual cortex that detects a pattern, color, depth and movement <span id="id16">[<a class="reference internal" href="#id87" title="Tamar Friedlander, Avraham E Mayo, Tsvi Tlusty, and Uri Alon. Evolution of bow-tie architectures in biology. PLoS computational biology, 11(3):e1004055, 2015.">Friedlander <em>et al.</em>, 2015</a>]</span>. In the context of aging biology bow-tie structure expresses the ability of the same pathways to be simultaneously implicated in inflammation, regulating oxidative stress, cancer, reproduction and metabolism (<a class="reference internal" href="#bowtie"><span class="std std-numref">Fig. 7.5</span></a>). This is a natural consequence of the network’s degeneracy by integrating information from multiple inputs and inflating it to multiple outputs. There is a lot of evidence that degeneracy is an important property of evolving systems and may be even a <em>prerequisite</em> for evolution <span id="id17">[<a class="reference internal" href="#id85" title="Gerald M Edelman and Joseph A Gally. Degeneracy and complexity in biological systems. Proceedings of the National Academy of Sciences, 98(24):13763–13768, 2001.">Edelman and Gally, 2001</a>]</span>.</p>
+<h2><a class="toc-backref" href="#id203" role="doc-backlink"><span class="section-number">7.3. </span>Networks and Biological degeneracy</a><a class="headerlink" href="#networks-and-biological-degeneracy" title="Link to this heading">#</a></h2>
+<p>Biological systems can be viewed as complex networks of interacting components. This simple idea may seem quite naive until we start to consider the structural properties of these networks. <strong>Bow-tie</strong> or hourglass structure is a common structural feature found in many biological systems. A bow-tie means that a large number of inputs are converted to a small number of intermediates, which then fan out to generate a large number of outputs (<a class="reference internal" href="#bowtie"><span class="std std-numref">Fig. 7.5</span></a>) <span class="bibtex-citation" id="id14">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span> (looks like an autoencoder, doesn’t it?). The important principle lying behind bow-tie formation is called <strong>degeneracy</strong> <span class="bibtex-citation" id="id15">[<a class="reference internal" href="#id85" title="Gerald M Edelman and Joseph A Gally. Degeneracy and complexity in biological systems. Proceedings of the National Academy of Sciences, 98(24):13763–13768, 2001.">Edelman and Gally, 2001</a>]</span>. In a biological sense, this means the ability of structurally different biological elements (e.g. proteins or metabolites) to perform the same function. Two examples of bow-tie include metabolic networks, where the large range of nutrients consumed by the organism is decomposed into 12 universal precursors (including pyruvate, G6P, AKG, ACCOA) from which the organism builds all of its biomass including carbohydrates, nucleic acids and proteins; the human visual system having <span class="math notranslate nohighlight">\(\sim 10^8\)</span> input photoreceptors in the retina which fans into only about <span class="math notranslate nohighlight">\(\sim 10^6\)</span> ganglion cells whose axons form the optic nerve going to the visual cortex that detects a pattern, color, depth and movement <span class="bibtex-citation" id="id16">[<a class="reference internal" href="#id87" title="Tamar Friedlander, Avraham E Mayo, Tsvi Tlusty, and Uri Alon. Evolution of bow-tie architectures in biology. PLoS computational biology, 11(3):e1004055, 2015.">Friedlander <em>et al.</em>, 2015</a>]</span>. In the context of aging biology bow-tie structure expresses the ability of the same pathways to be simultaneously implicated in inflammation, regulating oxidative stress, cancer, reproduction and metabolism (<a class="reference internal" href="#bowtie"><span class="std std-numref">Fig. 7.5</span></a>). This is a natural consequence of the network’s degeneracy by integrating information from multiple inputs and inflating it to multiple outputs. There is a lot of evidence that degeneracy is an important property of evolving systems and may be even a <em>prerequisite</em> for evolution <span class="bibtex-citation" id="id17">[<a class="reference internal" href="#id85" title="Gerald M Edelman and Joseph A Gally. Degeneracy and complexity in biological systems. Proceedings of the National Academy of Sciences, 98(24):13763–13768, 2001.">Edelman and Gally, 2001</a>]</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Bow-tie</strong> - network structure assuming that a large number of inputs are converted to a small number of intermediates, which then fan out to generate a large number of outputs.
-<strong>Degeneracy</strong> - the ability of structurally different elements to perform the same function. Degeneracy should not be confused with redundancy, which occurs when the same function is performed by identical elements, degeneracy, which involves structurally different elements, may yield the same or different functions depending on the context in which it is expressed <span id="id18">[<a class="reference internal" href="#id85" title="Gerald M Edelman and Joseph A Gally. Degeneracy and complexity in biological systems. Proceedings of the National Academy of Sciences, 98(24):13763–13768, 2001.">Edelman and Gally, 2001</a>]</span>.</p>
+<strong>Degeneracy</strong> - the ability of structurally different elements to perform the same function. Degeneracy should not be confused with redundancy, which occurs when the same function is performed by identical elements; degeneracy, which involves structurally different elements, may yield the same or different functions depending on the context in which it is expressed <span class="bibtex-citation" id="id18">[<a class="reference internal" href="#id85" title="Gerald M Edelman and Joseph A Gally. Degeneracy and complexity in biological systems. Proceedings of the National Academy of Sciences, 98(24):13763–13768, 2001.">Edelman and Gally, 2001</a>]</span>.</p>
 </div>
 <figure class="align-default" id="bowtie">
-<a class="reference internal image-reference" href="../_images/bowtie.png"><img alt="../_images/bowtie.png" src="../_images/bowtie.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/bowtie.png"><img alt="../_images/bowtie.png" src="../_images/bowtie.png" style="width: 800px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.5 </span><span class="caption-text">Bowtie structure of aging pathways.</span><a class="headerlink" href="#bowtie" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.5 </span><span class="caption-text">Bowtie structure of aging pathways.</span><a class="headerlink" href="#bowtie" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>What technical outcomes we can obtain from bow-tie networks? So, the presence of a low-dimensional intermediate layer hints us that application of dimensionality reduction techniques to biological data is a good decision. It is the fact that many biological entries (e.g. expression level of different genes) are highly correlated with each other <span id="id19">[<a class="reference internal" href="#id88" title="Dmitriy Podolskiy, I Molodtcov, Alexander Zenin, Valeria Kogan, Leonid I Menshikov, Vadim N Gladyshev, Robert J Shmookler Reis, and Peter O Fedichev. Critical dynamics of gene networks is a mechanism behind ageing and gompertz law. arXiv preprint arXiv:1502.04307, 2015.">Podolskiy <em>et al.</em>, 2015</a>]</span> and a huge dimensionality of inputs can be satisfactorily described by a small number of latent parameters. The latent parameter is a mathematical term describing a low-dimensional linear (or nonlinear) combination of inputs. This is not a big deal to compute a latent parameter according to a model. The more important thing is to give a correct biological interpretation for this parameter. Sometimes latent parameters do not have a clear interpretation but in other cases, a particular latent parameter may catch a clear biological process such as the expression of one of the metabolic precursors mentioned above.</p>
+<p>What technical outcomes can we obtain from bow-tie networks? So, the presence of a low-dimensional intermediate layer hints to us that application of dimensionality reduction techniques to biological data is a good decision. It is a fact that many biological entries (e.g. expression level of different genes) are highly correlated with each other <span class="bibtex-citation" id="id19">[<a class="reference internal" href="#id88" title="Dmitriy Podolskiy, I Molodtcov, Alexander Zenin, Valeria Kogan, Leonid I Menshikov, Vadim N Gladyshev, Robert J Shmookler Reis, and Peter O Fedichev. Critical dynamics of gene networks is a mechanism behind ageing and gompertz law. arXiv preprint arXiv:1502.04307, 2015.">Podolskiy <em>et al.</em>, 2015</a>]</span> and a huge dimensionality of inputs can be satisfactorily described by a small number of latent parameters. The latent parameter is a mathematical term describing a low-dimensional linear (or nonlinear) combination of inputs. It is not a big deal to compute a latent parameter according to a model. The more important thing is to give a correct biological interpretation for this parameter. Sometimes latent parameters do not have a clear interpretation but in other cases, a particular latent parameter may catch a clear biological process such as the expression of one of the metabolic precursors mentioned above.</p>
 </section>
 <section id="emergence-and-canalization">
-<h2><a class="toc-backref" href="#id205"><span class="section-number">7.4. </span>Emergence and Canalization</a><a class="headerlink" href="#emergence-and-canalization" title="Permalink to this headline">#</a></h2>
-<p>The natural property of human consciousness (and, need to say, its bias) is a tendency to simplify things by extracting their common pattern. We call a property of a system <strong>emergent</strong> if we do not see this property of any system component. By discovering emergent properties of the system we cope with its <strong>complexity</strong>. Classical examples of emergent properties in physical systems are temperature of a gas and fluidity of a fluid - in both cases, we do not see such properties in system components (molecules). Revealed emergent properties are especially useful when we can measure them. Biological systems are abundant by emergences. Moreover, the concept of Life is a typical example of emergence. One common way that emergence arises in biological systems is through <strong>canalization</strong>, the tendency of the system to converge toward one of a limited number of discrete states <span id="id20">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span>. Once again, if the system can take distinguishable states and these states seem not to be emanating from properties of its components then these states are emergent. An immediate example is acquiring somatic cell state (or cell fate) through differentiation (<a class="reference internal" href="#landscape"><span class="std std-numref">Fig. 7.6</span></a>) from pluripotent one <span id="id21">[<a class="reference internal" href="#id89" title="Kazutoshi Takahashi and Shinya Yamanaka. A decade of transcription factor-mediated reprogramming to pluripotency. Nature reviews Molecular cell biology, 17(3):183–193, 2016.">Takahashi and Yamanaka, 2016</a>]</span>. It is quite remarkable, despite the huge complexity of a human cell as a system it has a rather small number of discrete (distinguishable) somatic states that were shown experimentally <span id="id22">[<a class="reference internal" href="#id90" title="Sui Huang, Gabriel Eichler, Yaneer Bar-Yam, and Donald E Ingber. Cell fates as high-dimensional attractor states of a complex gene regulatory network. Physical review letters, 94(12):128701, 2005.">Huang <em>et al.</em>, 2005</a>]</span>.</p>
+<h2><a class="toc-backref" href="#id204" role="doc-backlink"><span class="section-number">7.4. </span>Emergence and Canalization</a><a class="headerlink" href="#emergence-and-canalization" title="Link to this heading">#</a></h2>
+<p>The natural property of human consciousness (and, we need to say, its bias) is a tendency to simplify things by extracting their common pattern. We call a property of a system <strong>emergent</strong> if we do not see this property in any system component. By discovering emergent properties of the system we cope with its <strong>complexity</strong>. Classical examples of emergent properties in physical systems are the temperature of a gas and the fluidity of a fluid - in both cases, we do not see such properties in system components (molecules). Revealed emergent properties are especially useful when we can measure them. Biological systems are rich in emergences. Moreover, the concept of Life is a typical example of emergence. One common way that emergence arises in biological systems is through <strong>canalization</strong>, the tendency of the system to converge toward one of a limited number of discrete states <span class="bibtex-citation" id="id20">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span>. Once again, if the system can take distinguishable states and these states seem not to be emanating from properties of its components then these states are emergent. An immediate example is acquiring a somatic cell state (or cell fate) through differentiation (<a class="reference internal" href="#landscape"><span class="std std-numref">Fig. 7.6</span></a>) from a pluripotent one <span class="bibtex-citation" id="id21">[<a class="reference internal" href="#id89" title="Kazutoshi Takahashi and Shinya Yamanaka. A decade of transcription factor-mediated reprogramming to pluripotency. Nature reviews Molecular cell biology, 17(3):183–193, 2016.">Takahashi and Yamanaka, 2016</a>]</span>. It is quite remarkable that despite the huge complexity of a human cell as a system, it has a rather small number of discrete (distinguishable) somatic states that were shown experimentally <span class="bibtex-citation" id="id22">[<a class="reference internal" href="#id90" title="Sui Huang, Gabriel Eichler, Yaneer Bar-Yam, and Donald E Ingber. Cell fates as high-dimensional attractor states of a complex gene regulatory network. Physical review letters, 94(12):128701, 2005.">Huang <em>et al.</em>, 2005</a>]</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Emergence</strong> - a high-level property of a system, which is not a property of any component of that system. This intractability can be variously interpreted. In weak emergence interpretations, the inexplicability is merely a practical one due to the sheer complexity of the computation required to reach an explanation. In strong emergence interpretations, the emergent property possesses causal autonomy independently of its constituents <span id="id23">[<a class="reference internal" href="#id93" title="Jordan O’Byrne and Karim Jerbi. How critical is brain criticality? Trends in Neurosciences, 2022.">O’Byrne and Jerbi, 2022</a>]</span>.
+<p><strong>Emergence</strong> - a high-level property of a system, which is not a property of any component of that system. This intractability can be variously interpreted. In weak emergence interpretations, the inexplicability is merely a practical one due to the sheer complexity of the computation required to reach an explanation. In strong emergence interpretations, the emergent property possesses causal autonomy independently of its constituents <span class="bibtex-citation" id="id23">[<a class="reference internal" href="#id93" title="Jordan O’Byrne and Karim Jerbi. How critical is brain criticality? Trends in Neurosciences, 2022.">O’Byrne and Jerbi, 2022</a>]</span>.
 <strong>Canalization</strong> - the tendency of the system to converge toward one of a limited number of discrete states.</p>
 </div>
 <figure class="align-default" id="landscape">
-<a class="reference internal image-reference" href="../_images/landscape.png"><img alt="../_images/landscape.png" src="../_images/landscape.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/landscape.png"><img alt="../_images/landscape.png" src="../_images/landscape.png" style="width: 600px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Waddington landscape - a metaphor of cell fate transition during differentiantion as a ball rolling down from the top of Waddington’s “mountain” (pluripotency) to the bottom of a “valley” (somatic state, e.g. skin, muscle). The opposite process is called reprogramming.</span><a class="headerlink" href="#landscape" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Waddington landscape - a metaphor of cell fate transition during differentiation as a ball rolling down from the top of Waddington’s “mountain” (pluripotency) to the bottom of a “valley” (somatic state, e.g. skin, muscle). The opposite process is called reprogramming.</span><a class="headerlink" href="#landscape" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Canalization and emergence often arise because biological networks can achieve robustness through <strong>degeneracy</strong>, and so become stable against perturbations - they can maintain dynamic functional stability even when environmental or internal conditions change. This degeneracy, as we said above, means that the same functional result can be achieved by multiple alternative pathways, strategies or system states. For example, during skeletal muscle aging, impaired chaperone-mediated autophagy appears to be compensated by upregulation of macro-autophagy <span id="id24">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span>. Other aging-related examples of canalization include cellular senescence which is a relatively discrete state, an alternative to being a healthy cell or to apoptosis. Senescence is thus an attractor state, with many intermediate states within its “attractor basin”. On the level of the organism, we can discover other emergences like frailty - a clinically recognizable state of increased vulnerability resulting from the aging-associated decline in reserve and function across multiple physiologic systems such that the ability to cope with everyday or acute stressors is comprised <span id="id25">[<a class="reference internal" href="#id91" title="Qian-Li Xue. The frailty syndrome: definition and natural history. Clinics in geriatric medicine, 27(1):1–15, 2011.">Xue, 2011</a>]</span>. Finally, aging is another example of emergent organism property and as it was mentioned above, we highly favor attempts to measure this property.</p>
+<p>Canalization and emergence often arise because biological networks can achieve robustness through <strong>degeneracy</strong>, and so become stable against perturbations - they can maintain dynamic functional stability even when environmental or internal conditions change. This degeneracy, as we said above, means that the same functional result can be achieved by multiple alternative pathways, strategies or system states. For example, during skeletal muscle aging, impaired chaperone-mediated autophagy appears to be compensated by upregulation of macro-autophagy <span class="bibtex-citation" id="id24">[<a class="reference internal" href="#id77" title="Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. Nature Aging, 2(7):580–591, 2022.">Cohen <em>et al.</em>, 2022</a>]</span>. Other aging-related examples of canalization include cellular senescence which is a relatively discrete state, an alternative to being a healthy cell or to apoptosis. Senescence is thus an attractor state, with many intermediate states within its “attractor basin”. On the level of the organism, we can discover other emergences like frailty - a clinically recognizable state of increased vulnerability resulting from the aging-associated decline in reserve and function across multiple physiologic systems such that the ability to cope with everyday or acute stressors is compromised <span class="bibtex-citation" id="id25">[<a class="reference internal" href="#id91" title="Qian-Li Xue. The frailty syndrome: definition and natural history. Clinics in geriatric medicine, 27(1):1–15, 2011.">Xue, 2011</a>]</span>. Finally, aging is another example of an emergent organism property and as was mentioned above, we highly favor attempts to measure this property.</p>
 </section>
 <section id="resilience-and-critical-transitions">
-<h2><a class="toc-backref" href="#id206"><span class="section-number">7.5. </span>Resilience and Critical transitions</a><a class="headerlink" href="#resilience-and-critical-transitions" title="Permalink to this headline">#</a></h2>
-<p>It is time to discuss the <strong>dynamic equilibrium</strong> mentioned in the epigraph of this chapter. Dynamic equilibrium has two synonyms: <strong>resilience</strong> and <strong>stability</strong> - the first is more biological and the latter is more physical. But in the majority of contexts, they mean the ability of a system to return to the equilibrium state preceding a perturbation. The common metaphor for understanding resilience is a ball in the hole model (<a class="reference internal" href="#early"><span class="std std-numref">Fig. 7.7</span></a>a,d). You can see that a small perturbation barely can knock out the ball from a basin with sharp and high walls (so-called potential barrier) which is associated with the high resilience of the system. On the other hand, low walls do not save the ball from even a small perturbation. The event when a ball leaves its current local minimum state and cross the boundary of its basin is called <strong>critical transition</strong> which we discuss below. Resilience can be measured and different measures of a resilience (including mathematically tractable) were proposed <span id="id26">[<a class="reference internal" href="#id97" title="R Varadhan, CL Seplaki, QL Xue, K Bandeen-Roche, and LP Fried. Stimulus-response paradigm for characterizing the loss of resilience in homeostatic regulation associated with frailty. Mechanisms of ageing and development, 129(11):666–670, 2008. URL: https://doi.org/10.1016/j.mad.2008.09.013.">Varadhan <em>et al.</em>, 2008</a>]</span>, <span id="id27">[<a class="reference internal" href="#id40" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>, <span id="id28">[<a class="reference internal" href="#id96" title="Sanne MW Gijzel, Ingrid A van de Leemput, Marten Scheffer, Mattia Roppolo, Marcel GM Olde Rikkert, and René JF Melis. Dynamical resilience indicators in time series of self-rated health correspond to frailty levels in older adults. The Journals of Gerontology: Series A, 72(7):991–996, 2017. URL: https://doi.org/10.1093/gerona/glx065.">Gijzel <em>et al.</em>, 2017</a>]</span>, <span id="id29">[<a class="reference internal" href="#id60" title="Timothy V Pyrkov, Konstantin Avchaciov, Andrei E Tarkhov, Leonid I Menshikov, Andrei V Gudkov, and Peter O Fedichev. Longitudinal analysis of blood markers reveals progressive loss of resilience and predicts human lifespan limit. Nature communications, 12(1):1–10, 2021. URL: https://doi.org/10.1038/s41467-021-23014-1.">Pyrkov <em>et al.</em>, 2021</a>]</span>, <span id="id30">[<a class="reference internal" href="#id95" title="Markus Schosserer, Gareth Banks, Soner Dogan, Peter Dungel, Adelaide Fernandes, Darja Marolt Presen, Ander Matheu, Marcin Osuchowski, Paul Potter, Coral Sanfeliu, and others. Modelling physical resilience in ageing mice. Mechanisms of ageing and development, 177:91–102, 2019. URL: https://doi.org/10.1016/j.mad.2018.10.001.">Schosserer <em>et al.</em>, 2019</a>]</span>. It is especially important to measure resilience in older adults to aware of the risks which they bear. Moreover, it was proposed that aging itself is a progressing loss of resilience <span id="id31">[<a class="reference internal" href="#id101" title="Daniel Promislow, Rozalyn M Anderson, Marten Scheffer, Bernard Crespi, James DeGregori, Kelley Harris, B Natterson Horowitz, Morgan E Levine, Maria A Riolo, David S Schneider, and others. Resilience integrates concepts in aging research. Iscience, pages 104199, 2022.">Promislow <em>et al.</em>, 2022</a>]</span>.</p>
-<p>The resilience concept is tightly bounded with <strong>critical transition</strong> concept which has synonyms of (more physical) <strong>phase transition</strong> and (more mathematical) <strong>bifurcation</strong>. It is usually defined as a qualitative change in macroscopic properties of the system <span id="id32">[<a class="reference internal" href="#id93" title="Jordan O’Byrne and Karim Jerbi. How critical is brain criticality? Trends in Neurosciences, 2022.">O’Byrne and Jerbi, 2022</a>]</span>. One important class of critical transitions is a <strong>fold catastrophic transition</strong> (which is also tempted to associate with the death of the organism) <span id="id33">[<a class="reference internal" href="#id98" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span>. This transition is characterized by the “sharp” falling of the system parameter into a new state (we will cover the mathematical details of this bifurcation in the next chapter). We are especially interested in this type of bifurcation because of the presence of early warning signals preceding the system’s critical transition which we can directly observe in the data. Suppose that our aging-related dataset contains a system variable characterizing its macroscopic state (examples include mentioned heart rate (<a class="reference internal" href="#ecg"><span class="std std-numref">Fig. 7.4</span></a>) or self-rated health evaluations <span id="id34">[<a class="reference internal" href="#id96" title="Sanne MW Gijzel, Ingrid A van de Leemput, Marten Scheffer, Mattia Roppolo, Marcel GM Olde Rikkert, and René JF Melis. Dynamical resilience indicators in time series of self-rated health correspond to frailty levels in older adults. The Journals of Gerontology: Series A, 72(7):991–996, 2017. URL: https://doi.org/10.1093/gerona/glx065.">Gijzel <em>et al.</em>, 2017</a>]</span>) and this variable is presented in a form of one-dimensional time series for patients of different ages. Then, we can calculate variances and autocorrelations for all participants in the dataset. The bifurcation theory predicts that approaching a critical transition boundary (aka tipping point) is accompanied by the system <strong>critical slowing down</strong> and an increase in variance and temporal autocorrelations of the system state variable (<a class="reference internal" href="#early"><span class="std std-numref">Fig. 7.7</span></a>b,c,e,f) <span id="id35">[<a class="reference internal" href="#id98" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span> and this is something that we expect to observe in real aging data.</p>
+<h2><a class="toc-backref" href="#id205" role="doc-backlink"><span class="section-number">7.5. </span>Resilience and Critical transitions</a><a class="headerlink" href="#resilience-and-critical-transitions" title="Link to this heading">#</a></h2>
+<p>It is time to discuss the <strong>dynamic equilibrium</strong> mentioned in the epigraph of this chapter. Dynamic equilibrium has two synonyms: <strong>resilience</strong> and <strong>stability</strong> - the first is more biological and the latter is more physical. But in the majority of contexts, they mean the ability of a system to return to the equilibrium state preceding a perturbation. The common metaphor for understanding resilience is a ball in the hole model (<a class="reference internal" href="#early"><span class="std std-numref">Fig. 7.7</span></a>a,d). You can see that a small perturbation can barely knock out the ball from a basin with sharp and high walls (so-called potential barrier) which is associated with the high resilience of the system. On the other hand, low walls do not save the ball from even a small perturbation. The event when a ball leaves its current local minimum state and crosses the boundary of its basin is called <strong>critical transition</strong> which we discuss below. Resilience can be measured and different measures of resilience (including mathematically tractable) were proposed <span class="bibtex-citation" id="id26">[<a class="reference internal" href="#id97" title="R Varadhan, CL Seplaki, QL Xue, K Bandeen-Roche, and LP Fried. Stimulus-response paradigm for characterizing the loss of resilience in homeostatic regulation associated with frailty. Mechanisms of ageing and development, 129(11):666–670, 2008. URL: https://doi.org/10.1016/j.mad.2008.09.013.">Varadhan <em>et al.</em>, 2008</a>]</span>, <span class="bibtex-citation" id="id27">[<a class="reference internal" href="#id40" title="Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. Handbook of the Biology of Aging, pages 3–42, 2005. URL: https://doi.org/10.1006/jtbi.2001.2430.">Gavrilov and Gavrilova, 2005</a>]</span>, <span class="bibtex-citation" id="id28">[<a class="reference internal" href="#id96" title="Sanne MW Gijzel, Ingrid A van de Leemput, Marten Scheffer, Mattia Roppolo, Marcel GM Olde Rikkert, and René JF Melis. Dynamical resilience indicators in time series of self-rated health correspond to frailty levels in older adults. The Journals of Gerontology: Series A, 72(7):991–996, 2017. URL: https://doi.org/10.1093/gerona/glx065.">Gijzel <em>et al.</em>, 2017</a>]</span>, <span class="bibtex-citation" id="id29">[<a class="reference internal" href="#id60" title="Timothy V Pyrkov, Konstantin Avchaciov, Andrei E Tarkhov, Leonid I Menshikov, Andrei V Gudkov, and Peter O Fedichev. Longitudinal analysis of blood markers reveals progressive loss of resilience and predicts human lifespan limit. Nature communications, 12(1):1–10, 2021. URL: https://doi.org/10.1038/s41467-021-23014-1.">Pyrkov <em>et al.</em>, 2021</a>]</span>, <span class="bibtex-citation" id="id30">[<a class="reference internal" href="#id95" title="Markus Schosserer, Gareth Banks, Soner Dogan, Peter Dungel, Adelaide Fernandes, Darja Marolt Presen, Ander Matheu, Marcin Osuchowski, Paul Potter, Coral Sanfeliu, and others. Modelling physical resilience in ageing mice. Mechanisms of ageing and development, 177:91–102, 2019. URL: https://doi.org/10.1016/j.mad.2018.10.001.">Schosserer <em>et al.</em>, 2019</a>]</span>. It is especially important to measure resilience in older adults to be aware of the risks which they bear. Moreover, it was proposed that aging itself is a progressing loss of resilience <span class="bibtex-citation" id="id31">[<a class="reference internal" href="#id101" title="Daniel Promislow, Rozalyn M Anderson, Marten Scheffer, Bernard Crespi, James DeGregori, Kelley Harris, B Natterson Horowitz, Morgan E Levine, Maria A Riolo, David S Schneider, and others. Resilience integrates concepts in aging research. Iscience, pages 104199, 2022.">Promislow <em>et al.</em>, 2022</a>]</span>.</p>
+<p>The resilience concept is tightly bound to the <strong>critical transition</strong> concept which has synonyms of (more physical) <strong>phase transition</strong> and (more mathematical) <strong>bifurcation</strong>. It is usually defined as a qualitative change in macroscopic properties of the system <span class="bibtex-citation" id="id32">[<a class="reference internal" href="#id93" title="Jordan O’Byrne and Karim Jerbi. How critical is brain criticality? Trends in Neurosciences, 2022.">O’Byrne and Jerbi, 2022</a>]</span>. One important class of critical transitions is a <strong>fold catastrophic transition</strong> (which one is also tempted to associate with the death of the organism) <span class="bibtex-citation" id="id33">[<a class="reference internal" href="#id98" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span>. This transition is characterized by the “sharp” falling of the system parameter into a new state (we will cover the mathematical details of this bifurcation in the next chapter). We are especially interested in this type of bifurcation because of the presence of early warning signals preceding the system’s critical transition which we can directly observe in the data. Suppose that our aging-related dataset contains a system variable characterizing its macroscopic state (examples include the aforementioned heart rate (<a class="reference internal" href="#ecg"><span class="std std-numref">Fig. 7.4</span></a>) or self-rated health evaluations <span class="bibtex-citation" id="id34">[<a class="reference internal" href="#id96" title="Sanne MW Gijzel, Ingrid A van de Leemput, Marten Scheffer, Mattia Roppolo, Marcel GM Olde Rikkert, and René JF Melis. Dynamical resilience indicators in time series of self-rated health correspond to frailty levels in older adults. The Journals of Gerontology: Series A, 72(7):991–996, 2017. URL: https://doi.org/10.1093/gerona/glx065.">Gijzel <em>et al.</em>, 2017</a>]</span>) and this variable is presented in the form of one-dimensional time series for patients of different ages. Then, we can calculate variances and autocorrelations for all participants in the dataset. The bifurcation theory predicts that approaching a critical transition boundary (aka tipping point) is accompanied by the system’s <strong>critical slowing down</strong> and an increase in variance and temporal autocorrelations of the system state variable (<a class="reference internal" href="#early"><span class="std std-numref">Fig. 7.7</span></a>b,c,e,f) <span class="bibtex-citation" id="id35">[<a class="reference internal" href="#id98" title="Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. Nature, 461(7260):53–59, 2009. URL: https://doi.org/10.1038/nature08227.">Scheffer <em>et al.</em>, 2009</a>]</span> and this is something that we expect to observe in real aging data.</p>
 <figure class="align-default" id="early">
-<a class="reference internal image-reference" href="../_images/early.png"><img alt="../_images/early.png" src="../_images/early.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/early.png"><img alt="../_images/early.png" src="../_images/early.png" style="width: 800px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.7 </span><span class="caption-text">a-c, Far from the bifurcation point (a), resilience is large in two respects: the basin of attraction is large and the rate of recovery from perturbations is relatively high. If such a system is stochastically forced, the resulting dynamics are characterized by low correlation between the states at subsequent time intervals (b, c). d–f, When the system is closer to the transition point (d), resilience decreases in two senses: the basin of attraction shrinks and the rate of recovery from small perturbations is lower. As a consequence of this slowing down, the system has a longer memory for perturbations, and its dynamics in a stochastic environment are characterized by a larger variance and a stronger correlation between subsequent states (e, f).</span><a class="headerlink" href="#early" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.7 </span><span class="caption-text">a-c, Far from the bifurcation point (a), resilience is large in two respects: the basin of attraction is large and the rate of recovery from perturbations is relatively high. If such a system is stochastically forced, the resulting dynamics are characterized by low correlation between the states at subsequent time intervals (b, c). d–f, When the system is closer to the transition point (d), resilience decreases in two senses: the basin of attraction shrinks and the rate of recovery from small perturbations is lower. As a consequence of this slowing down, the system has a longer memory for perturbations, and its dynamics in a stochastic environment are characterized by a larger variance and a stronger correlation between subsequent states (e, f).</span><a class="headerlink" href="#early" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>One interesting example of the critical slowing down can be found in frail patients (<a class="reference internal" href="#glucose"><span class="std std-numref">Fig. 7.8</span></a>) <span id="id36">[<a class="reference internal" href="#id102" title="Rita Rastogi Kalyani, Ravi Varadhan, Carlos O Weiss, Linda P Fried, and Anne R Cappola. Frailty status and altered glucose-insulin dynamics. Journals of Gerontology: Series A: Biomedical Sciences and Medical Sciences, 67(12):1300–1306, 2012. URL: https://doi.org/10.1093%2Fgerona%2Fglr141.">Kalyani <em>et al.</em>, 2012</a>]</span>. The figure represents the resulting dynamics of glucose in oral glucose tolerance test (OGTT) demonstrating slower recovery in glucose level after perturbation in frail patients by comparing with non-frail and pre-frail. Indeed, the slowdown in metabolism, proliferation and information processing is a major feature of aging <span id="id37">[<a class="reference internal" href="#id94" title="Svetlana Ukraintseva, Konstantin Arbeev, Matt Duan, Igor Akushevich, Alexander Kulminski, Eric Stallard, and Anatoliy Yashin. Decline in biological resilience as key manifestation of aging: potential mechanisms and role in health and longevity. Mechanisms of ageing and development, 194:111418, 2021. URL: https://doi.org/10.1016/j.mad.2020.111418.">Ukraintseva <em>et al.</em>, 2021</a>]</span>. Consequently, frail and non-frail individuals may differ in how they respond dynamically to stressors or drug perturbations.</p>
+<p>One interesting example of the critical slowing down can be found in frail patients (<a class="reference internal" href="#glucose"><span class="std std-numref">Fig. 7.8</span></a>) <span class="bibtex-citation" id="id36">[<a class="reference internal" href="#id102" title="Rita Rastogi Kalyani, Ravi Varadhan, Carlos O Weiss, Linda P Fried, and Anne R Cappola. Frailty status and altered glucose-insulin dynamics. Journals of Gerontology: Series A: Biomedical Sciences and Medical Sciences, 67(12):1300–1306, 2012. URL: https://doi.org/10.1093%2Fgerona%2Fglr141.">Kalyani <em>et al.</em>, 2012</a>]</span>. The figure represents the resulting dynamics of glucose in an oral glucose tolerance test (OGTT) demonstrating slower recovery in glucose level after perturbation in frail patients compared with non-frail and pre-frail. Indeed, the slowdown in metabolism, proliferation and information processing is a major feature of aging <span class="bibtex-citation" id="id37">[<a class="reference internal" href="#id94" title="Svetlana Ukraintseva, Konstantin Arbeev, Matt Duan, Igor Akushevich, Alexander Kulminski, Eric Stallard, and Anatoliy Yashin. Decline in biological resilience as key manifestation of aging: potential mechanisms and role in health and longevity. Mechanisms of ageing and development, 194:111418, 2021. URL: https://doi.org/10.1016/j.mad.2020.111418.">Ukraintseva <em>et al.</em>, 2021</a>]</span>. Consequently, frail and non-frail individuals may differ in how they respond dynamically to stressors or drug perturbations.</p>
 <figure class="align-default" id="glucose">
-<a class="reference internal image-reference" href="../_images/glucose.png"><img alt="../_images/glucose.png" src="../_images/glucose.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/glucose.png"><img alt="../_images/glucose.png" src="../_images/glucose.png" style="width: 400px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.8 </span><span class="caption-text">Glucose dynamics during oral glucose tolerance test by frailty status. Mean ± SE (error bars) for glucose values respectively after a 75 g glucose load.</span><a class="headerlink" href="#glucose" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.8 </span><span class="caption-text">Glucose dynamics during an oral glucose tolerance test by frailty status. Mean ± SE (error bars) for glucose values respectively after a 75 g glucose load.</span><a class="headerlink" href="#glucose" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Resilience</strong> - the ability of a system to return in the equilibrium state preceding a perturbation.
+<p><strong>Resilience</strong> - the ability of a system to return to the equilibrium state preceding a perturbation.
 <strong>Critical transition</strong> - a qualitative change in macroscopic properties of the system.</p>
 </div>
 </section>
 <section id="summary-combining-the-learned-concepts">
-<h2><a class="toc-backref" href="#id207"><span class="section-number">7.6. </span>Summary: combining the learned concepts</a><a class="headerlink" href="#summary-combining-the-learned-concepts" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id206" role="doc-backlink"><span class="section-number">7.6. </span>Summary: combining the learned concepts</a><a class="headerlink" href="#summary-combining-the-learned-concepts" title="Link to this heading">#</a></h2>
 <p>Is the living organism the <strong>complex</strong> dynamic <strong>network</strong> of interacting elements acquiring discrete <strong>emergent</strong> states through the <strong>canalization</strong>, forming modules experiencing loss of <strong>resilience</strong> through the loss of <strong>complexity</strong> during aging and approaching its <strong>critical transition</strong> point ultimately falling into the death state? - the question is open to You!</p>
-<p>Aging biology is, in particular, so challenging because of the absence of longitudinal highly dense data: chemical signals are not so easy for measurements like electrical signals in neurons, moreover, data quality is rather poor frequently.</p>
-<p>Complex systems framework do not answer directly what molecule or intervention will repair the system by getting it back to the equilibrium state, but rather provide a useful methodology to evaluate this state and more precisely measure, control and study effects of any new molecules used for treatment. It also may point to what essential components of the system undergoes changes that manifest themselves as aging. Might it be an extracellular matrix degradation, genomic instability or mitochondrial dysfunction? What system state parameter may unequivocally indicate the loss of resilience and explain the reason for the loss? How can we define those elements of the system which contribute more to aging? - these are open questions. What we can do now is to make your dynamic systems intuition deeper in the next section.</p>
+<p>Aging biology is, in particular, so challenging because of the absence of longitudinal highly dense data: chemical signals are not as easy to measure as electrical signals in neurons; moreover, data quality is rather poor frequently.</p>
+<p>The complex systems framework does not answer directly what molecule or intervention will repair the system by getting it back to the equilibrium state, but rather provides a useful methodology to evaluate this state and more precisely measure, control and study effects of any new molecules used for treatment. It also may point to what essential components of the system undergo changes that manifest themselves as aging. Might it be an extracellular matrix degradation, genomic instability or mitochondrial dysfunction? What system state parameter may unequivocally indicate the loss of resilience and explain the reason for the loss? How can we define those elements of the system which contribute more to aging? - these are open questions. What we can do now is to make your dynamic systems intuition deeper in the next section.</p>
 </section>
 <section id="credits">
-<h2><a class="toc-backref" href="#id208"><span class="section-number">7.7. </span>Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id207" role="doc-backlink"><span class="section-number">7.7. </span>Credits</a><a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This text was prepared by <a class="reference external" href="https://scholar.google.com/citations?user=Wo9H1f4AAAAJ&amp;hl=en">Dmitrii Kriukov</a>.</p>
 </section>
 <section id="references">
-<h2><a class="toc-backref" href="#id209"><span class="section-number">7.8. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id208" role="doc-backlink"><span class="section-number">7.8. </span>References</a><a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id38">
-<dl class="citation">
-<dt class="label" id="id77"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>,<a href="#id6">3</a>,<a href="#id14">4</a>,<a href="#id20">5</a>,<a href="#id24">6</a>)</span></dt>
-<dd><p>Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. <em>Nature Aging</em>, 2(7):580–591, 2022.</p>
-</dd>
-<dt class="label" id="id84"><span class="brackets"><a class="fn-backref" href="#id12">2</a></span></dt>
-<dd><p>James P Crutchfield and Karl Young. Inferring statistical complexity. <em>Physical review letters</em>, 63(2):105, 1989.</p>
-</dd>
-<dt class="label" id="id85"><span class="brackets">3</span><span class="fn-backref">(<a href="#id15">1</a>,<a href="#id17">2</a>,<a href="#id18">3</a>)</span></dt>
-<dd><p>Gerald M Edelman and Joseph A Gally. Degeneracy and complexity in biological systems. <em>Proceedings of the National Academy of Sciences</em>, 98(24):13763–13768, 2001.</p>
-</dd>
-<dt class="label" id="id87"><span class="brackets"><a class="fn-backref" href="#id16">4</a></span></dt>
-<dd><p>Tamar Friedlander, Avraham E Mayo, Tsvi Tlusty, and Uri Alon. Evolution of bow-tie architectures in biology. <em>PLoS computational biology</em>, 11(3):e1004055, 2015.</p>
-</dd>
-<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id27">5</a></span></dt>
-<dd><p>Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. <em>Handbook of the Biology of Aging</em>, pages 3–42, 2005. URL: <a class="reference external" href="https://doi.org/10.1006/jtbi.2001.2430">https://doi.org/10.1006/jtbi.2001.2430</a>.</p>
-</dd>
-<dt class="label" id="id96"><span class="brackets">6</span><span class="fn-backref">(<a href="#id28">1</a>,<a href="#id34">2</a>)</span></dt>
-<dd><p>Sanne MW Gijzel, Ingrid A van de Leemput, Marten Scheffer, Mattia Roppolo, Marcel GM Olde Rikkert, and René JF Melis. Dynamical resilience indicators in time series of self-rated health correspond to frailty levels in older adults. <em>The Journals of Gerontology: Series A</em>, 72(7):991–996, 2017. URL: <a class="reference external" href="https://doi.org/10.1093/gerona/glx065">https://doi.org/10.1093/gerona/glx065</a>.</p>
-</dd>
-<dt class="label" id="id82"><span class="brackets"><a class="fn-backref" href="#id10">7</a></span></dt>
-<dd><p>Motoshi Hayano, Jae-Hyun Yang, Michael S Bonkowski, Joao A Amorim, Jaime M Ross, Giuseppe Coppotelli, Patrick T Griffin, Yap Ching Chew, Wei Guo, Xiaojing Yang, and others. Dna break-induced epigenetic drift as a cause of mammalian aging. <em>BioRxiv</em>, pages 808659, 2019.</p>
-</dd>
-<dt class="label" id="id90"><span class="brackets"><a class="fn-backref" href="#id22">8</a></span></dt>
-<dd><p>Sui Huang, Gabriel Eichler, Yaneer Bar-Yam, and Donald E Ingber. Cell fates as high-dimensional attractor states of a complex gene regulatory network. <em>Physical review letters</em>, 94(12):128701, 2005.</p>
-</dd>
-<dt class="label" id="id102"><span class="brackets"><a class="fn-backref" href="#id36">9</a></span></dt>
-<dd><p>Rita Rastogi Kalyani, Ravi Varadhan, Carlos O Weiss, Linda P Fried, and Anne R Cappola. Frailty status and altered glucose-insulin dynamics. <em>Journals of Gerontology: Series A: Biomedical Sciences and Medical Sciences</em>, 67(12):1300–1306, 2012. URL: <a class="reference external" href="https://doi.org/10.1093%2Fgerona%2Fglr141">https://doi.org/10.1093%2Fgerona%2Fglr141</a>.</p>
-</dd>
-<dt class="label" id="id79"><span class="brackets"><a class="fn-backref" href="#id5">10</a></span></dt>
-<dd><p>Brian K Kennedy, Shelley L Berger, Anne Brunet, Judith Campisi, Ana Maria Cuervo, Elissa S Epel, Claudio Franceschi, Gordon J Lithgow, Richard I Morimoto, Jeffrey E Pessin, and others. Geroscience: linking aging to chronic disease. <em>Cell</em>, 159(4):709–713, 2014.</p>
-</dd>
-<dt class="label" id="id80"><span class="brackets">11</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id9">2</a>,<a href="#id13">3</a>)</span></dt>
-<dd><p>Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. <em>Jama</em>, 267(13):1806–1809, 1992.</p>
-</dd>
-<dt class="label" id="id78"><span class="brackets"><a class="fn-backref" href="#id4">12</a></span></dt>
-<dd><p>Carlos López-Otín, Maria A Blasco, Linda Partridge, Manuel Serrano, and Guido Kroemer. The hallmarks of aging. <em>Cell</em>, 153(6):1194–1217, 2013.</p>
-</dd>
-<dt class="label" id="id93"><span class="brackets">13</span><span class="fn-backref">(<a href="#id23">1</a>,<a href="#id32">2</a>)</span></dt>
-<dd><p>Jordan O’Byrne and Karim Jerbi. How critical is brain criticality? <em>Trends in Neurosciences</em>, 2022.</p>
-</dd>
-<dt class="label" id="id88"><span class="brackets"><a class="fn-backref" href="#id19">14</a></span></dt>
-<dd><p>Dmitriy Podolskiy, I Molodtcov, Alexander Zenin, Valeria Kogan, Leonid I Menshikov, Vadim N Gladyshev, Robert J Shmookler Reis, and Peter O Fedichev. Critical dynamics of gene networks is a mechanism behind ageing and gompertz law. <em>arXiv preprint arXiv:1502.04307</em>, 2015.</p>
-</dd>
-<dt class="label" id="id101"><span class="brackets"><a class="fn-backref" href="#id31">15</a></span></dt>
-<dd><p>Daniel Promislow, Rozalyn M Anderson, Marten Scheffer, Bernard Crespi, James DeGregori, Kelley Harris, B Natterson Horowitz, Morgan E Levine, Maria A Riolo, David S Schneider, and others. Resilience integrates concepts in aging research. <em>Iscience</em>, pages 104199, 2022.</p>
-</dd>
-<dt class="label" id="id60"><span class="brackets"><a class="fn-backref" href="#id29">16</a></span></dt>
-<dd><p>Timothy V Pyrkov, Konstantin Avchaciov, Andrei E Tarkhov, Leonid I Menshikov, Andrei V Gudkov, and Peter O Fedichev. Longitudinal analysis of blood markers reveals progressive loss of resilience and predicts human lifespan limit. <em>Nature communications</em>, 12(1):1–10, 2021. URL: <a class="reference external" href="https://doi.org/10.1038/s41467-021-23014-1">https://doi.org/10.1038/s41467-021-23014-1</a>.</p>
-</dd>
-<dt class="label" id="id98"><span class="brackets">17</span><span class="fn-backref">(<a href="#id33">1</a>,<a href="#id35">2</a>)</span></dt>
-<dd><p>Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. <em>Nature</em>, 461(7260):53–59, 2009. URL: <a class="reference external" href="https://doi.org/10.1038/nature08227">https://doi.org/10.1038/nature08227</a>.</p>
-</dd>
-<dt class="label" id="id95"><span class="brackets"><a class="fn-backref" href="#id30">18</a></span></dt>
-<dd><p>Markus Schosserer, Gareth Banks, Soner Dogan, Peter Dungel, Adelaide Fernandes, Darja Marolt Presen, Ander Matheu, Marcin Osuchowski, Paul Potter, Coral Sanfeliu, and others. Modelling physical resilience in ageing mice. <em>Mechanisms of ageing and development</em>, 177:91–102, 2019. URL: <a class="reference external" href="https://doi.org/10.1016/j.mad.2018.10.001">https://doi.org/10.1016/j.mad.2018.10.001</a>.</p>
-</dd>
-<dt class="label" id="id92"><span class="brackets"><a class="fn-backref" href="#id8">19</a></span></dt>
-<dd><p>Claude Elwood Shannon. A mathematical theory of communication. <em>The Bell system technical journal</em>, 27(3):379–423, 1948.</p>
-</dd>
-<dt class="label" id="id89"><span class="brackets"><a class="fn-backref" href="#id21">20</a></span></dt>
-<dd><p>Kazutoshi Takahashi and Shinya Yamanaka. A decade of transcription factor-mediated reprogramming to pluripotency. <em>Nature reviews Molecular cell biology</em>, 17(3):183–193, 2016.</p>
-</dd>
-<dt class="label" id="id94"><span class="brackets"><a class="fn-backref" href="#id37">21</a></span></dt>
-<dd><p>Svetlana Ukraintseva, Konstantin Arbeev, Matt Duan, Igor Akushevich, Alexander Kulminski, Eric Stallard, and Anatoliy Yashin. Decline in biological resilience as key manifestation of aging: potential mechanisms and role in health and longevity. <em>Mechanisms of ageing and development</em>, 194:111418, 2021. URL: <a class="reference external" href="https://doi.org/10.1016/j.mad.2020.111418">https://doi.org/10.1016/j.mad.2020.111418</a>.</p>
-</dd>
-<dt class="label" id="id97"><span class="brackets"><a class="fn-backref" href="#id26">22</a></span></dt>
-<dd><p>R Varadhan, CL Seplaki, QL Xue, K Bandeen-Roche, and LP Fried. Stimulus-response paradigm for characterizing the loss of resilience in homeostatic regulation associated with frailty. <em>Mechanisms of ageing and development</em>, 129(11):666–670, 2008. URL: <a class="reference external" href="https://doi.org/10.1016/j.mad.2008.09.013">https://doi.org/10.1016/j.mad.2008.09.013</a>.</p>
-</dd>
-<dt class="label" id="id91"><span class="brackets"><a class="fn-backref" href="#id25">23</a></span></dt>
-<dd><p>Qian-Li Xue. The frailty syndrome: definition and natural history. <em>Clinics in geriatric medicine</em>, 27(1):1–15, 2011.</p>
-</dd>
-<dt class="label" id="id83"><span class="brackets"><a class="fn-backref" href="#id11">24</a></span></dt>
-<dd><p>Jae-Hyun Yang, Patrick T Griffin, Daniel L Vera, John K Apostolides, Motoshi Hayano, Margarita V Meer, Elias L Salfati, Qiao Su, Elizabeth M Munding, Marco Blanchette, and others. Erosion of the epigenetic landscape and loss of cellular identity as a cause of aging in mammals. <em>BioRxiv</em>, pages 808642, 2019.</p>
-</dd>
-<dt class="label" id="id81"><span class="brackets"><a class="fn-backref" href="#id2">25</a></span></dt>
-<dd><p>Paulina Łopatniuk and Jacek M Witkowski. Conventional calpains and programmed cell death. <em>Acta Biochimica Polonica</em>, 2011.</p>
-</dd>
-</dl>
+<div role="list" class="citation-list">
+<div class="citation" id="id77" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id6">3</a>,<a role="doc-backlink" href="#id14">4</a>,<a role="doc-backlink" href="#id20">5</a>,<a role="doc-backlink" href="#id24">6</a>)</span>
+<p>Alan A Cohen, Luigi Ferrucci, Tamàs Fülöp, Dominique Gravel, Nan Hao, Andres Kriete, Morgan E Levine, Lewis A Lipsitz, Marcel GM Olde Rikkert, Andrew Rutenberg, and others. A complex systems approach to aging biology. <em>Nature Aging</em>, 2(7):580–591, 2022.</p>
+</div>
+<div class="citation" id="id84" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">2</a><span class="fn-bracket">]</span></span>
+<p>James P Crutchfield and Karl Young. Inferring statistical complexity. <em>Physical review letters</em>, 63(2):105, 1989.</p>
+</div>
+<div class="citation" id="id85" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id15">1</a>,<a role="doc-backlink" href="#id17">2</a>,<a role="doc-backlink" href="#id18">3</a>)</span>
+<p>Gerald M Edelman and Joseph A Gally. Degeneracy and complexity in biological systems. <em>Proceedings of the National Academy of Sciences</em>, 98(24):13763–13768, 2001.</p>
+</div>
+<div class="citation" id="id87" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">4</a><span class="fn-bracket">]</span></span>
+<p>Tamar Friedlander, Avraham E Mayo, Tsvi Tlusty, and Uri Alon. Evolution of bow-tie architectures in biology. <em>PLoS computational biology</em>, 11(3):e1004055, 2015.</p>
+</div>
+<div class="citation" id="id40" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id27">5</a><span class="fn-bracket">]</span></span>
+<p>Leonid A Gavrilov and Natalia S Gavrilova. Reliability theory of aging and longevity. <em>Handbook of the Biology of Aging</em>, pages 3–42, 2005. URL: <a class="reference external" href="https://doi.org/10.1006/jtbi.2001.2430">https://doi.org/10.1006/jtbi.2001.2430</a>.</p>
+</div>
+<div class="citation" id="id96" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id28">1</a>,<a role="doc-backlink" href="#id34">2</a>)</span>
+<p>Sanne MW Gijzel, Ingrid A van de Leemput, Marten Scheffer, Mattia Roppolo, Marcel GM Olde Rikkert, and René JF Melis. Dynamical resilience indicators in time series of self-rated health correspond to frailty levels in older adults. <em>The Journals of Gerontology: Series A</em>, 72(7):991–996, 2017. URL: <a class="reference external" href="https://doi.org/10.1093/gerona/glx065">https://doi.org/10.1093/gerona/glx065</a>.</p>
+</div>
+<div class="citation" id="id82" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">7</a><span class="fn-bracket">]</span></span>
+<p>Motoshi Hayano, Jae-Hyun Yang, Michael S Bonkowski, Joao A Amorim, Jaime M Ross, Giuseppe Coppotelli, Patrick T Griffin, Yap Ching Chew, Wei Guo, Xiaojing Yang, and others. Dna break-induced epigenetic drift as a cause of mammalian aging. <em>BioRxiv</em>, pages 808659, 2019.</p>
+</div>
+<div class="citation" id="id90" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id22">8</a><span class="fn-bracket">]</span></span>
+<p>Sui Huang, Gabriel Eichler, Yaneer Bar-Yam, and Donald E Ingber. Cell fates as high-dimensional attractor states of a complex gene regulatory network. <em>Physical review letters</em>, 94(12):128701, 2005.</p>
+</div>
+<div class="citation" id="id102" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id36">9</a><span class="fn-bracket">]</span></span>
+<p>Rita Rastogi Kalyani, Ravi Varadhan, Carlos O Weiss, Linda P Fried, and Anne R Cappola. Frailty status and altered glucose-insulin dynamics. <em>Journals of Gerontology: Series A: Biomedical Sciences and Medical Sciences</em>, 67(12):1300–1306, 2012. URL: <a class="reference external" href="https://doi.org/10.1093%2Fgerona%2Fglr141">https://doi.org/10.1093%2Fgerona%2Fglr141</a>.</p>
+</div>
+<div class="citation" id="id79" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">10</a><span class="fn-bracket">]</span></span>
+<p>Brian K Kennedy, Shelley L Berger, Anne Brunet, Judith Campisi, Ana Maria Cuervo, Elissa S Epel, Claudio Franceschi, Gordon J Lithgow, Richard I Morimoto, Jeffrey E Pessin, and others. Geroscience: linking aging to chronic disease. <em>Cell</em>, 159(4):709–713, 2014.</p>
+</div>
+<div class="citation" id="id80" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id7">1</a>,<a role="doc-backlink" href="#id9">2</a>,<a role="doc-backlink" href="#id13">3</a>)</span>
+<p>Lewis A Lipsitz and Ary L Goldberger. Loss of'complexity'and aging: potential applications of fractals and chaos theory to senescence. <em>Jama</em>, 267(13):1806–1809, 1992.</p>
+</div>
+<div class="citation" id="id78" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">12</a><span class="fn-bracket">]</span></span>
+<p>Carlos López-Otín, Maria A Blasco, Linda Partridge, Manuel Serrano, and Guido Kroemer. The hallmarks of aging. <em>Cell</em>, 153(6):1194–1217, 2013.</p>
+</div>
+<div class="citation" id="id93" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>13<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id23">1</a>,<a role="doc-backlink" href="#id32">2</a>)</span>
+<p>Jordan O’Byrne and Karim Jerbi. How critical is brain criticality? <em>Trends in Neurosciences</em>, 2022.</p>
+</div>
+<div class="citation" id="id88" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id19">14</a><span class="fn-bracket">]</span></span>
+<p>Dmitriy Podolskiy, I Molodtcov, Alexander Zenin, Valeria Kogan, Leonid I Menshikov, Vadim N Gladyshev, Robert J Shmookler Reis, and Peter O Fedichev. Critical dynamics of gene networks is a mechanism behind ageing and gompertz law. <em>arXiv preprint arXiv:1502.04307</em>, 2015.</p>
+</div>
+<div class="citation" id="id101" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id31">15</a><span class="fn-bracket">]</span></span>
+<p>Daniel Promislow, Rozalyn M Anderson, Marten Scheffer, Bernard Crespi, James DeGregori, Kelley Harris, B Natterson Horowitz, Morgan E Levine, Maria A Riolo, David S Schneider, and others. Resilience integrates concepts in aging research. <em>Iscience</em>, pages 104199, 2022.</p>
+</div>
+<div class="citation" id="id60" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id29">16</a><span class="fn-bracket">]</span></span>
+<p>Timothy V Pyrkov, Konstantin Avchaciov, Andrei E Tarkhov, Leonid I Menshikov, Andrei V Gudkov, and Peter O Fedichev. Longitudinal analysis of blood markers reveals progressive loss of resilience and predicts human lifespan limit. <em>Nature communications</em>, 12(1):1–10, 2021. URL: <a class="reference external" href="https://doi.org/10.1038/s41467-021-23014-1">https://doi.org/10.1038/s41467-021-23014-1</a>.</p>
+</div>
+<div class="citation" id="id98" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>17<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id33">1</a>,<a role="doc-backlink" href="#id35">2</a>)</span>
+<p>Marten Scheffer, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. Early-warning signals for critical transitions. <em>Nature</em>, 461(7260):53–59, 2009. URL: <a class="reference external" href="https://doi.org/10.1038/nature08227">https://doi.org/10.1038/nature08227</a>.</p>
+</div>
+<div class="citation" id="id95" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id30">18</a><span class="fn-bracket">]</span></span>
+<p>Markus Schosserer, Gareth Banks, Soner Dogan, Peter Dungel, Adelaide Fernandes, Darja Marolt Presen, Ander Matheu, Marcin Osuchowski, Paul Potter, Coral Sanfeliu, and others. Modelling physical resilience in ageing mice. <em>Mechanisms of ageing and development</em>, 177:91–102, 2019. URL: <a class="reference external" href="https://doi.org/10.1016/j.mad.2018.10.001">https://doi.org/10.1016/j.mad.2018.10.001</a>.</p>
+</div>
+<div class="citation" id="id92" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">19</a><span class="fn-bracket">]</span></span>
+<p>Claude Elwood Shannon. A mathematical theory of communication. <em>The Bell system technical journal</em>, 27(3):379–423, 1948.</p>
+</div>
+<div class="citation" id="id89" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id21">20</a><span class="fn-bracket">]</span></span>
+<p>Kazutoshi Takahashi and Shinya Yamanaka. A decade of transcription factor-mediated reprogramming to pluripotency. <em>Nature reviews Molecular cell biology</em>, 17(3):183–193, 2016.</p>
+</div>
+<div class="citation" id="id94" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id37">21</a><span class="fn-bracket">]</span></span>
+<p>Svetlana Ukraintseva, Konstantin Arbeev, Matt Duan, Igor Akushevich, Alexander Kulminski, Eric Stallard, and Anatoliy Yashin. Decline in biological resilience as key manifestation of aging: potential mechanisms and role in health and longevity. <em>Mechanisms of ageing and development</em>, 194:111418, 2021. URL: <a class="reference external" href="https://doi.org/10.1016/j.mad.2020.111418">https://doi.org/10.1016/j.mad.2020.111418</a>.</p>
+</div>
+<div class="citation" id="id97" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id26">22</a><span class="fn-bracket">]</span></span>
+<p>R Varadhan, CL Seplaki, QL Xue, K Bandeen-Roche, and LP Fried. Stimulus-response paradigm for characterizing the loss of resilience in homeostatic regulation associated with frailty. <em>Mechanisms of ageing and development</em>, 129(11):666–670, 2008. URL: <a class="reference external" href="https://doi.org/10.1016/j.mad.2008.09.013">https://doi.org/10.1016/j.mad.2008.09.013</a>.</p>
+</div>
+<div class="citation" id="id91" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id25">23</a><span class="fn-bracket">]</span></span>
+<p>Qian-Li Xue. The frailty syndrome: definition and natural history. <em>Clinics in geriatric medicine</em>, 27(1):1–15, 2011.</p>
+</div>
+<div class="citation" id="id83" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">24</a><span class="fn-bracket">]</span></span>
+<p>Jae-Hyun Yang, Patrick T Griffin, Daniel L Vera, John K Apostolides, Motoshi Hayano, Margarita V Meer, Elias L Salfati, Qiao Su, Elizabeth M Munding, Marco Blanchette, and others. Erosion of the epigenetic landscape and loss of cellular identity as a cause of aging in mammals. <em>BioRxiv</em>, pages 808642, 2019.</p>
+</div>
+<div class="citation" id="id81" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">25</a><span class="fn-bracket">]</span></span>
+<p>Paulina Łopatniuk and Jacek M Witkowski. Conventional calpains and programmed cell death. <em>Acta Biochimica Polonica</em>, 2011.</p>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -819,7 +783,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./dyn"
         },
         predefinedOutput: true
@@ -827,50 +791,112 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../ml/aging_clocks.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>Aging Clocks</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ml/aging_clocks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Aging Clocks</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="system_resilience.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="system_resilience.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">8. </span>System resilience</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-systems-perspective-on-aging">7.1. Complex systems perspective on aging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aging-as-loss-of-complexity">7.2. Aging as loss of Complexity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networks-and-biological-degeneracy">7.3. Networks and Biological degeneracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emergence-and-canalization">7.4. Emergence and Canalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resilience-and-critical-transitions">7.5. Resilience and Critical transitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-combining-the-learned-concepts">7.6. Summary: combining the learned concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">7.7. Credits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.8. References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Kriukov Dmitrii<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Kriukov Dmitrii
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

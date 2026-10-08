@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Aging in complex interdependency networks &#8212; Computational aging book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/2025/network/report';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../../../_static/symbol.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Aging Research Digest: A Daily AI-Powered Literature Alert for Geroscience" href="../tgbot/report.html" />
+    <link rel="prev" title="Transcriptomics-based longevity drug discovery" href="../drugdiscovery/report.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/symbol.png" class="logo__image only-light" alt="Computational aging book - Home"/>
+    <img src="../../../_static/symbol.png" class="logo__image only-dark pst-js-only" alt="Computational aging book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Welcome to the Computational Biology of Aging coursebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Biology of Aging</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../bio/intro_aging_biology.html">1. Introduction to Aging Biology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistical analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../stat/differential_analysis_practice.html">2. Differential expression analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../meth/meth.html">3. Omics Data Analysis in Aging: Methylomics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1mCak-0KTZkISR7ptyBvIOBj1MpewOwDx?usp=sharing">Practice - WGCNA for Methylomics</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Biomarkers of Aging</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../stat/survival_analysis.html">4. Survival analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../stat/survival_analysis_part2.html">5. Advanced survival analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing">Practice - Survival analysis with ML</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing">Practice - Deep survival analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ml/aging_clocks.html">6. Aging Clocks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1h1D35mKJ1-7YlBRW7tLAIO2mviHIAMuj?usp=sharing">Practice - DIY Aging Clocks</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models of Aging</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../dyn/complex_systems.html">7. Complex systems approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyn/system_resilience.html">8. System resilience</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Student projects</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2023_1.html">Projects 2023 (1st wave)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/dosi/report.html">Dynamic Organism State Indicator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/meta/report.html">Meta-analysis of aging transcriptomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/parkinson/report.html">Computational Model of Parkinson’s Disease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/unsupervized/report.html">Unsupervised aging</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2023_2.html">Projects 2023 (2nd wave)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/drugdiscovery/report.html">Transcriptomics-based longevity drug discovery (2023)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/gompertz/report.html">Senescent cell turnover slowdown with age providing an explanation for the Gompertz law</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/levine2013/report.html">Modeling Rate Of Senescence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/autogpt/report.html">AutoInsight: AI-Powered Article Analysis Project</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../2025.html">Projects 2025</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../drugdiscovery/report.html">Transcriptomics-based longevity drug discovery (2025)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Aging in complex interdependency networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tgbot/report.html">Aging Research Digest: A Daily AI-Powered Literature Alert for Geroscience</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ComputationalAgingLab/computational_aging_course" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ComputationalAgingLab/computational_aging_course/issues/new?title=Issue%20on%20page%20%2Fprojects/2025/network/report.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/projects/2025/network/report.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Aging in complex interdependency networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-organism-as-a-network-of-dependencies">An organism as a network of dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-building">Model building</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-trajectory-of-network-aging">Typical trajectory of network aging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-to-real-organisms">Fitting to real organisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applicability-beyond-biology">Applicability beyond biology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-influence-of-parameters-on-the-shape-of-the-curve">The influence of parameters on the shape of the curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-qualitative-dependence-of-average-lifetime-on-damage-and-repair-rate">The qualitative dependence of average lifetime on damage and repair rate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-indicator-of-interdependency-lambda-phi-t">Analysis of the indicator of interdependency <span class="math notranslate nohighlight">\(\lambda(\phi(t))\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-magnitude-of-the-changes-in-different-events">Analysis of the magnitude of the Δϕ changes in different events</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="aging-in-complex-interdependency-networks">
+<h1>Aging in complex interdependency networks<a class="headerlink" href="#aging-in-complex-interdependency-networks" title="Link to this heading">#</a></h1>
+<p>This project is devoted to reproduction of the paper “Aging in complex interdependency networks” by Dervis C. Vural, Greg Morrison and L. Mahadevan. In this project, we reconstructed theoretical results from the article. Specifically, we tried to investigate what is common between the aging of cars and the aging of humans.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In complex structures such as organisms and machines, it can be found that <span class="math notranslate nohighlight">\(μ(t)\)</span>, varies and usually increases with time. In living systems, <span class="math notranslate nohighlight">\(μ(t)\)</span> increases exponentially (commonly known as Gompertz’s law) until it reaches a plateau at the end of life. Moreover, the functional form of <span class="math notranslate nohighlight">\(μ(t)\)</span> is remarkably similar in a wide range of organisms.</p>
+<p>Classical mechanistic (mutation accumulation theory) and evolutionary (antagonistic pleiotropy) theories of aging do not fully explain the observed mortality curves, so it is worth considering aging as a consequence of a complex network of interdependencies between parts of the system. For this purpose, random and non-random networks are built, they are damaged and repaired, and it is shown that such a purely network model reproduces empirical mortality curves of several species.</p>
+</section>
+<section id="model">
+<h2>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h2>
+<section id="an-organism-as-a-network-of-dependencies">
+<h3>An organism as a network of dependencies<a class="headerlink" href="#an-organism-as-a-network-of-dependencies" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>An organism is represented as a set of nodes with directed edges: nodes — genes, cells, tissues, organs with functions</p></li>
+<li><p>Directed edge <span class="math notranslate nohighlight">\(A \rightarrow B\)</span>: B depends on A (energy, enzymes, mechanical support, etc.)</p></li>
+<li><p>The evolution of an organism is considered as a gradual addition of new nodes and edges</p></li>
+<li><p>Linking a new node with an existing one can be:</p>
+<ul>
+<li><p>with equal probability (<strong>neutral evolution</strong>): <span class="math notranslate nohighlight">\(P_i = const\)</span>;</p></li>
+<li><p>with a probability proportional to the degree of the node (preferred addition is <strong>non-neutral evolution</strong>): <span class="math notranslate nohighlight">\(P_i = k_i/\sum k_j\)</span></p></li>
+</ul>
+</li>
+<li><p>These two modes generate:</p>
+<ul>
+<li><p><strong>RN</strong> (random network);</p></li>
+<li><p><strong>SFN</strong> (scale‑free network) — scale‑invariant network with hubs.</p></li>
+</ul>
+</li>
+<li><p>For a fixed network, the dynamics is set by <strong>three parameters and an initial condition</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\gamma_0\)</span> is the probability of node failure per step (biomolecular damage: oxidative stress, radiation, etc.)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma_1\)</span> is the probability of node repair/replacement (activity of genes and repair pathways).</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of nodes (approximate complexity of the organism).</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\)</span> is the initial proportion of damaged nodes (stress before and after birth).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="model-building">
+<h3>Model building<a class="headerlink" href="#model-building" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Three basic rules of the model:</p>
+<ul>
+<li><p>Every component in the organism must depend on at least one other node, and at least one other node must depend on it (i.e., all parts of the organism must be fully connected)</p></li>
+<li><p>With certain fixed small probabilities the components can break (stop functioning) or be repaired (start functioning)</p></li>
+<li><p>A node stops functioning if the majority of those on which it depends (providers) stop functioning, and cannot be repaired without a majority of its providers functioning</p></li>
+</ul>
+</li>
+<li><p><strong>Model of an organism:</strong></p>
+<ul>
+<li><p>Begin with a single node, and <span class="math notranslate nohighlight">\(i = 1\)</span>.</p></li>
+<li><p>Introduce a new <span class="math notranslate nohighlight">\((i + 1)\)</span>th node and make it depend on any one of the preexisting nodes <span class="math notranslate nohighlight">\(j &lt; i\)</span> with probability <span class="math notranslate nohighlight">\(P(k_j)\)</span>, where <span class="math notranslate nohighlight">\(k_j\)</span> is the degree of node <span class="math notranslate nohighlight">\(j\)</span>. For the neutral scheme <span class="math notranslate nohighlight">\(P(k_j)\)</span> is taken to be uniform and independent of <span class="math notranslate nohighlight">\(k_j\)</span>, whereas for the non-neutral scheme <span class="math notranslate nohighlight">\(P(k_j)\)</span> is taken proportional to <span class="math notranslate nohighlight">\(k_j\)</span>.</p></li>
+<li><p>Make any existing node <span class="math notranslate nohighlight">\(j\)</span> depend on the <span class="math notranslate nohighlight">\((i + 1)\)</span>th node with probability <span class="math notranslate nohighlight">\(P(k_j)\)</span></p></li>
+<li><p>Increment <span class="math notranslate nohighlight">\(i\)</span> and repeat steps for <span class="math notranslate nohighlight">\(N − 1\)</span> steps.</p></li>
+</ul>
+</li>
+<li><p><strong>Network aging:</strong></p>
+<ul>
+<li><p>The state of the organism in time: <span class="math notranslate nohighlight">\(ψ(t) = {x_1(t),x_2(t),..., x_N(t)}\)</span> where each component can take either one of the values <span class="math notranslate nohighlight">\(1\)</span> (functional) or <span class="math notranslate nohighlight">\(0\)</span> (non-functional)</p></li>
+<li><p>Vitality: <span class="math notranslate nohighlight">\(φ(t) = \sum x_i(t)/N\)</span> (the proportion of functional nodes)</p></li>
+<li><p>At the initial moment, a random fraction of d nodes is assigned 0, while the rest have 1.</p></li>
+<li><p>At each time step t for each node:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(x_i =1 \rightarrow 0\)</span> with probability <span class="math notranslate nohighlight">\(\gamma_0\)</span> and do nothing with probability <span class="math notranslate nohighlight">\(1 - \gamma_0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_i =0 \rightarrow 1\)</span> with probability <span class="math notranslate nohighlight">\(\gamma_1\)</span> and do nothing with probability <span class="math notranslate nohighlight">\(1 - \gamma_1\)</span></p></li>
+</ul>
+</li>
+<li><p>After that, a cascade is applied: the node breaks down if most of the nodes on which it depends are already broken; the procedure is repeated recursively until new breakdowns cease to occur.</p></li>
+<li><p>The resulting state is declared <span class="math notranslate nohighlight">\(ψ(t+1)\)</span>.</p></li>
+<li><p>Increase <span class="math notranslate nohighlight">\(t\)</span> and repeat until all nodes become <span class="math notranslate nohighlight">\(0\)</span> (complete collapse).</p></li>
+<li><p>Organism’s death is determined by the threshold: enter <span class="math notranslate nohighlight">\(φ(τ) = 1\%\)</span>; the moment when <span class="math notranslate nohighlight">\(φ(t)\)</span> falls below <span class="math notranslate nohighlight">\(1\%\)</span> for the first time, is considered the time of death of <span class="math notranslate nohighlight">\(τ\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>The ensemble of organisms:</strong></p></li>
+</ul>
+<p>To study statistics, they build an ensemble of many independent networks (organisms) and age them according to the same rules.
+Besides <span class="math notranslate nohighlight">\(φ(t)\)</span> for each network, track:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(s(t)\)</span> is the proportion of organisms still alive at time <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>Temporary mortality: <span class="math notranslate nohighlight">\(μ(t) = −[s(t + 1) − s(t)]/s(t)\)</span>.</p></li>
+<li><p>The indicator of interdependency is introduced: <span class="math notranslate nohighlight">\(λ[φ(t)] = log[φ(t)]/ log[φ0(t)]\)</span>, where <span class="math notranslate nohighlight">\(φ0 = exp{(−g0 + g1)t}\)</span> (the expected viability of the same network without dependency edges). <span class="math notranslate nohighlight">\(λ\)</span> shows how much faster an interdependent system collapses compared to an independent one.</p></li>
+</ul>
+</section>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<section id="typical-trajectory-of-network-aging">
+<h3>Typical trajectory of network aging<a class="headerlink" href="#typical-trajectory-of-network-aging" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>At the beginning of life, the body slowly loses living nodes: φ(t) decreases at an approximately constant rate ⟨a⟩*g0, where ⟨a⟩≈1.8 for scale‑free networks and ≈1.75 for random.</p></li>
+<li><p>As the damage accumulates, the system approaches critical viability φ(c); when φ(t) reaches c the remaining live nodes collapse almost simultaneously.</p></li>
+<li><p>Even at g0=g1 the network degrades on average anyway, because not all dead nodes can be repaired.</p></li>
+</ul>
+<p><img alt="Typical trajectory of network aging" src="../../../_images/ac07a148-d646-48ba-b474-03ecaed87210.png" /></p>
+</section>
+<section id="fitting-to-real-organisms">
+<h3>Fitting to real organisms<a class="headerlink" href="#fitting-to-real-organisms" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Model mortality curves μ(t) is compared with empirical data for living specie: Drosophila; a good match of the shape of the curve is obtained.</p></li>
+<li><p>For the specie, the parameters N, g0, g1, d are selected; the time axis is scaled so that the unit of time corresponds to days, as in the data.</p></li>
+</ul>
+<p><img alt="Model fit to mortality curves of real organisms" src="../../../_images/ea7b2247-7a8a-420c-b02a-ed558b38fcc1.png" /></p>
+</section>
+<section id="applicability-beyond-biology">
+<h3>Applicability beyond biology<a class="headerlink" href="#applicability-beyond-biology" title="Link to this heading">#</a></h3>
+<p>The same network rules apply to non—biological system — car model (Toyota 1980) - and again get a good match to empirical failure curves.</p>
+<p><img alt="Model fit beyond biology" src="../../../_images/3546dba5-a88b-40fc-8ee0-3e754a7903ec.png" /></p>
+</section>
+<section id="the-influence-of-parameters-on-the-shape-of-the-curve">
+<h3>The influence of parameters on the shape of the curve<a class="headerlink" href="#the-influence-of-parameters-on-the-shape-of-the-curve" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Increasing g0 shifts the curve μ(t) to the left (the system ages faster).</p></li>
+<li><p>Increasing g1 reduces the late mortality plateau m0=m(t→∞).</p></li>
+<li><p>Increasing N makes the Gompertz section steeper: large systems age quickly and end abruptly, small ones almost do not age.</p></li>
+<li><p>Increasing d increases “child” mortality, but populations with large and small d eventually reach the same level.</p></li>
+</ul>
+<p><img alt="Influence of model parameters on the mortality curve" src="../../../_images/6421e115-aef2-4420-a107-18039cef3360.png" /></p>
+<p><img alt="Influence of model parameters on the mortality curve" src="../../../_images/3d335dde-0374-4ef7-a04d-1668a392c272.png" /></p>
+</section>
+<section id="the-qualitative-dependence-of-average-lifetime-on-damage-and-repair-rate">
+<h3>The qualitative dependence of average lifetime on damage and repair rate<a class="headerlink" href="#the-qualitative-dependence-of-average-lifetime-on-damage-and-repair-rate" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>As expected, increasing γ1 increases average life expectancy, increasing γ0 decreases average life expectancy.</p></li>
+<li><p>Interestingly, despite similar mortality rates between scale-free and random networks with same parameters, differences in average life expectancy with high γ0 in scale-free network almost twice higher compared to random network.</p></li>
+<li><p>The average lifespan perfectly fits the curve ⟨τ⟩ = 0.2/γ0 for both scale-free and random networks when γ1 = 0.</p></li>
+</ul>
+<p><img alt="Average lifetime versus damage and repair rates" src="../../../_images/f289aaa3-61de-4ea1-a8f8-5c692c79664b.png" /></p>
+</section>
+<section id="analysis-of-the-indicator-of-interdependency-lambda-phi-t">
+<h3>Analysis of the indicator of interdependency <span class="math notranslate nohighlight">\(\lambda(\phi(t))\)</span><a class="headerlink" href="#analysis-of-the-indicator-of-interdependency-lambda-phi-t" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>There is a strong dependence of the parameter <span class="math notranslate nohighlight">\(λ\)</span> on both <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(φ\)</span>.</p></li>
+<li><p>It approximately doubles as damage accumulates, until a sudden collapse causes interdependence to diverge.</p></li>
+<li><p>We see that at small <span class="math notranslate nohighlight">\(t\)</span> <span class="math notranslate nohighlight">\(\lambda(t)\)</span> decreases and at high <span class="math notranslate nohighlight">\(\phi\)</span> <span class="math notranslate nohighlight">\(\lambda(\phi)\)</span> inscreases, so at the begining of aging network is  more independent.</p></li>
+</ul>
+<p><img alt="Interdependency indicator over time" src="../../../_images/b2aadeb9-fbeb-4d69-b381-1fdc6195037a.png" /></p>
+</section>
+<section id="analysis-of-the-magnitude-of-the-changes-in-different-events">
+<h3>Analysis of the magnitude of the Δϕ changes in different events<a class="headerlink" href="#analysis-of-the-magnitude-of-the-changes-in-different-events" title="Link to this heading">#</a></h3>
+<p>To determine if death is the final illness or a distinct phenomenon, we analyze the distribution <span class="math notranslate nohighlight">\(S(φ)\)</span> of event sizes before, after, and of the highest drop.</p>
+<ul class="simple">
+<li><p>The drop is distinct from the aging processes both before and after, both qualitatively and quantitatively.</p></li>
+<li><p>Death and disease lie in a completely distinct part of the event spectrum.</p></li>
+<li><p>Distributions are largely similar for random and scale-free networks over much of the <span class="math notranslate nohighlight">\(\Delta φ\)</span> range.</p></li>
+</ul>
+<p><img alt="Magnitude of functionality changes in different events" src="../../../_images/826758c5-bb65-41b9-8222-cd1f0eec19a7.png" /></p>
+</section>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The aging dynamics described by the model are largely independent of specific network topologies (e.g., scale-free vs. random), suggesting that aging arises from interdependency itself rather than the specific structure of the dependency network.</p></li>
+<li><p>The model is robustly aligns with the observed universality of mortality curves across different organisms and even non-living systems like machines.</p></li>
+<li><p>The distribution of functionality loss events shows that death is qualitatively different fromearlier failures (diseases).</p></li>
+</ul>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
+<p>This project was done by Anastasiia Dudkovskaia (PhD 1nd year LS) and Iuliia Parshchikova (MSc 2nd year LS) as part of a final project for Computational Biology of Aging course taught by Professor Ekaterina Khrameeva at Skolkovo Institute of Science and Technology, Moscow</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Vural DC, Morrison G, Mahadevan L. Aging in complex interdependency networks. Phys Rev E Stat Nonlin Soft Matter Phys. 2014 Feb;89(2):022811. doi: 10.1103/PhysRevE.89.022811. Epub 2014 Feb 24. PMID: 25353538.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./projects/2025/network"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../drugdiscovery/report.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Transcriptomics-based longevity drug discovery</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tgbot/report.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Aging Research Digest: A Daily AI-Powered Literature Alert for Geroscience</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-organism-as-a-network-of-dependencies">An organism as a network of dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-building">Model building</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-trajectory-of-network-aging">Typical trajectory of network aging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-to-real-organisms">Fitting to real organisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applicability-beyond-biology">Applicability beyond biology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-influence-of-parameters-on-the-shape-of-the-curve">The influence of parameters on the shape of the curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-qualitative-dependence-of-average-lifetime-on-damage-and-repair-rate">The qualitative dependence of average lifetime on damage and repair rate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-indicator-of-interdependency-lambda-phi-t">Analysis of the indicator of interdependency <span class="math notranslate nohighlight">\(\lambda(\phi(t))\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-magnitude-of-the-changes-in-different-events">Analysis of the magnitude of the Δϕ changes in different events</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kriukov Dmitrii
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -192,13 +192,13 @@ Genage intersection with downregulated genes in all tissues.
 According to the results of <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7906136/">2021 original paper</a> all tissues and every tissue studied consistently overexpressed the following genes:
 
 ```{figure} figs/Palmer_table_overexpressed.jpg
-Table of the top-5 genes most consistently overexpressed with age across datasets for all tissues and for each tissue studied (`palmer2021ageing`).
+Table of the top-5 genes most consistently overexpressed with age across datasets for all tissues and for each tissue studied [1].
 ```  
   
 And for underexpressed genes the results are the following:
 
 ```{figure} figs/Palmer_table_underexpressed.jpg
-Table of the top-5 genes most consistently underexpressed with age across datasets for all tissues and for each tissue studied (`palmer2021ageing`).
+Table of the top-5 genes most consistently underexpressed with age across datasets for all tissues and for each tissue studied [1].
 ```  
 
 According to our findings, immune system activation genes were overexpressed in the brain. Differentiation-related genes were overexpressed in muscles, potentially resulting in a decrease of regeneration activity and muscle tissue deterioration in ageing people. An increase in GABA signaling and ion transport was observed in the heart. All tissues collectively exhibit an increase in the activity of immune and proteilytic genes, while metabolic genes are down-regulated. The described results are in line with the conclusions made in the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7906136/">original paper</a>. 

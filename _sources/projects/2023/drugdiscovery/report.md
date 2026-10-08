@@ -1,11 +1,11 @@
 #  Transcriptomics-based longevity drug discovery
 
 
-This project aims to reproduce treatment-screening procedure developed by Georges Janssens et al. {cite}`janssens2019transcriptomics`. 
+This project aims to reproduce treatment-screening procedure developed by Georges Janssens et al. {cite}`dd23-janssens2019transcriptomics`. 
 
 ## Background
 
-Aging is associated human morbidity and mortality and there are no way to revert it. However, scientists search for treatments that can slow down aging. One of the approaches was proposed by Georges Janssens et al. in 2019 {cite}`janssens2019transcriptomics`. Authors used two transcriptomics datasets:
+Aging is associated human morbidity and mortality and there are no way to revert it. However, scientists search for treatments that can slow down aging. One of the approaches was proposed by Georges Janssens et al. in 2019 {cite}`dd23-janssens2019transcriptomics`. Authors used two transcriptomics datasets:
 
 1. Their own age-stratified RNA-seq data **(transcriptome ~ age)**
 2. Connectivity Map (CMap) public data **(transcriptome ~ treatment)**
@@ -186,15 +186,14 @@ Among the isolated molecules, most of them are already used drugs in one or anot
 
 
 ```{figure} images/lergo_structure.png
-
 ---
 width: 30%
 name: lergo_structure
 --- 
- The chemical structure of the L-ergothioneine, red oval higlights the functional group {cite}`apparoo2022ergothioneine`.
+ The chemical structure of the L-ergothioneine, red oval higlights the functional group {cite}`dd23-apparoo2022ergothioneine`.
 ```
 
-L-ergothioneine  is a histigine-derivative aminoacid with sulphur group on the imidazole ring. This sulphur can be found in the oxidised and reduced forms, which defines it's function. L-ergothioneine was proposed to have protection function against reactive oxygen species {cite}`paul2010unusual, cheah2016ergothioneine, apparoo2022ergothioneine, chen2023ergothioneine`. Paul et al. using HeLa cells lines showed that L-ergothioneine increases cells viability against $H_2O_2$ {cite}`paul2010unusual`. Therefore, it may be involved in responses to oxidative stress originating from mitochondrial activity, ultraviolet radiation, etc.
+L-ergothioneine  is a histigine-derivative aminoacid with sulphur group on the imidazole ring. This sulphur can be found in the oxidised and reduced forms, which defines it's function. L-ergothioneine was proposed to have protection function against reactive oxygen species {cite}`dd23-paul2010unusual, dd23-cheah2016ergothioneine, dd23-apparoo2022ergothioneine, dd23-chen2023ergothioneine`. Paul et al. using HeLa cells lines showed that L-ergothioneine increases cells viability against $H_2O_2$ {cite}`dd23-paul2010unusual`. Therefore, it may be involved in responses to oxidative stress originating from mitochondrial activity, ultraviolet radiation, etc.
 
 
 ```{figure} images/lergo_aging_hallmarks.jpeg
@@ -202,17 +201,17 @@ L-ergothioneine  is a histigine-derivative aminoacid with sulphur group on the i
 width: 80%
 name: lergo_aging_hallmarks
 ---
- L-ergothioneine in the network of the hallmarks of aging {cite}`chen2023ergothioneine`.
+ L-ergothioneine in the network of the hallmarks of aging {cite}`dd23-chen2023ergothioneine`.
 ```
 
-These features of L-ergothioneine make it an interesting member of the aging hallmarks network {cite}`apparoo2022ergothioneine, chen2023ergothioneine`. First of all, it is an obvious element of the cell's antioxidant system. Due to this, it has an immediate influence on the maintenance of genomic stability and mitochondrial functionality. However, there are some other interesting interconnections. For example, L-ergothioneine has been shown to be associated with sirtuin proteins that provide orchestration of the epigenetic landscape in the cell {cite}`chen2023ergothioneine`. Also an important observation is that L-ergothioneine is not synthesised in the human organism and therefore its maintenance is directly related to the operation of transport systems (in particular OCTN1 channels). Its involvement in various signalling cascades such as MAPK and KEAP1-NRF2 has also been shown. 
+These features of L-ergothioneine make it an interesting member of the aging hallmarks network {cite}`dd23-apparoo2022ergothioneine, dd23-chen2023ergothioneine`. First of all, it is an obvious element of the cell's antioxidant system. Due to this, it has an immediate influence on the maintenance of genomic stability and mitochondrial functionality. However, there are some other interesting interconnections. For example, L-ergothioneine has been shown to be associated with sirtuin proteins that provide orchestration of the epigenetic landscape in the cell {cite}`dd23-chen2023ergothioneine`. Also an important observation is that L-ergothioneine is not synthesised in the human organism and therefore its maintenance is directly related to the operation of transport systems (in particular OCTN1 channels). Its involvement in various signalling cascades such as MAPK and KEAP1-NRF2 has also been shown. 
 
 All this substantiates the role of L-ergothioneine as a geroprotector. Indeed, there is some medical research in this direction. Beelman et al. showed that the amount of L-ergothioneine in the diet is correlated with average mortality. Cheah et al. also reported that the amount of L-ergothioneine in the blood decreases with age. These data give us confidence in the adequacy of the model we have constructed. 
 
 ### Clarification of discrepancies with the findings in the article
 
 
-An important issue we would like to address in this discussion is to analyse possible differences with the results in the original paper (see figure below). The first important remark is that among the 11 compounds we found, there are no overlaps with the authors' results. However, for example, we were able to find other Hsp90 inhibitors, and the mechanism of Hsp90 inhibition is one of the key topics of discussion of potential geroprotectors in the article. Although, the following reasons for the differences can be pointed out:
+An important issue we would like to address in this discussion is to analyse possible differences with the results in the original paper ({numref}`orig_results`). The first important remark is that among the 11 compounds we found, there are no overlaps with the authors' results. However, for example, we were able to find other Hsp90 inhibitors, and the mechanism of Hsp90 inhibition is one of the key topics of discussion of potential geroprotectors in the article. Although, the following reasons for the differences can be pointed out:
 
 
 ```{figure} images/orig_results.jpg
@@ -220,7 +219,7 @@ An important issue we would like to address in this discussion is to analyse pos
 width: 80%
 name: orig_results
 ---
-Anti-aging treatments identified by Janssens et al. (E). The picture is taken from the original paper {cite}`janssens2019transcriptomics`.
+Anti-aging treatments identified by Janssens et al. (E). The picture is taken from the original paper {cite}`dd23-janssens2019transcriptomics`.
 ```
 
 - We used reduced data to save time. We selected some organs and ran a sample of 100 treatments (out of 3546 total) on them. We also ran our analysis for all treatments, but only for the brain.
@@ -245,6 +244,7 @@ The project was done by:
 ## References
 
 ```{bibliography}
+:keyprefix: dd23-
 :style: plain
 :filter: docname in docnames
 ```

@@ -50,14 +50,14 @@ We used the Kaplan-Meier estimator to fit the data generated in step 1 and plot 
 
 
 
-![flies hazard curve](https://drive.google.com/uc?id=1Zuwynbk50gahoFOp3gfSX-Aq8cLXO9cH)
-![flies survival curve](https://drive.google.com/uc?id=1NiRIYFyh0L7MHk62GHMtjkvgCUq84dyX)
+![flies hazard curve](imgs/flies_hazard.png)
+![flies survival curve](imgs/flies_survival.png)
 
 **Drosophila**
 
 
-![C.elegans hazard curve](https://drive.google.com/uc?id=1FlD0Cd1siwy2hY3yr3-OOkiAt3-nin7v)
-![C.elegans survival curve](https://drive.google.com/uc?id=1POK2lAbpIMY6PQ1X4PcyZYxKS0Q0CXH4)
+![C.elegans hazard curve](imgs/worm_hazard.png)
+![C.elegans survival curve](imgs/worm_survival.png)
 
 **C.elegans**
 
@@ -67,14 +67,14 @@ The authors of the paper have succumbed to an easily avoidable failing in experi
 
 One important question in the paper is how they derived the Gompertz law from SR model dynamics? To answer this question, we looked at the description of the Gompertz mortality derivation in the SR model.
 
-![Derivation of Gompertz mortality in the SR model](https://drive.google.com/uc?id=1EVRD9D9Fj1baaxqDKSbMfhqAHeNlUTYf)
+![Derivation of Gompertz mortality in the SR model](imgs/derivation_of_gompertz_mortality_in_sr_model.png)
 
-From the Supplementary Equation 9, we can see the hazard rises exponentially with time. But when ηt > β, this approximation begins to be inaccurate and simulations of the full SR model are needed to compute the hazard curve at old ages. We can derive Equation 9, which we think may have a small error(no +1) for the empirical hazard.![empirical hazard](https://drive.google.com/uc?id=1fcNWNttk58YTFR102PoAvuxuqdo1xBnS)
+From the Supplementary Equation 9, we can see the hazard rises exponentially with time. But when ηt > β, this approximation begins to be inaccurate and simulations of the full SR model are needed to compute the hazard curve at old ages. We can derive Equation 9, which we think may have a small error(no +1) for the empirical hazard.![empirical hazard](imgs/empirical_hazard.jpg)
 
 In the simulated survival curve analysis of Drosophila and C. elegans, β, κ and ε were initially set, and there may be certain problems in looking only for eta. So a better approach is to perform analysis with the methodology used for mice. Experimental data on Drosophila cannot be obtained with the paper and had to be obtained by corresponding with the authors. Still, the process leading to the smooth curves of the two FF to LE transitions is unclear from the paper.
 
-![flies experiment data hazard curve](https://drive.google.com/uc?id=1B5_aCmDAFYsMbGnWUikRMhikLbQxplpG)
-![flies experiment data survival curve](https://drive.google.com/uc?id=1n0g47-78G41dh3Hb95aQTiq8n6_sevi6)
+![flies experiment data hazard curve](imgs/experiment_flies.png)
+![flies experiment data survival curve](imgs/experiment_files_survival.png)
 
 **Drosophila**
 
