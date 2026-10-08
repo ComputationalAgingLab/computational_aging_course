@@ -19,33 +19,45 @@ If you want to contribute to this project, please follow this guide:
     git clone https://github.com/{YOUR-USERNAME}/computational_aging_course.git
     cd computational_aging_course
 
-    # Create Conda environment (alternatively you can use mamba distributive which is faster)
-    conda env create -f environment.yml
-    conda activate cba_course
+    # Create the environment from uv.lock (install uv first: https://docs.astral.sh/uv/)
+    uv sync
 
-    # Compile book
-    jupyter-book build .
+    # Compile book (notebooks are re-executed on every build)
+    uv run jupyter-book build .
     ```
-2. Choose a topic on computational aging biology where you have particular expertise.
-3. Provide the following materials:
+    Then open `_build/html/index.html` in a browser to preview the book.
+3. Choose a topic on computational aging biology where you have particular expertise.
+4. Provide the following materials:
     * write a lecture text in markdown (or [MyST](https://jupyterbook.org/en/stable/content/myst.html)) format supplying it with images, videos and other embedded materials.
     * (recommended) prepare a jupyter notebook on some computational topic with clarification of the approach. Provide some code and necessary text, formulas, graphics as well as toy or real data examples of the approach application.
     * (would be great but not necessary) prepare a video with a presentation of your teaching materials. Actually, these materials should be a repetition of what you're saying in the markdown text or notebook. Please, attach also a link to your presentation - put it into your lecture text.
-4. Commit your materials to your fork and make a pull request.
-5. (optional) To make the process faster, write about your intention to contribute to this e-mail: <dmitrii.kriukov@skoltech.ru>
-6. (optional) Modify `.toc.yml` file by adding the names of your chapters to a place you prefer. See [this guide](https://jupyterbook.org/en/stable/structure/configure.html?highlight=.toc#configure-all-entries-in-the-toc) for details.
+5. Commit your materials to your fork and make a pull request.
+6. (optional) To make the process faster, write about your intention to contribute to this e-mail: <dmitrii.kriukov@skoltech.ru>
+7. (optional) Modify `_toc.yml` file by adding the names of your chapters to a place you prefer. See [this guide](https://jupyterbook.org/en/stable/structure/configure.html?highlight=.toc#configure-all-entries-in-the-toc) for details.
 
 If you found some mistakes or mistypes in the materials, or if you want to provide some important comments, please, issue this by pushing **issue** button on the corresponding page within the [Book](https://computationalaginglab.github.io/computational_aging_course/intro.html).
 
 
 ## How to add dependencies
-We are trying to minimize dependencies, but if we need some, we just add them to the `environment.yml` file. Note, if you added some dependencies try to build your fork of the book by creating a new environment.
+We are trying to minimize dependencies, but if we need some, we add them with `uv add <package>`. This updates `pyproject.toml` and `uv.lock`; commit both files. Note, if you added some dependencies try to build your fork of the book from a fresh environment (`uv sync` followed by `uv run jupyter-book build .`).
+
+The dependencies of the WGCNA practice notebook (`meth/meth_practice.ipynb`, which is not executed during the book build) live in a separate group: `uv sync --group meth`.
+
+## Build & deploy (maintainers)
+The book is published to GitHub Pages from the `gh-pages` branch. To deploy the current `main`, run
+
+```
+scripts/deploy.sh            # checks, clean build, publish to gh-pages
+scripts/deploy.sh --dry-run  # checks and build only, nothing is published
+```
+
+The script refuses to deploy if the working tree has uncommitted changes, if `main` is not in sync with `origin/main`, or if the build produces warnings or a notebook fails to execute. To publish the book under a custom domain, put the domain into a `CNAME` file in the repository root and set the same domain in the repository settings (Settings → Pages); the script publishes it with the site.
 
 ## Cite us 
 ```
-@online{kriukov2023compagingbook,
-  year={2023},
-  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Evgeniy Efimov and Margarita Sidorova and Ekaterina Khrameeva},
+@online{kriukov2026compagingbook,
+  year={2026},
+  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Evgeniy Efimov and Margarita Sidorova and Vlad Fedotov and Leonid Malaev and Ekaterina Khrameeva},
   title={Computational Biology of Aging},
   url={https://computationalaginglab.github.io/computational_aging_course/intro.html},
 }

@@ -50,7 +50,7 @@ Classical mechanistic (mutation accumulation theory) and evolutionary (antagonis
    - After that, a cascade is applied: the node breaks down if most of the nodes on which it depends are already broken; the procedure is repeated recursively until new breakdowns cease to occur.
    - The resulting state is declared $ψ(t+1)$.
    - Increase $t$ and repeat until all nodes become $0$ (complete collapse).
-   - Organism's death is determined by the threshold: enter $φ(τ) = 1%$; the moment when $φ(t)$ falls below $1%$ for the first time, is considered the time of death of $τ$
+   - Organism's death is determined by the threshold: enter $φ(τ) = 1\%$; the moment when $φ(t)$ falls below $1\%$ for the first time, is considered the time of death of $τ$
     
 - **The ensemble of organisms:**
 
@@ -68,56 +68,56 @@ Besides $φ(t)$ for each network, track:
 - As the damage accumulates, the system approaches critical viability φ(c); when φ(t) reaches c the remaining live nodes collapse almost simultaneously.
 - Even at g0=g1 the network degrades on average anyway, because not all dead nodes can be repaired.
 
-![Снимок экрана 2025-12-18 в 10.53.37.png](ac07a148-d646-48ba-b474-03ecaed87210.png)
+![Typical trajectory of network aging](ac07a148-d646-48ba-b474-03ecaed87210.png)
 
 ### Fitting to real organisms
 
 - Model mortality curves μ(t) is compared with empirical data for living specie: Drosophila; a good match of the shape of the curve is obtained.
 - For the specie, the parameters N, g0, g1, d are selected; the time axis is scaled so that the unit of time corresponds to days, as in the data.
 
-![Снимок экрана 2025-12-18 в 16.16.24.png](ea7b2247-7a8a-420c-b02a-ed558b38fcc1.png)
+![Model fit to mortality curves of real organisms](ea7b2247-7a8a-420c-b02a-ed558b38fcc1.png)
 
-## Applicability beyond biology
+### Applicability beyond biology
 
 The same network rules apply to non—biological system — car model (Toyota 1980) - and again get a good match to empirical failure curves.
 
-![Снимок экрана 2025-12-18 в 16.20.36.png](3546dba5-a88b-40fc-8ee0-3e754a7903ec.png)
+![Model fit beyond biology](3546dba5-a88b-40fc-8ee0-3e754a7903ec.png)
 
-## The influence of parameters on the shape of the curve 
+### The influence of parameters on the shape of the curve 
 
 - Increasing g0 shifts the curve μ(t) to the left (the system ages faster).
 - Increasing g1 reduces the late mortality plateau m0=m(t→∞).
 - Increasing N makes the Gompertz section steeper: large systems age quickly and end abruptly, small ones almost do not age.
 - Increasing d increases "child" mortality, but populations with large and small d eventually reach the same level.
 
-![Снимок экрана 2025-12-18 в 10.54.30.png](6421e115-aef2-4420-a107-18039cef3360.png)
+![Influence of model parameters on the mortality curve](6421e115-aef2-4420-a107-18039cef3360.png)
 
-![Снимок экрана 2025-12-18 в 10.54.55.png](3d335dde-0374-4ef7-a04d-1668a392c272.png)
+![Influence of model parameters on the mortality curve](3d335dde-0374-4ef7-a04d-1668a392c272.png)
 
-## The qualitative dependence of average lifetime on damage and repair rate
+### The qualitative dependence of average lifetime on damage and repair rate
 
 - As expected, increasing γ1 increases average life expectancy, increasing γ0 decreases average life expectancy.
 - Interestingly, despite similar mortality rates between scale-free and random networks with same parameters, differences in average life expectancy with high γ0 in scale-free network almost twice higher compared to random network.
 - The average lifespan perfectly fits the curve ⟨τ⟩ = 0.2/γ0 for both scale-free and random networks when γ1 = 0.
 
-![Снимок экрана 2025-12-18 в 10.55.33.png](f289aaa3-61de-4ea1-a8f8-5c692c79664b.png)
+![Average lifetime versus damage and repair rates](f289aaa3-61de-4ea1-a8f8-5c692c79664b.png)
 
-## Analysis of the indicator of interdependency $\lambda(\phi(t))$
+### Analysis of the indicator of interdependency $\lambda(\phi(t))$
 
 - There is a strong dependence of the parameter $λ$ on both $t$ and $φ$.
 - It approximately doubles as damage accumulates, until a sudden collapse causes interdependence to diverge.
 - We see that at small $t$ $\lambda(t)$ decreases and at high $\phi$ $\lambda(\phi)$ inscreases, so at the begining of aging network is  more independent.
 
-![Снимок экрана 2025-12-18 в 16.38.23.png](b2aadeb9-fbeb-4d69-b381-1fdc6195037a.png)
+![Interdependency indicator over time](b2aadeb9-fbeb-4d69-b381-1fdc6195037a.png)
 
-## Analysis of the magnitude of the Δϕ changes in different events
+### Analysis of the magnitude of the Δϕ changes in different events
 
 To determine if death is the final illness or a distinct phenomenon, we analyze the distribution $S(φ)$ of event sizes before, after, and of the highest drop.
 - The drop is distinct from the aging processes both before and after, both qualitatively and quantitatively.
 - Death and disease lie in a completely distinct part of the event spectrum.
 - Distributions are largely similar for random and scale-free networks over much of the $\Delta φ$ range.
 
-![Снимок экрана 2025-12-18 в 16.37.24.png](826758c5-bb65-41b9-8222-cd1f0eec19a7.png)
+![Magnitude of functionality changes in different events](826758c5-bb65-41b9-8222-cd1f0eec19a7.png)
 
 ## Discussion
 

@@ -10,7 +10,7 @@ Use single # for project title, ## for sections and ### for subsections of your 
 
 Describe your task and its background. Imagine that your potential employer will read this report. Try to use simple language for explaining your task and hypothesis but be precise in terms.
 
-Create a separate bibtex file (`.bib` extension) to store the references. Any bibtex reference can be obtained from google scholar by clicking on `cite` button and choosing `bibtex` option. Use the following directive to cite something inside the text of your report {cite}`bibtex_citekey`. A useful bibtex guide is here [guide](https://www.bibtex.com/g/bibtex-format/).
+Add your references to the `references.bib` file in the root of the repository. Any bibtex reference can be obtained from google scholar by clicking on `cite` button and choosing `bibtex` option. Use the following directive to cite something inside the text of your report {cite}`bibtex_citekey`. A useful bibtex guide is here [guide](https://www.bibtex.com/g/bibtex-format/).
 
 ## Results
 

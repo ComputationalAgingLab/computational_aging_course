@@ -1,0 +1,33 @@
+[project]
+name = "computational-aging-course"
+version = "0.1.0"
+description = "Computational Biology of Aging book (Jupyter Book)"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "jupyter-book==1.0.4.post1",
+    "numpy>=2.1",
+    # lifelines 0.30.3 caps pandas<3; only the older lifelines 0.30.0 resolves with pandas 3
+    "pandas>=2.2,<3",
+    "scipy>=1.16",
+    "scikit-learn>=1.5",
+    "matplotlib>=3.9",
+    "seaborn>=0.13.2",
+    "lifelines>=0.30",
+    "autograd>=1.7",
+    "gseapy>=1.1",
+    "inmoose>=0.9",
+]
+
+[dependency-groups]
+dev = [
+    "ghp-import>=2.1",
+]
+# WGCNA practice (meth/meth_practice.ipynb); not executed during the book build
+meth = [
+    "PyWGCNA>=2.2",
+    "biomart>=0.9.2",
+]
+
+[tool.uv]
+package = false

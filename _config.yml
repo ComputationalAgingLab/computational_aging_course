@@ -12,6 +12,10 @@ execute:
   timeout: 300
   exclude_patterns: ['projects/2023/**/*.ipynb']
 
+# Build only the files listed in _toc.yml (README, templates and helper notebooks are skipped)
+only_build_toc_files: true
+exclude_patterns: [_build, .venv, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
@@ -22,14 +26,20 @@ bibtex_bibfiles:
   - references.bib
 
 sphinx:
+  local_extensions:
+    fix_link_escaping: _ext
   config:
     bibtex_reference_style: author_year
+    # Fail the build if a notebook cell raises instead of publishing the traceback
+    nb_execution_raise_on_error: true
+    # every chapter numbers its own reference list from [1]; citations link by key, so equal labels are harmless
+    suppress_warnings: ["bibtex.duplicate_label"]
     
 # Information about where the book exists on the web
 repository:
   url: https://github.com/ComputationalAgingLab/computational_aging_course  # Online location of your book
   path_to_book: /  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+  branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository

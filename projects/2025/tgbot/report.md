@@ -16,41 +16,41 @@ Aging Research Digest is an open-source Telegram bot designed to solve this prob
 
 By automating discovery, classification, and distillation of aging literature, Aging Research Digest empowers scientists, students, and longevity advocates to stay informed without spending hours sifting through abstracts.
 
-# Implementation of the Aging Research Digest Bot
+## Implementation of the Aging Research Digest Bot
 
 The Aging Research Digest bot is an automated system designed to help researchers and enthusiasts stay updated with the latest scientific literature on aging. The core idea is simple: every day, the bot discovers newly published papers related to aging, analyzes them using artificial intelligence, summarizes their key findings, and delivers the most relevant ones directly to a Telegram channel—while also archiving everything in a shared online spreadsheet for long-term reference.
 
 The entire system is built using open-source tools and runs locally without relying on commercial APIs or cloud-based LLM services. This ensures privacy, sustainability, and full compliance with the project requirement to use pre-trained, non-finetuned language models.
 
-## Architecture Overview
+### Architecture Overview
 
 The implementation follows a clean, modular design. Instead of a single monolithic script, the codebase is split into logical components that each handle a specific part of the pipeline: fetching articles, classifying them, generating summaries, storing results, and sending notifications. This separation makes the system easier to test, debug, and extend.
 
 At the center of everything is `main.py`, which orchestrates the daily workflow. It starts by retrieving recent publications from PubMed, processes each one through classification and summarization, saves the enriched data to Google Sheets, selects the top three papers based on relevance and scientific impact, and finally sends them via Telegram.
 
-## Article Retrieval
+### Article Retrieval
 
 We focused on PubMed as the primary data source because it provides a reliable, official API (NCBI E-utilities) and rich metadata for biomedical literature. The fetcher constructs a search query using key terms like “aging,” “senescence,” and “longevity,” limited to articles published in the last few days. It retrieves the title, authors, journal, publication date, abstract, and a direct link to the article. We avoided Google Scholar due to its lack of a public API and the high risk of IP blocks from aggressive scraping.
 
 As a complementary approach, we have also developed a Selenium-based crawler for Springer Nature Link to access recent publications that may not yet be indexed in PubMed. This crawler navigates search results, visits individual article pages, and extracts comparable metadata, including abstracts and DOIs. However, this method is still under active testing and optimization due to challenges related to page structure variability, access restrictions, and performance overhead compared to API-based retrieval.
 
-## Semantic Classification
+### Semantic Classification
 
 To understand what each paper is about, we implemented a multi-label classifier that tags articles along four meaningful dimensions without any custom training. Using the `facebook/bart-large-mnli` model from Hugging Face in zero-shot mode, the system analyzes the title and abstract to assign labels such as article type (e.g., research article or review), relevance to the established hallmarks of aging (like mitochondrial dysfunction or cellular senescence), types of data used (e.g., RNA-seq or DNA methylation), and biological species studied (using Latin names like *Homo sapiens* or *Mus musculus*). A confidence threshold ensures only reliable labels are retained.
 
-## Scientific Summarization
+### Scientific Summarization
 
 For summarization, we leverage the free tier of OpenRouter, which provides access to capable large language models without cost. Specifically, we use the model `qwen/qwen3-235b-a22b:free`, a high-performing variant of Alibaba’s Qwen3 series offered under OpenRouter’s free usage limits. This model is prompted with a clear, structured instruction to generate exactly two paragraphs: the first focusing on the key biological findings, and the second concisely describing the methods and data types used. To ensure reliability and minimize hallucination, we disable sampling and apply a low temperature during inference. The resulting summaries are succinct, scientifically coherent, and grounded in the source text, all while operating within accessible, no-cost infrastructure.
 
-## Persistent Storage
+### Persistent Storage
 
 All processed articles — whether delivered or not — are saved to a Google Sheet. This fulfills the requirement to maintain a continuously updated, web-hosted archive. The system automatically creates the spreadsheet on first run, defines appropriate columns (including PMID, title, labels, and summary), and avoids duplicates by checking existing PMIDs. Authentication is handled via a Google Cloud service account, eliminating the need for interactive OAuth during automated runs.
 
-## Telegram Delivery
+### Telegram Delivery
 
 The top three papers—ranked by a combination of journal prestige, relevance (e.g., *Aging Cell*, *Nature Aging*) and presence of computational methods (detected via keywords like “machine learning” or “algorithm”) — are formatted into clean, visually scannable messages and sent to a Telegram channel. The messages use MarkdownV2 formatting with proper escaping to ensure titles appear in bold, journals in italics, and key metadata like data types or species in inline code blocks. Links point directly to the PubMed page for easy access.
 
-## Configuration and Deployment
+### Configuration and Deployment
 
 All sensitive credentials and tunable parameters are managed through environment variables, with optional support for a `.env` file during development. This includes the Telegram bot token, chat ID, Google service account JSON, and NCBI email. The system is designed to run once per day via a cron job or similar scheduler and typically completes within 5–10 minutes on a modern laptop, with the LLM inference being the main time cost.
 
