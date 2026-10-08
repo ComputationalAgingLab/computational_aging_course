@@ -28,9 +28,9 @@ We would like to thank [Skoltech](https://www.skoltech.ru/) for the help in crea
 
 ## Cite us
 ```
-@online{kriukov2023compagingbook,
-  year={2023},
-  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Evgeniy Efimov and Margarita Sidorova and Ekaterina Khrameeva},
+@online{kriukov2026compagingbook,
+  year={2026},
+  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Evgeniy Efimov and Margarita Sidorova and Vlad Fedotov and Leonid Malaev and Ekaterina Khrameeva},
   title={Computational Biology of Aging},
   url={https://computationalaginglab.github.io/computational_aging_course/intro.html},
 }
