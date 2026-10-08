@@ -5,9 +5,9 @@
 ## Introduction
 
 It has only (already?!) been 40 years since a new era in ageing research was inaugurated following the isolation of the first long-lived strains of Caenorhabditis elegans (C. elegans) {cite}`klassMethodIsolationLongevity1983`. More and more people are studying ageing hoping to extend healthy lifespan of humankind. 
-But what is ageing exactly? It is a complex process, which continue throughout the whole life and leads to the death of individual. It is characterized by time-dependent decline in functional capacity {cite}`lopez-otinHallmarksAging2013` and accumulation of molecular damage {cite}`sealeMakingSenseAgeing2022`. It is estimated there will be 2.1 billion elderly by 2050 (United Nations, 2017) and age-associated diseases double in cases every 5 years. It is also our unhealthy eating habits getting worse (Atallah et al., 2018), our physical activity continue to decrease (Fiorito et al., 2019), not to mention pollution impact (Santangelo et al., 2011).
-There are two major paradigms around ageing: the first one is seeing ageing as a consequence of developmental process, for example, some mutations can provide with some advantages early in live, but become pathological later in life {cite}`vijgPathogenicMechanismsSomatic2020`. The second paradigm is ageing resulting from a stochastic process of damage accumulation {cite}`sealeMakingSenseAgeing2022`. 
-The common thing between these two theories is cellular and molecular impairments, which are called hallmarks of ageing {cite}`lopez-otinHallmarksAging2013`. In order to call biological phenomena one of the aging hallmarks, it must fulfill three following criteria:
+But what is ageing exactly? It is a complex process, which continue throughout the whole life and leads to the death of individual. It is characterized by time-dependent decline in functional capacity {cite}`lopez2013hallmarks` and accumulation of molecular damage {cite}`seale2022`. It is estimated there will be 2.1 billion elderly by 2050 (United Nations, 2017) and age-associated diseases double in cases every 5 years. It is also our unhealthy eating habits getting worse (Atallah et al., 2018), our physical activity continue to decrease (Fiorito et al., 2019), not to mention pollution impact (Santangelo et al., 2011).
+There are two major paradigms around ageing: the first one is seeing ageing as a consequence of developmental process, for example, some mutations can provide with some advantages early in live, but become pathological later in life {cite}`vijgPathogenicMechanismsSomatic2020`. The second paradigm is ageing resulting from a stochastic process of damage accumulation {cite}`seale2022`. 
+The common thing between these two theories is cellular and molecular impairments, which are called hallmarks of ageing {cite}`lopez2013hallmarks`. In order to call biological phenomena one of the aging hallmarks, it must fulfill three following criteria:
 1) age-associated manifestation,
 2) ­experimentally validated impact on these leads to the acceleration of aging
 3) ­therapeutic interventions available allowing to slow, stop, or reverse aging.
@@ -83,7 +83,7 @@ Transcriptional stress
 
 Mitochondrial DNA instability is somewhat similar to nuclear DNA instability, but there are some differences as well. There are many mitochondria per cell, and their mtDNA have high replicative index. They have oxidative microenvironment due to their role inside cell, and they have no protective histones molecules on their DNA (probably due to bacterial origin). Contrary to common beliefs, some findings suggest that most mtDNA mutations in aged cells arise from replication errors caused by mtDNA polymerase gamma rather than from oxidative stress {cite}`LOPEZOTIN2023243`.
 
-DNA damage could indirectly leads to chronic inflammation due to creation of cytosplasmic chromatin fragments (CCF), which are parts of chromatin that migrated to the cytoplasm, along with mtDNA escaped from dysfunctional mitochondria and cDNA emerged from transposons reactivation ({numref}`cytosolic_dna_aging`) (more of the latter at [[###Epigenetic alterations]] section)
+DNA damage could indirectly leads to chronic inflammation due to creation of cytosplasmic chromatin fragments (CCF), which are parts of chromatin that migrated to the cytoplasm, along with mtDNA escaped from dysfunctional mitochondria and cDNA emerged from transposons reactivation ({numref}`cytosolic_dna_aging`) (more of the latter in the {ref}`epigenetic-alterations` section)
 
 ```{figure} figs/cytosolic_dna_aging.png
 :name: cytosolic_dna_aging
@@ -105,6 +105,7 @@ The PGC-1alpha pathway is a signaling pathway that links telomere and mitochondr
 PGC-1alpha pathway links telomere and mitochondrial dysfunction
 ```
 
+(epigenetic-alterations)=
 ### Epigenetic alterations
 Epigenetics is a way to regulate gene expression via posttranslational histone modifications, DNA methylation, non-coding RNA and chromatin remodeling (the latter is sometimes separated from epigenetics into chromatin folding). A lot of proteins are envolved into gene regulations: enzymes, such as DNA methyltransferases, histone deacetylases; chromatin remodellers, ncRNA-processing enzymes, histones themselves etc. Epigenetic modifications can lead to changes in gene expression, which can influence many age-related processes, such as cell senescence, DNA damage, and oxidative stress.
 

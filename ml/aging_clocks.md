@@ -106,7 +106,7 @@ In {cite}`horvath2013dna`, the author:
 #### 2018 An epigenetic biomarker of aging for lifespan and healthspan (PhenoAge)
 Ordinary biological clocks are trained to predict chronological age, expecting the model error to explain the mortality difference. But where does this assumption come from? If we could train a perfect oracle model that always correctly predicted chronological age, such a model would be useless. That is why we could predict how many years a person has left to live instead of chronological age.
 
-In {cite}`levine2018epigenetic` the authors first trained a [Cox proportional regression model](../stat/hazard_models.ipynb) to predict mortality using clinical biomarkers and age from the NHANES database. With it, they made a prediction for a dataset with blood methylation, and then trained the model to directly predict mortality from methylation data.
+In {cite}`levine2018epigenetic` the authors first trained a {doc}`Cox proportional regression model <../stat/survival_analysis_part2>` to predict mortality using clinical biomarkers and age from the NHANES database. With it, they made a prediction for a dataset with blood methylation, and then trained the model to directly predict mortality from methylation data.
 
 Acceleration of such a phenotypic epigenetic age is positively associated with mortality -- an important property that was not present in previous clocks, so such clocks are called second generation clocks.
 #### 2019 DNA methylation GrimAge strongly predicts lifespan and healthspan
