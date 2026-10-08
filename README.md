@@ -43,6 +43,16 @@ We are trying to minimize dependencies, but if we need some, we add them with `u
 
 The dependencies of the WGCNA practice notebook (`meth/meth_practice.ipynb`, which is not executed during the book build) live in a separate group: `uv sync --group meth`.
 
+## Build & deploy (maintainers)
+The book is published to GitHub Pages from the `gh-pages` branch. To deploy the current `main`, run
+
+```
+scripts/deploy.sh            # checks, clean build, publish to gh-pages
+scripts/deploy.sh --dry-run  # checks and build only, nothing is published
+```
+
+The script refuses to deploy if the working tree has uncommitted changes, if `main` is not in sync with `origin/main`, or if the build produces warnings or a notebook fails to execute. To publish the book under a custom domain, put the domain into a `CNAME` file in the repository root and set the same domain in the repository settings (Settings → Pages); the script publishes it with the site.
+
 ## Cite us 
 ```
 @online{kriukov2023compagingbook,
