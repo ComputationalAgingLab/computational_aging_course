@@ -172,7 +172,7 @@ The authors of {cite}`nelson2020biomarkers` show that it can. The authors simula
 **Q:** Could it be that epigenetic clocks only measure the number of cell divisions?
 
 **A:** It does not seem so, because they work in non-proliferating cells, such as brain cells.
-
+:::
 
 ## Linear Regression
 
@@ -255,6 +255,8 @@ Overall, the study of aging clocks has the potential to provide insights into th
 
 ## Credits
 This text was prepared by [Simon Steshin](https://www.linkedin.com/in/simon-steshin-506ab1197/).
+
+## References
 
 ```{bibliography}
 :style: plain
