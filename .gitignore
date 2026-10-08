@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# prompts
+prompt.md
+
 # C extensions
 *.so
 
@@ -130,3 +133,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.DS_Store
+__MACOSX/

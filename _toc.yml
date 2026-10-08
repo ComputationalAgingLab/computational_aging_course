@@ -40,7 +40,7 @@ parts:
   - file: dyn/complex_systems
   - file: dyn/system_resilience
 
-- caption: Student projects 2023
+- caption: Student projects
   chapters:
   - file: projects/2023_1
     sections:
@@ -48,13 +48,18 @@ parts:
     - file: projects/2023/meta/report
     - file: projects/2023/parkinson/report
     - file: projects/2023/unsupervized/report
-  
   - file: projects/2023_2
     sections:
     - file: projects/2023/drugdiscovery/report
     - file: projects/2023/gompertz/report
     - file: projects/2023/levine2013/report
     - file: projects/2023/autogpt/report
+  - file: projects/2024
+  - file: projects/2025
+    sections:
+    - file: projects/2025/drugdiscovery/report
+    - file: projects/2025/network/report
+    - file: projects/2025/tgbot/report
     # - file: projects/2023/stochclocks/report
     #
 
