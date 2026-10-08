@@ -29,7 +29,7 @@ Real data
 ## Discussion
 This represents a basic implementation of the concept for automated article analysis, leveraging a free LLM to address the problem. To enhance analysis results and program performance, future iterations may involve employing a paid version of GPT. This could mitigate errors related to requests through the g4f library. Additionally, an alternative approach could be explored, incorporating vector databases and Langhain library for further optimization and perfomance comparison
 ### Features
-- **preprocesser.py**: Fetch articles from PubMed using queries.
+- **`preprocesser.py`**: Fetch articles from PubMed using queries.
 - **gpt_manager.py**: Extract valuable insights from the downloaded articles by posing questions to the system.
 ### Getting Started
 1. Clone the repository:
@@ -40,5 +40,5 @@ git clone https://github.com/ifreyk/gpt_pubmed.git
 ```
 pip install -r requirements.txt
 ```
-3. Open application.py as a notebook:
+3. Open `application.py` as a notebook:
 Follow the code
