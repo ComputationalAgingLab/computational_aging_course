@@ -30,7 +30,7 @@ We would like to thank [Skoltech](https://www.skoltech.ru/) for the help in crea
 ```
 @online{kriukov2023compagingbook,
   year={2023},
-  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Ekaterina Khrameeva},
+  author={Dmitrii Kriukov and Irina Zhegalova and Simon Steshin and Dmitrii Smirnov and Evgeniy Efimov and Margarita Sidorova and Ekaterina Khrameeva},
   title={Computational Biology of Aging},
   url={https://computationalaginglab.github.io/computational_aging_course/intro.html},
 }

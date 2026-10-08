@@ -24,10 +24,9 @@ parts:
   numbered: true
   chapters:
   - file: stat/survival_analysis
+  - file: stat/survival_analysis_part2
   - url: https://colab.research.google.com/drive/1Cfm2kqMho_AW9voehcP0F2RkvDOXTGFC?usp=sharing
     title: Practice - Survival analysis with ML
-  - file: stat/survival_analysis_part2
-    title: Advanced survival analysis
   - url: https://colab.research.google.com/drive/13QFIdNcTIYlApM1FdX2uPru34oZ17JLR?usp=sharing
     title: Practice - Deep survival analysis
   - file: ml/aging_clocks
@@ -51,16 +50,13 @@ parts:
   - file: projects/2023_2
     sections:
     - file: projects/2023/drugdiscovery/report
+      title: Transcriptomics-based longevity drug discovery (2023)
     - file: projects/2023/gompertz/report
     - file: projects/2023/levine2013/report
     - file: projects/2023/autogpt/report
-  - file: projects/2024
   - file: projects/2025
     sections:
     - file: projects/2025/drugdiscovery/report
+      title: Transcriptomics-based longevity drug discovery (2025)
     - file: projects/2025/network/report
     - file: projects/2025/tgbot/report
-    # - file: projects/2023/stochclocks/report
-    #
-
-  
