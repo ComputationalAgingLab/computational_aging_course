@@ -66,15 +66,16 @@ echo "==> Publishing to the gh-pages branch"
 uv run ghp-import --no-jekyll --push --force --remote "$REMOTE" --branch gh-pages \
     --message "Deploy $(git rev-parse --short HEAD)" ${cname_args[@]+"${cname_args[@]}"} _build/html
 
-# GitHub Pages needs a minute or two; the site is up to date once it serves our search index
-echo "==> Waiting for $SITE_URL to update"
+# GitHub Pages can take up to ~10 minutes; the site is up to date once it serves our search index.
+# The publishing itself is already done, so waiting can be interrupted with Ctrl+C.
+echo "==> Published. Waiting for $SITE_URL to update (up to 10 minutes, Ctrl+C to stop waiting)"
 local_index="$(sha256 < _build/html/searchindex.js)"
-for _ in $(seq 30); do
-    remote_index="$(curl -fsSL "$SITE_URL/searchindex.js?nocache=$(date +%s)" 2> /dev/null | sha256)"
+for _ in $(seq 60); do
+    remote_index="$({ curl -fsSL "$SITE_URL/searchindex.js?nocache=$(date +%s)" 2> /dev/null || true; } | sha256)"
     if [[ "$remote_index" == "$local_index" ]]; then
         echo "==> Done: $SITE_URL/intro.html"
         exit 0
     fi
     sleep 10
 done
-echo "deploy: published, but $SITE_URL does not show the new version yet; check it in a few minutes" >&2
+echo "deploy: published, but $SITE_URL does not show the new version yet; check it later" >&2
